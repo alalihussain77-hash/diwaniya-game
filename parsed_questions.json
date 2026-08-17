@@ -1,0 +1,554 @@
+[
+  {
+    "id": "gen-history",
+    "question": "من هي ملكة مصر القديمة الشهيرة بعلاقتها مع يوليوس قيصر ومارك أنطونيو؟",
+    "answer": "كليوباترا",
+    "imageUrl": "https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "hist-300",
+    "question": "من هو القائد المسلم الشهير الذي فتح القسطنطينية عام 1453م؟",
+    "answer": "محمد الفاتح",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Bataille_de_Hattin_1187.jpg/600px-Bataille_de_Hattin_1187.jpg"
+  },
+  {
+    "id": "hist-500",
+    "question": "من هو أول إمبراطور للإمبراطورية الرومانية؟",
+    "answer": "أغسطس قيصر",
+    "imageUrl": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "gk-200",
+    "question": "ما هو المورد والسلعة الطبيعية التي تُلقب عالمياً بـ ",
+    "answer": "النفط (البترول)",
+    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "gk-400",
+    "question": "ما هي أقدم عاصمة مأهولة بالسكان بشكل مستمر بدون انقطاع في التاريخ؟",
+    "answer": "دمشق",
+    "imageUrl": "https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "gen-tech",
+    "question": "ما هي الشركة العالمية التي ابتكرت وطوّرت نظام التشغيل ",
+    "answer": "مايكروسوفت (Microsoft)",
+    "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "tech-300",
+    "question": "من هو مؤسس شركة أبل (Apple) الشهير الذي كشف عن أول هاتف آيفون عام 2007؟",
+    "answer": "ستيف جوبز",
+    "imageUrl": "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "tech-500",
+    "question": "ما هي التقنية الرقمية الموزعة والمشفرة التي تعتمد عليها العملات المشفرة مثل البيتكوين؟",
+    "answer": "البلوكشين (Blockchain)",
+    "imageUrl": "https://images.unsplash.com/photo-1568430462629-2235726c1e18?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "anim-200",
+    "question": "ما هو الحيوان الذي يُلقب تاريخياً بـ ",
+    "answer": "الجمل",
+    "imageUrl": "https://images.unsplash.com/photo-1520808663317-647b476a81b9?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "anim-400",
+    "question": "ما هو أسرع حيوان بري على وجه الأرض وتصل سرعته إلى 120 كم/ساعة؟",
+    "answer": "الفهد (Cheetah)",
+    "imageUrl": "https://images.unsplash.com/photo-1545671913-b89ac1b4ac10?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "gen-logos",
+    "question": "أي شركة تكنولوجيا عالمية يمثلها الشعار الشهير بالتفاحة المأكولة؟",
+    "answer": "أبل (Apple)",
+    "imageUrl": "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "logo-300",
+    "question": "أي سلسلة مطاعم وجبات سريعة عالمية تشتهر بشعار القوسين الذهبيين الأيقونيين؟",
+    "answer": "ماكدونالدز (McDonald’s)",
+    "imageUrl": "https://images.unsplash.com/photo-1563720223185-11003d516935?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "logo-500",
+    "question": "أي تطبيق من تطبيقات التواصل الاجتماعي الشهيرة يمثله شعار الشبح الأبيض على خلفية صفراء؟",
+    "answer": "سناب شات (Snapchat)",
+    "imageUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "glogo-200",
+    "question": "أي شركة رياضية عالمية تشتهر بشعار الخطوط المائلة الثلاثة؟",
+    "answer": "أديداس (Adidas)",
+    "imageUrl": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "glogo-400",
+    "question": "أي شركة سيارات ألمانية تشتهر بالحلقات الأربع المتداخلة؟",
+    "answer": "أودي (Audi)",
+    "imageUrl": "https://images.unsplash.com/photo-1642132652075-2b82823616f7?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "gen-products",
+    "question": "أي مشروب غازي شهير عالمياً ابتُكر عام 1886م بعبوته الحمراء الشائعة؟",
+    "answer": "كوكاكولا (Coca-Cola)",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/IPod_Classic_6G_80GB.png/600px-IPod_Classic_6G_80GB.png"
+  },
+  {
+    "id": "prod-300",
+    "question": "ما هي ألعاب التركيب والمكعبات البلاستيكية الملونة الدنماركية الشهيرة؟",
+    "answer": "ليجو (LEGO)",
+    "imageUrl": "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "prod-500",
+    "question": "أي معجون أسنان شهير للعناية بالفم ابتكر أنبوب المعجون العصري الشهير بنهاية القرن التاسع عشر؟",
+    "answer": "كولجيت (Colgate)",
+    "imageUrl": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "sci-200",
+    "question": "ما هو أكبر عضو في جسم الإنسان؟",
+    "answer": "الجلد",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg/600px-Jupiter_and_its_shrunken_Great_Red_Spot.jpg"
+  },
+  {
+    "id": "sci-400",
+    "question": "ما هو الغاز الرئيسي المسبب لظاهرة الاحتباس الحراري؟",
+    "answer": "ثاني أكسيد الكربون",
+    "imageUrl": "https://images.unsplash.com/photo-1530210124550-912dc1381cb8?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "gen-sports",
+    "question": "كم عدد لاعبي فريق كرة القدم داخل الملعب أثناء المباراة الرسمية؟",
+    "answer": "11 لاعباً",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Lionel_Messi_WC2022.jpg/600px-Lionel_Messi_WC2022.jpg"
+  },
+  {
+    "id": "spt-300",
+    "question": "من هو العداء الجامايكي صاحب الرقم القياسي العالمي في سباق 100 متر (9.58 ثانية)؟",
+    "answer": "يوسين بولت",
+    "imageUrl": "https://images.unsplash.com/photo-1569517282132-25d22f4573e6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "spt-500",
+    "question": "في رياضة التنس، ماذا يسمى الشوط الحاسم الذي يتم لعب النقاط فيه عند التعادل 6-6؟",
+    "answer": "تاي بريك (Tie-break)",
+    "imageUrl": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "rid-200",
+    "question": "ما هو الشيء الذي يمشي بلا أرجُل ويدخل الأذنين فقط؟",
+    "answer": "الصوت",
+    "imageUrl": "https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "rid-400",
+    "question": "ما هو الشيء الذي يحترق لكي يضيء للآخرين؟",
+    "answer": "الشمعة",
+    "imageUrl": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "gen-geography",
+    "question": "ما هو أطول نهر في العالم وينبع من بحيرة فيكتوريا ويصب في البحر المتوسط؟",
+    "answer": "نهر النيل",
+    "imageUrl": "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "geo-300",
+    "question": "ما هي السلسلة الجبلية الشهيرة التي تحتوي على قمة إفرست أعلى قمة في العالم؟",
+    "answer": "جبال الهيمالايا",
+    "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "geo-500",
+    "question": "ما هي أكبر بحيرة مغلقة (بحر داخلي) في العالم من حيث المساحة؟",
+    "answer": "بحر قزوين",
+    "imageUrl": "https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "cap-200",
+    "question": "ما هي العملة الرسمية المتداولة في دولة اليابان؟",
+    "answer": "الين الياباني",
+    "imageUrl": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "cap-400",
+    "question": "ما هي اللغة الرسمية الأكثر تحدثاً واستخداماً في دولة البرازيل؟",
+    "answer": "اللغة البرتغالية",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Parliament_House_Canberra.jpg/600px-Parliament_House_Canberra.jpg"
+  },
+  {
+    "id": "gen-flags",
+    "question": "ما هي الدولة العربية التي يمثلها هذا العلم الموضح بالصورة؟",
+    "answer": "العراق",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/600px-Flag_of_Japan.svg.png"
+  },
+  {
+    "id": "flg-300",
+    "question": "ما هي الدولة الوحيدة في العالم التي علمها الوطني غير مستطيل بل مثلثان كما بالصورة؟",
+    "answer": "نيبال",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Flag_of_Lebanon.svg/600px-Flag_of_Lebanon.svg.png"
+  },
+  {
+    "id": "flg-500",
+    "question": "ما هي الدولة التي تحمل ورقة شجر القيقب الحمراء في منتصف علمها الظاهر بالصورة؟",
+    "answer": "كندا",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/White_flag_icon.svg/600px-White_flag_icon.svg.png"
+  },
+  {
+    "id": "oflg-200",
+    "question": "ما هي الإمبراطورية التاريخية التي اتخذت العلم الأحمر بالهلال والنجمة شعاراً لها؟",
+    "answer": "الإمبراطورية العثمانية",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_the_Soviet_Union.svg/600px-Flag_of_the_Soviet_Union.svg.png"
+  },
+  {
+    "id": "oflg-400",
+    "question": "ما هي المملكة الأوروبية القديمة التي استعملت العلم الأبيض بزهرات الزنبق الذهبية؟",
+    "answer": "مملكة فرنسا",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_the_Qing_Dynasty_%281889%E2%80%931912%29.svg/600px-Flag_of_the_Qing_Dynasty_%281889%E2%80%931912%29.svg.png"
+  },
+  {
+    "id": "spec-kuwait-general",
+    "question": "في أي عام نالت دولة الكويت استقلالها الرسمي بعهد الشيخ عبدالله السالم؟",
+    "answer": "1961م",
+    "imageUrl": "https://images.unsplash.com/photo-1578895210405-907db48a7111?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "kwt-gen-300",
+    "question": "من هو حاكم الكويت الملقب بـ ",
+    "answer": "الشيخ عبدالله السالم الصباح",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Kuwaiti_Baiza_1886.jpg/600px-Kuwaiti_Baiza_1886.jpg"
+  },
+  {
+    "id": "kwt-gen-500",
+    "question": "ما هي أكبر جزيرة كويتية من حيث المساحة وتقع شمال شرق الكويت؟",
+    "answer": "جزيرة بوبيان",
+    "imageUrl": "https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "kwt-rst-200",
+    "question": "ما هي الوجبة الوطنية الكويتية الأولى المكونة من الأرز والدجاج أو اللحم مع الدقوس والعيش؟",
+    "answer": "المجبوس (مكبوس)",
+    "imageUrl": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "kwt-rst-400",
+    "question": "ما هي الحلوى الكويتية الشعبية التراثية المكونة من السمسم والرهش ودبس التمر؟",
+    "answer": "الرهش",
+    "imageUrl": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "spec-kuwait-location",
+    "question": "أين يقع ",
+    "answer": "مدينة الكويت (العاصمة)",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Sheikh_Jaber_Al-Ahmad_Al-Sabah_Causeway.jpg/600px-Sheikh_Jaber_Al-Ahmad_Al-Sabah_Causeway.jpg"
+  },
+  {
+    "id": "kwt-loc-300",
+    "question": "في أي محافظة كويتية تقع منطقة ",
+    "answer": "محافظة الجهراء",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Failaka_Island_Ikaros.jpg/600px-Failaka_Island_Ikaros.jpg"
+  },
+  {
+    "id": "kwt-loc-500",
+    "question": "أين تقع شاليهات ومنتجعات ",
+    "answer": "أقصى جنوب الكويت قرب النويصيب",
+    "imageUrl": "https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "kwt-malls-200",
+    "question": "في أي منطقة يقع مجمع ",
+    "answer": "جنوب السرة (الزهراء)",
+    "imageUrl": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "kwt-malls-400",
+    "question": "ما اسم المجمع التجاري العريق المطل على شارع الخليج العربي بالسالمية ومربوط بـ ",
+    "answer": "مارينا مول (Marina Mall)",
+    "imageUrl": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "spec-kuwait-cafes",
+    "question": "ما اسم المشروب الساخن الشعبي المفضل في قهاوي الكويت والمصنوع من الشاي المخلوط بالحليب والبهارات؟",
+    "answer": "شاي كرك (Karrak)",
+    "imageUrl": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "kwt-caf-300",
+    "question": "ما اسم القهوة المقطرة الباردة المبتكرة والمشهورة في كافيهات الكويت الحديثة المجهزة خلال 12 ساعة؟",
+    "answer": "كولد برو (Cold Brew)",
+    "imageUrl": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "kwt-caf-500",
+    "question": "ما اسم المقهى الكويتي الشهير المختص بالقهوة الفاخرة والذي انطلق من الكويت وتوسع عالمياً بشعار بسيط راقٍ؟",
+    "answer": "% Arabica (أرابيكا)",
+    "imageUrl": "https://images.unsplash.com/photo-1564769625905-50e93615e769?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "isl-gen-200",
+    "question": "ما هي أطول سورة في القرآن الكريم؟",
+    "answer": "سورة البقرة",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Ghazwa_Badr.jpg/600px-Ghazwa_Badr.jpg"
+  },
+  {
+    "id": "isl-gen-400",
+    "question": "من هو أول الخلفاء الراشدين الأربعة والذي تولى الخلافة بعد وفاة النبي ﷺ؟",
+    "answer": "أبو بكر الصديق رضي الله عنه",
+    "imageUrl": "https://images.unsplash.com/photo-1564769625905-50e93615e769?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "spec-islamic-quran",
+    "question": "كم عدد سور القرآن الكريم كاملة؟",
+    "answer": "114 سورة",
+    "imageUrl": "https://images.unsplash.com/photo-1585036156171-384164a8c675?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "isl-qrn-300",
+    "question": "ما هي السورة الوحيدة في القرآن الكريم التي لا تبدأ بـ ",
+    "answer": "سورة التوبة (براءة)",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Abdul_Basit_Abdul_Samad.jpg/600px-Abdul_Basit_Abdul_Samad.jpg"
+  },
+  {
+    "id": "isl-qrn-500",
+    "question": "ما هي أقصر سورة في القرآن الكريم من حيث عدد الآيات (3 آيات)؟",
+    "answer": "سورة الكوثر",
+    "imageUrl": "https://images.unsplash.com/photo-1564769625905-50e93615e769?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "isl-srh-200",
+    "question": "ما اسم مرضعته الشريفة التي أرضعته في طفولته بديار بني سعد؟",
+    "answer": "حليمة السعدية",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Ghar_Hira.jpg/600px-Ghar_Hira.jpg"
+  },
+  {
+    "id": "isl-srh-400",
+    "question": "من هي أول زوجات النبي ﷺ وأم معظم أولاده وأول من آمنت به إطلاقاً؟",
+    "answer": "خديجة بنت خويلد رضي الله عنها",
+    "imageUrl": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "spec-islamic-prophets",
+    "question": "من هو النبي الملقب بـ ",
+    "answer": "إبراهيم عليه السلام",
+    "imageUrl": "https://images.unsplash.com/photo-1568430462629-2235726c1e18?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "isl-prp-300",
+    "question": "من هو كليم الله النبي الذي أيده الله بمعجزة العصا واليد البيضاء وأغرق فرعون بعهده؟",
+    "answer": "موسى عليه السلام",
+    "imageUrl": "https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "isl-prp-500",
+    "question": "من هو النبي الصابر الشهير الذي ضرب الله به المثل في الصبر على الشفاء والبلاء بالجسد والمال؟",
+    "answer": "أيوب عليه السلام",
+    "imageUrl": "https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "isl-shb-200",
+    "question": "من هو القائد الصحابي الملقب بـ ",
+    "answer": "خالد بن الوليد رضي الله عنه",
+    "imageUrl": "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "isl-shb-400",
+    "question": "من هو الصحابي الذي قال عنه النبي ﷺ ",
+    "answer": "أبو عبيدة بن الجراح رضي الله عنه",
+    "imageUrl": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "spec-foreign-marvel",
+    "question": "ما هو الاسم الحقيقي لشخصية بطل مارفل ",
+    "answer": "توني ستارك",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Thanos_MCU.jpg/600px-Thanos_MCU.jpg"
+  },
+  {
+    "id": "mvl-300",
+    "question": "ما اسم المملكة الأفريقية المخفية الغنية بمعدن الفايبرانيوم والتي يحكمها بلاك بانثر؟",
+    "answer": "واكاندا (Wakanda)",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Mjolnir.JPG/600px-Mjolnir.JPG"
+  },
+  {
+    "id": "mvl-500",
+    "question": "ما هي الجملة الأخيرة الأيقونية التي قالها توني ستارك قبل أن يقرع أصابعه في Endgame؟",
+    "answer": "الشتاء قادم (Winter is Coming)",
+    "imageUrl": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "got-300",
+    "question": "ما هو الجدار الجليدي الهائل المرتفع بالشمال الذي يحمي وستروس من السائرين البيض؟",
+    "answer": "الجدار (The Wall)",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Peter_Dinklage_by_Gage_Skidmore_2013.jpg/600px-Peter_Dinklage_by_Gage_Skidmore_2013.jpg"
+  },
+  {
+    "id": "got-500",
+    "question": "ما اسم السيف الفولاذي الفاليري الثمين الذي يمتلكه جون سنو مع مقبض رأس الذئب؟",
+    "answer": "لونغكلو (Longclaw)",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Andrew_Lincoln_%2828704250284%29_%28cropped%29.jpg/600px-Andrew_Lincoln_%2828704250284%29_%28cropped%29.jpg"
+  },
+  {
+    "id": "twd-200",
+    "question": "ما اسم مضرب البيسبول المغطى بالسلك الشائك السلاح المفضل للشرير نيغان؟",
+    "answer": "لوسيل (Lucille)",
+    "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "twd-400",
+    "question": "ماذا يطلق الناجون في مسلسل The Walking Dead على الزومبي والأموات؟",
+    "answer": "الماشون (Walkers)",
+    "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "spec-foreign-peaky",
+    "question": "ما اسم بطل المسلسل وقائد عصابة البيكي بليندرز العبادي الداهية؟",
+    "answer": "توماس شيلبي (Tommy Shelby)",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Cillian_Murphy_2014.jpg/600px-Cillian_Murphy_2014.jpg"
+  },
+  {
+    "id": "pky-300",
+    "question": "أين تخفي عصابة البيكي بليندرز شفرات الحلاقة القاتلة السريعة في ملابسهم؟",
+    "answer": "في حافة قبعاتهم (Flat caps)",
+    "imageUrl": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "pky-500",
+    "question": "ما اسم الحانة والبار التاريخي المملوك لعائلة شيلبي وملتقى اجتماعاتهم الرسمية؟",
+    "answer": "حانة الجاريسون (The Garrison)",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Bryan_Cranston_by_Gage_Skidmore_2.jpg/600px-Bryan_Cranston_by_Gage_Skidmore_2.jpg"
+  },
+  {
+    "id": "bb-spec-200",
+    "question": "ما هو اسم سلسلة مطاعم الدجاج السريع المملوكة لـ غاس فرينغ كواجهة لعمله؟",
+    "answer": "Los Pollos Hermanos",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Bob_Odenkirk_by_Gage_Skidmore_2.jpg/600px-Bob_Odenkirk_by_Gage_Skidmore_2.jpg"
+  },
+  {
+    "id": "bb-spec-400",
+    "question": "ما هي مهنة والتر وايت الأصلية قبل إصابته بالسرطان ودخوله عالم التجارة؟",
+    "answer": "معلم كيمياء بمدرسة ثانوية",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Chevrolet_El_Camino_SS.jpg/600px-Chevrolet_El_Camino_SS.jpg"
+  },
+  {
+    "id": "spec-turkish-general",
+    "question": "ما اسم المسلسل الدرامي التركي الشهير الذي تضمن شخصية ",
+    "answer": "إيزيل (Ezel)",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Necati_%C5%9Ea%C5%9Fmaz_2011.jpg/600px-Necati_%C5%9Ea%C5%9Fmaz_2011.jpg"
+  },
+  {
+    "id": "tr-gen-300",
+    "question": "ما اسم المسلسل التركي الشهير القائم على قصة شقيقين في جهاز الشرطة والمافيا (صرب ومارت)؟",
+    "answer": "في الداخل (İçerde)",
+    "imageUrl": "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "tr-gen-500",
+    "question": "من هو النجم التركي الشهير الذي جسد شخصية ",
+    "answer": "بوراك أوزجيفيت (Burak Özçivit)",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Kayi_flag.svg/600px-Kayi_flag.svg.png"
+  },
+  {
+    "id": "ert-200",
+    "question": "من هو الممثل التركي القدير الذي قدم شخصية ",
+    "answer": "أنجين ألتان دوزياتان",
+    "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "ert-400",
+    "question": "ما اسم زوجة أرطغرل السلطانة وأم عثمان وابنة الأميرة السلجوقية؟",
+    "answer": "السلطانة حليمة (Halime Hatun)",
+    "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "spec-turkish-osman",
+    "question": "من هو الابن الأصغر لأرطغرل والمؤسس الحقيقي للإمبراطورية العثمانية؟",
+    "answer": "السيد عثمان الأول",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Burak_%C3%96z%C3%A7ivit_2018.jpg/600px-Burak_%C3%96z%C3%A7ivit_2018.jpg"
+  },
+  {
+    "id": "osm-300",
+    "question": "ما اسم زوجة عثمان الأولى الشجاعة وابنة الشيخ الروحي أديب ألي؟",
+    "answer": "بالا خاتون (Bala Hatun)",
+    "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "osm-500",
+    "question": "ما هي القلعة البيزنطية الهامة التي فتحها عثمان وجعلها أول عاصمة لإمارته الناشئة؟",
+    "answer": "قلعة قرة حصار (Karacahisar)",
+    "imageUrl": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "cuk-200",
+    "question": "ما اسم العائلة الحاكمة لحي الحفرة بقيادة إدريس كوتشوفالي؟",
+    "answer": "عائلة كوتشوفالي (Koçovalı)",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Aras_Bulut_%C4%B0ynemli.jpg/600px-Aras_Bulut_%C4%B0ynemli.jpg"
+  },
+  {
+    "id": "cuk-400",
+    "question": "ما هو الشكل الأيقوني الموشوم على أجساد ورسومات جدران أهالي الحفرة؟",
+    "answer": "شعار السهام الثلاثة والنقاط <.::.>",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Erkan_Kol%C3%A7ak_K%C3%B6stendil.jpg/600px-Erkan_Kol%C3%A7ak_K%C3%B6stendil.jpg"
+  },
+  {
+    "id": "spec-anime-general",
+    "question": "ما اسم الأنمي الشهير الذي يمتلك فيه الفتى لايت ياقامي دفتر موتى يسقط من الشينغامي؟",
+    "answer": "مذكرة الموت (Death Note)",
+    "imageUrl": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "ani-gen-300",
+    "question": "ما اسم قائد الاستطلاع العباقرة صاحب جملة ",
+    "answer": "إيروين سميث (Erwin Smith)",
+    "imageUrl": "https://images.unsplash.com/photo-1613371138196-c2a7c87a8f58?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "ani-gen-500",
+    "question": "ما هو الاستوديو الياباني الأسطوري مبتكر أروع الأفلام مثل ",
+    "answer": "استوديو غيبلي (Studio Ghibli)",
+    "imageUrl": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "op-spec-200",
+    "question": "ما اسم الطبيب اللطيف لطاقم قبعة القش والمكون من رنة أكلت فاكهة الإنسان؟",
+    "answer": "توني توني تشوبر (Chopper)",
+    "imageUrl": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "op-spec-400",
+    "question": "ما هو أسلوب القتال الخاص بالسيّاف رورونوا زورو؟",
+    "answer": "أسلوب السيوف الثلاثة (السانتوريو)",
+    "imageUrl": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "spec-anime-pokemon",
+    "question": "ما اسم البوكيمون الأصفر الكهربائي الأيقوني والمرافق الدائم لـ آش كيتشام؟",
+    "answer": "بيكاتشو (Pikachu)",
+    "imageUrl": "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "pok-300",
+    "question": "ما اسم العصابة الشريرة الكوميدية المكونة من جاسي وكوجيرو والقط ناطق الكلام مياوث؟",
+    "answer": "فريق روكيت (Team Rocket)",
+    "imageUrl": "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "pok-500",
+    "question": "ما اسم التنين الناري الشرس والتحول النهائي لـ تشارماندر والذي يزفر النيران؟",
+    "answer": "تشارايزارد (Charizard)",
+    "imageUrl": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "ach-200",
+    "question": "من هو المعلم الأسطوري معصوب العينين وذو الشعر الأبيض وصاحب تقنية اللانهائية في Jujutsu Kaisen؟",
+    "answer": "ساتورو غوجو (Satoru Gojo)",
+    "imageUrl": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "ach-400",
+    "question": "من هو المحقق العبقري الغامض الملقب بـ L في أنمي مذكرة الموت والذي يعشق أكل الحلويات؟",
+    "answer": "إل لاوليت (L Lawliet)",
+    "imageUrl": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80"
+  }
+]

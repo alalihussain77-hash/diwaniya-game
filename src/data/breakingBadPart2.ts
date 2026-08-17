@@ -1,0 +1,1024 @@
+export interface BreakingBadQuestion {
+  id: string;
+  category: string;
+  points: number;
+  questionText: string;
+  options: string[];
+  correctAnswer: string;
+  answerImageUrl?: string;
+  hint?: string;
+}
+
+export const breakingBadPart2: BreakingBadQuestion[] = [
+  // ==========================================
+  // --- أسئلة 200 نقطة (سهل - 33 سؤالاً) ---
+  // ==========================================
+  {
+    id: "bb_q2_001",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما اسم الآلة الموسيقية التي يعزف عليها 'سكيني بيت' ببراعة متقنة في إحدى الحلقات؟",
+    options: ["البيانو", "البيانو الكهربائي", "الكمان", "البيانو الكبير (Grand Piano)"],
+    correctAnswer: "البيانو الكبير (Grand Piano)",
+    answerImageUrl: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=800",
+    hint: "عزف معزوفة كلاسيكية معقدة داخل متجر للآلات الموسيقية وأذهل باجر"
+  },
+  {
+    id: "bb_q2_002",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما اسم المسلسل المشتق (Spin-off) الذي يحكي قصة المحامي سول غودمان قبل وبعد أحداث بريكنج باد؟",
+    options: ["Better Call Saul", "El Camino", "Metástasis", "The Saul Goodman Show"],
+    correctAnswer: "Better Call Saul",
+    answerImageUrl: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800",
+    hint: "مسلسل درامي ترشح لجوائز إيمي يركز على صعود وسقوط جيمي مكغيل"
+  },
+  {
+    id: "bb_q2_003",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هي المادة المخدرة الرئيسية التي يدور حولها المسلسل بأكمله؟",
+    options: ["الميثامفيتامين (الميث)", "الكريستال هيروين", "الكوكان", "الأفيون"],
+    correctAnswer: "الميثامفيتامين (الميث)",
+    answerImageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+    hint: "مادة كيميائية مخدرة تُعرف بلونها الأزرق الخاص في المسلسل"
+  },
+  {
+    id: "bb_q2_004",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هو اسم المدير الذي كان يترأس المدرسة الثانوية التي درس فيها والتر وايت وكان صديقاً له؟",
+    options: ["كارمن أليست", "دونالد", "جورج", "توم"],
+    correctAnswer: "كارمن أليست",
+    answerImageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800",
+    hint: "مديرة المدرسة التي حاول والتر تقبيلها في لحظة ارتباك بعد إصابته بالسرطان"
+  },
+  {
+    id: "bb_q2_005",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ماذا ألقى والتر وايت فوق سطح منزله بغضب في إحدى أشهر لقطات المسلسل؟",
+    options: ["بيتزا كاملة غير مقطعة", "حقيبة سفر ملايين", "قبعة هايزنبرغ", "علبة طعام صيني"],
+    correctAnswer: "بيتزا كاملة غير مقطعة",
+    answerImageUrl: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800",
+    hint: "طعام إيطالي شهير استقر بشكل مثالي فوق القرميد"
+  },
+  {
+    id: "bb_q2_006",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هو العضو المفصلي الذي فقدته الدمية القماشية الوردية التي سقطت في مسبح والتر وايت؟",
+    options: ["العين اليسرى", "الذراع الأيمن", "الأذن", "القدم"],
+    correctAnswer: "العين اليسرى",
+    answerImageUrl: "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=800",
+    hint: "قطعة بلاستيكية صغيرة احتفظ بها والتر لفترة طويلة في درج درسه"
+  },
+  {
+    id: "bb_q2_007",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هي وسيلة الشحن التي استخدمها غاس فرينغ لتوزيع الميث المخفي عبر الولاية؟",
+    options: ["دلاء صلصة الدجاج المقلي", "شاحنات اللحوم المبردة", "علائب العصائر", "صناديق قطع الغيار"],
+    correctAnswer: "دلاء صلصة الدجاج المقلي",
+    answerImageUrl: "https://images.unsplash.com/photo-1626509854183-efe262e34582?w=800",
+    hint: "كان يتم تهريب أكياس الميث المحكمة الإغلاق داخل حاويات الصوص الكبيرة"
+  },
+  {
+    id: "bb_q2_008",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما اسم ابن صديقة جيسي (أندريا) الذي كان يلعب معه ألعاب الفيديو؟",
+    options: ["بروك كانتيلو", "جيك بينكمان", "تودي", "درو"],
+    correctAnswer: "بروك كانتيلو",
+    answerImageUrl: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800",
+    hint: "طفل صغير كان جيسي يتكفل بمصاريفه هو وأمه"
+  },
+  {
+    id: "bb_q2_009",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما اسم شقيق جيسي بينكمان الأصغر الموهوب في عزف المزمار والم تفوق أكاديمياً؟",
+    options: ["جيك بينكمان", "دانييل بينكمان", "توبي بينكمان", "سام بينكمان"],
+    correctAnswer: "جيك بينكمان",
+    answerImageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800",
+    hint: "الفتى الوديع الذي وجد جيسي لديه ماريجوانا وتحمل جيسي التهمة عنه"
+  },
+  {
+    id: "bb_q2_010",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما اسم الحارس الشخصي البدين لمستشار القانون سول غودمان والذي نام على براميل الأموال؟",
+    options: ["هوييل توبس", "كوبي", "فرانك", "تود"],
+    correctAnswer: "هوييل توبس",
+    answerImageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800",
+    hint: "استلقى هو وصديقه كوبي فوق الملايين وقال عبارته الشهيرة عن ثروة والتر"
+  },
+  {
+    id: "bb_q2_011",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما الحيوان الزاحف الذي ظهر بوضوح في صحراء ألبوكركي في شق الشاشة في بداية عدة حلقات؟",
+    options: ["السلحفاة", "الأفعى الجرسية", "العقرب", "الحردون"],
+    correctAnswer: "السلحفاة",
+    answerImageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800",
+    hint: "استخدمتها العصابة لنقل رأس أحد الوشاة المموه بين الجواسيس"
+  },
+  {
+    id: "bb_q2_012",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "كيف كان شكل الرمز الخارجي على مدخل مكتب سول غودمان في المجمع التجاري؟",
+    options: ["تمثال الحرية نفاخ كبير فوق السطح", "ميزان العدالة مضاء بالنيون", "علم أمريكي ضخم", "مطرقة القاضي الذهبية"],
+    correctAnswer: "تمثال الحرية نفاخ كبير فوق السطح",
+    answerImageUrl: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800",
+    hint: "مجسم قابل للملء بالهواء لتمثال الحرية فوق السقف"
+  },
+  {
+    id: "bb_q2_013",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هو اللون المفضل الشديد الذي تطغى عليه جميع ملابس وأثاث منزل ماري شريتر؟",
+    options: ["البنفسجي (الأرجواني)", "الأصفر", "الأخضر", "الوردي"],
+    correctAnswer: "البنفسجي (الأرجواني)",
+    answerImageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800",
+    hint: "تلبس دائماً درجات هذا اللون ومطبخها وأغطيتها تحمل نفس اللون"
+  },
+  {
+    id: "bb_q2_014",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما اسم العارض والمسؤول المالي الذي ربطته علاقة عاطفية بسكايلر وايت في مكتبه؟",
+    options: ["تيد بينيكي", "إليوت شوارتز", "بوغدان", "بيتر"],
+    correctAnswer: "تيد بينيكي",
+    answerImageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800",
+    hint: "صاحب شركة بينيكي للتصنيع الذي انزلق وسقط وسُحر في سريره"
+  },
+  {
+    id: "bb_q2_015",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما اسم الشريك القديم لوالتر وايت الذي يمتلك شركة Gray Matter مع زوجته غريتشن؟",
+    options: ["إليوت شوارتز", "بيتر شولر", "تيد بينيكي", "دونالد"],
+    correctAnswer: "إليوت شوارتز",
+    answerImageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+    hint: "الرجل ذو الأذنين الكبيرتين الذي عرض دفع تكاليف علاج والتر في البداية"
+  },
+  {
+    id: "bb_q2_016",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هي الجريمة السلوكية المفاجئة التي كانت تعاني منها ماري شريتر زوجة هانك؟",
+    options: ["سرقة المتاجر المرضية (Kleptomania)", "إدمان القمار", "النصب الإلكتروني", "التزوير"],
+    correctAnswer: "سرقة المتاجر المرضية (Kleptomania)",
+    answerImageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800",
+    hint: "سرقت إبريقاً فضياً وحذاءً وسرقت حذاءً بنفسجياً أهدته لسكايلر"
+  },
+  {
+    id: "bb_q2_017",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما الذي كتبه والتر وايت بالرش الذهبي على جدار صالة منزله المهجور في مشاهد المستقبل؟",
+    options: ["HEISENBERG", "HELL", "W.W", "LOS POLLOS"],
+    correctAnswer: "HEISENBERG",
+    answerImageUrl: "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=800",
+    hint: "كلمة كبيرة رشها المتسللون والصبية على جدار الصالة بعد افتضاح أمره"
+  },
+  {
+    id: "bb_q2_018",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما اسم الشارع الذي يقع فيه مطعم لوس بولوس هيرمانوس الرئيسي في ألبوكركي؟",
+    options: ["Coors Road", "Central Avenue", "Montgomery Blvd", "Isleta Blvd"],
+    correctAnswer: "Coors Road",
+    answerImageUrl: "https://images.unsplash.com/photo-1626509854183-efe262e34582?w=800",
+    hint: "موقع فرع المطعم الذي كان يتردد عليه هانك وأجهزة الأمن"
+  },
+  {
+    id: "bb_q2_019",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هو السلاح المميز والتقليدي الذي كان يحمله التوأمان سلامانكا لتنفيذ الاغتيالات؟",
+    options: ["بلطة (فأس) لامعة", "سيف كاتانا", "سكين صيد ضخم", "مسدس مزود بكاتم صوت"],
+    correctAnswer: "بلطة (فأس) لامعة",
+    answerImageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800",
+    hint: "حاول أحدهما قطع رأس هانك شريتر بها في موقف السيارات"
+  },
+  {
+    id: "bb_q2_020",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هي العاهة أو الحالة الجسدية التي أُصيب بها هكتور سلامانكا وجعلته قعيداً على كرسيه المتحرك؟",
+    options: ["سكتة دماغية (جلطة)", "شلل أطفال", "حوادث طلق ناري", "كسر في النخاع الشوكي"],
+    correctAnswer: "سكتة دماغية (جلطة)",
+    answerImageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800",
+    hint: "تسبب بها غاس فرينغ عبر استبدال أدويته في الأحداث السابقة (Better Call Saul)"
+  },
+  {
+    id: "bb_q2_021",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما اسم المادة المضافة التي اقترح جيسي بينكمان وضعها في الميث في بداية المسلسل ورفضها والتر؟",
+    options: ["مسحوق الفلفل الحار (Chili P)", "القرفة", "الفانيليا", "السكر البني"],
+    correctAnswer: "مسحوق الفلفل الحار (Chili P)",
+    answerImageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800",
+    hint: "علامة جيسي الخاصة المسجلة التي اعتبرها والتر تخريباً للعملية الكيميائية"
+  },
+  {
+    id: "bb_q2_022",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "أين كان يخفي والتر وايت القارورة الزجاجية الصغرى التي تحتوي على سم الرايسين القاتل في منزله؟",
+    options: ["خلف غطاء مقبس الكهرباء الجداري", "داخل الخزنة السفلية", "في علبة الدواء", "داخل تحت لوح السرير"],
+    correctAnswer: "خلف غطاء مقبس الكهرباء الجداري",
+    answerImageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+    hint: "مكان سري في غرفة نومه ينزع البراغي ويخفي السم خلف المقبس"
+  },
+  {
+    id: "bb_q2_023",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هي الهواية التي يحبها والتر جونيور ويتناولها دائماً في جلسات العائلة الصباحية؟",
+    options: ["ناول طعام الإفطار", "قراءة المجلات", "لعب ألعاب الفيديو", "مشاهدة التلفاز"],
+    correctAnswer: "ناول طعام الإفطار",
+    answerImageUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800",
+    hint: "مشاهد تكررت بثرثرته الدائمة حول البيض والبان كيك والأومليت"
+  },
+  {
+    id: "bb_q2_024",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هو نوع السرطان المكتشف لدى والتر وايت في الحلقة الأولى من المسلسل؟",
+    options: ["سرطان الرئة غير صغير الخلايا (المرحلة الثالثة)", "سرطان الدم", "سرطان الحنجرة", "سرطان البنكرياس"],
+    correctAnswer: "سرطان الرئة غير صغير الخلايا (المرحلة الثالثة)",
+    answerImageUrl: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800",
+    hint: "تشخيص طبي شومل بمنحه مهلة عامين أو ثلاثة على الأكثر للحياة"
+  },
+  {
+    id: "bb_q2_025",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هي الوظيفة الثانية التي كان يعمل بها والتر وايت بعد انتهاء دوام المدرسة لزيادة دخله؟",
+    options: ["محاسب ومسؤول صندوق في مغسلة سيارات", "سائق تاكسي", "حارس أمني ليلي", "موزع جرائد"],
+    correctAnswer: "محاسب ومسؤول صندوق في مغسلة سيارات",
+    answerImageUrl: "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=800",
+    hint: "كان يضطر أحياناً لتنظيف إطارات سيارات طلابه بنفسه مما يسبب له الحرج"
+  },
+  {
+    id: "bb_q2_026",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هي العلامة المميزة الموجودة على حذاء أحد التوأمين سلامانكا؟",
+    options: ["جُمجمة فضية على مقدمة الحذاء", "نجمة معدنية", "شفرة حادة", "لون أصفر براق"],
+    correctAnswer: "جُمجمة فضية على مقدمة الحذاء",
+    answerImageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800",
+    hint: "حذاء رعاة بقر جلدي برأس مزين بقطعة معدنية على شكل جمجمة"
+  },
+  {
+    id: "bb_q2_027",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "أين وضع والتر وجيسي القنبلة المغناطيسية لتدمير أدلة جهاز اللابتوب الخاص بـ غاس؟",
+    options: ["داخل شاحنة استأجروها وركنوها بجانب جدار قسم الشرطة", "في صندوق قمامة خلف المركز", "داخل حقيبة ظهر", "تحت سيارة الدورية"],
+    correctAnswer: "داخل شاحنة استأجروها وركنوها بجانب جدار قسم الشرطة",
+    answerImageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",
+    hint: "استخدموا بطاريات ضخمة لتفعيل المغناطيس الهائل من الخارح"
+  },
+  {
+    id: "bb_q2_028",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما الذي طرأ على غاس فرينغ بعد خروجه من غرفة هكتور سلامانكا فور الانفجار مباشرة؟",
+    options: ["خرج وعدل ربطة عنقه ثم سقط ميت بنصف وجه مدمَّر", "سقط على الفور داخل الغرفة", "توفي داخل السيارة", "هرب إلى الشارع ومات هناك"],
+    correctAnswer: "خرج وعدل ربطة عنقه ثم سقط ميت بنصف وجه مدمَّر",
+    answerImageUrl: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800",
+    hint: "لقطة سينمائية مرعبة ومذهلة تظهر الجانب الأيمن المحترق كلياً لجمجمته"
+  },
+  {
+    id: "bb_q2_029",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ماذا كانت كنية أو اسم عائلة جين صديقة جيسي؟",
+    options: ["مارغوليس", "وايت", "كانتيلو", "شريتر"],
+    correctAnswer: "مارغوليس",
+    answerImageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800",
+    hint: "والدها دونالد مارغوليس المراقب الجوي"
+  },
+  {
+    id: "bb_q2_030",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هو المشروب الكحولي المفضل لـ هانك شريتر والذي يصنعه بنفسه في مرآب منزله؟",
+    options: ["بيرة شراوتربراو (Schraderbräu)", "ويسكي العضلات", "تكيلا الصحراء", "شراب الشعير المكسيكي"],
+    correctAnswer: "بيرة شراوتربراو (Schraderbräu)",
+    answerImageUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800",
+    hint: "بيرة منزلية الصنع كان يضع صورتها على زجاجاتها الخاصة"
+  },
+  {
+    id: "bb_q2_031",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما هي العبارة التكتيكية التي ابتكرها سول غودمان لتغطية عمليات الطبخ داخل المنازل؟",
+    options: ["إبادة الآفات وحشرات المنازل (Vamonos Pest)", "خدمات الصيانة السريعة", "مؤسسة التنظيف المتقدم", "شركة النقل الشامل"],
+    correctAnswer: "إبادة الآفات وحشرات المنازل (Vamonos Pest)",
+    answerImageUrl: "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=800",
+    hint: "تغطية المنزل بالخيام الملونة بداعي الرش بينما يطبخون بالداخل"
+  },
+  {
+    id: "bb_q2_032",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما اسم مساعد سول غودمان الأبيض النحيف اليد اليمنى لهوييل في التنفيذ؟",
+    options: ["باتريك كوبي", "فيكتور", "تايروس", "دانييل"],
+    correctAnswer: "باتريك كوبي",
+    answerImageUrl: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800",
+    hint: "قام بتمثيل دور مفتش الصحة لمضايقة تيد بينيكي وإجباره على التوقيع"
+  },
+  {
+    id: "bb_q2_033",
+    category: "Breaking Bad",
+    points: 200,
+    questionText: "ما اسم الطفل الصغير السارق الذي استعمله تاجر المخدرات لقتل 'كومبو'؟",
+    options: ["توماس كانتيلو", "بروك", "درو", "جيك"],
+    correctAnswer: "توماس كانتيلو",
+    answerImageUrl: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800",
+    hint: "الشقيق الأصغر لأندريا الذي كان يستغله تجار الشوارع"
+  },
+
+  // ==========================================
+  // --- أسئلة 400 نقطة (متوسط - 34 سؤالاً) ---
+  // ==========================================
+  {
+    id: "bb_q2_034",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما هي تفاصيل خطة والتر وايت للتخلص من جثة 'إيميليو' في بداية الموسم الأول؟",
+    options: ["إذابتها باستخدام حمض الهيدروفلوريك في وعاء بلاستيكي", "دفنها في صحراء توهاجيلي", "حرقها داخل شاحنة الـ RV", "رميها في المحيط"],
+    correctAnswer: "إذابتها باستخدام حمض الهيدروفلوريك في وعاء بلاستيكي",
+    answerImageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+    hint: "طلب من جيسي شراء وعاء معين لكن جيسي وضعها في حوض الاستحمام"
+  },
+  {
+    id: "bb_q2_035",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما العبارة الشهيرة التي قالها والتر وايت لـ هانك عندما قال له هانك 'لا أعرف من تكون أبداً'؟",
+    options: ["إذا كان هذا صحيحاً.. فربما عليك السير بحذر (Tread lightly)", "أنا هو هايزنبرغ", "أنا من يطرق الباب", "ستعرف قريباً جداً"],
+    correctAnswer: "إذا كان هذا صحيحاً.. فربما عليك السير بحذر (Tread lightly)",
+    answerImageUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800",
+    hint: "تحذير هادئ ومرعب وجهه لوالتر لهانك في المرآب بعد إغلاق الباب"
+  },
+  {
+    id: "bb_q2_036",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "كيف حصل والتر وايت على الكود الكيميائي والتجهيزات المعملية للطبخ الفائق بدون سلفات الإيفيدرين؟",
+    options: ["باستخدام تفاعل الاختزال وحامض P2P (Phenyl-2-propanone)", "باستخدام الإيفيدرين المستخلص من أدوية الزكام", "عبر استيراد المواد من الصين", "باستخدام الكحول الصناعي المكثف"],
+    correctAnswer: "باستخدام تفاعل الاختزال وحامض P2P (Phenyl-2-propanone)",
+    answerImageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+    hint: "طريقة كيميائية بديلة تحررهم من شراء أدوية البرد وتنتج الميث الأزرق"
+  },
+  {
+    id: "bb_q2_037",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما العبارة الشهيرة التي قالها مايك إرمانتراوت لوالتر وايت محذراً إياه من غروره قبل مقتله؟",
+    options: ["كان لدينا شيء رائع.. لكن غرورك وكرامتك هما ما دمر كل شيء!", "أنت لست الرجل الذي تظنه", "غاس كان محقاً بشأنك", "لا مكان لأمثالك بيننا"],
+    correctAnswer: "كان لدينا شيء رائع.. لكن غرورك وكرامتك هما ما دمر كل شيء!",
+    answerImageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800",
+    hint: "عاتبه مايك وهو ينزف بجانب البحيرة قبل أن يطلب منه أن يدعه يموت بسلام"
+  },
+  {
+    id: "bb_q2_038",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما اسم المسلسل الديني أو البرنامج الذي كان يشاهده والتر في الشاليه بنيوهامبشير في عزن عزلت؟",
+    options: ["Mr. Magorium's Wonder Emporium (فيلم على التلفاز)", "M*A*S*H", "Jeopardy!", "Seinfeld"],
+    correctAnswer: "Mr. Magorium's Wonder Emporium (فيلم على التلفاز)",
+    answerImageUrl: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800",
+    hint: "شريط فيديو كان يتفرج عليه تكراراً لعدم وجود بث تلفزيوني"
+  },
+  {
+    id: "bb_q2_039",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما هو السبب الحقيقي لموت جين مارغوليس أمام عيني والتر وايت؟",
+    options: ["اختنقت بكيئها أثناء غيبوبة المخدرات دون أن ينقذها والتر", "جرعة زائدة متعمدة", "تسمم حاد بالمواد الكيميائية", "نوبة قلبية مفاجئة"],
+    correctAnswer: "اختنقت بكيئها أثناء غيبوبة المخدرات دون أن ينقذها والتر",
+    answerImageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800",
+    hint: "انقلبت على ظهرها ووقف والتر يراقبها وهي تموت دون أن يمد يده"
+  },
+  {
+    id: "bb_q2_040",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما هو اسم العميل الخاص المسؤول عن التحقيقات في الـ DEA الذي حل محل جورج ميركرت؟",
+    options: ["SAC رايلي (Ramey)", "بيكر", "ستيفن غوميز", "فريدريك"],
+    correctAnswer: "SAC رايلي (Ramey)",
+    answerImageUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800",
+    hint: "المدير الجديد الشديد الذي تسلم فرع ألبوكركي بعد فضيحة غاس فرينغ"
+  },
+  {
+    id: "bb_q2_041",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "كيف استطاع والتر وايت الوصول لـ إليوت وغريتشن في منزلهم الفاره بالموسم الاخير؟",
+    options: ["تسلل لداخل المنزل مستغلاً انشغال الحراس وهددهم بسكيني بيت وباجر مع مؤشرات ليزر", "اقتحم الباب بالقوة", "اتصل بـ الشرطة", "انتحل شخصية رجل توصيل"],
+    correctAnswer: "تسلل لداخل المنزل مستغلاً انشغال الحراس وهددهم بسكيني بيت وباجر مع مؤشرات ليزر",
+    answerImageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+    hint: "أجبرهم على قبول 9.7 مليون دولار لإعطائها لابنه فلين مستقبلاً كمنحة"
+  },
+  {
+    id: "bb_q2_042",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ماذا حدث لـ 'تيد بينيكي' عندما حاول هوييل وكوبي إجباره على كتابة شيك لإدارة الضرائب؟",
+    options: ["تعثر بالسجاد واصطدم رأسه بالطاولة مما أدى لفلجه", "هرب منهم بالسيارة", "أطلق النار عليهما", "أصيب بسكتة قلبية"],
+    correctAnswer: "تعثر بالسجاد واصطدم رأسه بالطاولة مما أدى لفلجه",
+    answerImageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800",
+    hint: "حادث مضحك ومأساوي جعله مقعداً في المستشفى بجهاز تثبيت الرقبة"
+  },
+  {
+    id: "bb_q2_043",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما اسم القاتل المحترف والمحقق الذي أرسله غاس لتتبع وإفساد مخططات الكارتل بالمكسيك؟",
+    options: ["مايك إرمانتراوت", "تود", "فيكتور", "تايروس"],
+    correctAnswer: "مايك إرمانتراوت",
+    answerImageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800",
+    hint: "الرجل الخبير الذي قنص رجال الكارتل من مسافات بعيدة في الحقل"
+  },
+  {
+    id: "bb_q2_044",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما الجملة الشهيرة التي قالها والتر وايت لسكايلر عندما عبرت عن خوفها من الشخص الذي قد يطرق بابهم ليقتله؟",
+    options: ["أنا لست في خطر يا سكايلر.. أنا هو الخطر! أنا من يطرق الباب!", "لا أحد يستطيع مساسنا", "سول يرتّب كل شيء", "غاس يميناً ونحن شمالاً"],
+    correctAnswer: "أنا لست في خطر يا سكايلر.. أنا هو الخطر! أنا من يطرق الباب!",
+    answerImageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800",
+    hint: "واحدة من أشهر مقولات المسلسل في التاريخ (I am the one who knocks!)"
+  },
+  {
+    id: "bb_q2_045",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ماذا كان يعمل 'مايك إرمانتراوت' قبل دخوله عالم الجريمة والعمل مع غاس وسول؟",
+    options: ["شرطي في قسم شرطة فيلادلفيا", "ضابط في الجيش الأمريكي", "حارس سجن خاص", "محقق خاص مستقل"],
+    correctAnswer: "شرطي في قسم شرطة فيلادلفيا",
+    answerImageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800",
+    hint: "شرطي سابق ترك الخدمة بعد مقتل ابنه الشرطي الشاب ماتي"
+  },
+  {
+    id: "bb_q2_046",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما الكارثة الجوية الناتجة عن حزن والد جين والتي أدت لسقوط حطام فوق منزل والتر؟",
+    options: ["تصادم طائرتين في الجو (حادثة الطيران Wayfarer 515)", "تحطم طائرة شحن", "انفجار طائرة ركاب بسيطة", "سقوط مروحية عسكرية"],
+    correctAnswer: "تصادم طائرتين في الجو (حادثة الطيران Wayfarer 515)",
+    answerImageUrl: "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=800",
+    hint: "اصطدام طائرة ركاب بطائرة صغيرة بسبب خطأ مراقب الطيران والد جين"
+  },
+  {
+    id: "bb_q2_047",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما الذي استعمله والتر وايت لربط وتثبيت السلاح الآلي M60 في صندوق سيارته الفورد؟",
+    options: ["محرك فتح أبواب المرآب الآلي وتوصيله بالمفتاح عن بعد", "بندقية قنص هيدروليكية", "نظام بكرات يدوي", "موتور ماسحات الزجاج"],
+    correctAnswer: "محرك فتح أبواب المرآب الآلي وتوصيله بالمفتاح عن بعد",
+    answerImageUrl: "https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=800",
+    hint: "نظام ميكانيكي ابتكره والتر يدور 180 درجة ويطلق النار بزر إنذار السيارة"
+  },
+  {
+    id: "bb_q2_048",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما اسم الكيميائي في المكسيك الذي حاول السخرية من جيسي قبل أن يثبت جيسي جدارته؟",
+    options: ["دكتور نونيز", "دكتور جيراردو", "إدواردو", "كارلوس"],
+    correctAnswer: "دكتور نونيز",
+    answerImageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+    hint: "كيميائي الكارتل الرئيسي الذي طالبه جيسي بتنظيف المختبر أولاً"
+  },
+  {
+    id: "bb_q2_049",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما هو اسم الفندق أو الموتيل الذي كان يختبئ فيه جيسي ويتعاطى المخدرات بعد مقتل جين؟",
+    options: ["موتيل ذا كروسرودز (Crossroads Motel)", "موتيل ألبوكركي سنتر", "فندق الصحراء", "موتيل نيو مكسيكو"],
+    correctAnswer: "موتيل ذا كروسرودز (Crossroads Motel)",
+    answerImageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800",
+    hint: "مكان معروف بتواجد بائعات الهوى وتجار المخدرات المحليين"
+  },
+  {
+    id: "bb_q2_050",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما اسم الممثلة التي جسدت شخصية 'سكايلر وايت' في المسلسل وحازت على جوائز إيمي؟",
+    options: ["أنا غان (Anna Gunn)", "كريستين ريتر", "بيتسي براندت", "لاورا فريزر"],
+    correctAnswer: "أنا غان (Anna Gunn)",
+    answerImageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800",
+    hint: "ممثلة أمريكية قدمت أداءً مبهراً لشخصية زوجة والتر وايت"
+  },
+  {
+    id: "bb_q2_051",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما اسم الممثل الأسطوري الذي أدى دور 'والتر وايت / هايزنبرغ'؟",
+    options: ["بريان كرانستون (Bryan Cranston)", "آرون بول", "جانكارلو اسبوزيتو", "بوب أودينكيرك"],
+    correctAnswer: "بريان كرانستون (Bryan Cranston)",
+    answerImageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+    hint: "فاز بـ 4 جوائز إيمي لأفضل ممثل رئيسي عن هذا الدور"
+  },
+  {
+    id: "bb_q2_052",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما اسم الممثل الذي جسد شخصية 'جيسي بينكمان' ببراعة فائقة؟",
+    options: ["آرون بول (Aaron Paul)", "بريان كرانستون", "دين نوريس", "جوناثان بانكس"],
+    correctAnswer: "آرون بول (Aaron Paul)",
+    answerImageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800",
+    hint: "فاز بـ 3 جوائز إيمي كأفضل ممثل مساعد عن شخصية جيسي"
+  },
+  {
+    id: "bb_q2_053",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما اسم الممثل صاحب الأداء الصارم لشخصية 'غاس فرينغ'؟",
+    options: ["جانكارلو اسبوزيتو (Giancarlo Esposito)", "ستيفن باور", "مارك مارغوليس", "مواسيينس أرياس"],
+    correctAnswer: "جانكارلو اسبوزيتو (Giancarlo Esposito)",
+    answerImageUrl: "https://images.unsplash.com/photo-1626509854183-efe262e34582?w=800",
+    hint: "ممثل أمريكي شهير أبدع في أداء شخصية زعيم المخدرات الهادئ والشرس"
+  },
+  {
+    id: "bb_q2_054",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما اسم الممثل الذي أدى دور ضابط الـ DEA 'هانك شريتر'؟",
+    options: ["دين نوريس (Dean Norris)", "ستيفن Michael Quezada", "جوناثان بانكس", "ميكيلتي وليامسون"],
+    correctAnswer: "دين نوريس (Dean Norris)",
+    answerImageUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800",
+    hint: "ممثل أمريكي خفيف الظل يشتهر بأدواره الشرطية والعسكرية"
+  },
+  {
+    id: "bb_q2_055",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما هو اسم مبتكر وكاتب مسلسل Breaking Bad الرئيسي؟",
+    options: ["فينس غيليغان (Vince Gilligan)", "بيتر غولد", "ديفيد تشيس", "ميكائيل دروكير"],
+    correctAnswer: "فينس غيليغان (Vince Gilligan)",
+    answerImageUrl: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800",
+    hint: "الكاتب والمخرج العبقري الذي يقف وراء عالم بريكنج باد وبتر كول سول"
+  },
+  {
+    id: "bb_q2_056",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ماذا حدث لشاحنة الـ RV (المختبر المتنقل الأول) لتجنب كشفها من قبل هانك؟",
+    options: ["تم كبسها وتدميرها بالكامل في ساحة خردة السيارات", "حرقها في الصحراء", "إغراقها في البحيرة", "تفكيكها وبيعها قطعاً"],
+    correctAnswer: "تم كبسها وتدميرها بالكامل في ساحة خردة السيارات",
+    answerImageUrl: "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=800",
+    hint: "قام صاحب الساحه كلوفيس بإدخالها المكبس بينما كان هانك يقف بالخارج"
+  },
+  {
+    id: "bb_q2_057",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما الخدعة التي استخدمها سول غودمان لإبعاد هانك عن شاحنة الـ RV في ساحة الخردة؟",
+    options: ["اتصل به وهدده بأن زوجته ماري تعرضت لحادث سير خطير بالنوم", "ادعى وجود قنبلة في مكتب الـ DEA", "أرسل شاحنة مسرعة لتشتيته", "افتعل مشاجرة في الشارع"],
+    correctAnswer: "اتصل به وهدده بأن زوجته ماري تعرضت لحادث سير خطير بالنوم",
+    answerImageUrl: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800",
+    hint: "مكالمة كاذبة من سكرتيرة سول جعلت هانك يهرع غاضباً للمستشفى"
+  },
+  {
+    id: "bb_q2_058",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما اسم والدة جيسي بينكمان التي ظهرت في عدة حلقات وطرده والداه من المنزل؟",
+    options: ["دينيس بينكمان", "مارغريت بينكمان", "سارة بينكمان", "إيلين بينكمان"],
+    correctAnswer: "دينيس بينكمان",
+    answerImageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800",
+    hint: "والدته الصارمة التي كانت تيأس من تصرفات ابنه وتخشى على ابنها الأصغر"
+  },
+  {
+    id: "bb_q2_059",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما اسم الفتاة التي أحبها جيسي في الموسم الثالث والرابع والتي قُتلت على يد تود؟",
+    options: ["أندريا كانتيلو", "جين مارغوليس", "ليديا", "ماري"],
+    correctAnswer: "أندريا كانتيلو",
+    answerImageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800",
+    hint: "أم الطفل بروك التي أعدمها تود أمام عيني جيسي لترهيبه ومنعه من الهروب"
+  },
+  {
+    id: "bb_q2_060",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما هي الهواية التي كان يمارسها هانك شريتر في المنزل أثناء فترة تعافيه من الشلل؟",
+    options: ["شراء وتنظيف وجمع المعادن والكرستالات عبر الإنترنت", "رسم اللوحات", "صناعة السفن الخشبية", "لعب الشطرنج عبر الشبكة"],
+    correctAnswer: "شراء وتنظيف وجمع المعادن والكرستالات عبر الإنترنت",
+    answerImageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",
+    hint: "كانت تصل عشرات الطرود يومياً لمنزله مليئة بالصخور والمعادن"
+  },
+  {
+    id: "bb_q2_061",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما هي العبارة الأخيرة التي قالها هانك شريتر لـ جاك ويلكر قبل قتله فوراً؟",
+    options: ["أنت أذكى رجل عرفته.. ولكنك غبي جداً لتدرك أنه اتخذ قراره منذ 10 دقائق", "افعلها بسرعة", "والتر س ينتقم منك", "تباً لك ولعصابتك"],
+    correctAnswer: "أنت أذكى رجل عرفته.. ولكنك غبي جداً لتدرك أنه اتخذ قراره منذ 10 دقائق",
+    answerImageUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800",
+    hint: "مقولة شجاعة قالها لوالتر وايت المترجي لإنقاذ حياته"
+  },
+  {
+    id: "bb_q2_062",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ماذا فعل والتر وايت بأمواله عندما أدرك أن سكايلر أعطت أغلبيتها لـ تيد بينيكي؟",
+    options: ["أصيب بنوبة ضحك جنونية وهستيرية أسفل قبو المنزل", "قام بضرب تيد بينيكي", "حاول الانتحار", "أبلغ الشرطة عن تيد"],
+    correctAnswer: "أصيب بنوبة ضحك جنونية وهستيرية أسفل قبو المنزل",
+    answerImageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800",
+    hint: "لقطة سينمائية مرعبة يضحك فيها والتر وهو مستلقٍ في حفرة القبو كالقبر"
+  },
+  {
+    id: "bb_q2_063",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما اسم المكسيكي الوشاح الذي قطع الكارتل رأسه ووضعوه فوق سلحفاة مفخخة؟",
+    options: ["تورتوغا (Tortuga)", "خوان بولسا", "غوان فيديل", "إميليو"],
+    correctAnswer: "تورتوغا (Tortuga)",
+    answerImageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800",
+    hint: "جسد شخصيته الممثل داني تريجو وتعني كلمته باللغة الإسبانية 'السلحفاة'"
+  },
+  {
+    id: "bb_q2_064",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما هو اسم كتاب الأطفال الخيالي الذي ذكره جيسي وسكيني بيت وهما يتعاطيان؟",
+    options: ["Babars", "Sonic", "Star Trek fan fiction", "Dr. Seuss"],
+    correctAnswer: "Star Trek fan fiction",
+    answerImageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800",
+    hint: "سيناريو حلقة تخيلية ألفها باجر عن مسابقة أكل الفطائر بين شخصيات ستارتريك"
+  },
+  {
+    id: "bb_q2_065",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ما اسم الكيميائية وسيدة الأعمال الألمانية في شركة مادريغال التي التقاها والتر في Diner؟",
+    options: ["ليديا رودارتي-كوايل", "جين مارغوليس", "غريتشن شوارتز", "هيلغا"],
+    correctAnswer: "ليديا رودارتي-كوايل",
+    answerImageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800",
+    hint: "كانت ترتدي نضارات شمسية كبيرة وتجلس بظهرها لوالتر في المقهى"
+  },
+  {
+    id: "bb_q2_066",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ماذا يسمى الميث الأبيض النقي الذي كان يصنعه غيل بويتيشر مقارنة بمنتج والتر؟",
+    options: ["ميث شفاف تقليدي بنقاء 96%", "ميث وردي", "ميث كريستالي", "ميث عادي"],
+    correctAnswer: "ميث شفاف تقليدي بنقاء 96%",
+    answerImageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+    hint: "كان يرى غيل أن نسبة 99% لوالتر هي معجزة كيميائية لا تصدق"
+  },
+  {
+    id: "bb_q2_067",
+    category: "Breaking Bad",
+    points: 400,
+    questionText: "ماذا طلب والتر من بائع المكنسات 'إد' أن يشتري له أثناء عزلته في نيوهامبشير مقابل آلاف الدولارات؟",
+    options: ["نسخ من أشرطة الفيديو والتنسيق لقضاء ساعة معه في الحديث", "أطعمة فاخرة", "أجهزة كمبيوتر", "كتب كيميائية معقدة"],
+    correctAnswer: "نسخ من أشرطة الفيديو والتنسيق لقضاء ساعة معه في الحديث",
+    answerImageUrl: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800",
+    hint: "دفع له 10,000 دولار ليجلس معه ساعة واحدة فقط يلعبان الورق بسبب الوحدة"
+  },
+
+  // ==========================================
+  // --- أسئلة 600 نقطة (صعب - 33 سؤالاً) ---
+  // ==========================================
+  {
+    id: "bb_q2_068",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هو اسم العاصفة أو الولاية التي اختبأ فيها والتر وايت داخل كوخ جبلي معزول بالثلج؟",
+    options: ["نيوهامبشير (Granite State)", "فيرمونت", "مين", "ألاسكا"],
+    correctAnswer: "نيوهامبشير (Granite State)",
+    answerImageUrl: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800",
+    hint: "الولاية الملقبة بـ 'ولاية الغرانيت' وهو أيضاً اسم الحلقة قبل الأخيرة"
+  },
+  {
+    id: "bb_q2_069",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هو التاريخ الدقيق لعيد ميلاد والتر وايت الخمسين في الحلقة الأولى من المسلسل؟",
+    options: ["7 سبتمبر", "12 سبتمبر", "15 أغسطس", "20 أكتوبر"],
+    correctAnswer: "7 سبتمبر",
+    answerImageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+    hint: "تاريخ ميلاد الشخصية الرئيسية المكتوب في سجلاته الطبية والشخصية"
+  },
+  {
+    id: "bb_q2_070",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هو اسم شركة الطيران التي تصادمت طائرتاها فوق منزل والتر وايت؟",
+    options: ["Wayfarer (الرحلة 515)", "Skyline 302", "Air America", "Oceanic 815"],
+    correctAnswer: "Wayfarer (الرحلة 515)",
+    answerImageUrl: "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=800",
+    hint: "طائرة الركاب التجارية التي تصادمت مع طائرة تشارتر صغيرة"
+  },
+  {
+    id: "bb_q2_071",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هو رقم العمارة الشققية التي استأجر فيها جيسي شقته من والد جين؟",
+    options: ["425 Clifton Place", "322 16th Street", "1024 Central", "809 Terrace"],
+    correctAnswer: "425 Clifton Place",
+    answerImageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800",
+    hint: "العنوان الذي انتقل إليه جيسي وجين وشهد مأساتها"
+  },
+  {
+    id: "bb_q2_072",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هو اسم السجين الصديق القديم لـ مايك والذي أعدم في مغسلة الملابس الصناعية بطلب من غاس؟",
+    options: ["دانييل واكسبرغر", "دينيس ماركوفسكي", "تشارلز أوربان", "روبرت هيل"],
+    correctAnswer: "دينيس ماركوفسكي",
+    answerImageUrl: "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=800",
+    hint: "مدير المغسلة الصناعية السابق وأحد العشرة الذين تمت تصفيتهم بالسجن"
+  },
+  {
+    id: "bb_q2_073",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هو رقم الحساب المصرفي والرمز الذي استخدمته ليديا لنقل الشحنات عبر الموانئ التشيكية؟",
+    options: ["زافيرو 99 / براغ", "شحنات بيلزن", "سلسلة مادريغال المائية", "حسابات ألبوكركي المباشرة"],
+    correctAnswer: "زافيرو 99 / براغ",
+    answerImageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800",
+    hint: "العملية التي فتحت لوالتر سوق التصدير إلى جمهورية التشيك"
+  },
+  {
+    id: "bb_q2_074",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما اسم المطعم الإيطالي الصغير الذي التقى فيه والتر مع سول غودمان لوضع خطة القتل بالرايسين؟",
+    options: ["Ciro's", "Luigi's", "Gino's", "Torta Bella"],
+    correctAnswer: "Ciro's",
+    answerImageUrl: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800",
+    hint: "مطعم بيتزا معتم كان يجلسان في زاويته الخلفية بعيداً عن الأعين"
+  },
+  {
+    id: "bb_q2_075",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "كم بلغت زكاة الأموال ومبلغ الرشوة التي عرضها والتر على جاك ويلكر لعدم قتل هانك؟",
+    options: ["كل الـ 80 مليون دولار كاملة", "50 مليون دولار", "10 ملايين دولار", "20 مليون دولار"],
+    correctAnswer: "كل الـ 80 مليون دولار كاملة",
+    answerImageUrl: "https://images.unsplash.com/photo-1618042164219-62c820f10723?w=800",
+    hint: "عرض التخلي عن ثروته بالكامل المخبأة في البراميل مقابل حياة عديله هانك"
+  },
+  {
+    id: "bb_q2_076",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هي العبارة اللاتينية الدقيقة المكتوبة على الشعار الرسمي لمكتب الـ DEA في المسلسل؟",
+    options: ["Administratio Contra Venena", "Lex et Ordo", "Semper Fidelis", "Veritas et Justitia"],
+    correctAnswer: "Administratio Contra Venena",
+    answerImageUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800",
+    hint: "الشعار المطبوع خلف مكاتب التحقيق في ألبوكركي"
+  },
+  {
+    id: "bb_q2_077",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما اسم أول حلقة في الموسم الأول كلياً والتي شهدت تصوير والتر بالملابس الداخلية في الصحراء؟",
+    options: ["Pilot (الحلقة التجريبية)", "Cat's in the Bag...", "Cancer Man", "Gray Matter"],
+    correctAnswer: "Pilot (الحلقة التجريبية)",
+    answerImageUrl: "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=800",
+    hint: "الحلقة الأولى العظيمة التي بدأ بها كل شيء عام 2008"
+  },
+  {
+    id: "bb_q2_078",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هو طراز الساعية اليدوية الفاخرة التي أهداها جيسي بينكمان لوالتر وايت في عيد ميلاده الـ 51؟",
+    options: ["تاغ هوير موناكو (Tag Heuer Monaco)", "رولكس سبمارينر", "أوميغا سبيس", "باتيك فيليب"],
+    correctAnswer: "تاغ هوير موناكو (Tag Heuer Monaco)",
+    answerImageUrl: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800",
+    hint: "ساعة رياضية فاخرة بمينا أزرق تركها والتر فوق كابينة الهاتف في الحلقة الأخيرة"
+  },
+  {
+    id: "bb_q2_079",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هي القصيدة الشهيرة للشاعر بيرسي بيش شيلي التي استوحي منها اسم حلقة 'أوزيماندياس'؟",
+    options: ["Ozymandias (ملك الملوك)", "The Cloud", "To a Skylark", "Prometheus Unbound"],
+    correctAnswer: "Ozymandias (ملك الملوك)",
+    answerImageUrl: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800",
+    hint: "قصيدة تتحدث عن فناء الإمبراطوريات وسقوط الطغاة في الرمال"
+  },
+  {
+    id: "bb_q2_080",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما اسم المزرعة أو القرية المكسيكية التي كان يمتلكها غاس فرينغ وكان فيها مستشفى خفي وحوض سمك؟",
+    options: ["مزرعة سان ميغيل (San Miguel)", "كاسا أزول", "لاس كروثيس", "المزرعة المكسيكية"],
+    correctAnswer: "مزرعة سان ميغيل (San Miguel)",
+    answerImageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800",
+    hint: "المكان السري الفاخر الذي لجأ إليه غاس للاستشفاء بعد تسميم الكارتل"
+  },
+  {
+    id: "bb_q2_081",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "كم عدد البسكويتات أو الشرائح الخشبية التي استخدمها جيسي لبناء الصندوق الخشبي في ذكرياته؟",
+    options: ["صندوق مصنوع من خشب الجوز (Walnut)", "خشب الأرز", "خشب الصنوبر", "خشب البلوط"],
+    correctAnswer: "صندوق مصنوع من خشب الجوز (Walnut)",
+    answerImageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800",
+    hint: "نوع الخشب الفاخر الذي صقله بيده بعناية فائقة"
+  },
+  {
+    id: "bb_q2_082",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما اسم الكيميائي الألماني في معامل مادريغال الذي انتحر بدورة المياه بعد تحقيقات الـ DEA؟",
+    options: ["بيتر شولر (Peter Schuler)", "فريدريك", "هانز", "كارل"],
+    correctAnswer: "بيتر شولر (Peter Schuler)",
+    answerImageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800",
+    hint: "استخدم جهاز الصدمات الكهربائية للقلب للانتحار داخل الحمام"
+  },
+  {
+    id: "bb_q2_083",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هو نوع اللحم المفضل الذي كان يتناوله والتر وايت في مطعم Denny's في عيد ميلاده الـ 52؟",
+    options: ["لحم مقدد (Bacon) يرتّبه على شكل رقم 52", "شرائح ستيك", "بان كيك مع بيض", "سجق مشوي"],
+    correctAnswer: "لحم مقدد (Bacon) يرتّبه على شكل رقم 52",
+    answerImageUrl: "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=800",
+    hint: "عادة قديمة بدأت بها سكايلر في عيد ميلاده الخمسين بقطع البيكون"
+  },
+  {
+    id: "bb_q2_084",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما اسم المحامي التابع لعصابة جاك ويلكر والذي صاغ العقود المبرمة في السلسلة؟",
+    options: ["المحامي ماثيو", "سول غودمان", "فرانك", "تود"],
+    correctAnswer: "المحامي ماثيو",
+    answerImageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800",
+    hint: "المحامي الخاص بعصابة الأخوة البيض والذي كان يتفاوض مع والتر"
+  },
+  {
+    id: "bb_q2_085",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هو الاسم المستعار السري الذي أطلقه سول غودمان على نفسه عندما عمل بائعاً في محل سينابون بأوماها؟",
+    options: ["جين تاكافيك (Gene Takavic)", "جيمي مكغيل", "سول غودمان", "ألكسندر"],
+    correctAnswer: "جين تاكافيك (Gene Takavic)",
+    answerImageUrl: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800",
+    hint: "الهوية الجديدة التي اختارها بائع المكنسات لسول وهرب بها إلى نبراسكا"
+  },
+  {
+    id: "bb_q2_086",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما اسم المسرح المكسيكي القريب من المسبح الذي أعد فيه غاس السم للكارتل؟",
+    options: ["فيلا دون إيلاديو (Villa Eladio)", "هندسة خواريز", "منتجع سان خوسيه", "كاسا أزول"],
+    correctAnswer: "فيلا دون إيلاديو (Villa Eladio)",
+    answerImageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800",
+    hint: "المنزل الفخم ذو المسبح الذي قُتل فيه ماكس أرسينيغا قبل سنوات طويلة"
+  },
+  {
+    id: "bb_q2_087",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما اسم الممثلة التي جسدت شخصية 'ماري شريتر' أخت سكايلر؟",
+    options: ["بيتسي براندت (Betsy Brandt)", "أنا غان", "كريستين ريتر", "لاورا fريزر"],
+    correctAnswer: "بيتسي براندت (Betsy Brandt)",
+    answerImageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800",
+    hint: "ممثلة أمريكية برعت في تقديم شخصية ماري المحبة للون البنفسجي"
+  },
+  {
+    id: "bb_q2_088",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هو اسم العميل الخاص بالـ DEA الذي قُتل بجانب هانك شريتر في الصحراء ودفنا معاً؟",
+    options: ["ستيفن غوميز (Steven Gomez)", "جورج ميركرت", "رايلي", "توم باركر"],
+    correctAnswer: "ستيفن غوميز (Steven Gomez)",
+    answerImageUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800",
+    hint: "صديق هانك الوفي الذي أطلقت العصابة عليه النار أولاً قبل هانك"
+  },
+  {
+    id: "bb_q2_089",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هي العبارة التي كُتبت على شواهد قبور حلقة Felina الرمزية؟",
+    options: ["Fe (حديد) - Li (ليثيوم) - Na (صوديوم)", "إلى الأبد", "هايزنبرغ مات هنا", "لا سلام للأشرار"],
+    correctAnswer: "Fe (حديد) - Li (ليثيوم) - Na (صوديوم)",
+    answerImageUrl: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800",
+    hint: "العناصر الكيميائية التي ترمز للدم والدموع والميث (Blood, Meth, Tears)"
+  },
+  {
+    id: "bb_q2_090",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما اسم المستشفى الذي كان يتردد عليه والتر وايت لتلقي العلاج الكيميائي وخضوع الفحوصات؟",
+    options: ["مستشفى ألبوكركي الميثودي (Albuquerque Presbyterian)", "مستشفى سانتا في", "مركز نيو مكسيكو الطبي", "مستشفى الرعاية الملكية"],
+    correctAnswer: "مستشفى ألبوكركي الميثودي (Albuquerque Presbyterian)",
+    answerImageUrl: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800",
+    hint: "المستشفى الرئيسي الذي ظهرت فيه جلسات العلاج ونتائج الأشعة"
+  },
+  {
+    id: "bb_q2_091",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هي قيمة الفدية التيطلبها جيسي من والتر للبدء في طبخ الدفعة الأولى بالمختبر الفائق؟",
+    options: ["1.5 مليون دولار لكل منهما", "3 ملايين دولار", "5 ملايين دولار", "500 ألف دولار"],
+    correctAnswer: "1.5 مليون دولار لكل منهما",
+    answerImageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800",
+    hint: "العرض الذي قدمه غاس فرينغ لوالتر لمدة 3 أشهر عمل في المختبر"
+  },
+  {
+    id: "bb_q2_092",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما اسم الشخص الذي باع لوالتر وايت الرشاش الآلي الثقيل M60 والمسدس بدون أرقام تسلسلية؟",
+    options: ["لوسون (Lawson)", "كلوفيس", "إد", "كوبي"],
+    correctAnswer: "لوسون (Lawson)",
+    answerImageUrl: "https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=800",
+    hint: "تاجر السلاح العجوز السري الذي التقى بوالتر في الغرفة بالموتيل"
+  },
+  {
+    id: "bb_q2_093",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هي الجائزة المرموقة التي حاز عليها والتر وايت في شبابه وعلّق شهادتها في مكتبه بالمنزل؟",
+    options: ["مساهمة في جائزة نوبل في الكيمياء عام 1985", "جائزة أفضل كيميائي أمريكي", "وسام العلوم الوطني", "دكتوراه الفخر من ماساتشوستس"],
+    correctAnswer: "مساهمة في جائزة نوبل في الكيمياء عام 1985",
+    answerImageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+    hint: "شهادة تقدير لمساهمته في أبحاث البلورات التي أدت لفوز الفريق بنوبل"
+  },
+  {
+    id: "bb_q2_094",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما اسم الآلة الكيميائية الفاخرة التي طلبها غيل بويتيشر للمختبر لتحضير القهوة المثالية؟",
+    options: ["جهاز تقطير تفريغي بزجاجيات معقدة (Vacuum Coffee Maker)", "ماكينة إسبادونا ألمانية", "مكبس فرنسي نقي", "آلة تقطير يابانية"],
+    correctAnswer: "جهاز تقطير تفريغي بزجاجيات معقدة (Vacuum Coffee Maker)",
+    answerImageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800",
+    hint: "ابتكار كيميائي أذهل والتر بطعمه ونقائه داخل المختبر الفائق"
+  },
+  {
+    id: "bb_q2_095",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما اسم العصابة التي اقتحم والتر وايت مقرها ودمّر حافلتهم وسلاحهم في الحلقة الأخيرة؟",
+    options: ["عصابة جيك ويلكر (النيو-نازيين)", "كارتل خواريز", "عصابة توكو", "عصابة ألبوكركي الغربية"],
+    correctAnswer: "عصابة جيك ويلكر (النيو-نازيين)",
+    answerImageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800",
+    hint: "العصابة المكونة من جاك وتود ورجالهم المسلحين في المزرعة"
+  },
+  {
+    id: "bb_q2_096",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "أين توفي والتر وايت في المشهد الأخير من المسلسل؟",
+    options: ["داخل مختبر الميث المتقدم وهو يلمس المعدات الزجاجية", "في سيارته", "في منزل سكايلر", "في الصحراء"],
+    correctAnswer: "داخل مختبر الميث المتقدم وهو يلمس المعدات الزجاجية",
+    answerImageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+    hint: "استلقى على الأرض مبتسماً بينما تحيط به أضواء الشرطة والمعدات التي أحبها"
+  },
+  {
+    id: "bb_q2_097",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما اسم الكليب الترفيهي الذي نشره جيسي بينكمان على شبكة الإنترنت تحت اسم 'Fallacies'؟",
+    options: ["أغنية لفرقته الموسيقية القديمة Twaughthammer", "فيديو كليب رقص", "مقطع ساخر عن المدرسة", "عرض للسيارات المعدلة"],
+    correctAnswer: "أغنية لفرقته الموسيقية القديمة Twaughthammer",
+    answerImageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800",
+    hint: "فرقة الروك التي كان جيسي يعزف فيها في فترة مراهقته"
+  },
+  {
+    id: "bb_q2_098",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هو نوع السم الذي أعده والتر وايت أساساً لقتيل توكو سلامانكا في البداية ولم يستعمله؟",
+    options: ["مسحوق الرايسين المخفى في الميث", "الزرنيخ الأبيض", "السيانيد الحاد", "سم الفئران المركز"],
+    correctAnswer: "مسحوق الرايسين المخفى في الميث",
+    answerImageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+    hint: "وضعوه في أكياس الميث الخاصة بتوكو ولكن هكتور منع توكو من تعاطيها"
+  },
+  {
+    id: "bb_q2_099",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما اسم النسخة الكولومبية المقتبسة رسمياً من مسلسل Breaking Bad والمكونة من 62 حلقة؟",
+    options: ["Metástasis", "El Profesor", "Breaking Bad Colombia", "Walter Blanco"],
+    correctAnswer: "Metástasis",
+    answerImageUrl: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800",
+    hint: "تم فيها تغيير اسم والتر وايت إلى 'والتر بلانكو' وسول إلى 'سول كروث'"
+  },
+  {
+    id: "bb_q2_100",
+    category: "Breaking Bad",
+    points: 600,
+    questionText: "ما هي العبارة الشهيرة التي صرخ بها جيسي بينكمان لوالتر وايت وهو يفرغ شحنة البطارية المصنوعة يدويًا بالصحراء؟",
+    options: ["!Yeah Mr. White! Yeah Science", "!We Did It", "!Heisenberg Rules", "!Science Is Amazing"],
+    correctAnswer: "!Yeah Mr. White! Yeah Science",
+    answerImageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800",
+    hint: "عبارة حماسية قالها عندما نجح والتر في تشغيل شاحنة الـ RV بواسطة الجرافيت والزنك"
+  }
+];

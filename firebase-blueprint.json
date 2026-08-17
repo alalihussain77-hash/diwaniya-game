@@ -1,0 +1,32 @@
+{
+  "entities": {
+    "users": {
+      "title": "Users",
+      "description": "User profiles and stats",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "lastLogin": { "type": "string" },
+        "gamesPlayed": { "type": "number" },
+        "totalScore": { "type": "number" }
+      },
+      "required": ["uid", "email"]
+    },
+    "gameSessions": {
+      "title": "Game Sessions",
+      "description": "Saved game states and scores",
+      "properties": {
+        "userId": { "type": "string" },
+        "team1Name": { "type": "string" },
+        "team2Name": { "type": "string" },
+        "team1Score": { "type": "number" },
+        "team2Score": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["updatedAt"]
+    }
+  }
+}

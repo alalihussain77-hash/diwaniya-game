@@ -1,0 +1,6 @@
+{
+  "name": "ديوانية",
+  "description": "تجربة سين جيم التفاعلية ومسابقات التحدي الثقافي للفرق مع مسرح الفئات العامة والخاصة وشبكة الأسئلة الذهبية",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
