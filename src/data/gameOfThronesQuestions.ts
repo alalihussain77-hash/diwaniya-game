@@ -1,0 +1,1015 @@
+import { Question } from '../types';
+
+export const gameOfThrones100Questions: Question[] = [
+  // =========================================================================
+  // 🟡 مجموعة الـ 200 نقطة (أسئلة سهلة وأساسية - 33 سؤالاً)
+  // =========================================================================
+  {
+    id: 'got_200_001',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما هو الشعار الشهير لعائلة آل ستارك (House Stark)؟',
+    options: ['الشتاء قادم (Winter is Coming)', 'اسمع زئيري', 'النار والدم', 'نحن لا نزرع'],
+    correctAnswer: 'الشتاء قادم (Winter is Coming)',
+    explanation: 'شعار آل ستارك هو "الشتاء قادم" (Winter is Coming) كتذكير دائم باليقظة والمصاعب القادمة.',
+    hint: 'Winter is Coming'
+  },
+  {
+    id: 'got_200_002',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم السيف المصنوع من الصلب الفاليري الخاص بـ جون سنو؟',
+    options: ['لونغ كلو (Longclaw)', 'سيف الجليد (Ice)', 'الإبرة (Needle)', 'صانع العهود'],
+    correctAnswer: 'لونغ كلو (Longclaw)',
+    explanation: 'لونغ كلو هو السيف الفاليري المتوارث في عائلة مورمونت وأهداه القائد جيور مورمونت لـ جون سنو.',
+    hint: 'Longclaw'
+  },
+  {
+    id: 'got_200_003',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم التنين الأكبر والأقوى التابع لدينيريس تارغاريان ذو الحراشف السوداء؟',
+    options: ['دروجون (Drogon)', 'ريغال (Rhaegal)', 'فيسيريون (Viserion)', 'باليريون'],
+    correctAnswer: 'دروجون (Drogon)',
+    explanation: 'دروجون هو التنين الأسود الأضخم الذي تمتطيه دينيريس وسُمي تيمناً بزوجها الراحل كال دروجو.',
+    hint: 'Drogon'
+  },
+  {
+    id: 'got_200_004',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم القلعة والمقر الرئيسي لـ آل ستارك وحكام الشمال؟',
+    options: ['وينترفيل (Winterfell)', 'كينجز لاندنج', 'كاسترلي روك', 'دراغونستون'],
+    correctAnswer: 'وينترفيل (Winterfell)',
+    explanation: 'وينترفيل هي القلعة القديمة ومقر حكم عائلة ستارك في شمال ويستروس.',
+    hint: 'Winterfell'
+  },
+  {
+    id: 'got_200_005',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما هي عاصمة الممالك السبع ومقر العرش الحديدي؟',
+    options: ['كينجز لاندنج (King\'s Landing)', 'أولدتاون', 'برافوس', 'وينترفيل'],
+    correctAnswer: 'كينجز لاندنج (King\'s Landing)',
+    explanation: 'كينجز لاندنج هي العاصمة الملكية التي أنشأها إيجون الفاتح ومقر القلعة الحمراء والعرش الحديدي.',
+    hint: 'King\'s Landing'
+  },
+  {
+    id: 'got_200_006',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما هو اللقب الشهير الذي يُطلق على جيمي لانيستر بعد قتله للملك إيريس تارغاريان؟',
+    options: ['قاتل الملك (Kingslayer)', 'فارس الزهور', 'الكلب الحارس', 'سيف الصباح'],
+    correctAnswer: 'قاتل الملك (Kingslayer)',
+    explanation: 'لُقب جيمي بـ "قاتل الملك" (Kingslayer) لأنه طعن الملك المجنون إيريس الثاني من الخلف.',
+    hint: 'Kingslayer'
+  },
+  {
+    id: 'got_200_007',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الحيوان الأسطوري الشبيه بالذئب الضخم والذي يرافق أبناء آل ستارك؟',
+    options: ['الذئب الرهيب (Direwolf)', 'النمر السابرتوث', 'الوشق الجليدي', 'الذئب الفاليري'],
+    correctAnswer: 'الذئب الرهيب (Direwolf)',
+    explanation: 'الذئب الرهيب (Direwolf) هو شعار آل ستارك وحيوانهم المرافق الأسطوري.',
+    hint: 'Direwolf'
+  },
+  {
+    id: 'got_200_008',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما هو الجدار الجليدي الضخم الذي يحمي الممالك السبع من مخاطر الشمال المتجمد؟',
+    options: ['الجدار (The Wall)', 'السد العظيم', 'جدار التنانين', 'سور وينترفيل'],
+    correctAnswer: 'الجدار (The Wall)',
+    explanation: 'الجدار الجليدي الهائل شيده بران البنّاء بارتفاع 700 قدم لحماية الممالك.',
+    hint: 'The Wall'
+  },
+  {
+    id: 'got_200_009',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم القائد الأعلى لـ "السائرون البيض" (White Walkers)؟',
+    options: ['ملك الليل (Night King)', 'الغراب ذو الأعين الثلاث', 'كال دروجو', 'يورون غريجوي'],
+    correctAnswer: 'ملك الليل (Night King)',
+    explanation: 'ملك الليل هو الكائن الأول الذي صنعته أطفال الغابة وقائد جيش الموتى السائرين.',
+    hint: 'Night King'
+  },
+  {
+    id: 'got_200_010',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما هو التنظيم العسكري الذي يحرس الجدار ويرتدي رجاله اللون الأسود؟',
+    options: ['حرس الليل (Night\'s Watch)', 'الحرس الملكي', 'الأخوية بلا رايات', 'المطهرون'],
+    correctAnswer: 'حرس الليل (Night\'s Watch)',
+    explanation: 'حرس الليل (Night\'s Watch) هي المنظمة العسكرية التي تقسم على حماية الجدار مدى الحياة.',
+    hint: 'Night\'s Watch'
+  },
+  {
+    id: 'got_200_011',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم القلعة الصخرية الحصينة والمقر التاريخي لعائلة آل لانيستر؟',
+    options: ['كاسترلي روك (Casterly Rock)', 'هاي جاردن', 'ريفررن', 'ستون ميل'],
+    correctAnswer: 'كاسترلي روك (Casterly Rock)',
+    explanation: 'كاسترلي روك هي القلعة الغنية المشيدة على جرف صخري ضخم غرب ويستروس.',
+    hint: 'Casterly Rock'
+  },
+  {
+    id: 'got_200_012',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم القلعة البركانية والمقر التاريخي لـ آل تارغاريان في ويستروس؟',
+    options: ['دراجونستون (Dragonstone)', 'هارنهال', 'بايك', 'صن سبير'],
+    correctAnswer: 'دراجونستون (Dragonstone)',
+    explanation: 'دراجونستون هي الجزيرة والقلعة الحجرية المنحوتة بأشكال التنانين ومقر إقامة ورثة العرش التارغاريان.',
+    hint: 'Dragonstone'
+  },
+  {
+    id: 'got_200_013',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما هي الجملة الشهيرة التي يرددها تيريون وتعتبر المقولة غير الرسمية لـ آل لانيستر؟',
+    options: ['"اللانيستر يدفعون ديونهم دائماً"', '"النار والنور طريقنا"', '"نحن ملوك الذهب"', '"لا نخلف وعداً أبداً"'],
+    correctAnswer: '"اللانيستر يدفعون ديونهم دائماً"',
+    explanation: 'العبارة الشهيرة لآل لانيستر هي "A Lannister always pays his debts".',
+    hint: 'A Lannister always pays his debts'
+  },
+  {
+    id: 'got_200_014',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم ابنة نيد ستارك الصغرى التي أصبحت مغتالة ومحاربة بلا وجوه؟',
+    options: ['آريا ستارك (Arya Stark)', 'سانسا ستارك', 'ليانا ستارك', 'تاليا'],
+    correctAnswer: 'آريا ستارك (Arya Stark)',
+    explanation: 'آريا ستارك تدربت في برافوس على أيدي الرجال بلا وجوه لتصبح مقاتلة بارعة.',
+    hint: 'Arya Stark'
+  },
+  {
+    id: 'got_200_015',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم ابنة نيد ستارك الكبرى التي نالت استقلال الشمال وأصبحت ملكة الشمال؟',
+    options: ['سانسا ستارك (Sansa Stark)', 'آريa ستارك', 'مارجري تيريل', 'سيرسي لانيستر'],
+    correctAnswer: 'سانسا ستارك (Sansa Stark)',
+    explanation: 'سانسا ستارك تولت حكم الشمال وتوجت ملكة على الشمال المستقل في وينترفيل.',
+    hint: 'Sansa Stark'
+  },
+  {
+    id: 'got_200_016',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم ابن نيد ستارك الصغير الذي دُفع من نافذة البرج في الحلقة الأولى وشُلّت ساقاه؟',
+    options: ['بران ستارك (Bran Stark)', 'ريكون ستارك', 'روب ستارك', 'جون سنو'],
+    correctAnswer: 'بران ستارك (Bran Stark)',
+    explanation: 'بران ستارك دفعه جيمي لانيستر من برج وينترفيل بعدما رآه مع سيرسي، ثم أصبح الغراب ذو الأعين الثلاث.',
+    hint: 'Bran Stark'
+  },
+  {
+    id: 'got_200_017',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم القزم الذكي والداهية من آل لانيستر الذي شغل منصب ساعد الملك؟',
+    options: ['تيريون لانيستر (Tyrion Lannister)', 'جيمي لانيستر', 'تايوين لانيستر', 'لانسيل لانيستر'],
+    correctAnswer: 'تيريون لانيستر (Tyrion Lannister)',
+    explanation: 'تيريون لانيستر شخصية حكيمة وفذة تميزت بالذكاء والدهاء السياسي.',
+    hint: 'Tyrion Lannister'
+  },
+  {
+    id: 'got_200_018',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما هي الكلمة الفاليرية الشهيرة التي تقولها دينيريس لتأمر تنانينها بنفث النيران؟',
+    options: ['دراكاريس (Dracarys)', 'فالار مورغوليس', 'فالار دوهايريس', 'أومينيوس'],
+    correctAnswer: 'دراكاريس (Dracarys)',
+    explanation: 'كلمة Dracarys بالفاليرية العليا تعني "نار التنين" وتأمر التنين بحرق الهدف.',
+    hint: 'Dracarys'
+  },
+  {
+    id: 'got_200_019',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما هو اللقب الشهير للفارس الضخم والوحشي غريغور كليغين الحارس الشخصي لسيرسي؟',
+    options: ['الجبل (The Mountain)', 'الكلب', 'الثور الهائج', 'العملاق'],
+    correctAnswer: 'الجبل (The Mountain)',
+    explanation: 'غريغور كليغين يُلقب بـ "الجبل الذي يمتطي" (The Mountain That Rides) لضخامته وقوته المفرطة.',
+    hint: 'The Mountain'
+  },
+  {
+    id: 'got_200_020',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما هو اللقب الشهير لـ ساندر كليغين شقيق "الجبل" ذو الوجه المحروق؟',
+    options: ['الكلب (The Hound)', 'الذئب الأسود', 'الفهد', 'الوحش الكاسر'],
+    correctAnswer: 'الكلب (The Hound)',
+    explanation: 'ساندر كليغين كان يُلقب بـ "الكلب" (The Hound) وكان يرتدي خوذة على شكل رأس كلب.',
+    hint: 'The Hound'
+  },
+  {
+    id: 'got_200_021',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم والد جون سنو الحقيقي وسليل آل تارغاريان؟',
+    options: ['ريغار تارغاريان (Rhaegar Targaryen)', 'إيريس الثاني', 'فيسيريس تارغاريان', 'إيجون الفاتح'],
+    correctAnswer: 'ريغار تارغاريان (Rhaegar Targaryen)',
+    explanation: 'الأمير ريغار تارغاريان تزوج سراً من ليانا ستارك وأنجبا جون سنو (إيجون تارغاريان).',
+    hint: 'Rhaegar Targaryen'
+  },
+  {
+    id: 'got_200_022',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم والد نيد ستارك الذي أحرقه الملك المجنون إيريس الثاني حياً في كينجز لاندنج؟',
+    options: ['ريكارد ستارك (Rickard Stark)', 'تورين ستارك', 'براندون ستارك', 'كريجان ستارك'],
+    correctAnswer: 'ريكارد ستارك (Rickard Stark)',
+    explanation: 'اللورد ريكارد ستارك كان لورد وينترفيل ووالد نيد وبراندون وليانا وبنجين.',
+    hint: 'Rickard Stark'
+  },
+  {
+    id: 'got_200_023',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما هي أسماء التنانين الثلاثة التي فقست من بيوض دينيريس تارغاريان؟',
+    options: ['دروجون، ريجال، وفيسيريون (Drogon, Rhaegal, Viserion)', 'باليريون، فيغار، وميراكسيس', 'كاركسيس، سيراكس، وفيرميثور', 'دروجون، سموغ، وآلدوين'],
+    correctAnswer: 'دروجون، ريجال، وفيسيريون (Drogon, Rhaegal, Viserion)',
+    explanation: 'سمت دينيريس تنانينها الثلاثة تيمناً بزوجها كال دروجو وشقيقيها ريغار وفيسيريس.',
+    hint: 'Drogon, Rhaegal, Viserion'
+  },
+  {
+    id: 'got_200_024',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الزوج الأول لدينيريس تارغاريان وقائد قبيلة الدوثراكي العظيمة؟',
+    options: ['كال دروجو (Khal Drogo)', 'كال مورو', 'داريو ناهاريس', 'جورا مورمونت'],
+    correctAnswer: 'كال دروجو (Khal Drogo)',
+    explanation: 'كال دروجو كان أمير حرب الدوثراكي الذي لم يُهزم في أي معركة وتزوج دينيريس في بداية المسلسل.',
+    hint: 'Khal Drogo'
+  },
+  {
+    id: 'got_200_025',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم شعب الفرسان المحاربين المتجولين في بحر العشب بإيسوس الذين قادتهم دينيريس؟',
+    options: ['الدوثراكي (Dothraki)', 'المطهرون', 'الفايكنج', 'الجبليون'],
+    correctAnswer: 'الدوثراكي (Dothraki)',
+    explanation: 'الدوثراكي محاربون أشداء يعبدون إله الخيل ويشتهرون بضفائر شعرهم الطويلة وركوب الخيل.',
+    hint: 'Dothraki'
+  },
+  {
+    id: 'got_200_026',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المعدن السحري النادر (إلى جانب زجاج التنين) القادر على قتل السائرين البيض؟',
+    options: ['الصلب الفاليري (Valyrian Steel)', 'الحديد الأسود', 'البرونز القديم', 'الميثريل'],
+    correctAnswer: 'الصلب الفاليري (Valyrian Steel)',
+    explanation: 'الفولاذ الفاليري تم تشكيله بسحر ونار التنانين وله حدة لا تفنى ويدمر السائرين البيض بلمسة واحدة.',
+    hint: 'Valyrian Steel'
+  },
+  {
+    id: 'got_200_027',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الزجاج البركاني الأسود (الأوبسيديان) المستخدم لسحق وقتل السائرين البيض؟',
+    options: ['زجاج التنين (Dragon-glass)', 'حجر الشمس', 'ألماس النار', 'العقيق البركاني'],
+    correctAnswer: 'زجاج التنين (Dragon-glass)',
+    explanation: 'زجاج التنين (Dragonglass) هو الأوبسيديان الطبيعي الموجود بكثرة في جزيرة دراجونستون.',
+    hint: 'Dragon-glass'
+  },
+  {
+    id: 'got_200_028',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الحدث الدموي الغادر الشهير الذي قُتل فيه روب ستارك وأمه كيتلين في قلعة التوأمتين؟',
+    options: ['الزفاف الأحمر (The Red Wedding)', 'الزفاف البنفسجي', 'مذبحة كينجز لاندنج', 'ليلة الذئاب'],
+    correctAnswer: 'الزفاف الأحمر (The Red Wedding)',
+    explanation: 'الزفاف الأحمر مؤامرة حاكها تايوين لانيستر ونفذها والدر فراي وروز بولتون لإبادة جيش الشمال.',
+    hint: 'The Red Wedding'
+  },
+  {
+    id: 'got_200_029',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم السياف البرافوسي الشهير الذي علّم آريا ستارك القتال بأسلوب "رقصة الماء"؟',
+    options: ['سيريو فوريل (Syrio Forel)', 'جاكن هغار', 'داريو ناهاريس', 'برون'],
+    correctAnswer: 'سيريو فوريل (Syrio Forel)',
+    explanation: 'سيريو فوريل كان السيف الأول لبرافوس وعلم آريا فنون المبارزة ورقصة الماء بأسلوب سيف الإبرة.',
+    hint: 'Syrio Forel'
+  },
+  {
+    id: 'got_200_030',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المستشار الداهية ووزير الهمس (Master of Whisperers) الملقب بـ "العنكبوت"؟',
+    options: ['لورد فاريس (Varys)', 'بيتر بيليش', 'المايستر بايسل', 'كويبورن'],
+    correctAnswer: 'لورد فاريس (Varys)',
+    explanation: 'فاريس هو المخصي المعروف بشبكة "طيوره الصغيرة" التي تجمع له الأسرار عبر القارتين.',
+    hint: 'Lord Varys'
+  },
+  {
+    id: 'got_200_031',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما هو اللقب الشهير للمستشار المالي المخادع بيتر بيليش؟',
+    options: ['ليتل فينجر (Littlefinger)', 'العنكبوت', 'الغراب الأسود', 'الذئب الماكر'],
+    correctAnswer: 'ليتل فينجر (Littlefinger)',
+    explanation: 'بيتر بيليش كان يلقب بـ "Littlefinger" (الإصبع الصغير) نسبة لموطن عائلته الصغير "الأصابع".',
+    hint: 'Littlefinger'
+  },
+  {
+    id: 'got_200_032',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الكاهنة الحمراء ومشعوذة إله الضوء (R\'hllor) التي تحالفت مع ستانيس باراثيون؟',
+    options: ['ميليساندر (Melisandre)', 'كينفارا', 'شيرين', 'روزايتا'],
+    correctAnswer: 'ميليساندر (Melisandre)',
+    explanation: 'ميليساندر هي الكاهنة الحمراء من أشاي التي تخدم إله الضوء وقامت لاحقاً بإعادة إحياء جون سنو.',
+    hint: 'Melisandre'
+  },
+  {
+    id: 'got_200_033',
+    points: 200,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الابن غير الشرعي للملك روبرت باراثيون الذي عمل حداداً وأحبته آريا ستارك؟',
+    options: ['جندري (Gendry)', 'إدريك ستورم', 'لانسيل', 'تومين'],
+    correctAnswer: 'جندري (Gendry)',
+    explanation: 'جندري هو ابن روبرت باراثيون الذي ورث مهارة الحدادة والقوة الجسدية وصار لورد ستورمز إند.',
+    hint: 'Gendry'
+  },
+
+  // =========================================================================
+  // 🟠 مجموعة الـ 400 نقطة (أسئلة متوسطة الصعوبة - 34 سؤالاً)
+  // =========================================================================
+  {
+    id: 'got_400_034',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم ملك تارغاريان الذي أطاح به روبرت باراثيون ونيد ستارك خلال ثورتهما الشهيرة؟',
+    options: ['إيريس تارغاريان الثاني (الملك المجنون)', 'إيجون الرابع', 'مايكار تارغاريان', 'فيسيريس الأول'],
+    correctAnswer: 'إيريس تارغاريان الثاني (الملك المجنون)',
+    explanation: 'الملك إيريس الثاني الملقب بالملك المجنون هو آخر ملوك سلالة تارغاريان قبل ثورة روبرت.',
+    hint: 'Mad King Aerys II'
+  },
+  {
+    id: 'got_400_035',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما هي الكلمات الأخيرة الشهيرة التي ظل الملك المجنون يصرخ بها قبل أن يطعنه جيمي لانيستر؟',
+    options: ['"احرقوهم جميعاً" (Burn them all)', '"النار ستطهر المملكة"', '"الموت للخونة"', '"سأعود كالتنين"'],
+    correctAnswer: '"احرقوهم جميعاً" (Burn them all)',
+    explanation: 'أمر إيريس بإشعال أقبية النيران البرية لتفجير العاصمة وسكانها صارخاً: "Burn them all".',
+    hint: 'Burn them all'
+  },
+  {
+    id: 'got_400_036',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المعبد والمقر الغامض في برافوس الذي تدربت فيه آريا ستارك لتصبح "لا أحد"؟',
+    options: ['بيت الأبيض والأسود (House of Black and White)', 'معبد إله الموت', 'قلعة الأوجه المظلمة', 'برج التطهير'],
+    correctAnswer: 'بيت الأبيض والأسود (House of Black and White)',
+    explanation: 'بيت الأبيض والأسود هو معبد الإله متعدد الوجوه في برافوس ومقر تدريب الرجال بلا وجوه.',
+    hint: 'House of Black and White'
+  },
+  {
+    id: 'got_400_037',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المنظمة الغامضة للقتلة المحترفين في برافوس الذين يغيرون وجوههم وينتمي إليهم جاكن هغار؟',
+    options: ['الرجال بلا وجوه (Faceless Men)', 'الأخوية السوداء', 'قتلة المجد', 'فرسان الظل'],
+    correctAnswer: 'الرجال بلا وجوه (Faceless Men)',
+    explanation: 'الرجال بلا وجوه (Faceless Men) طائفة قتلة أسطورية يخدمون إله الموت بالوجوه المسلوخة.',
+    hint: 'Faceless Men'
+  },
+  {
+    id: 'got_400_038',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم العائلة الخائنة التي استضافت الزفاف الأحمر في قلعة التوأمتين وقتلت روب ستارك؟',
+    options: ['آل فراي (House Frey) بقيادة والدر فراي', 'آل بولتون', 'آل تارلي', 'آل غريجوي'],
+    correctAnswer: 'آل فراي (House Frey) بقيادة والدر فراي',
+    explanation: 'خان اللورد والدر فراي عهد الضيافة المقدس وذبح جيش ستارك انتقاماً لنكث روب بوعد الزواج.',
+    hint: 'House Frey'
+  },
+  {
+    id: 'got_400_039',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم العائلة الشمالية الغادرة التي كان شعارها "الرجل المسلوخ" وسيطرت على وينترفيل؟',
+    options: ['آل بولتون (House Bolton)', 'آل كارستارك', 'آل أمبر', 'آل غلوفر'],
+    correctAnswer: 'آل بولتون (House Bolton)',
+    explanation: 'آل بولتون ومقرهم دريدفورت اشتهروا بسلخ جلود أعدائهم وخانوا آل ستارك في الزفاف الأحمر.',
+    hint: 'House Bolton'
+  },
+  {
+    id: 'got_400_040',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الابن غير الشرعي السادي لـ روز بولتون الذي عذب ثيون غريجوي واغتصب وينترفيل؟',
+    options: ['رمزي بولتون (Ramsay Bolton)', 'دوميريك بولتون', 'لوكي', 'سمولجون أمبر'],
+    correctAnswer: 'رمزي بولتون (Ramsay Bolton)',
+    explanation: 'رمزي سنو (بولتون لاحقاً) شخصية سادية استمتعت بتعذيب الأسرى وإطعامهم لكلابه المفترسة.',
+    hint: 'Ramsay Bolton'
+  },
+  {
+    id: 'got_400_041',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما هو الاسم المهين الجديد الذي أطلقه رمزي بولتون على ثيون غريجوي بعد تحطيم شخصيته؟',
+    options: ['ريك (Reek)', 'العبد', 'الكلب الصغير', 'الخائن'],
+    correctAnswer: 'ريك (Reek)',
+    explanation: 'عذب رمزي ثيون جسدياً ونفسياً حتى سلبه هويته وأجبره على الاستجابة لاسم "ريك" (Reek).',
+    hint: 'Reek'
+  },
+  {
+    id: 'got_400_042',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المعركة الطاحنة الملحمية بين جيش جون سنو وجيش رمزي بولتون لاستعادة وينترفيل؟',
+    options: ['معركة اللقطاء (Battle of the Bastards)', 'معركة الوادي', 'معركة الشتاء', 'معركة الأجراس'],
+    correctAnswer: 'معركة اللقطاء (Battle of the Bastards)',
+    explanation: 'معركة اللقطاء جرت في الموسم السادس وانتصر فيها جون سنو بعد تدخل فرسان الإيري بقيادة سانسا.',
+    hint: 'Battle of the Bastards'
+  },
+  {
+    id: 'got_400_043',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المعركة البحرية الكبرى التي قاد فيها تيريون الدفاع عن كينجز لاندنج ضد أسطول ستانيس؟',
+    options: ['معركة بلاك ووتر (Battle of the Blackwater)', 'معركة الممر المائي', 'معركة خليج النخاسين', 'معركة الساحل الغربي'],
+    correctAnswer: 'معركة بلاك ووتر (Battle of the Blackwater)',
+    explanation: 'معركة خليج بلاك ووتر شهدت تفجير سفن ستانيس باراثيون بواسطة شحنة النيران البرية الخضراء.',
+    hint: 'Battle of the Blackwater'
+  },
+  {
+    id: 'got_400_044',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما هي المادة الكيميائية الخضراء شديدة الاشتعال والتدمير المستخدمة في معركة بلاك ووتر ونسف السيبت؟',
+    options: ['النار البرية (Wildfire)', 'سم الخانق', 'دم التنين', 'مسحوق البارود'],
+    correctAnswer: 'النار البرية (Wildfire)',
+    explanation: 'النار البرية (Wildfire) سائل سحري أخضر لا ينطفئ بالماء ويحترق بحرارة هائلة دمرت سيبت بيلور.',
+    hint: 'Wildfire'
+  },
+  {
+    id: 'got_400_045',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم مجمع المعرفة والقلعة العظيمة في أولدتاون التي يتلقى فيها المايستر علومهم وسلاسلهم؟',
+    options: ['القلعة (The Citadel)', 'المكتبة الكبرى', 'برج الحكمة', 'أكاديمية ويستروس'],
+    correctAnswer: 'القلعة (The Citadel)',
+    explanation: 'السيتاديل (The Citadel) في مدينة أولدتاون هي مقر تدريب حكماء المايستر وحفظ تاريخ القارة.',
+    hint: 'The Citadel'
+  },
+  {
+    id: 'got_400_046',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المعركة العظمى التي اتحدت فيها جيوش البشر ضد جيش الموتى السائرين في وينترفيل؟',
+    options: ['معركة الشتاء الطويل / معركة وينترفيل', 'معركة الفجر الثاني', 'معركة الجدار العظيم', 'معركة الشمال الدامي'],
+    correctAnswer: 'معركة الشتاء الطويل / معركة وينترفيل',
+    explanation: 'معركة وينترفيل (The Long Night) هي المعركة الحاسمة التي هاجم فيها ملك الليل قوى الأحياء.',
+    hint: 'The Long Night / Battle of Winterfell'
+  },
+  {
+    id: 'got_400_047',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'من هي الشخصية البطلة التي قتلت ملك الليل وأنهت جيش السائرين البيض بخنجر الصلب الفاليري؟',
+    options: ['آريا ستارك', 'جون سنو', 'دينيريس تارغاريان', 'بران ستارك'],
+    correctAnswer: 'آريا ستارك',
+    explanation: 'قامت آريا بمباغتة ملك الليل بحركة خفة يد وطعنته بخنجر الفولاذ الفاليري في حديقة الآلهة بوينترفيل.',
+    hint: 'Arya Stark'
+  },
+  {
+    id: 'got_400_048',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم خنجر الفولاذ الفاليري ذو المقبض العظمي الذي استخدمته آريا للقضاء على ملك الليل؟',
+    options: ['خنجر القاطع (Catspaw Dagger)', 'خنجر الظل', 'ناب التنين', 'خنجر الفجر'],
+    correctAnswer: 'خنجر القاطع (Catspaw Dagger)',
+    explanation: 'خنجر Catspaw Dagger هو نفس الخنجر الذي حاول به القاتل اغتيال بران في الموسم الأول.',
+    hint: 'Catspaw Dagger'
+  },
+  {
+    id: 'got_400_049',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المايستر المسن والمخلص لعائلة آل ستارك في قلعة وينترفيل حتى مقتله؟',
+    options: ['المايستر لوين (Maester Luwin)', 'المايستر أيمون', 'المايستر بايسل', 'المايستر كويبورن'],
+    correctAnswer: 'المايستر لوين (Maester Luwin)',
+    explanation: 'المايستر لوين خدم آل ستارك بكل أمانة وساعد بران وريكون قبل أن يُطعن في اجتياح وينترفيل.',
+    hint: 'Maester Luwin'
+  },
+  {
+    id: 'got_400_050',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المايستر العجوز الكفيف في حرس الليل في قلعة كاسل بلاك وسليل آل تارغاريان الحكيم؟',
+    options: ['المايستر أيمون تارغاريان (Maester Aemon)', 'المايستر لوين', 'المايستر والكان', 'المايستر كولين'],
+    correctAnswer: 'المايستر أيمون تارغاريان (Maester Aemon)',
+    explanation: 'المايستر أيمون تارغاريان هو عم الملك المجنون وتنازل عن العرش وانضم لحرس الليل منذ عقود.',
+    hint: 'Maester Aemon'
+  },
+  {
+    id: 'got_400_051',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الصديق الوفي والمثقف والمقرب لـ جون سنو في حرس الليل والذي أصبح مايستر؟',
+    options: ['سامويل تارلي (Samwell Tarly)', 'غرين', 'بيب', 'إيد الحزين'],
+    correctAnswer: 'سامويل تارلي (Samwell Tarly)',
+    explanation: 'سامويل تارلي هو أول من قتل سائراً أبيض بزجاج التنين وصديق جون سنو الأعز.',
+    hint: 'Samwell Tarly'
+  },
+  {
+    id: 'got_400_052',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الفتاة الهمجية ذات الشعر الأحمر وراء الجدار التي وقع جون سنو في حبها؟',
+    options: ['إيغريت (Ygritte)', 'غيلي', 'أوشا', 'كارسيا'],
+    correctAnswer: 'إيغريت (Ygritte)',
+    explanation: 'إيغريت كانت رامية سهام ماهرة من الأحرار وعاشت قصة حب مؤثرة مع جون سنو.',
+    hint: 'Ygritte'
+  },
+  {
+    id: 'got_400_053',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما هي العبارة الشهيرة الأيقونية التي كانت ترددها إيغريت دائماً لـ جون سنو؟',
+    options: ['"أنت لا تعرف شيئاً يا جون سنو" (You know nothing, Jon Snow)', '"الشمال لا ينسى"', '"الموت قادم للجميع"', '"الذئاب لا تنحني"'],
+    correctAnswer: '"أنت لا تعرف شيئاً يا جون سنو" (You know nothing, Jon Snow)',
+    explanation: 'اشتهرت إيغريت بعبارة "You know nothing, Jon Snow" طوال رحلتهما معاً.',
+    hint: 'You know nothing, Jon Snow'
+  },
+  {
+    id: 'got_400_054',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم قائد الهمج والحارس السابق الذي لُقب بـ "الملك وراء الجدار" ووحّد القبائل؟',
+    options: ['مانس رايدر (Mance Rayder)', 'تورموند جاينتسبين', 'ستير', 'كرستر'],
+    correctAnswer: 'مانس رايدر (Mance Rayder)',
+    explanation: 'مانس رايدر كان عضواً سابقاً في حرس الليل وحّد 90 قبيلة همجية للهروب جنوباً من السائرين البيض.',
+    hint: 'Mance Rayder'
+  },
+  {
+    id: 'got_400_055',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المقاتل ذي العين الواحدة وقائد الأخوية بلا رايات الذي أُعيد إحياؤه من الموت 6 مرات؟',
+    options: ['بيريك دونداريون (Beric Dondarrion)', 'ثوروس أوف مير', 'أنغوي', 'جاكن هغار'],
+    correctAnswer: 'بيريك دونداريون (Beric Dondarrion)',
+    explanation: 'بيريك دونداريون قاد الأخوية بسيفه المشتعل وكان يعيده الكاهن ثوروس أوف مير للحياة بنور رلور.',
+    hint: 'Beric Dondarrion'
+  },
+  {
+    id: 'got_400_056',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الفارس والسياف الأسطوري الملقب بـ "سيف الصباح" الذي قاتل نيد ستارك عند برج الفرح؟',
+    options: ['سير آرثر داين (Arthur Dayne)', 'سير بارستان سيلمي', 'سير جيرولد هايتاور', 'سير أوزويل وينت'],
+    correctAnswer: 'سير آرثر داين (Arthur Dayne)',
+    explanation: 'سير آرثر داين كان أعظم فرسان الحرس الملكي وحامل سيف الفجر وسقط في مبارزة برج الفرح.',
+    hint: 'Sword of the Morning (Arthur Dayne)'
+  },
+  {
+    id: 'got_400_057',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم السيف الأسطوري المصنوع من قلب نيزك ساقط الخاص بسير آرثر داين؟',
+    options: ['سيف الفجر (Dawn)', 'سيف الجليد', 'سيف النور', 'المخلب الأسود'],
+    correctAnswer: 'سيف الفجر (Dawn)',
+    explanation: 'سيف Dawn هو السيف المتوارث لعائلة داين المصنوع من معدن شهاب فضي لامع.',
+    hint: 'Dawn'
+  },
+  {
+    id: 'got_400_058',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المرتزق الساخر الماهر بالسيف الذي أصبح لورد هاي جاردن وسيد العملة؟',
+    options: ['برون (Bronn)', 'داريو ناهاريس', 'جاكن هغار', 'جورا مورمونت'],
+    correctAnswer: 'برون (Bronn)',
+    explanation: 'برون بدأ كمرتزق رافق كاتلين وتيريون وصعد بمهارته ليصبح لورد هاي جاردن وخازن المملكة.',
+    hint: 'Bronn of the Blackwater'
+  },
+  {
+    id: 'got_400_059',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الفارسة النبيلة الضخمة والوفية التي أقسمت على حماية بنات ستارك ورُسمت أول فارسة أنثى؟',
+    options: ['بريين أوف تارث (Brienne of Tarth)', 'آشا غريجوي', 'يارا غريجوي', 'ميا ستون'],
+    correctAnswer: 'بريين أوف تارث (Brienne of Tarth)',
+    explanation: 'بريين أوف تارث فارسة مخلصة منحها جيمي لانيستر لقب الفارس وقادت حرس ملك بران ستارك.',
+    hint: 'Brienne of Tarth'
+  },
+  {
+    id: 'got_400_060',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الملك الفتى السادي ابن سيرسي وجيمي الذي مات مسموماً خنقاً في حفل زفافه؟',
+    options: ['جوفري باراثيون (Joffrey Baratheon)', 'تومين باراثيون', 'روبن آرين', 'ريكون ستارك'],
+    correctAnswer: 'جوفري باراثيون (Joffrey Baratheon)',
+    explanation: 'الملك جوفري الأول كان طاغية صغيراً أعدم نيد ستارك ومات مسموماً في حفل زفافه من مارجري.',
+    hint: 'Joffrey Baratheon'
+  },
+  {
+    id: 'got_400_061',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الزفاف الملكي الشهير الذي قُتل فيه الملك جوفري باراثيون مسموماً بشرابه؟',
+    options: ['الزفاف البنفسجي (The Purple Wedding)', 'الزفاف الأحمر', 'زفاف التنانين', 'زفاف الزهور'],
+    correctAnswer: 'الزفاف البنفسجي (The Purple Wedding)',
+    explanation: 'أطلق الجمهور على زفاف جوفري ومارجري اسم "الزفاف البنفسجي" لتحول وجه جوفري للون البنفسجي عند تسممه.',
+    hint: 'The Purple Wedding'
+  },
+  {
+    id: 'got_400_062',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الأميرة والملكة الشابة الذكية والمحبوبة من آل تيريل التي تزوجت رينلي ثم جوفري وتومين؟',
+    options: ['مارجري تيريل (Margaery Tyrell)', 'أولينا تيريل', 'دوريا', 'ميرسيلا'],
+    correctAnswer: 'مارجري تيريل (Margaery Tyrell)',
+    explanation: 'مارجري تيريل كانت سياسية بارعة حظيت بحب الشعب وتزوجت ثلاثة ملوك متعاقبين.',
+    hint: 'Margaery Tyrell'
+  },
+  {
+    id: 'got_400_063',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الجدة الحكيمة والداهية لـ آل تيريل الملقبة بـ "ملكة الأشواك" (Queen of Thorns)؟',
+    options: ['أولينا تيريل (Olenna Tyrell)', 'مارجري تيريل', 'إيلاريا ساند', 'سيرسي لانيستر'],
+    correctAnswer: 'أولينا تيريل (Olenna Tyrell)',
+    explanation: 'الليدي أولينا تيريل اشتهرت بلسانها السليط ودهائها العظيم في إدارة تحالفات عائلة تيريل.',
+    hint: 'Olenna Tyrell'
+  },
+  {
+    id: 'got_400_064',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'من هي الشخصية التي اعترفت لجيمي لانيستر قبل شربها السم بأنها هي من خططت لقتل جوفري؟',
+    options: ['أولينا تيريل', 'مارجري تيريل', 'تيريون لانيستر', 'سانسا ستارك'],
+    correctAnswer: 'أولينا تيريل',
+    explanation: 'قالت أولينا لجيمي قبل موتها: "أخبر سيرسي، أريدها أن تعلم أنني أنا من فعلتها" (Tell Cersei, I want her to know it was me).',
+    hint: 'Tell Cersei, I want her to know it was me'
+  },
+  {
+    id: 'got_400_065',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم أمير دورن المتهور الملقب بـ "الأفعى الحمراء" الذي جاء لكينجز لاندنج للانتقام من الجبل؟',
+    options: ['أوبيرين مارتيل (Oberyn Martell)', 'دوران مارتيل', 'تريستان مارتيل', 'كوينتن مارتيل'],
+    correctAnswer: 'أوبيرين مارتيل (Oberyn Martell)',
+    explanation: 'الأمير أوبيرين مارتيل المقاتل الماهر بالرمح المسموم سعى للثأر لأخته إيليا مارتيل وأولادها.',
+    hint: 'The Red Viper (Oberyn Martell)'
+  },
+  {
+    id: 'got_400_066',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما هو النزال القضائي الدامي الذي تحطمت فيه جمجمة أوبيرين مارتيل بيدي الجبل غريغور كليغين؟',
+    options: ['المحاكمة القتالية (Trial by Combat)', 'مبارزة الشرف', 'نزال التوأمتين', 'بطولة هارنهال'],
+    correctAnswer: 'المحاكمة القتالية (Trial by Combat)',
+    explanation: 'تطوع أوبيرين للدفاع عن تيريون في محاكمة قتالية، لكن غروره أمام الجبل كلفه حياته في مشهد مروع.',
+    hint: 'Trial by Combat'
+  },
+  {
+    id: 'got_400_067',
+    points: 400,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المؤسسة المصرفية العملاقة والمستقلة في مدينة برافوس التي تمول حروب وملوك ويستروس؟',
+    options: ['البنك الحديدي (The Iron Bank of Braavos)', 'بنك الذهب الفاليري', 'خزينة التنين', 'صندوق ويستروس المركزي'],
+    correctAnswer: 'البنك الحديدي (The Iron Bank of Braavos)',
+    explanation: 'البنك الحديدي في برافوس هو أقوى قوة مالية معروفة بجملتها: "The Iron Bank will have its due".',
+    hint: 'The Iron Bank of Braavos'
+  },
+
+  // =========================================================================
+  // 🔴 مجموعة الـ 600 نقطة (أسئلة صعبة وتفصيلية للمتخصصين - 33 سؤالاً)
+  // =========================================================================
+  {
+    id: 'got_600_068',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما هو اسم والدة جون سنو الحقيقية وشقيقة نيد ستارك الراحلة؟',
+    options: ['ليانا ستارك (Lyanna Stark)', 'أشرا داين', 'كايتلين ستارك', 'وايلا'],
+    correctAnswer: 'ليانا ستارك (Lyanna Stark)',
+    explanation: 'ليانا ستارك ماتت في برج الفرح بعد ولادتها لجون سنو وائتمنت شقيقها نيد على حمايته وسره.',
+    hint: 'Lyanna Stark'
+  },
+  {
+    id: 'got_600_069',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما هو الاسم الحقيقي والتاريخي الممنوح لـ جون سنو عند ولادته كوريث شرعي للعرش؟',
+    options: ['إيجون تارغاريان (Aegon Targaryen)', 'ريغار تارغاريان', 'ديمون تارغاريان', 'جيهيريس تارغاريان'],
+    correctAnswer: 'إيجون تارغاريان (Aegon Targaryen)',
+    explanation: 'أطلقت ليانا ستارك على ابنها اسم إيجون تارغاريان السابع، الوريث الشرعي للعرش الحديدي.',
+    hint: 'Aegon Targaryen'
+  },
+  {
+    id: 'got_600_070',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم السيف الأسطوري العظيم المصنوع من الفولاذ الفاليري الخاص بـ آل ستارك والذي صهره تايوين لانيستر؟',
+    options: ['سيف الجليد (Ice)', 'سيف الفجر', 'المخلب', 'صانع الأرامل'],
+    correctAnswer: 'سيف الجليد (Ice)',
+    explanation: 'سيف "Ice" العظيم كان سيف نيد ستارك الذي قطع به رأس الهارب في الحلقة الأولى ثم صهره تايوين.',
+    hint: 'Ice'
+  },
+  {
+    id: 'got_600_071',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما هما السيفان الجديدان اللذان صُنعا من صهر سيف "Ice" الفاليري الخاص بآل ستارك؟',
+    options: ['أوثكيبر (Oathkeeper) و ويدوز ويل (Widow\'s Wail)', 'لونغ كلو والإبرة', 'الفجر والظلام', 'الذابح والمنتقم'],
+    correctAnswer: 'أوثكيبر (Oathkeeper) و ويدوز ويل (Widow\'s Wail)',
+    explanation: 'صنع تايوين سيفين: Widow\'s Wail للملك جوفري، و Oathkeeper الذي أعطاه جيمي لـ بريين أوف تارث.',
+    hint: 'Oathkeeper and Widow\'s Wail'
+  },
+  {
+    id: 'got_600_072',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما الاسم الذي يُطلق على جثث الموتى من البشر والحيوانات التي يعيد السائرون البيض إحياءها كجنود؟',
+    options: ['الأطياف (Wights)', 'الزومبي', 'الظلال', 'الأرواح الهائمة'],
+    correctAnswer: 'الأطياف (Wights)',
+    explanation: 'يُطلق مصطلح "Wights" على الجثث المعاد إحياؤها بعيون زرقاء متوهجة وتنقاد لإرادة السائرين البيض.',
+    hint: 'Wights'
+  },
+  {
+    id: 'got_600_073',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الكيان القديم الحكيم في الشجرة وراء الجدار الذي درب بران ستارك على الرؤية عبر الزمن؟',
+    options: ['الغراب ذو الأعين الثلاث (Three-Eyed Raven)', 'ملك الغابة', 'كبير أطفال الغابة', 'ساحر الثلوج'],
+    correctAnswer: 'الغراب ذو الأعين الثلاث (Three-Eyed Raven)',
+    explanation: 'الغراب ذو الأعين الثلاث درب بران ستارك على رؤية الماضي والحاضر والمستقبل ليخلفه في الدور.',
+    hint: 'Three-Eyed Raven'
+  },
+  {
+    id: 'got_600_074',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الكائن الضخم والوفي الذي كان يرافق بران ولا يقول إلا كلمة واحدة؟',
+    options: ['هودور (Hodor)', 'ويليس', 'غريغور', 'سمولجون'],
+    correctAnswer: 'هودور (Hodor)',
+    explanation: 'هودور (واسمه الأصلي ويليس) ضحى بحياته دفاعاً عن بران وريد أمام جيش الأطياف في الكهف.',
+    hint: 'Hodor'
+  },
+  {
+    id: 'got_600_075',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما هي الجملة الحزينة التي كان يصرخ بها ويليس وتسببت صدمتها الزمنية في تحول لسانه لكلمة "هودور"؟',
+    options: ['"امسك الباب" (Hold the Door)', '"احمِ بران"', '"اهربوا بسرعة"', '"أغلق البوابات"'],
+    correctAnswer: '"امسك الباب" (Hold the Door)',
+    explanation: 'أثناء ارتباط بران الزمني، دخل عقل ويليس في الماضي وصرخ ميرا ريد "Hold the door!" فتحورت إلى Hodor.',
+    hint: 'Hold the Door'
+  },
+  {
+    id: 'got_600_076',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم شبه الجزيرة والعاصمة الأسطورية القديمة لإمبراطورية الفاليريين التي دُمرت في الكارثة العظمى؟',
+    options: ['فاليريا القديمة (Old Valyria)', 'ميرين', 'فولانتيس', 'أستابور'],
+    correctAnswer: 'فاليريا القديمة (Old Valyria)',
+    explanation: 'فاليريا القديمة كانت أعظم حضارة سحرية وتنانين قبل أن تُدمر في "Doom of Valyria" بالبراكين والزلازل.',
+    hint: 'Old Valyria'
+  },
+  {
+    id: 'got_600_077',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المرض الجلدي القاتل والمعدي الذي يحول الجلد إلى قشور صخرية رمادية ميتة؟',
+    options: ['الحرشف الرمادي (Greyscale)', 'الطاعون الحجري', 'جذام التنين', 'حمى الشمال'],
+    correctAnswer: 'الحرشف الرمادي (Greyscale)',
+    explanation: 'مرض Greyscale يحول جلد المصاب إلى حجر صلب تدريجياً ويفقده عقله في مراحله المتقدمة.',
+    hint: 'Greyscale'
+  },
+  {
+    id: 'got_600_078',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الفارس المخلص لدينيريس الذي شُفي بمعجزة طبية من الحرشف الرمادي على يد سامويل تارلي؟',
+    options: ['سير جورا مورمونت (Jorah Mormont)', 'سير بارستان سيلمي', 'سير باريسون', 'داريو ناهاريس'],
+    correctAnswer: 'سير جورا مورمونت (Jorah Mormont)',
+    explanation: 'سير جورا مورمونت خضع لعملية كشط مؤلمة قام بها سام في السيتاديل ونجا ليموت مدافعاً عن دينيريس.',
+    hint: 'Jorah Mormont'
+  },
+  {
+    id: 'got_600_079',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم قائد جيش الجنود المخصيين "المطهرين" (Unsullied) المخلص لدينيريس تارغاريان؟',
+    options: ['الدودة الرمادية (Grey Worm)', 'الدرع الأبيض', 'كال هسيلا', 'جاكن هغار'],
+    correctAnswer: 'الدودة الرمادية (Grey Worm)',
+    explanation: 'الدودة الرمادية (Grey Worm) قاد جيش المطهرين ووقع في حب المترجمة ميساندي.',
+    hint: 'Grey Worm'
+  },
+  {
+    id: 'got_600_080',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الزعيم الديني المتشدد لطائفة الإيمان الذي اعتقل سيرسي ومارجري وأخضع العاصمة لسلطته؟',
+    options: ['العصفور الأعلى (High Sparrow)', 'سبتون ماينارد', 'سبتون ميريبالد', 'كاهن الضوء'],
+    correctAnswer: 'العصفور الأعلى (High Sparrow)',
+    explanation: 'العصفور الأعلى قاد حركة "Faith Militant" الدينية المتشددة قبل أن تنسف سيرسي السيبت بالكامل.',
+    hint: 'High Sparrow'
+  },
+  {
+    id: 'got_600_081',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم مسيرة الإذلال العلنية التي أُجبرت سيرسي لانيستر على خوضها عارية في شوارع كينجز لاندنج؟',
+    options: ['مسيرة العار / التكفير (Walk of Atonement / Shame)', 'مسيرة الخطيئة', 'طريق المذنبين', 'جولة التطهير'],
+    correctAnswer: 'مسيرة العار / التكفير (Walk of Atonement / Shame)',
+    explanation: 'أجبرها العصفور الأعلى على السير عارية حافية بينما تردد الكاهنة الشمطاء "Shame! Shame!" أمام الجماهير.',
+    hint: 'Walk of Atonement / Shame'
+  },
+  {
+    id: 'got_600_082',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم القلعة الشاهقة الحصينة المعلقة فوق قمم جبال وادي آرين والمقر التاريخي لآل آرين؟',
+    options: ['الإيري (The Eyrie)', 'هارنهال', 'بايك', 'ريفررن'],
+    correctAnswer: 'الإيري (The Eyrie)',
+    explanation: 'الإيري (The Eyrie) قلعة منيعة على قمة جبل شاهق تحمي وادي آرين وتعتبر مستحيلة الاقتحام براً.',
+    hint: 'The Eyrie'
+  },
+  {
+    id: 'got_600_083',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الباب الخشبي المفتوح في أرضية قاعة قلعة الإيري لإلقاء المحكوم عليهم بالإعدام نحو الهاوية؟',
+    options: ['باب القمر (The Moon Door)', 'بوابة السماء', 'فجوة الموت', 'نافذة الرياح'],
+    correctAnswer: 'باب القمر (The Moon Door)',
+    explanation: 'باب القمر (The Moon Door) فتحة أرضية في قاعة الإيري يُرمى منها السجناء ليسقطوا آلاف الأقدام.',
+    hint: 'The Moon Door'
+  },
+  {
+    id: 'got_600_084',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم عم ثيون غريجوي المجنون وقائد الأسطول الحديدي الشرس الذي تحالف مع سيرسي؟',
+    options: ['يورون غريجوي (Euron Greyjoy)', 'فيكتاريون غريجوي', 'إيرون غريجوي', 'بالون غريجوي'],
+    correctAnswer: 'يورون غريجوي (Euron Greyjoy)',
+    explanation: 'يورون غريجوي قتل شقيقه بالون وبنى أسطولاً جباراً وقتل التنين ريجال بسلاح السكوربيون.',
+    hint: 'Euron Greyjoy'
+  },
+  {
+    id: 'got_600_085',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الهجوم الكاسح الذي شنته دينيريس والدوثراكي على قافلة ذهب ومؤن آل لانيستر في ريتش؟',
+    options: ['معركة نهب الغنائم (Loot Train Attack)', 'معركة النيران الذهبية', 'معركة الحقل الأحمر', 'معركة دراغون بيك'],
+    correctAnswer: 'معركة نهب الغنائم (Loot Train Attack)',
+    explanation: 'هجوم Loot Train Attack شهد أول استخدام لتنين دينيريس وقوة الدوثراكي ضد جيش لانيستر النظامي في ويستروس.',
+    hint: 'Loot Train Attack'
+  },
+  {
+    id: 'got_600_086',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الممثل البريطاني الشهير الذي جسد شخصية جون سنو في جميع مواسم المسلسل؟',
+    options: ['كيت هارينغتون (Kit Harington)', 'ريتشارد مادن', 'نيكولاج كوستير والداو', 'إيوان ريون'],
+    correctAnswer: 'كيت هارينغتون (Kit Harington)',
+    explanation: 'جسد الممثل البريطاني كيت هارينغتون شخصية جون سنو وحقق شهرة عالمية وترشيحات متعددة للإيمي.',
+    hint: 'Kit Harington'
+  },
+  {
+    id: 'got_600_087',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الممثلة البريطانية المتألقة التي جسدت شخصية دينيريس تارغاريان (أم التنانين)؟',
+    options: ['إميليا كلارك (Emilia Clarke)', 'لينا هيدي', 'صوفي تيرنر', 'مايسي ويليامز'],
+    correctAnswer: 'إميليا كلارك (Emilia Clarke)',
+    explanation: 'إميليا كلارك جسدت دور أم التنانين دينيريس تارغاريان بروعة واستحقاق كبيرين.',
+    hint: 'Emilia Clarke'
+  },
+  {
+    id: 'got_600_088',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الممثل الأمريكي المبدع الذي جسد شخصية تيريون لانيستر وفاز بـ 4 جوائز إيمي؟',
+    options: ['بيتر دينكلاج (Peter Dinklage)', 'تشارلز دانس', 'جاك جليسون', 'ليام كونينغهام'],
+    correctAnswer: 'بيتر دينكلاج (Peter Dinklage)',
+    explanation: 'فاز بيتر دينكلاج بأربع جوائز إيمي كأفضل ممثل مساعد عن تجسيده الأيقوني لتيريون لانيستر.',
+    hint: 'Peter Dinklage'
+  },
+  {
+    id: 'got_600_089',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الكاتب والمؤلف والروائي الأمريكي العبقري لسلسلة روايات "أغنية الجليد والنار"؟',
+    options: ['جورج آر. آر. مارتن (George R.R. Martin)', 'تولكين', 'روبرت جوردان', 'ستيفن كينغ'],
+    correctAnswer: 'جورج آر. آر. مارتن (George R.R. Martin)',
+    explanation: 'جورج آر. آر. مارتن هو مبتكر عالم ويستروس وروايات A Song of Ice and Fire.',
+    hint: 'George R.R. Martin'
+  },
+  {
+    id: 'got_600_090',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم السيف الصغير الخفيف الذي صُنع خصيصاً لـ آريا ستارك وأهداه لها جون سنو قبل رحيله للجدار؟',
+    options: ['الإبرة (Needle)', 'المخلب', 'الناب', 'الشوكة'],
+    correctAnswer: 'الإبرة (Needle)',
+    explanation: 'أهدى جون سنو سيف "Needle" لأخته آريا وقال لها قاعدتها الأولى: "Stick them with the pointy end".',
+    hint: 'Needle'
+  },
+  {
+    id: 'got_600_091',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الذئب الرهيب الألبينو الأبيض ذو العيون الحمراء والطباع الصامتة التابع لـ جون سنو؟',
+    options: ['غوست (Ghost)', 'نايميريا', 'غراي ويند', 'شاغي دوغ'],
+    correctAnswer: 'غوست (Ghost)',
+    explanation: 'غوست (Ghost) كان الذئب الرهيب الأصغر والأبيض كلياً ورافق جون سنو في حراسة الجدار وما وراءه.',
+    hint: 'Ghost'
+  },
+  {
+    id: 'got_600_092',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الذئبة الرهيبة الخاصة بـ آريا ستارك التي طردتها للغابة لحمايتها وقادت قطيع ذئاب برية لاحقاً؟',
+    options: ['نايميريا (Nymeria)', 'ليدي', 'غوست', 'سمر'],
+    correctAnswer: 'نايميريا (Nymeria)',
+    explanation: 'نايميريا سُميت تيمناً بالأميرة المحاربة وقادت قطيع ذئاب هائل في الغابات بعد فراقها لآريا.',
+    hint: 'Nymeria'
+  },
+  {
+    id: 'got_600_093',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما هو اللقب الممنوح للملك بران ستارك بعد تتويجه على العرش في نهاية المسلسل؟',
+    options: ['بران المكسور (Bran the Broken)', 'بران الحكيم', 'بران حامي الشمال', 'بران ذو الأعين'],
+    correctAnswer: 'بران المكسور (Bran the Broken)',
+    explanation: 'اقترح تيريون لانيستر اختيار "بران المكسور" كملك لأن قصته هي الأعظم والأكثر إلهاماً للشعب.',
+    hint: 'Bran the Broken'
+  },
+  {
+    id: 'got_600_094',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'من الشخصية التي تم انتخابها ملكاً للممالك الست في الاجتماع النهائي للوردات ويستروس؟',
+    options: ['بران ستارك', 'جون سنو', 'تيريون لانيستر', 'جندري باراثيون'],
+    correctAnswer: 'بران ستارك',
+    explanation: 'تم اختيار بران ستارك كملك للممالك الست بعد موافقة اللوردات واستقلال مملكة الشمال بقيادة سانسا.',
+    hint: 'بران ستارك (الغراب ذو الأعين الثلاث)'
+  },
+  {
+    id: 'got_600_095',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'من الشخصية التي قامت بقتل دينيريس تارغاريان بطعنة في القلب أمام العرش الحديدي لمنع طغيانها؟',
+    options: ['جون سنو', 'تيريون لانيستر', 'آريا ستارك', 'جيمي لانيستر'],
+    correctAnswer: 'جون سنو',
+    explanation: 'قام جون سنو بطعن دينيريس في عناقهما الأخير لحماية العالم والممالك من استبدادها المتزايد.',
+    hint: 'جون سنو (إيجون تارغاريان)'
+  },
+  {
+    id: 'got_600_096',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما الذي حدث للعرش الحديدي الأسطوري في الحلقة الأخيرة بعد مقتل دينيريس تارغاريان؟',
+    options: ['أذابه التنين دروجون بنيرانه الحارقة', 'حطمه جون سنو بسيفه', 'دُفن تحت ركام القلعة', 'أخذه فرسان الشمال لوينترفيل'],
+    correctAnswer: 'أذابه التنين دروجون بنيرانه الحارقة',
+    explanation: 'قام التنين دروجون بصب غضبه ونيرانه الحارقة على العرش الحديدي وصهره تماماً إلى بركة معدنية ذائبة.',
+    hint: 'صهر وأذاب بنيران دروجون'
+  },
+  {
+    id: 'got_600_097',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'إلى أين انتهى المطاف ونُفي جون سنو كحكم نهائي لتجنب الحرب مع المطهرين في ختام المسلسل؟',
+    options: ['إلى ما وراء الجدار مع الهمج وحرس الليل', 'إلى قلعة دراجونستون', 'إلى إيسوس مع الدوثراكي', 'إلى جزر برافوس'],
+    correctAnswer: 'إلى ما وراء الجدار مع الهمج وحرس الليل',
+    explanation: 'عاد جون سنو إلى كاسل بلاك ورافق تورموند وشعب الهمج بحرية في أعماق الشمال الحقيقي وراء الجدار.',
+    hint: 'العودة لما وراء الجدار مع شعب الأحرار وتورموند'
+  },
+  {
+    id: 'got_600_098',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم المسلسل المشتق الناجح (Spin-off) الذي تدور أحداثه حول سلالة آل تارغاريان قبل قرنين؟',
+    options: ['آل التنين (House of the Dragon)', 'فارس الممالك السبع', 'ثورة روبرت', 'غزو إيجون'],
+    correctAnswer: 'آل التنين (House of the Dragon)',
+    explanation: 'مسلسل House of the Dragon يستعرض تاريخ وسقوط سلالة تارغاريان وتنانينهم.',
+    hint: 'House of the Dragon'
+  },
+  {
+    id: 'got_600_099',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما اسم الحرب الأهلية التارغاريانية التاريخية الطاحنة بين فصيلي الخضر والسود على العرش؟',
+    options: ['رقصة التنانين (Dance of the Dragons)', 'حرب الملوك الخمسة', 'تمرد بلاكفاير', 'غزو ويستروس'],
+    correctAnswer: 'رقصة التنانين (Dance of the Dragons)',
+    explanation: 'رقصة التنانين (Dance of the Dragons) هي الحرب الأهلية الدامية بين رينيرا وإيجون الثاني وتسببت في انقراض التنانين.',
+    hint: 'Dance of the Dragons'
+  },
+  {
+    id: 'got_600_100',
+    points: 600,
+    category: 'Game Of Thrones',
+    question: 'ما هما العنصران الأساسيان الأسطوريان اللازمان لتشكيل وسحر الفولاذ الفاليري والمفقودان في العصر الحالي؟',
+    options: ['السحر ونار التنانين', 'زجاج التنين وحمم البراكين', 'الذهب والتعاويذ القديمة', 'دم الملوك ونيازك الشهب'],
+    correctAnswer: 'السحر ونار التنانين',
+    explanation: 'يتطلب صنع الفولاذ الفاليري مزيجاً سرياً من التعاويذ السحرية ونيران التنانين الشديدة الحرارة.',
+    hint: 'السحر الفاليري ونار التنانين'
+  }
+];

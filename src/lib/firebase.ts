@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { initializeFirestore } from 'firebase/firestore';
+import { initializeFirestore, setLogLevel } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import defaultConfig from '../../firebase-applet-config.json';
 
@@ -14,13 +14,23 @@ const firebaseConfig = {
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
-const dbId = (defaultConfig as any).firestoreDatabaseId && (defaultConfig as any).firestoreDatabaseId !== '(default)'
-  ? (defaultConfig as any).firestoreDatabaseId
+// Set Firestore log level to silent to avoid console warnings during offline/transient connection states
+try {
+  setLogLevel('silent');
+} catch (e) {
+  // Ignore if already set
+}
+
+const rawDbId = (defaultConfig as any)?.firestoreDatabaseId;
+const dbId = rawDbId && rawDbId !== '(default)' && rawDbId.trim() !== ''
+  ? rawDbId.trim()
   : undefined;
 
 export const db = initializeFirestore(app, {
-  experimentalForceLongPolling: true,
+  experimentalAutoDetectLongPolling: true,
+  ignoreUndefinedProperties: true,
   ...(dbId ? { databaseId: dbId } : {})
 });
 
 export const auth = getAuth(app);
+

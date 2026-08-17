@@ -3,12 +3,15 @@ import { sports100Questions } from "./sportsQuestions";
 import { riddles100Questions } from "./riddlesQuestions";
 import { cars100Questions } from "./carsQuestions";
 import { flags100Questions } from "./flagsQuestions";
+import { capitals100Questions } from "./capitalsQuestions";
 import { oldFlags100Questions } from "./oldFlagsQuestions";
 import { ertugrul100Questions } from "./ertugrulQuestions";
 import { kurulusOsman100Questions } from "./kurulusOsmanQuestions";
 import { cukur100Questions } from "./cukurQuestions";
 import { esrefRuya100Questions } from "./esrefRuyaQuestions";
 import { seerah100Questions } from "./seerahQuestions";
+import { theWalkingDead100Questions } from "./theWalkingDeadQuestions";
+import { gameOfThrones100Questions } from "./gameOfThronesQuestions";
 
 export const INITIAL_CATEGORIES: Category[] = [
   {
@@ -952,91 +955,10 @@ export const INITIAL_CATEGORIES: Category[] = [
     "bgGradient": "bg-gradient-to-br from-emerald-500/10 to-green-500/10 border-emerald-500/30",
     "tags": [
       "عواصم",
-      "عملات",
-      "لغات"
+      "دول",
+      "جغرافيا"
     ],
-    "questions": [
-      {
-        "id": "gen-capitals-1",
-        "imageUrl": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 200,
-        "question": "ما هي العملة الرسمية المتداولة في دولة اليابان؟",
-        "options": [
-          "الين الياباني",
-          "الوان الياباني",
-          "الدولار",
-          "الروبية"
-        ],
-        "correctAnswer": "الين الياباني",
-        "explanation": "الين (Yen) هو العملة الرسمية في اليابان ويرمز له بـ ¥.",
-        "hint": "رمز العملة ¥"
-      },
-      {
-        "id": "gen-capitals-2",
-        "imageUrl": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 300,
-        "question": "ما هي الدولة الأوروبية الواقعة جنوب القارة وعاصمتها التاريخية \"روما\"؟",
-        "options": [
-          "إيطاليا",
-          "إسبانيا",
-          "اليونان",
-          "فرنسا"
-        ],
-        "correctAnswer": "إيطاليا",
-        "explanation": "إيطاليا تقع في شبه الجزيرة الإيطالية وعاصمتها روما.",
-        "hint": "تشبه شكل جزمة في الخريطة"
-      },
-      {
-        "id": "gen-capitals-3",
-        "imageUrl": "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 400,
-        "question": "ما هي اللغة الرسمية الأكثر تحدثاً واستخداماً في دولة البرازيل؟",
-        "options": [
-          "اللغة البرتغالية",
-          "اللغة الإسبانية",
-          "اللغة الإنجليزية",
-          "اللغة الفرنسية"
-        ],
-        "correctAnswer": "اللغة البرتغالية",
-        "explanation": "البرازيل هي الدولة الوحيدة في أمريكا اللاتينية التي تتحدث البرتغالية رسمياً.",
-        "hint": "لغة البرتغال"
-      },
-      {
-        "id": "gen-capitals-4",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Parliament_House_Canberra.jpg/600px-Parliament_House_Canberra.jpg",
-        "hideImageUntilAnswer": true,
-        "points": 500,
-        "question": "ما هي العاصمة الفيدرالية الرسمية لدولة أستراليا؟",
-        "options": [
-          "كانبرا",
-          "سيدني",
-          "ملبورن",
-          "بريزبن"
-        ],
-        "correctAnswer": "كانبرا",
-        "explanation": "تم اختيار كانبرا عاصمة لأستراليا عام 1908 كحل وسط بين سيدني وملبورن.",
-        "hint": "ليست سيدني ولا ملبورن"
-      },
-      {
-        "id": "gen-capitals-5",
-        "points": 600,
-        "question": "ما هي عاصمة جمهورية مصر العربية وأكبر مدنها؟",
-        "options": [
-          "القاهرة",
-          "الإسكندرية",
-          "الجيزة",
-          "الأقصر"
-        ],
-        "correctAnswer": "القاهرة",
-        "explanation": "القاهرة هي عاصمة مصر وتسمى \"مدينة الألف مئذنة\" لثرائها التاريخي والإسلامي.",
-        "hint": "تطل على نهر النيل وتضم المتحف المصري",
-        "imageUrl": "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true
-      }
-    ]
+    "questions": capitals100Questions
   },
   {
     "id": "gen-flags",
@@ -1994,88 +1916,7 @@ export const INITIAL_CATEGORIES: Category[] = [
       "Stark",
       "Targaryen"
     ],
-    "questions": [
-      {
-        "id": "spec-foreign-got-1",
-        "imageUrl": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 200,
-        "question": "ما اسم التنين الأسود الضخم المفضل لـ دنيرس تارجاريان (أم التنانين)؟",
-        "options": [
-          "دروغون (Drogon)",
-          "ريغال",
-          "فيسيريون",
-          "باليريون"
-        ],
-        "correctAnswer": "دروغون (Drogon)",
-        "explanation": "دروغون سمي تيمناً بفريد زوجها دروغو وهو الأكبر والأشرس بين تنانينها.",
-        "hint": "Drogon"
-      },
-      {
-        "id": "spec-foreign-got-2",
-        "imageUrl": "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 300,
-        "question": "ما هو الجدار الجليدي الهائل المرتفع بالشمال الذي يحمي وستروس من السائرين البيض؟",
-        "options": [
-          "الجدار (The Wall)",
-          "قلعة السلسلة",
-          "القرن الشمالي",
-          "برج الرماد"
-        ],
-        "correctAnswer": "الجدار (The Wall)",
-        "explanation": "يحرس الجدار حراس الليل (Night's Watch) لمنع خطر الـ White Walkers.",
-        "hint": "The Wall"
-      },
-      {
-        "id": "spec-foreign-got-3",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Peter_Dinklage_by_Gage_Skidmore_2013.jpg/600px-Peter_Dinklage_by_Gage_Skidmore_2013.jpg",
-        "hideImageUntilAnswer": true,
-        "points": 400,
-        "question": "من هو الممثل الأسطوري الشهير صاحب أداء شخصية \"تيريون لانيستر\" القزم الذكي؟",
-        "options": [
-          "بيتر دينكلاج (Peter Dinklage)",
-          "نيكولاج كوستير",
-          "كيت هارينغتون",
-          "إيميليا كلارك"
-        ],
-        "correctAnswer": "بيتر دينكلاج (Peter Dinklage)",
-        "explanation": "حصد بيتر دينكلاج جوائز إيمي والأوسكار عن أدائه الاستثنائي لشخصية تيريون.",
-        "hint": "Peter Dinklage"
-      },
-      {
-        "id": "spec-foreign-got-4",
-        "imageUrl": "https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 500,
-        "question": "ما اسم السيف الفولاذي الفاليري الثمين الذي يمتلكه جون سنو مع مقبض رأس الذئب؟",
-        "options": [
-          "لونغكلو (Longclaw)",
-          "آيس",
-          "أوثكيبر",
-          "كيدل باني"
-        ],
-        "correctAnswer": "لونغكلو (Longclaw)",
-        "explanation": "أهداه اللورد القائد جيور مورمونت لـ جون سنو تقديراً لشجاعته.",
-        "hint": "Longclaw"
-      },
-      {
-        "id": "spec-foreign-got-5",
-        "points": 600,
-        "question": "ما اسم العائلة الملكية القديمة الملقبة بحكّام التنانين والتي ينتمي إليها جون سنو ودينيريس؟",
-        "options": [
-          "تارغاريان (Targaryen)",
-          "لانيستر (Lannister)",
-          "ستارك (Stark)",
-          "باراثيون"
-        ],
-        "correctAnswer": "تارغاريان (Targaryen)",
-        "explanation": "عائلة تارغاريان هي السلالة الشهيرة بركوب التنانين والشعر الفضي في Westeros.",
-        "hint": "عائلة التنانين والدم والنار",
-        "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true
-      }
-    ]
+    "questions": gameOfThrones100Questions
   },
   {
     "id": "spec-foreign-twd",
@@ -2091,88 +1932,7 @@ export const INITIAL_CATEGORIES: Category[] = [
       "Zombies",
       "Rick"
     ],
-    "questions": [
-      {
-        "id": "spec-foreign-twd-1",
-        "imageUrl": "https://images.unsplash.com/photo-1508344928928-7165b67de128?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 200,
-        "question": "ما اسم مضرب البيسبول المغطى بالسلك الشائك السلاح المفضل للشرير نيغان؟",
-        "options": [
-          "لوسيل (Lucille)",
-          "بيتسي",
-          "المدمرة",
-          "روزي"
-        ],
-        "correctAnswer": "لوسيل (Lucille)",
-        "explanation": "سمى نيغان مضربه لوسيل تيمناً باسم زوجته المتوفاة.",
-        "hint": "Lucille"
-      },
-      {
-        "id": "spec-foreign-twd-2",
-        "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 300,
-        "question": "ما هو السلاح الأيقوني المفضل لدى المحارب داريل ديكسون؟",
-        "options": [
-          "القوس والنشاب (Crossbow)",
-          "السيف الكاتانا",
-          "المسدس الناري",
-          "البلطة"
-        ],
-        "correctAnswer": "القوس والنشاب (Crossbow)",
-        "explanation": "يشتهر داريل بدقته المتناهية برمي السهام بواسطة النشاب.",
-        "hint": "Crossbow"
-      },
-      {
-        "id": "spec-foreign-twd-3",
-        "imageUrl": "https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 400,
-        "question": "ماذا يطلق الناجون في مسلسل The Walking Dead على الزومبي والأموات؟",
-        "options": [
-          "الماشون (Walkers)",
-          "الموتى",
-          "المقضيون",
-          "المتوحشون"
-        ],
-        "correctAnswer": "الماشون (Walkers)",
-        "explanation": "تجنب المسلسل كلمة زومبي واعتمد تسمية الـ Walkers.",
-        "hint": "Walkers"
-      },
-      {
-        "id": "spec-foreign-twd-4",
-        "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 500,
-        "question": "ما اسم البلدة المغلقة الآمنة التي حكمها الشرير المستبد الملقب بـ \"الحاكم\" (The Governor)؟",
-        "options": [
-          "وودبوري (Woodbury)",
-          "ألكسندريا",
-          "الهيلتوب",
-          "المملكة"
-        ],
-        "correctAnswer": "وودبوري (Woodbury)",
-        "explanation": "وودبوري كانت المجتمع المستقر المحصن بقيادة الحاكم المستبد.",
-        "hint": "Woodbury"
-      },
-      {
-        "id": "spec-foreign-twd-5",
-        "points": 600,
-        "question": "ما اسم المحارب المقاتل القوي صاحب القوس والنشاب ودراجته النارية بالمسلسل؟",
-        "options": [
-          "داريل ديكسون (Daryl Dixon)",
-          "ريك غرايمز",
-          "نيغان",
-          "غلين"
-        ],
-        "correctAnswer": "داريل ديكسون (Daryl Dixon)",
-        "explanation": "داريل ديكسون بشخصية نورمان ريدوس هو المقاتل الأحب بالقوس والنشاب.",
-        "hint": "داريل صديق ريك المقرب بالقوس",
-        "imageUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true
-      }
-    ]
+    "questions": theWalkingDead100Questions
   },
   {
     "id": "spec-foreign-peaky",

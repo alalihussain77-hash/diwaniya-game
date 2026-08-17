@@ -5,6 +5,7 @@ export interface Question {
   category?: string;
   question: string;
   imageUrl?: string; // Optional image URL for visual questions (flags, logos, products)
+  image?: string; // Alias for imageUrl
   hideImageUntilAnswer?: boolean; // If true, image is hidden until answer is revealed so it doesn't spoil factual questions
   options?: string[]; // Optional multiple choice options
   correctAnswer: string;

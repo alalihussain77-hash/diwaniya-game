@@ -8,19 +8,7 @@ import { markQuestionAsUsed } from '../utils/questionBank';
 import { cleanQuestionText } from '../data/hundredQuestionsBank';
 import { auth } from '../lib/firebase';
 import { CarPartSvg } from './CarPartSvg';
-
-// Robust helper to transform/fallback blocked image URLs (such as Wikimedia Commons hotlink protections)
-function getSafeImageUrl(url?: string): string[] {
-  if (!url) return [];
-  const list = [url];
-  // If Wikimedia Commons URL, add wsrv.nl CDN and images.weserv.nl proxies
-  if (url.includes('wikimedia.org') || url.includes('wikipedia.org')) {
-    const encoded = encodeURIComponent(url);
-    list.push(`https://wsrv.nl/?url=${encoded}`);
-    list.push(`https://images.weserv.nl/?url=${encoded}`);
-  }
-  return list;
-}
+import { OldFlagSvg } from './OldFlagSvg';
 
 interface QuestionModalProps {
   category: Category;
@@ -62,9 +50,6 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
 
   const usedPowerups = activeTeam.usedPowerups || [];
 
-  // Reset state when a new question opens or changes
-  const [imageFallbackIndex, setImageFallbackIndex] = useState<number>(0);
-
   useEffect(() => {
     setShowAnswer(false);
     setShowScoringStep(false);
@@ -73,7 +58,6 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
     setIsDoubleActive(false);
     setIsSilenceActive(false);
     setIsStealActive(false);
-    setImageFallbackIndex(0);
   }, [question?.id]);
 
   // Mark question as used immediately upon being displayed
@@ -114,11 +98,13 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
   const activeTeamPoints = activeTurnTeamId === 'team1' ? team1Points : team2Points;
 
   // Check if image is integral to asking the question (e.g., asking to identify flag/logo/product shown)
+  const effectiveImageUrl = question.imageUrl || question.image;
+
   const isVisualQuestion = (): boolean => {
     if (question.id.startsWith('car_') || category.name === 'سيارات') return true;
     if (question.hideImageUntilAnswer === true) return false;
     if (question.hideImageUntilAnswer === false) return true;
-    if (question.imageUrl) return true;
+    if (effectiveImageUrl) return true;
 
     const text = question.question.toLowerCase();
     const visualKeywords = [
@@ -302,29 +288,23 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
 
             {/* 2. Image / Visual Representation UNDER Question Text */}
             {isVisual && (
-              <div className="flex justify-center items-center my-2 max-h-56 sm:max-h-64 overflow-hidden rounded-xl sm:rounded-2xl bg-slate-950/90 p-2 sm:p-3 border border-slate-700/60 shadow-xl">
+              <div className="w-full flex justify-center items-center my-3 max-h-60 overflow-hidden rounded-xl bg-slate-950/90 p-2 sm:p-3 border border-slate-700/60 shadow-xl">
                 {question.id?.startsWith('car_') || category.name?.includes('سيارات') || category.id === 'gen-cars' ? (
-                  <CarPartSvg id={question.id || question.imageUrl || 'car_16'} className="max-h-48 sm:max-h-56 w-auto max-w-full object-contain rounded-xl drop-shadow-md transition-transform duration-300 hover:scale-105" />
-                ) : question.imageUrl ? (
-                  (() => {
-                    const safeUrls = getSafeImageUrl(question.imageUrl);
-                    const activeUrl = safeUrls[imageFallbackIndex] || safeUrls[0];
-                    return (
-                      <img
-                        key={`${question.id}-${imageFallbackIndex}`}
-                        src={activeUrl}
-                        alt="صورة السؤال"
-                        referrerPolicy="no-referrer"
-                        crossOrigin="anonymous"
-                        className="max-h-44 sm:max-h-56 max-w-full object-contain rounded-lg sm:rounded-xl drop-shadow-lg hover:scale-105 transition-transform duration-300"
-                        onError={() => {
-                          if (imageFallbackIndex < safeUrls.length - 1) {
-                            setImageFallbackIndex((prev) => prev + 1);
-                          }
-                        }}
-                      />
-                    );
-                  })()
+                  <CarPartSvg id={question.id || effectiveImageUrl || 'car_16'} className="max-h-48 w-auto max-w-full object-contain mx-auto rounded drop-shadow-md transition-transform duration-300 hover:scale-105" />
+                ) : question.id?.startsWith('old_flags_') || category.name?.includes('أعلام') || category.id === 'hist-flags' || category.id === 'old_flags' ? (
+                  <OldFlagSvg
+                    id={question.id}
+                    answer={question.correctAnswer}
+                    fallbackUrl={question.image || question.imageUrl}
+                    className="max-h-48 w-auto max-w-full block mx-auto object-contain my-2 rounded shadow-lg transition-transform duration-300 hover:scale-105"
+                  />
+                ) : (question.image || question.imageUrl) ? (
+                  <img
+                    src={question.image || question.imageUrl}
+                    alt="علم الدولة"
+                    className="max-h-48 w-auto max-w-full block mx-auto object-contain my-2 rounded shadow-lg"
+                    loading="eager"
+                  />
                 ) : null}
               </div>
             )}

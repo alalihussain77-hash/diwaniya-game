@@ -17,13 +17,16 @@ import { kurulusOsman100Questions } from './kurulusOsmanQuestions';
 import { esrefRuya100Questions } from './esrefRuyaQuestions';
 import { ertugrul100Questions } from './ertugrulQuestions';
 import { flags100Questions } from './flagsQuestions';
+import { capitals100Questions } from './capitalsQuestions';
 import { oldFlags100Questions } from './oldFlagsQuestions';
 import { sports100Questions } from './sportsQuestions';
 import { riddles100Questions } from './riddlesQuestions';
 import { carsQuestionDataList, cars100Questions } from './carsQuestions';
 import { seerah100Questions } from './seerahQuestions';
+import { theWalkingDead100Questions } from './theWalkingDeadQuestions';
+import { gameOfThrones100Questions } from './gameOfThronesQuestions';
 
-export { seerah100Questions, oldFlags100Questions };
+export { seerah100Questions, oldFlags100Questions, capitals100Questions, theWalkingDead100Questions, gameOfThrones100Questions };
 
 // =========================================================================
 // 100 QUESTIONS: ISLAMIC (إسلامي) - INLINE
@@ -1019,6 +1022,36 @@ export function get100CategoryQuestions(catId?: string, catName?: string): Quest
 
     if (id === 'spec-turkish-ertugrul' || id === 'ertugrul' || name.includes('أرطغرل')) {
       return Array.isArray(ertugrul100Questions) ? ertugrul100Questions : [];
+    }
+
+    if (
+      id === 'spec-foreign-twd' ||
+      id === 'twd' ||
+      name.toLowerCase().includes('walking dead') ||
+      name.toLowerCase().includes('twd') ||
+      name.includes('الموتى السائرون')
+    ) {
+      return Array.isArray(theWalkingDead100Questions) ? theWalkingDead100Questions : [];
+    }
+
+    if (
+      id === 'spec-foreign-got' ||
+      id === 'got' ||
+      name.toLowerCase().includes('game of thrones') ||
+      name.toLowerCase().includes('got') ||
+      name.includes('صراع العروش') ||
+      name.includes('صراع عروش')
+    ) {
+      return Array.isArray(gameOfThrones100Questions) ? gameOfThrones100Questions : [];
+    }
+
+    if (
+      id === 'gen-capitals' ||
+      id === 'capitals' ||
+      name.includes('عواصم') ||
+      name.includes('دول وعواصم')
+    ) {
+      return Array.isArray(capitals100Questions) ? capitals100Questions : [];
     }
 
     if (
