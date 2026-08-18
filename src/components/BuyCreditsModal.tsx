@@ -5,20 +5,24 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 
 export const TEN_GAME_CODES = [
-  { code: 'GAME10-01', label: 'كود اللعبة 1 (10 ألعاب)' },
-  { code: 'GAME10-02', label: 'كود اللعبة 2 (10 ألعاب)' },
-  { code: 'GAME10-03', label: 'كود اللعبة 3 (10 ألعاب)' },
-  { code: 'GAME10-04', label: 'كود اللعبة 4 (10 ألعاب)' },
-  { code: 'GAME10-05', label: 'كود اللعبة 5 (10 ألعاب)' },
-  { code: 'GAME10-06', label: 'كود اللعبة 6 (10 ألعاب)' },
-  { code: 'GAME10-07', label: 'كود اللعبة 7 (10 ألعاب)' },
-  { code: 'GAME10-08', label: 'كود اللعبة 8 (10 ألعاب)' },
-  { code: 'GAME10-09', label: 'كود اللعبة 9 (10 ألعاب)' },
-  { code: 'GAME10-10', label: 'كود اللعبة 10 (10 ألعاب)' },
+  { code: 'DIWAN-10-Q801', label: 'كود ديوانية 1', games: 10 },
+  { code: 'MAJLES-10-KW02', label: 'كود مجلس 2', games: 10 },
+  { code: 'CHALLENGE-10-PR03', label: 'كود التحدي 3', games: 10 },
+  { code: 'THAKAFY-10-GL04', label: 'كود الثقافة 4', games: 10 },
+  { code: 'HEROES-10-ST05', label: 'كود الأبطال 5', games: 10 },
+  { code: 'Q8GAME-10-VIP06', label: 'كود كويت جيمز 6', games: 10 },
+  { code: 'WINNER-10-PS07', label: 'كود الفائزين 7', games: 10 },
+  { code: 'SUPER-10-PL08', label: 'كود سوبر جيم 8', games: 10 },
+  { code: 'ROYAL-10-GM09', label: 'كود رويال 9', games: 10 },
+  { code: 'MASTER-10-TN10', label: 'كود ماستر 10', games: 10 },
 ];
 
 export const VALID_ACTIVATION_CODES = [
   ...TEN_GAME_CODES.map((item) => item.code),
+  'DIWAN10Q801', 'MAJLES10KW02', 'CHALLENGE10PR03', 'THAKAFY10GL04', 'HEROES10ST05',
+  'Q8GAME10VIP06', 'WINNER10PS07', 'SUPER10PL08', 'ROYAL10GM09', 'MASTER10TN10',
+  'GAME10-01', 'GAME10-02', 'GAME10-03', 'GAME10-04', 'GAME10-05',
+  'GAME10-06', 'GAME10-07', 'GAME10-08', 'GAME10-09', 'GAME10-10',
   'GAME1001', 'GAME1002', 'GAME1003', 'GAME1004', 'GAME1005',
   'GAME1006', 'GAME1007', 'GAME1008', 'GAME1009', 'GAME1010',
   'DWN-1010-Q8A1',
