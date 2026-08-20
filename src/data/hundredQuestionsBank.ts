@@ -25,6 +25,45 @@ import { carsQuestionDataList, cars100Questions } from './carsQuestions';
 import { seerah100Questions } from './seerahQuestions';
 import { theWalkingDead100Questions } from './theWalkingDeadQuestions';
 import { gameOfThrones100Questions } from './gameOfThronesQuestions';
+import {
+  walaKelmaGeneralQuestions,
+  wordList,
+  generalQuestions,
+} from './walaKelmaGeneralData';
+import {
+  wrestlersList,
+  wrestlingQuestions,
+} from './walaKelmaWrestlingData';
+import {
+  animeList,
+  animeQuestions,
+} from './walaKelmaAnimeData';
+import {
+  mediaList,
+  mediaQuestions,
+  walaKelmaMediaQuestions,
+} from './walaKelmaMediaData';
+import {
+  foreignArtList,
+  foreignArtQuestions,
+  walaKelmaForeignArtQuestions,
+} from './walaKelmaForeignArtData';
+import {
+  footballList,
+  footballQuestions,
+  walaKelmaFootballQuestions,
+} from './walaKelmaFootballData';
+import {
+  proverbsList,
+  proverbsQuestions,
+  walaKelmaProverbsQuestions,
+} from './walaKelmaProverbsData';
+import {
+  walaKelmaSportsQuestions,
+  walaKelmaOriginalQuestions,
+  walaKelmaAnimeQuestions,
+  walaKelmaWrestlingQuestions,
+} from './walaKelmaQuestions';
 
 export { seerah100Questions, oldFlags100Questions, capitals100Questions, theWalkingDead100Questions, gameOfThrones100Questions };
 
@@ -1073,6 +1112,45 @@ export function get100CategoryQuestions(catId?: string, catName?: string): Quest
       return Array.isArray(sports100Questions) ? sports100Questions : [];
     }
 
+    if (
+      id === 'wk-general' ||
+      name.includes('ولا كلمة عامة') ||
+      name.includes('كلمة عامة')
+    ) {
+      return Array.isArray(walaKelmaGeneralQuestions) ? walaKelmaGeneralQuestions : [];
+    }
+
+    if (id === 'wk-proverbs' || name.includes('ولا كلمة أمثال') || name.includes('أمثال')) {
+      return Array.isArray(walaKelmaProverbsQuestions) ? walaKelmaProverbsQuestions : [];
+    }
+
+    if (id === 'wk-sports' || name.includes('ولا كلمة كروية') || name.includes('كروية')) {
+      return Array.isArray(walaKelmaFootballQuestions) ? walaKelmaFootballQuestions : [];
+    }
+
+    if (
+      id === 'wk-classic' ||
+      name.includes('أفلام') ||
+      name.includes('مسلسلات') ||
+      name.includes('أغاني') ||
+      name.includes('مسرحيات') ||
+      name === 'ولا كلمة'
+    ) {
+      return Array.isArray(walaKelmaMediaQuestions) ? walaKelmaMediaQuestions : [];
+    }
+
+    if (id === 'wk-anime' || name.includes('ولا كلمة أنمي') || name.includes('أنمي')) {
+      return Array.isArray(walaKelmaAnimeQuestions) ? walaKelmaAnimeQuestions : [];
+    }
+
+    if (id === 'wk-wrestling' || name.includes('ولا كلمة مصارعة') || name.includes('مصارعة')) {
+      return Array.isArray(walaKelmaWrestlingQuestions) ? walaKelmaWrestlingQuestions : [];
+    }
+
+    if (id === 'wk-foreign-art' || name.includes('ولا كلمة فن أجنبي') || name.includes('فن أجنبي')) {
+      return Array.isArray(walaKelmaForeignArtQuestions) ? walaKelmaForeignArtQuestions : [];
+    }
+
     if (id === 'gen-riddles' || id === 'riddles' || name.includes('ألغاز') || name.includes('الغاز')) {
       return Array.isArray(riddles100Questions) ? riddles100Questions : [];
     }
@@ -1272,6 +1350,143 @@ function generateCategorySpecificFallback(catId: string, catName: string, index:
       correctAnswer: item.a,
       explanation: `معلومة دقيقة ومؤكدة في عالم مارفل السينمائي (Marvel): ${item.a}.`,
       hint: `خاص بعالم مارفل السينمائي`,
+    };
+  }
+
+  // 4. Wala Kelma General Fallback
+  if (catId === 'wk-general' || catName.includes('ولا كلمة عامة') || catName.includes('عامة')) {
+    let pool = generalQuestions[200] || wordList;
+    if (index > 34 && index <= 67) pool = generalQuestions[400] || pool;
+    else if (index > 67) pool = generalQuestions[600] || pool;
+
+    const selectedWord = pool[(index - 1) % pool.length];
+    const otherOpts = pool.filter(w => w !== selectedWord).slice(0, 3);
+    return {
+      question: 'امسح الباركود للحصول على السؤال',
+      options: [selectedWord, ...otherOpts],
+      correctAnswer: selectedWord,
+      explanation: `الكلمة أو المنتج المطلوب تمثيله: ${selectedWord}`,
+      hint: `منتج أو شيء شهير (${selectedWord})`,
+    };
+  }
+
+  // 5. Wala Kelma Wrestling Fallback
+  if (catId === 'wk-wrestling' || catName.includes('ولا كلمة مصارعة') || catName.includes('مصارعة')) {
+    let pool = wrestlingQuestions[200] || wrestlersList;
+    if (index > 34 && index <= 67) pool = wrestlingQuestions[400] || pool;
+    else if (index > 67) pool = wrestlingQuestions[600] || pool;
+
+    const selectedWrestler = pool[(index - 1) % pool.length];
+    const otherOpts = pool.filter(w => w !== selectedWrestler).slice(0, 3);
+    return {
+      question: 'امسح الباركود للحصول على السؤال',
+      options: [selectedWrestler, ...otherOpts],
+      correctAnswer: selectedWrestler,
+      explanation: `المصارع المطلوب تمثيله: ${selectedWrestler}`,
+      hint: `اسم مصارع (${selectedWrestler})`,
+    };
+  }
+
+  // 6. Wala Kelma Anime Fallback
+  if (catId === 'wk-anime' || catName.includes('أنمي') || catName.includes('انمي')) {
+    let pool = animeQuestions[200] || animeList;
+    if (index > 34 && index <= 67) pool = animeQuestions[400] || pool;
+    else if (index > 67) pool = animeQuestions[600] || pool;
+
+    const selectedAnime = pool[(index - 1) % pool.length];
+    const otherOpts = pool.filter(w => w !== selectedAnime).slice(0, 3);
+    return {
+      question: 'امسح الباركود للحصول على السؤال',
+      options: [selectedAnime, ...otherOpts],
+      correctAnswer: selectedAnime,
+      explanation: `الأنمي أو الشخصية المطلوب تمثيلها: ${selectedAnime}`,
+      hint: `مسلسل أو شخصية أنمي (${selectedAnime})`,
+    };
+  }
+
+  // 7. Wala Kelma Media Fallback
+  if (
+    catId === 'wk-classic' ||
+    catName.includes('أفلام') ||
+    catName.includes('مسلسلات') ||
+    catName.includes('أغاني') ||
+    catName.includes('مسرحيات')
+  ) {
+    let pool = mediaQuestions[200] || mediaList;
+    if (index > 34 && index <= 67) pool = mediaQuestions[400] || pool;
+    else if (index > 67) pool = mediaQuestions[600] || pool;
+
+    const selectedMedia = pool[(index - 1) % pool.length];
+    const otherOpts = pool.filter(w => w !== selectedMedia).slice(0, 3);
+    return {
+      question: 'امسح الباركود للحصول على السؤال',
+      options: [selectedMedia, ...otherOpts],
+      correctAnswer: selectedMedia,
+      explanation: `العمل المطلوب تمثيله: ${selectedMedia}`,
+      hint: `عمل فني (${selectedMedia})`,
+    };
+  }
+
+  // 8. Wala Kelma Foreign Art Fallback
+  if (
+    catId === 'wk-foreign-art' ||
+    catName.includes('فن أجنبي') ||
+    catName.includes('أجنبي')
+  ) {
+    let pool = foreignArtQuestions[200] || foreignArtList;
+    if (index > 34 && index <= 67) pool = foreignArtQuestions[400] || pool;
+    else if (index > 67) pool = foreignArtQuestions[600] || pool;
+
+    const selectedForeign = pool[(index - 1) % pool.length];
+    const otherOpts = pool.filter(w => w !== selectedForeign).slice(0, 3);
+    return {
+      question: 'امسح الباركود للحصول على السؤال',
+      options: [selectedForeign, ...otherOpts],
+      correctAnswer: selectedForeign,
+      explanation: `العمل أو الشخصية الأجنبية المطلوب تمثيلها: ${selectedForeign}`,
+      hint: `عمل أو شخصية عالمية (${selectedForeign})`,
+    };
+  }
+
+  // 9. Wala Kelma Proverbs Fallback
+  if (
+    catId === 'wk-proverbs' ||
+    catName.includes('أمثال') ||
+    catName.includes('امثال')
+  ) {
+    let pool = proverbsQuestions[200] || proverbsList;
+    if (index > 34 && index <= 67) pool = proverbsQuestions[400] || pool;
+    else if (index > 67) pool = proverbsQuestions[600] || pool;
+
+    const selectedProverb = pool[(index - 1) % pool.length];
+    const otherOpts = pool.filter(w => w !== selectedProverb).slice(0, 3);
+    return {
+      question: 'امسح الباركود للحصول على السؤال',
+      options: [selectedProverb, ...otherOpts],
+      correctAnswer: selectedProverb,
+      explanation: `المثل المطلوب تمثيله: ${selectedProverb}`,
+      hint: `مثل شعبي (${selectedProverb})`,
+    };
+  }
+
+  // 10. Wala Kelma Football Fallback
+  if (
+    catId === 'wk-sports' ||
+    catName.includes('ولا كلمة كروية') ||
+    catName.includes('كروية')
+  ) {
+    let pool = footballQuestions[200] || footballList;
+    if (index > 34 && index <= 67) pool = footballQuestions[400] || pool;
+    else if (index > 67) pool = footballQuestions[600] || pool;
+
+    const selectedFootball = pool[(index - 1) % pool.length];
+    const otherOpts = pool.filter(w => w !== selectedFootball).slice(0, 3);
+    return {
+      question: 'امسح الباركود للحصول على السؤال',
+      options: [selectedFootball, ...otherOpts],
+      correctAnswer: selectedFootball,
+      explanation: `العنصر الكروي المطلوب تمثيله: ${selectedFootball}`,
+      hint: `كروي (${selectedFootball})`,
     };
   }
 

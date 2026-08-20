@@ -39,7 +39,9 @@ import {
   ShoppingBag,
   Tag,
   Box,
-  Car
+  Car,
+  MicOff,
+  VolumeX
 } from 'lucide-react';
 
 interface CategorizedCategoryGridProps {
@@ -87,7 +89,9 @@ const CATEGORY_ICONS: Record<string, React.ElementType> = {
   ShoppingBag,
   Tag,
   Box,
-  Car
+  Car,
+  MicOff,
+  VolumeX
 };
 
 export const CategorizedCategoryGrid: React.FC<CategorizedCategoryGridProps> = ({
@@ -124,8 +128,20 @@ export const CategorizedCategoryGrid: React.FC<CategorizedCategoryGridProps> = (
           >
             {/* Centered Capsule / Pill Badge Header */}
             <div className="flex items-center justify-center mb-4 sm:mb-6">
-              <div className="px-4 sm:px-7 py-2 sm:py-2.5 rounded-full bg-slate-800/90 border border-amber-500/30 shadow-xl flex items-center gap-2 sm:gap-3">
-                <span className="text-sm sm:text-lg font-black text-amber-300 tracking-tight">
+              <div
+                className={`px-5 sm:px-8 py-2 sm:py-2.5 rounded-full shadow-xl flex items-center gap-2 sm:gap-3 transition-all ${
+                  sectionName.includes('ولا كلمة') || sectionName.includes('ولاكلمة')
+                    ? 'bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white border-2 border-orange-400 shadow-orange-500/30 ring-2 ring-orange-500/20'
+                    : 'bg-slate-800/90 border border-amber-500/30'
+                }`}
+              >
+                <span
+                  className={`text-sm sm:text-lg font-black tracking-tight ${
+                    sectionName.includes('ولا كلمة') || sectionName.includes('ولاكلمة')
+                      ? 'text-white drop-shadow-sm'
+                      : 'text-amber-300'
+                  }`}
+                >
                   {sectionName}
                 </span>
                 {selectedCount > 0 && (

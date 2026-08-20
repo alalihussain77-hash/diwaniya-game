@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Category, Question, Team } from '../types';
-import { Clock, CheckCircle2, X, Eye, ArrowLeft, Zap, VolumeX, Repeat, PhoneCall, ShieldAlert, AlertTriangle, Flag, Image as ImageIcon } from 'lucide-react';
+import { Clock, CheckCircle2, X, Eye, ArrowLeft, Zap, VolumeX, Repeat, PhoneCall, ShieldAlert, AlertTriangle, Flag, Image as ImageIcon, Smartphone, QrCode } from 'lucide-react';
 import { sound } from '../utils/sound';
 import { PhoneCallModal } from './PhoneCallModal';
 import { ReportQuestionModal } from './ReportQuestionModal';
@@ -9,6 +9,7 @@ import { cleanQuestionText } from '../data/hundredQuestionsBank';
 import { auth } from '../lib/firebase';
 import { CarPartSvg } from './CarPartSvg';
 import { OldFlagSvg } from './OldFlagSvg';
+import { QrCodeDisplay } from './QrCodeDisplay';
 
 interface QuestionModalProps {
   category: Category;
@@ -129,6 +130,51 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
   };
 
   const isVisual = isVisualQuestion();
+
+  const isWalaKelma =
+    category.id?.startsWith('wk-') ||
+    category.name?.includes('ولا كلمة') ||
+    question.category?.includes('ولا كلمة') ||
+    question.question?.includes('امسح الباركود');
+
+  const isWalaKelmaWrestling =
+    category.id === 'wk-wrestling' ||
+    category.name?.includes('مصارعة') ||
+    question.category?.includes('مصارعة');
+
+  const isWalaKelmaAnime =
+    category.id === 'wk-anime' ||
+    category.name?.includes('أنمي') ||
+    category.name?.includes('انمي') ||
+    question.category?.includes('أنمي');
+
+  const isWalaKelmaMedia =
+    category.id === 'wk-classic' ||
+    category.name?.includes('أفلام') ||
+    category.name?.includes('مسلسلات') ||
+    category.name?.includes('أغاني') ||
+    category.name?.includes('مسرحيات') ||
+    question.category?.includes('أفلام') ||
+    question.category?.includes('مسلسلات');
+
+  const isWalaKelmaForeignArt =
+    category.id === 'wk-foreign-art' ||
+    category.name?.includes('فن أجنبي') ||
+    category.name?.includes('أجنبي') ||
+    question.category?.includes('فن أجنبي') ||
+    question.category?.includes('أجنبي');
+
+  const isWalaKelmaProverbs =
+    category.id === 'wk-proverbs' ||
+    category.name?.includes('أمثال') ||
+    category.name?.includes('امثال') ||
+    question.category?.includes('أمثال') ||
+    question.category?.includes('امثال');
+
+  const isWalaKelmaFootball =
+    category.id === 'wk-sports' ||
+    category.name?.includes('كروية') ||
+    question.category?.includes('كروية');
 
   const handleAward = (teamId: 'team1' | 'team2' | null) => {
     if (teamId === 'team1') {
@@ -281,32 +327,89 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
                 : 'border-blue-500/50 shadow-blue-950/40 ring-1 ring-blue-500/20'
             }`}
           >
-            {/* 1. Question Text */}
-            <p className="text-lg sm:text-2xl font-black text-white leading-relaxed sm:leading-relaxed">
-              "{cleanQuestionText(question.question)}"
-            </p>
+            {isWalaKelma ? (
+              <div className="flex flex-col items-center justify-center space-y-3 sm:space-y-4 py-1 animate-fadeIn">
+                {/* 1. Clear Header Prompt Text */}
+                <div className="flex items-center justify-center gap-2">
+                  <Smartphone className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 animate-bounce" />
+                  <h2 className="text-lg sm:text-2xl font-black text-amber-300 tracking-wide drop-shadow-md">
+                    امسح الباركود للحصول على السؤال
+                  </h2>
+                </div>
 
-            {/* 2. Image / Visual Representation UNDER Question Text */}
-            {isVisual && (
-              <div className="w-full flex justify-center items-center my-3 max-h-60 overflow-hidden rounded-xl bg-slate-950/90 p-2 sm:p-3 border border-slate-700/60 shadow-xl">
-                {question.id?.startsWith('car_') || category.name?.includes('سيارات') || category.id === 'gen-cars' ? (
-                  <CarPartSvg id={question.id || effectiveImageUrl || 'car_16'} className="max-h-48 w-auto max-w-full object-contain mx-auto rounded drop-shadow-md transition-transform duration-300 hover:scale-105" />
-                ) : question.id?.startsWith('old_flags_') || category.name?.includes('أعلام') || category.id === 'hist-flags' || category.id === 'old_flags' ? (
-                  <OldFlagSvg
-                    id={question.id}
-                    answer={question.correctAnswer}
-                    fallbackUrl={question.image || question.imageUrl}
-                    className="max-h-48 w-auto max-w-full block mx-auto object-contain my-2 rounded shadow-lg transition-transform duration-300 hover:scale-105"
+                {/* 2. QR Code generated programmatically with Plain Text */}
+                <div className="my-1 sm:my-2">
+                  <QrCodeDisplay
+                    value={
+                      question.correctAnswer ||
+                      (isWalaKelmaWrestling
+                        ? 'أندرتايكر'
+                        : isWalaKelmaAnime
+                        ? 'ون بيس'
+                        : isWalaKelmaForeignArt
+                        ? 'فيلم تيتانيك'
+                        : isWalaKelmaMedia
+                        ? 'مسرحية مدرسة المشاغبين'
+                        : isWalaKelmaProverbs
+                        ? 'حبل الكذب قصير'
+                        : isWalaKelmaFootball
+                        ? 'ميسي'
+                        : 'بيبسي')
+                    }
+                    size={250}
+                    className="mx-auto"
                   />
-                ) : (question.image || question.imageUrl) ? (
-                  <img
-                    src={question.image || question.imageUrl}
-                    alt="علم الدولة"
-                    className="max-h-48 w-auto max-w-full block mx-auto object-contain my-2 rounded shadow-lg"
-                    loading="eager"
-                  />
-                ) : null}
+                </div>
+
+                {/* 3. Small instructions prompt */}
+                <div className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-slate-950/80 border border-slate-700/80 text-slate-300 text-xs sm:text-sm font-medium shadow-sm">
+                  <span>
+                    🤫 {isWalaKelmaWrestling
+                      ? 'وجّه كاميرا الهاتف نحو الباركود لمعرفة اسم المصارع والبدء بالتمثيل'
+                      : isWalaKelmaAnime
+                      ? 'وجّه كاميرا الهاتف نحو الباركود لمعرفة اسم المسلسل أو الشخصية والبدء بالتمثيل'
+                      : isWalaKelmaForeignArt
+                      ? 'وجّه كاميرا الهاتف نحو الباركود لمعرفة اسم العمل أو الشخصية والبدء بالتمثيل'
+                      : isWalaKelmaMedia
+                      ? 'وجّه كاميرا الهاتف نحو الباركود لمعرفة اسم العمل الفني والبدء بالتمثيل'
+                      : isWalaKelmaProverbs
+                      ? 'وجّه كاميرا الهاتف نحو الباركود لقراءة المثل والبدء بالتمثيل'
+                      : isWalaKelmaFootball
+                      ? 'وجّه كاميرا الهاتف نحو الباركود لمعرفة اللاعب أو الحركة الكروية والبدء بالتمثيل'
+                      : 'وجّه كاميرا الهاتف نحو الباركود لقراءة الكلمة والبدء بالتمثيل'}
+                  </span>
+                </div>
               </div>
+            ) : (
+              <>
+                {/* 1. Question Text */}
+                <p className="text-lg sm:text-2xl font-black text-white leading-relaxed sm:leading-relaxed">
+                  "{cleanQuestionText(question.question)}"
+                </p>
+
+                {/* 2. Image / Visual Representation UNDER Question Text */}
+                {isVisual && (
+                  <div className="w-full flex justify-center items-center my-3 max-h-60 overflow-hidden rounded-xl bg-slate-950/90 p-2 sm:p-3 border border-slate-700/60 shadow-xl">
+                    {question.id?.startsWith('car_') || category.name?.includes('سيارات') || category.id === 'gen-cars' ? (
+                      <CarPartSvg id={question.id || effectiveImageUrl || 'car_16'} className="max-h-48 w-auto max-w-full object-contain mx-auto rounded drop-shadow-md transition-transform duration-300 hover:scale-105" />
+                    ) : question.id?.startsWith('old_flags_') || category.name?.includes('أعلام') || category.id === 'hist-flags' || category.id === 'old_flags' ? (
+                      <OldFlagSvg
+                        id={question.id}
+                        answer={question.correctAnswer}
+                        fallbackUrl={question.image || question.imageUrl}
+                        className="max-h-48 w-auto max-w-full block mx-auto object-contain my-2 rounded shadow-lg transition-transform duration-300 hover:scale-105"
+                      />
+                    ) : (question.image || question.imageUrl) ? (
+                      <img
+                        src={question.image || question.imageUrl}
+                        alt="علم الدولة"
+                        className="max-h-48 w-auto max-w-full block mx-auto object-contain my-2 rounded shadow-lg"
+                        loading="eager"
+                      />
+                    ) : null}
+                  </div>
+                )}
+              </>
             )}
           </div>
 
@@ -387,7 +490,22 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
           {showAnswer && (
             <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-emerald-950/90 border-2 border-emerald-500/80 text-white text-center space-y-2 sm:space-y-3 animate-fadeIn shadow-2xl">
               <div className="flex items-center justify-center gap-1.5 text-emerald-400 font-black text-xs uppercase tracking-wider">
-                <CheckCircle2 className="w-4 h-4" /> الإجابة الصحيحة
+                <CheckCircle2 className="w-4 h-4" />{' '}
+                {isWalaKelmaWrestling
+                  ? 'المصارع المطلوب تمثيله'
+                  : isWalaKelmaAnime
+                  ? 'الأنمي / الشخصية المطلوب تمثيلها'
+                  : isWalaKelmaForeignArt
+                  ? 'العمل الفني / الشخصية المطلوب تمثيلها'
+                  : isWalaKelmaMedia
+                  ? 'العمل الفني المطلوب تمثيله'
+                  : isWalaKelmaProverbs
+                  ? 'المثل المطلوب تمثيله'
+                  : isWalaKelmaFootball
+                  ? 'العنصر الكروي المطلوب تمثيله'
+                  : isWalaKelma
+                  ? 'الكلمة / المطلوب تمثيله'
+                  : 'الإجابة الصحيحة'}
               </div>
 
               {/* Show logo/flag/product image in answer box when revealing answer for non-visual factual questions */}

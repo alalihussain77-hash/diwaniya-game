@@ -16,10 +16,32 @@ import { ResultsView } from './components/ResultsView';
 import { RulesModal } from './components/RulesModal';
 import { AuthScreen } from './components/AuthScreen';
 import { BuyCreditsModal } from './components/BuyCreditsModal';
+import { SecretActorCard } from './components/SecretActorCard';
 import { sound } from './utils/sound';
-import { Sparkles, Layers, Zap, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Layers, Zap, CheckCircle2, Trophy, HelpCircle } from 'lucide-react';
 
 export default function App() {
+  // Check if current URL is a secret scan QR view for mobile actors
+  const searchParams = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
+  const isSecretView = searchParams.get('view') === 'secret' || searchParams.has('w');
+  const secretWord = searchParams.get('w');
+  const secretHint = searchParams.get('h');
+  const secretExp = searchParams.get('e');
+  const secretCat = searchParams.get('c');
+  const secretPoints = searchParams.get('p');
+
+  if (isSecretView && secretWord) {
+    return (
+      <SecretActorCard
+        word={secretWord}
+        hint={secretHint || undefined}
+        explanation={secretExp || undefined}
+        category={secretCat || undefined}
+        points={secretPoints || undefined}
+      />
+    );
+  }
+
   const [user, setUser] = useState<User | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
 
@@ -770,45 +792,97 @@ export default function App() {
       {/* PHASE TRANSITION MODAL (End of Phase 1 - General Categories Intro to Phase 2) */}
       {showPhaseTransitionModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md animate-fadeIn font-['Cairo',sans-serif]">
-          <div className="bg-slate-900 border-2 border-indigo-500 rounded-3xl p-6 sm:p-8 max-w-lg w-full text-center space-y-6 shadow-2xl relative overflow-hidden">
-            <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-600 text-white flex items-center justify-center mx-auto shadow-xl shadow-indigo-500/30">
-              <Zap className="w-8 h-8 stroke-[2.5]" />
+          <div className="bg-slate-900 border-2 border-indigo-500 rounded-3xl p-5 sm:p-7 max-w-lg w-full text-center space-y-5 shadow-2xl relative overflow-hidden my-auto max-h-[95vh] overflow-y-auto">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-600 text-white flex items-center justify-center mx-auto shadow-xl shadow-indigo-500/30">
+              <Zap className="w-7 h-7 stroke-[2.5]" />
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-1.5">
               <span className="px-3.5 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-black border border-indigo-500/30 inline-flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-                بداية اللعبة - الشوط الثاني
+                نهاية الشوط الأول ➔ بداية الشوط الثاني
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white">
-                الشوط الثاني: الفئات الخاصة لكل فريق 🔥
+              <h2 className="text-xl sm:text-2xl font-black text-white">
+                نتيجة الشوط الأول والتأهل للشوط الثاني 🔥
               </h2>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                في هذا الشوط، تم تفعيل <span className="text-indigo-400 font-extrabold">الفئات الخاصة (4 فئات)</span> التي اختارها كل فريق بنفسه في مرحلة النقوة. كل فريق سيلعب في فئاته المخصصة لمجالات شغفه لجمع أعلى النقاط وحسم نتيجة المباراة!
-              </p>
             </div>
 
-            {/* Current Scores Summary */}
-            <div className="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
-              <div className="text-center p-2 rounded-xl bg-red-950/40 border border-red-500/30">
-                <p className="text-xs font-bold text-red-300">{team1.name}</p>
-                <p className="text-xl font-black text-white font-mono mt-0.5">
-                  {team1.score} <span className="text-xs text-amber-400">نقطة</span>
-                </p>
+            {/* Current Scores Summary & Leader Status */}
+            <div className="space-y-2">
+              <div className="text-xs font-bold text-slate-300 flex items-center justify-center gap-1.5">
+                <Trophy className="w-4 h-4 text-amber-400" />
+                <span>نتائج النقاط حتى الآن:</span>
               </div>
-              <div className="text-center p-2 rounded-xl bg-blue-950/40 border border-blue-500/30">
-                <p className="text-xs font-bold text-blue-300">{team2.name}</p>
-                <p className="text-xl font-black text-white font-mono mt-0.5">
-                  {team2.score} <span className="text-xs text-amber-400">نقطة</span>
-                </p>
+
+              <div className="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800">
+                <div className={`text-center p-3 rounded-xl border transition-all ${
+                  team1.score > team2.score
+                    ? 'bg-red-950/60 border-red-500 shadow-md ring-1 ring-red-400/40'
+                    : 'bg-red-950/30 border-red-500/30'
+                }`}>
+                  <div className="flex items-center justify-center gap-1">
+                    <p className="text-xs font-bold text-red-300 truncate">{team1.name}</p>
+                    {team1.score > team2.score && <span className="text-xs">👑</span>}
+                  </div>
+                  <p className="text-2xl font-black text-white font-mono mt-1">
+                    {team1.score} <span className="text-xs text-amber-400 font-sans">نقطة</span>
+                  </p>
+                </div>
+
+                <div className={`text-center p-3 rounded-xl border transition-all ${
+                  team2.score > team1.score
+                    ? 'bg-blue-950/60 border-blue-500 shadow-md ring-1 ring-blue-400/40'
+                    : 'bg-blue-950/30 border-blue-500/30'
+                }`}>
+                  <div className="flex items-center justify-center gap-1">
+                    <p className="text-xs font-bold text-blue-300 truncate">{team2.name}</p>
+                    {team2.score > team1.score && <span className="text-xs">👑</span>}
+                  </div>
+                  <p className="text-2xl font-black text-white font-mono mt-1">
+                    {team2.score} <span className="text-xs text-amber-400 font-sans">نقطة</span>
+                  </p>
+                </div>
               </div>
+
+              {/* Status Pill */}
+              <div className="p-2 rounded-xl bg-slate-800/80 border border-slate-700 text-xs font-bold text-amber-300 text-center">
+                {team1.score > team2.score ? (
+                  <span>🏆 {team1.name} متقدم بفارق {team1.score - team2.score} نقطة!</span>
+                ) : team2.score > team1.score ? (
+                  <span>🏆 {team2.name} متقدم بفارق {team2.score - team1.score} نقطة!</span>
+                ) : (
+                  <span>⚔️ تعادل مثير بين الفريقين ({team1.score} - {team2.score})!</span>
+                )}
+              </div>
+            </div>
+
+            {/* Explanation of Round 2 */}
+            <div className="p-4 rounded-2xl bg-indigo-950/40 border border-indigo-500/30 text-right space-y-2">
+              <h4 className="text-xs font-black text-indigo-300 flex items-center gap-1.5">
+                <HelpCircle className="w-4 h-4 text-indigo-400 shrink-0" />
+                <span>ما هو الشوط الثاني (الفئات الخاصة)؟</span>
+              </h4>
+              <ul className="text-xs text-slate-300 space-y-1.5 leading-relaxed pr-1">
+                <li className="flex items-start gap-1.5">
+                  <span className="text-indigo-400 font-bold">•</span>
+                  <span><strong>فئات حصرية لكل فريق:</strong> تم تفعيل الفئات الخاصة (4 فئات لكل فريق) التي اخترتوها في بداية اللعبة.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-indigo-400 font-bold">•</span>
+                  <span><strong>فرصة التعويض والحسم:</strong> الأسئلة مخصصة في مجالات تخصصكم لحصد أعلى النقاط وحسم الفوز النهائي!</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-indigo-400 font-bold">•</span>
+                  <span><strong>الدور بالتبادل:</strong> يختار كل فريق سؤاله من فئاته، والسرعة والدقة تصنع الفارق.</span>
+                </li>
+              </ul>
             </div>
 
             <button
               onClick={handleProceedToSpecificPhase}
-              className="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-400 hover:to-pink-400 text-white font-black text-base shadow-xl shadow-indigo-500/25 flex items-center justify-center gap-2 transition transform hover:scale-[1.02] active:scale-95 cursor-pointer"
+              className="w-full py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-400 hover:to-pink-400 text-white font-black text-base shadow-xl shadow-indigo-500/25 flex items-center justify-center gap-2 transition transform hover:scale-[1.02] active:scale-95 cursor-pointer"
             >
-              <span>فهمت، يلا نبدأ الشوط الثاني! 🚀</span>
+              <span>يلا نبدأ الشوط الثاني! 🚀</span>
             </button>
           </div>
         </div>

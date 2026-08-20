@@ -42,7 +42,9 @@ import {
   ShoppingBag,
   Tag,
   Box,
-  Car
+  Car,
+  MicOff,
+  VolumeX
 } from 'lucide-react';
 import { sound } from '../utils/sound';
 
@@ -93,7 +95,9 @@ const CATEGORY_ICONS: Record<string, React.ElementType> = {
   ShoppingBag,
   Tag,
   Box,
-  Car
+  Car,
+  MicOff,
+  VolumeX
 };
 
 export const GameBoard: React.FC<GameBoardProps> = ({

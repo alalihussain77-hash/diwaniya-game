@@ -12,6 +12,17 @@ import { esrefRuya100Questions } from "./esrefRuyaQuestions";
 import { seerah100Questions } from "./seerahQuestions";
 import { theWalkingDead100Questions } from "./theWalkingDeadQuestions";
 import { gameOfThrones100Questions } from "./gameOfThronesQuestions";
+import {
+  walaKelmaFootballQuestions,
+  walaKelmaSportsQuestions,
+  walaKelmaProverbsQuestions,
+  walaKelmaGeneralQuestions,
+  walaKelmaOriginalQuestions,
+  walaKelmaAnimeQuestions,
+  walaKelmaWrestlingQuestions,
+  walaKelmaForeignArtQuestions,
+  walaKelmaMediaQuestions
+} from "./walaKelmaQuestions";
 
 export const INITIAL_CATEGORIES: Category[] = [
   {
@@ -608,6 +619,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "general",
     "section": "🌐 قسم عام",
     "iconName": "ShoppingBag",
+    "imageUrl": "/products_thumb.jpg",
     "description": "يحتوي على أسئلة تتعلق بمنتجات عالمية مع عرض صورة المنتج أو شعاره مباشرة",
     "color": "from-amber-500 to-red-600",
     "bgGradient": "bg-gradient-to-br from-amber-500/10 to-red-500/10 border-amber-500/30",
@@ -803,6 +815,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "general",
     "section": "🌐 قسم عام",
     "iconName": "Trophy",
+    "imageUrl": "/sports_thumb.jpg",
     "description": "الأولمبياد وكأس العالم وكرة السلة والتنس والأرقام القياسية",
     "color": "from-amber-500 to-amber-700",
     "bgGradient": "bg-gradient-to-br from-amber-500/10 to-amber-700/10 border-amber-500/30",
@@ -848,11 +861,141 @@ export const INITIAL_CATEGORIES: Category[] = [
     "questions": cars100Questions
   },
   {
+    "id": "wk-sports",
+    "name": "ولا كلمة كروية",
+    "type": "general",
+    "section": "ولا كلمة",
+    "iconName": "Trophy",
+    "imageUrl": "/wk_sports_thumb.jpg",
+    "description": "تحدي التمثيل الصامت لأشهر اللاعبين والأندية والأهداف واللحظات الكروية",
+    "color": "from-amber-500 to-orange-600",
+    "bgGradient": "bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-amber-500/30",
+    "tags": [
+      "تمثيل صامت",
+      "كرة قدم",
+      "رياضة",
+      "تحدي"
+    ],
+    "questions": walaKelmaFootballQuestions
+  },
+  {
+    "id": "wk-proverbs",
+    "name": "ولا كلمة أمثال",
+    "type": "general",
+    "section": "ولا كلمة",
+    "iconName": "BookOpen",
+    "imageUrl": "/wk_proverbs_thumb.jpg",
+    "description": "تحدي التمثيل الصامت لأشهر الأمثال والحكم الشعبية الكويتية والخليجية والعربية",
+    "color": "from-amber-500 to-orange-600",
+    "bgGradient": "bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-amber-500/30",
+    "tags": [
+      "تمثيل صامت",
+      "أمثال",
+      "تراث",
+      "حكم"
+    ],
+    "questions": walaKelmaProverbsQuestions
+  },
+  {
+    "id": "wk-general",
+    "name": "ولا كلمة عامة",
+    "type": "general",
+    "section": "ولا كلمة",
+    "iconName": "Brain",
+    "description": "تحدي مسح الباركود بالهاتف والتمثيل الصامت لأشهر المنتجات والماركات والأجهزة",
+    "color": "from-amber-500 to-orange-600",
+    "bgGradient": "bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-amber-500/30",
+    "tags": [
+      "تمثيل صامت",
+      "باركود",
+      "منتجات",
+      "ماركات",
+      "عامة"
+    ],
+    "questions": walaKelmaGeneralQuestions
+  },
+  {
+    "id": "wk-classic",
+    "name": "أفلام، مسلسلات، أغاني، ومسرحيات",
+    "type": "general",
+    "section": "ولا كلمة",
+    "iconName": "Film",
+    "imageUrl": "/wk_classic_thumb.jpg",
+    "description": "تحدي التمثيل الصامت لأشهر الأفلام والمسلسلات والأغاني والمسرحيات العربية والخليجية",
+    "color": "from-amber-500 to-orange-600",
+    "bgGradient": "bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-amber-500/30",
+    "tags": [
+      "تمثيل صامت",
+      "أفلام",
+      "مسلسلات",
+      "أغاني",
+      "مسرحيات"
+    ],
+    "questions": walaKelmaMediaQuestions
+  },
+  {
+    "id": "wk-anime",
+    "name": "أنمي - مسلسلات وشخصيات",
+    "type": "general",
+    "section": "ولا كلمة",
+    "iconName": "Flame",
+    "imageUrl": "/wk_anime_thumb.jpg",
+    "description": "تحدي التمثيل الصامت لأشهر مسلسلات وشخصيات الأنمي العالمية",
+    "color": "from-amber-500 to-orange-600",
+    "bgGradient": "bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-amber-500/30",
+    "tags": [
+      "تمثيل صامت",
+      "أنمي",
+      "مسلسلات أنمي",
+      "شخصيات أنمي",
+      "ون بيس",
+      "ناروتو"
+    ],
+    "questions": walaKelmaAnimeQuestions
+  },
+  {
+    "id": "wk-wrestling",
+    "name": "ولا كلمة مصارعة",
+    "type": "general",
+    "section": "ولا كلمة",
+    "iconName": "Swords",
+    "imageUrl": "/wk_wrestling_thumb.jpg",
+    "description": "تحدي التمثيل الصامت لأشهر حركات ومصارعي وأساطير حلبات WWE",
+    "color": "from-amber-500 to-orange-600",
+    "bgGradient": "bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-amber-500/30",
+    "tags": [
+      "تمثيل صامت",
+      "مصارعة",
+      "WWE",
+      "أساطير"
+    ],
+    "questions": walaKelmaWrestlingQuestions
+  },
+  {
+    "id": "wk-foreign-art",
+    "name": "ولا كلمة فن أجنبي",
+    "type": "general",
+    "section": "ولا كلمة",
+    "iconName": "Tv",
+    "imageUrl": "/wk_foreign_thumb.jpg",
+    "description": "تحدي التمثيل الصامت لأشهر أفلام ومسلسلات وشخصيات هوليوود والسينما العالمية",
+    "color": "from-amber-500 to-orange-600",
+    "bgGradient": "bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-amber-500/30",
+    "tags": [
+      "تمثيل صامت",
+      "هوليوود",
+      "أفلام",
+      "سينما عالمية"
+    ],
+    "questions": walaKelmaForeignArtQuestions
+  },
+  {
     "id": "gen-geography",
     "name": "جغرافيا",
     "type": "general",
     "section": "🌍 قسم دول",
     "iconName": "Globe",
+    "imageUrl": "/geography_thumb.jpg",
     "description": "يحتوي على أسئلة تتعلق بجغرافيا الدول وأهم المعالم الطبيعية والسياحية فيها",
     "color": "from-cyan-500 to-blue-600",
     "bgGradient": "bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border-cyan-500/30",
@@ -997,7 +1140,7 @@ export const INITIAL_CATEGORIES: Category[] = [
   {
     "id": "spec-kuwait-general",
     "name": "الكويت",
-    "type": "specific",
+    "type": "general",
     "section": "🇰🇼 قسم الكويت",
     "iconName": "Landmark",
     "description": "أسئلة تتعلق بالكويت في جميع المجالات (تاريخ، شخصيات، معالم)",
@@ -1094,7 +1237,7 @@ export const INITIAL_CATEGORIES: Category[] = [
   {
     "id": "spec-kuwait-restaurants",
     "name": "شارع المطاعم",
-    "type": "specific",
+    "type": "general",
     "section": "🇰🇼 قسم الكويت",
     "iconName": "Utensils",
     "description": "أسئلة تتعلق بالمطاعم والمأكولات الكويتية والعالمية",
@@ -1191,7 +1334,7 @@ export const INITIAL_CATEGORIES: Category[] = [
   {
     "id": "spec-kuwait-location",
     "name": "لوكيشن",
-    "type": "specific",
+    "type": "general",
     "section": "🇰🇼 قسم الكويت",
     "iconName": "MapPin",
     "description": "أسئلة تتعلق بمواقع وأماكن مختلف الأماكن والمناطق في الكويت",
@@ -1288,7 +1431,7 @@ export const INITIAL_CATEGORIES: Category[] = [
   {
     "id": "spec-kuwait-malls",
     "name": "مجمعات الكويت",
-    "type": "specific",
+    "type": "general",
     "section": "🇰🇼 قسم الكويت",
     "iconName": "Building2",
     "description": "أسئلة تتعلق بالمجمعات والأسواق التجارية في الكويت",
@@ -1385,7 +1528,7 @@ export const INITIAL_CATEGORIES: Category[] = [
   {
     "id": "spec-kuwait-cafes",
     "name": "قهاوي",
-    "type": "specific",
+    "type": "general",
     "section": "🇰🇼 قسم الكويت",
     "iconName": "Coffee",
     "description": "أسئلة تتعلق بالكافيهات والقهوة في الكويت",
