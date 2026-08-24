@@ -125,8 +125,13 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
     setEditQuestionText(q.question || '');
     setEditAnswerText(q.answer || '');
     setEditPoints(q.points || 200);
-    setEditQuestionImage(q.imageUrl || '');
-    setEditAnswerImage(q.answerImageUrl || q.imageUrl || '');
+    const qImg = q.imageUrl || '';
+    const aImg = q.answerImageUrl || q.imageUrl || '';
+    setEditQuestionImage(qImg);
+    setEditAnswerImage(aImg);
+    setQuestionImgType(qImg.startsWith('data:') ? 'file' : 'url');
+    setAnswerImgType(aImg.startsWith('data:') ? 'file' : 'url');
+    setActiveImageTab(aImg ? 'answer' : 'question');
     setEditHint(q.hint || '');
     setEditExplanation(q.explanation || '');
     setSaveSuccessMsg('');
@@ -749,7 +754,7 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
                           <div className="flex items-center gap-2">
                             <input
                               key="view-cat-edit-question-image-url"
-                              type="url"
+                              type="text"
                               value={editQuestionImage || ''}
                               onChange={(e) => setEditQuestionImage(e.target.value)}
                               className="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400"
@@ -845,7 +850,7 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
                           <div className="flex items-center gap-2">
                             <input
                               key="view-cat-edit-answer-image-url"
-                              type="url"
+                              type="text"
                               value={editAnswerImage || ''}
                               onChange={(e) => setEditAnswerImage(e.target.value)}
                               className="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-400"
