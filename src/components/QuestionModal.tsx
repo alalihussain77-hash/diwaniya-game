@@ -157,7 +157,6 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
     // 4. Check explicit question image if present
     if (question.imageUrl && !question.imageUrl.includes('unsplash.com')) return question.imageUrl;
     if ((question as any).image && !(question as any).image.includes('unsplash.com')) return (question as any).image;
-    if (question.answerImageUrl && !question.answerImageUrl.includes('unsplash.com')) return question.answerImageUrl;
 
     // 5. General Visual Categories
     if (catId.includes('cars') || catName.includes('سيارات') || qId.includes('car')) return '/cars_category_thumb.jpg';
@@ -190,6 +189,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
   const isVisual = Boolean(
     effectiveImageUrl ||
     questionImageUrl ||
+    (question.answerImageUrl && question.answerImageUrl.trim() !== '') ||
     question.id?.startsWith('car_') ||
     category?.name?.includes('سيارات') ||
     category?.id === 'gen-cars' ||

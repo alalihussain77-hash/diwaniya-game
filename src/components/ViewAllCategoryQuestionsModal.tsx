@@ -146,8 +146,8 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.size > 10 * 1024 * 1024) {
-      setErrorMsg('حجم الصورة كبير جداً (الحد الأقصى 10 ميغابايت)');
+    if (file.size > 15 * 1024 * 1024) {
+      setErrorMsg('حجم الصورة كبير جداً (الحد الأقصى 15 ميغابايت)');
       return;
     }
 
@@ -161,6 +161,8 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
       setErrorMsg('تعذر معالجة وضغط الصورة');
     } finally {
       setIsCompressing(false);
+      // Reset input value so user can upload the same or another file seamlessly
+      e.target.value = '';
     }
   };
 
@@ -176,6 +178,32 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
     }
   };
 
+  const getTargetTsFileName = () => {
+    if (!category) return 'questions.ts';
+    if (category.id === 'gen-knowledge' || category.id === 'knowledge' || category.name.includes('معلومات عامة')) {
+      return 'generalKnowledgeBatch1.ts';
+    }
+    if (category.id === 'gen-history' || category.name.includes('تاريخ')) {
+      return 'historyBatch1.ts';
+    }
+    if (category.id === 'gen-cars' || category.name.includes('سيارات')) {
+      return 'carsQuestions.ts';
+    }
+    if (category.id === 'gen-sports' || category.name.includes('رياضة')) {
+      return 'sportsQuestions.ts';
+    }
+    if (category.id === 'gen-flags' || category.name.includes('أعلام')) {
+      return 'flagsQuestions.ts';
+    }
+    if (category.id === 'gen-capitals' || category.name.includes('عواصم')) {
+      return 'capitalsQuestions.ts';
+    }
+    if (category.id === 'gen-riddles' || category.name.includes('ألغاز')) {
+      return 'riddlesQuestions.ts';
+    }
+    return `${category.id.replace(/[^a-zA-Z0-9]/g, '_')}_questions.ts`;
+  };
+
   const handleDownloadCodeFile = () => {
     if (!category) return;
     try {
@@ -184,7 +212,7 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `${category.id}_questions.ts`;
+      link.download = getTargetTsFileName();
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -1027,18 +1055,23 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
                   <Code className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-sm sm:text-base font-bold text-white">
-                    تصدير الكود البرمجي لفئة: {category.name}
-                  </h3>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-sm sm:text-base font-bold text-white">
+                      تصدير الكود البرمجي لفئة: {category.name}
+                    </h3>
+                    <span className="px-2 py-0.5 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] font-mono font-bold">
+                      src/data/{getTargetTsFileName()}
+                    </span>
+                  </div>
                   <p className="text-xs text-slate-400">
-                    كود TypeScript جاهز بالكامل يحتوي على جميع الأسئلة والصور المحفوظة
+                    كود TypeScript مرمز بالكامل يحتوي على كافة الأسئلة والصور المحفوظة (Base64) جاهز للدمج في السورس كود ومزامنة GitHub
                   </p>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setShowExportModal(false)}
-                className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition"
+                className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>

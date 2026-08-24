@@ -282,10 +282,47 @@ export function resetCategoryQuestions(catId: string): void {
 
 /**
  * Generate TypeScript code export for the questions of a category
- * Allows user to copy or download as actual code file in the repository
+ * Allows user to copy or download as actual code file in the repository (e.g. generalKnowledgeBatch1.ts, etc.)
  */
 export function generateCategoryTypeScriptCode(catId: string, catName: string = ''): string {
   const list = getCategoryRawQuestions(catId, catName);
+
+  // 1. General Knowledge Special Handler (Batched GeneralKnowledgeQuestion format)
+  if (catId === 'gen-knowledge' || catId === 'knowledge' || catName.includes('معلومات عامة') || catName.includes('معرفة')) {
+    const formattedGK = list.map((q) => {
+      const item: Record<string, any> = {
+        id: q.id,
+        category: "معلومات عامة",
+        points: q.points || 200,
+        questionText: q.question,
+        options: q.options && q.options.length > 0 ? q.options : [q.answer],
+        correctAnswer: q.answer,
+      };
+      if (q.answerImageUrl && q.answerImageUrl.trim() !== '') {
+        item.answerImageUrl = q.answerImageUrl.trim();
+      } else if (q.imageUrl && q.imageUrl.trim() !== '') {
+        item.answerImageUrl = q.imageUrl.trim();
+      }
+      if (q.hint && q.hint.trim() !== '') item.hint = q.hint.trim();
+      return item;
+    });
+
+    return `export interface GeneralKnowledgeQuestion {
+  id: string;
+  category: string;
+  points: number;
+  questionText: string;
+  options: string[];
+  correctAnswer: string;
+  answerImageUrl?: string;
+  hint?: string;
+}
+
+export const generalKnowledgeBatch1: GeneralKnowledgeQuestion[] = ${JSON.stringify(formattedGK, null, 2)};
+`;
+  }
+
+  // 2. Standard Category Format
   const varName = (catId.replace(/[^a-zA-Z0-9]/g, '_') || 'category') + 'Questions';
 
   const formattedQuestions = list.map((q) => {
