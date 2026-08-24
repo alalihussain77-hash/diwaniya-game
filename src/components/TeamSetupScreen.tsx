@@ -143,7 +143,7 @@ export const TeamSetupScreen: React.FC<TeamSetupScreenProps> = ({
             <label className="text-xs font-bold text-slate-300">اسم الفريق الأول <span className="text-red-400">*</span></label>
             <input
               type="text"
-              value={team1.name}
+              value={team1.name || ''}
               onChange={(e) => {
                 onUpdateTeam1({ name: e.target.value });
                 if (errorMessage) setErrorMessage(null);
@@ -184,7 +184,7 @@ export const TeamSetupScreen: React.FC<TeamSetupScreenProps> = ({
             <label className="text-xs font-bold text-slate-300">اسم الفريق الثاني <span className="text-blue-400">*</span></label>
             <input
               type="text"
-              value={team2.name}
+              value={team2.name || ''}
               onChange={(e) => {
                 onUpdateTeam2({ name: e.target.value });
                 if (errorMessage) setErrorMessage(null);

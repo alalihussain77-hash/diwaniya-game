@@ -146,7 +146,7 @@ export const CustomCategoryModal: React.FC<CustomCategoryModalProps> = ({
             <input
               type="text"
               required
-              value={name}
+              value={name || ''}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g., Friends TV Show, Anime Legends, Kuwait History"
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-emerald-500"
@@ -181,7 +181,7 @@ export const CustomCategoryModal: React.FC<CustomCategoryModalProps> = ({
             <label className="font-semibold text-slate-300">Short Description</label>
             <input
               type="text"
-              value={description}
+              value={description || ''}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Brief description of questions in this category"
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-emerald-500"
@@ -193,14 +193,14 @@ export const CustomCategoryModal: React.FC<CustomCategoryModalProps> = ({
             <span className="font-bold text-amber-400 block">Question 1 (100 Pts)</span>
             <input
               type="text"
-              value={q1.question}
+              value={q1.question || ''}
               onChange={(e) => setQ1({ ...q1, question: e.target.value })}
               placeholder="Question text..."
               className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white"
             />
             <input
               type="text"
-              value={q1.answer}
+              value={q1.answer || ''}
               onChange={(e) => setQ1({ ...q1, answer: e.target.value })}
               placeholder="Correct Answer..."
               className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-emerald-400 font-semibold"

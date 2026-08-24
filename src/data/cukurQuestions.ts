@@ -823,14 +823,26 @@ export const cukur100QuestionsRaw: CukurQuestionData[] = [
   }
 ];
 
+const cukurImages = [
+  '/cukur/cukur_1.jpg',
+  '/cukur/cukur_2.jpg',
+  '/cukur/cukur_3.jpg',
+  '/cukur/cukur_4.jpg',
+];
+
 // Map questions to standard Question interface format with formatted ID
-export const cukur100Questions: Question[] = cukur100QuestionsRaw.map((q, idx) => ({
-  id: `spec-turkish-cukur_${String(idx + 1).padStart(3, '0')}`,
-  points: q.points,
-  question: q.question,
-  options: q.options,
-  correctAnswer: q.correctAnswer,
-  explanation: q.explanation,
-  hint: q.hint,
-  hideImageUntilAnswer: true,
-}));
+export const cukur100Questions: Question[] = cukur100QuestionsRaw.map((q, idx) => {
+  const assignedImg = cukurImages[idx % cukurImages.length];
+  return {
+    id: `spec-turkish-cukur_${String(idx + 1).padStart(3, '0')}`,
+    points: q.points,
+    question: q.question,
+    options: q.options,
+    correctAnswer: q.correctAnswer,
+    explanation: q.explanation,
+    hint: q.hint,
+    imageUrl: assignedImg,
+    answerImageUrl: assignedImg,
+    hideImageUntilAnswer: false,
+  };
+});

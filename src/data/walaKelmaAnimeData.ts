@@ -1,73 +1,70 @@
 import { Question } from '../types';
+import { animeQuestionsByPoints } from './anime100Questions';
 
-export const animeQuestions: Record<number, string[]> = {
-  // 200 نقطة: أنميات وشخصيات شهيرة جداً ويسهل تمثيلها (الأسهل)
-  200: [
-    "ون بيس", "ناروتو", "هجوم العمالقة", "دراغون بول", "محقق كونان",
-    "لوفي", "زورو", "سانجي", "ناروتو أوزوماكي", "ساسكي",
-    "إيتاشي", "غوكو", "فيجيتا", "ليفاي", "إيرين ييغر",
-    "كونان إيدوجاوا", "سينشي كودو", "كيلوا", "غون", "قراصنة قبعة القش"
-  ],
+export interface AnimeQuestionItem {
+  question: string;
+  answer: string;
+}
 
-  // 400 نقطة: أنميات وشخصيات معروفة بمستوى متوسط
-  400: [
-    "قاتل الشياطين", "أكاديمية بطلتي", "هنتر x هنتر", "مذكرة الموت", "جوجوتسو كايسن",
-    "تانجيرو", "نيزوكو", "غوجو ساتورو", "سوكونا", "ميدوريا (ديكو)",
-    "باكوغو", "إل (L)", "لايت ياغامي", "كورابيكا", "هيسوكا",
-    "نامي", "تشوبر", "ترافلغار لو", "كاكاشي", "غارا"
-  ],
-
-  // 600 نقطة: أنميات وشخصيات يصعب تمثيلها أو قديمة (الأصعب)
-  600: [
-    "فل ميتال ألكيمست", "بليتش", "سايتاما (رجل اللكمة الواحدة)", "كود غياس", "فينلاند ساغا",
-    "إدوارد إلريك", "إيتشيغو كوروساكي", "ليلوش", "ثورفين", "أسكيلات",
-    "مادارا أوتشيها", "أيزن", "كينغدوم", "سيلفر رايلي", "بوكو نو هيرو",
-    "جينتاما", "ساكاتا جينتوكي", "شينتشي أوكازاكي", "أوروتشيمارو", "ميرويم"
-  ]
+export const animeQuestions: Record<number, AnimeQuestionItem[]> = {
+  200: animeQuestionsByPoints[200].map(item => ({ question: item.question, answer: item.answer })),
+  400: animeQuestionsByPoints[400].map(item => ({ question: item.question, answer: item.answer })),
+  600: animeQuestionsByPoints[600].map(item => ({ question: item.question, answer: item.answer }))
 };
 
-// All anime items combined for general references
+// Also export flat word list for backward compatibility
 export const animeList: string[] = [
-  ...animeQuestions[200],
-  ...animeQuestions[400],
-  ...animeQuestions[600]
+  ...animeQuestions[200].map(i => i.answer),
+  ...animeQuestions[400].map(i => i.answer),
+  ...animeQuestions[600].map(i => i.answer)
 ];
 
-// Helper to generate a Question object
-const createAnimeQuestion = (item: string, pts: number, idSuffix: string): Question => {
-  const pool = animeQuestions[pts] || animeList;
-  const otherOptions = pool
-    .filter((w) => w !== item)
-    .sort(() => (idSuffix.length % 3) - 1)
-    .slice(0, 3);
-
-  const options = [item, ...otherOptions].sort(() => (item.length % 2 === 0 ? 1 : -1));
-
+// Helper to select random anime question by points
+export const getRandomAnimeQuestion = (currentPoints: number = 200) => {
+  const pointsKey = (currentPoints === 400 || currentPoints === 600) ? currentPoints : 200;
+  const list = animeQuestions[pointsKey] || animeQuestions[200];
+  const selectedAnimeItem = list[Math.floor(Math.random() * list.length)];
   return {
-    id: `wk_ani_${pts}_${idSuffix}`,
-    points: pts,
-    category: 'أنمي - مسلسلات وشخصيات',
-    question: 'امسح الباركود للحصول على السؤال',
-    options: options,
-    correctAnswer: item, // النص الصريح المباشر Plain Text
-    explanation: `الأنمي أو الشخصية المطلوب تمثيلها: ${item}`,
-    hint: `مسلسل أو شخصية أنمي شهيرة (${item})`
+    selectedAnimeItem,
+    currentQuestionText: selectedAnimeItem.question,
+    currentAnswerText: selectedAnimeItem.answer,
+    qrUrl: `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(selectedAnimeItem.question)}`
   };
 };
 
-// Generate full 100 questions:
-export const walaKelmaAnimeQuestions: Question[] = Array.from({ length: 100 }, (_, index) => {
-  const qNum = index + 1;
-  let pts = 200;
-  let pool = animeQuestions[200];
-  if (qNum > 34 && qNum <= 67) {
-    pts = 400;
-    pool = animeQuestions[400];
-  } else if (qNum > 67) {
-    pts = 600;
-    pool = animeQuestions[600];
-  }
-
-  const selectedItem = pool[(qNum - 1) % pool.length];
-  return createAnimeQuestion(selectedItem, pts, String(qNum).padStart(3, '0'));
-});
+// Generate full 100 questions for Wala Kelma Anime
+export const walaKelmaAnimeQuestions: Question[] = [
+  ...animeQuestionsByPoints[200].map((item, idx) => ({
+    id: `wk_ani_200_${String(idx + 1).padStart(3, '0')}`,
+    points: 200,
+    category: 'أنمي - مسلسلات وشخصيات',
+    question: 'امسح الباركود للحصول على السؤال',
+    questionText: item.question,
+    options: item.options,
+    correctAnswer: item.answer,
+    explanation: `السؤال: ${item.question}\nالإجابة: ${item.answer}`,
+    hint: item.hint || `أنمي: ${item.answer}`
+  })),
+  ...animeQuestionsByPoints[400].map((item, idx) => ({
+    id: `wk_ani_400_${String(idx + 1).padStart(3, '0')}`,
+    points: 400,
+    category: 'أنمي - مسلسلات وشخصيات',
+    question: 'امسح الباركود للحصول على السؤال',
+    questionText: item.question,
+    options: item.options,
+    correctAnswer: item.answer,
+    explanation: `السؤال: ${item.question}\nالإجابة: ${item.answer}`,
+    hint: item.hint || `أنمي: ${item.answer}`
+  })),
+  ...animeQuestionsByPoints[600].map((item, idx) => ({
+    id: `wk_ani_600_${String(idx + 1).padStart(3, '0')}`,
+    points: 600,
+    category: 'أنمي - مسلسلات وشخصيات',
+    question: 'امسح الباركود للحصول على السؤال',
+    questionText: item.question,
+    options: item.options,
+    correctAnswer: item.answer,
+    explanation: `السؤال: ${item.question}\nالإجابة: ${item.answer}`,
+    hint: item.hint || `أنمي: ${item.answer}`
+  }))
+];

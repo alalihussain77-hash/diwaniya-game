@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Category, Question, Team } from '../types';
-import { getCategoryRemainingCount, getFreshQuestionsForCategory } from '../utils/questionBank';
+import { getCategoryRemainingCount, getCategoryTotalCount, getFreshQuestionsForCategory } from '../utils/questionBank';
 import {
   Brain,
   Landmark,
@@ -374,10 +374,11 @@ export const GameBoard: React.FC<GameBoardProps> = ({
                   )}
                   {(() => {
                     const rem = getCategoryRemainingCount(cat.id, cat.name);
+                    const total = getCategoryTotalCount(cat.id, cat.name);
                     return (
                       <div className="mt-1 text-[9px] sm:text-[10px] font-black text-amber-300/90 bg-slate-950/80 px-1.5 sm:px-2 py-0.5 rounded-lg border border-amber-500/30 inline-flex items-center justify-center gap-1 shadow-sm w-full">
                         <span className="text-slate-400 font-extrabold hidden sm:inline">المتبقي:</span>
-                        <span className="font-mono font-black text-amber-300 text-[10px] sm:text-[11px]">{rem}/100</span>
+                        <span className="font-mono font-black text-amber-300 text-[10px] sm:text-[11px]">{rem}/{total}</span>
                       </div>
                     );
                   })()}

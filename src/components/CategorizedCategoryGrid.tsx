@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Category, Team } from '../types';
-import { getCategoryRemainingCount } from '../utils/questionBank';
+import { getCategoryRemainingCount, getCategoryTotalCount } from '../utils/questionBank';
+import { AddCategoryQuestionModal } from './AddCategoryQuestionModal';
+import { ViewAllCategoryQuestionsModal } from './ViewAllCategoryQuestionsModal';
 import {
   Brain,
   Landmark,
@@ -41,7 +43,8 @@ import {
   Box,
   Car,
   MicOff,
-  VolumeX
+  VolumeX,
+  PlusCircle
 } from 'lucide-react';
 
 interface CategorizedCategoryGridProps {
@@ -101,6 +104,23 @@ export const CategorizedCategoryGrid: React.FC<CategorizedCategoryGridProps> = (
   onCategoryClick,
   gridColsOverride,
 }) => {
+  const [selectedCategoryForManage, setSelectedCategoryForManage] = useState<Category | null>(null);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isViewAllModalOpen, setIsViewAllModalOpen] = useState(false);
+  const [, setRefreshTick] = useState(0);
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setRefreshTick((prev) => prev + 1);
+    };
+    window.addEventListener('diwaniya_category_questions_updated', handleUpdate);
+    window.addEventListener('diwaniya_car_questions_updated', handleUpdate);
+    return () => {
+      window.removeEventListener('diwaniya_category_questions_updated', handleUpdate);
+      window.removeEventListener('diwaniya_car_questions_updated', handleUpdate);
+    };
+  }, []);
+
   // Group categories by section
   const groupedCategories = categories
     .filter((cat) => !cat.hidden)
@@ -240,23 +260,55 @@ export const CategorizedCategoryGrid: React.FC<CategorizedCategoryGridProps> = (
                         </p>
                       </div>
 
-                      {/* Remaining Questions Counter Badge */}
+                      {/* Remaining Questions Counter Badge & Universal Actions for EVERY Category */}
                       {(() => {
-                        const rem = getCategoryRemainingCount(cat.id);
+                        const rem = getCategoryRemainingCount(cat.id, cat.name);
+                        const total = getCategoryTotalCount(cat.id, cat.name);
                         return (
-                          <div className="mt-2.5 pt-2 sm:pt-2.5 border-t border-slate-700/60 flex items-center justify-between text-[10px] sm:text-[11px] font-extrabold">
-                            <span className="text-slate-300">المتبقي:</span>
-                            <span
-                              className={`px-2 py-0.5 rounded-full font-mono text-[10px] sm:text-[11px] font-black shadow-sm ${
-                                rem > 50
-                                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                                  : rem > 10
-                                  ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                                  : 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
-                              }`}
-                            >
-                              {rem} / 100
-                            </span>
+                          <div className="mt-2.5 pt-2 sm:pt-2.5 border-t border-slate-700/60 flex flex-col gap-1.5">
+                            <div className="flex flex-col gap-1.5">
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setSelectedCategoryForManage(cat);
+                                  setIsViewAllModalOpen(true);
+                                }}
+                                className="w-full py-1.5 px-2 rounded-xl bg-gradient-to-l from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-slate-950 font-black text-[11px] sm:text-xs flex items-center justify-center gap-1.5 transition shadow-sm hover:scale-[1.02] active:scale-98 cursor-pointer"
+                                title={`عرض وتعديل كافة أسئلة فئة ${cat.name}`}
+                              >
+                                <span>👁️ عرض جميع الأسئلة</span>
+                              </button>
+
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setSelectedCategoryForManage(cat);
+                                  setIsAddModalOpen(true);
+                                }}
+                                className="w-full py-1 px-2 rounded-xl bg-slate-800 hover:bg-slate-750 border border-slate-700 hover:border-amber-500/50 text-slate-300 hover:text-amber-300 font-extrabold text-[10px] sm:text-[11px] flex items-center justify-center gap-1 transition cursor-pointer"
+                                title={`إضافة سؤال جديد لفئة ${cat.name}`}
+                              >
+                                <PlusCircle className="w-3 h-3 text-amber-400" />
+                                <span>+ إضافة سؤال جديد</span>
+                              </button>
+                            </div>
+
+                            <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-extrabold">
+                              <span className="text-slate-300">المتبقي:</span>
+                              <span
+                                className={`px-2 py-0.5 rounded-full font-mono text-[10px] sm:text-[11px] font-black shadow-sm ${
+                                  rem > 50
+                                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                                    : rem > 10
+                                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                                    : 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
+                                }`}
+                              >
+                                {rem} / {total}
+                              </span>
+                            </div>
                           </div>
                         );
                       })()}
@@ -267,6 +319,31 @@ export const CategorizedCategoryGrid: React.FC<CategorizedCategoryGridProps> = (
           </div>
         );
       })}
+
+      {/* Universal Add Question Modal Form for Any Category */}
+      <AddCategoryQuestionModal
+        isOpen={isAddModalOpen}
+        category={selectedCategoryForManage}
+        onClose={() => setIsAddModalOpen(false)}
+        onQuestionAdded={() => {
+          setRefreshTick((prev) => prev + 1);
+        }}
+        onOpenViewAllModal={() => {
+          setIsAddModalOpen(false);
+          setIsViewAllModalOpen(true);
+        }}
+      />
+
+      {/* Universal View & Edit All Questions Modal for Any Category */}
+      <ViewAllCategoryQuestionsModal
+        isOpen={isViewAllModalOpen}
+        category={selectedCategoryForManage}
+        onClose={() => setIsViewAllModalOpen(false)}
+        onOpenAddModal={() => {
+          setIsViewAllModalOpen(false);
+          setIsAddModalOpen(true);
+        }}
+      />
     </div>
   );
 };

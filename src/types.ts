@@ -4,8 +4,10 @@ export interface Question {
   id: string;
   category?: string;
   question: string;
+  questionText?: string;
   imageUrl?: string; // Optional image URL for visual questions (flags, logos, products)
   image?: string; // Alias for imageUrl
+  answerImageUrl?: string; // Image to display when answer is revealed or inside question
   hideImageUntilAnswer?: boolean; // If true, image is hidden until answer is revealed so it doesn't spoil factual questions
   options?: string[]; // Optional multiple choice options
   correctAnswer: string;

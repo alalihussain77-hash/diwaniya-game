@@ -154,7 +154,7 @@ export const ReportQuestionModal: React.FC<ReportQuestionModalProps> = ({
             <div className="space-y-1.5">
               <label className="block text-xs font-bold text-slate-300">تفاصيل الملاحظة (اختياري):</label>
               <textarea
-                value={details}
+                value={details || ''}
                 onChange={(e) => setDetails(e.target.value)}
                 placeholder="اكتب أي توضيح إضافي يخص السؤال أو الإجابة..."
                 rows={3}

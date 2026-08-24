@@ -1,4 +1,5 @@
 import { Question } from '../types';
+import { persistentStorage } from '../utils/persistentStorage';
 import { INITIAL_CATEGORIES } from './categories';
 import { historyBatch1 } from './historyBatch1';
 import { historyBatch2 } from './historyBatch2';
@@ -21,10 +22,15 @@ import { capitals100Questions } from './capitalsQuestions';
 import { oldFlags100Questions } from './oldFlagsQuestions';
 import { sports100Questions } from './sportsQuestions';
 import { riddles100Questions } from './riddlesQuestions';
-import { carsQuestionDataList, cars100Questions } from './carsQuestions';
+import { carsQuestionDataList, cars100Questions, getAllCarQuestions } from './carsQuestions';
 import { seerah100Questions } from './seerahQuestions';
 import { theWalkingDead100Questions } from './theWalkingDeadQuestions';
 import { gameOfThrones100Questions } from './gameOfThronesQuestions';
+import { peakyBlinders100Questions } from './peakyBlinders100Questions';
+import { marvel100Questions } from './marvel100Questions';
+import { onePiece100Questions } from './onePiece100Questions';
+import { pokemon100Questions } from './pokemon100Questions';
+import { anime100Questions } from './anime100Questions';
 import {
   walaKelmaGeneralQuestions,
   wordList,
@@ -58,6 +64,7 @@ import {
   proverbsQuestions,
   walaKelmaProverbsQuestions,
 } from './walaKelmaProverbsData';
+import { products100Questions } from './productsQuestions';
 import {
   walaKelmaSportsQuestions,
   walaKelmaOriginalQuestions,
@@ -702,13 +709,17 @@ const CATEGORY_QUESTION_BANKS: Record<string, QuestionData[]> = {
       options: ['مونكي دي لوفي (Monkey D. Luffy)', 'رورونوا زورو', 'سانجي', 'إيس'],
       explanation: 'لوفي هو قائد طاقم قبعة القش وبطل الأنمي الرئيسي.',
       hint: 'صاحب قبعة القش والمطاط',
+      imageUrl: '/one_piece/onepiece_1.jpg',
+      hideImageUntilAnswer: false,
     },
     {
       question: 'ما اسم السياف الأسطوري صاحب أسلوب الثلاثة سيوف (Santoryu) في طاقم قبعة القش؟',
       correctAnswer: 'رورونوا زورو (Roronoa Zoro)',
       options: ['رورونوا زورو (Roronoa Zoro)', 'لاو', 'شانكس', 'ميهوك'],
-      explanation: 'زورو هو نTraditional السياف الأول في طاقم لوفي وذراعه الأيمن.',
+      explanation: 'زورو هو السياف الأول في طاقم لوفي وذراعه الأيمن.',
       hint: 'صاحب الشعر الأخضر وسيوفه الثلاثة',
+      imageUrl: '/one_piece/onepiece_2.jpg',
+      hideImageUntilAnswer: false,
     },
     {
       question: 'ما اسم طاهي السفينة الأنيق صاحب الساق الحمراء والضربات النارية (Diable Jambe)؟',
@@ -716,6 +727,8 @@ const CATEGORY_QUESTION_BANKS: Record<string, QuestionData[]> = {
       options: ['فينسموك سانجي (Sanji)', 'زورو', 'فرانكي', 'جينبي'],
       explanation: 'سانجي هو طباخ قبعة القش والابن الرابع لعائلة فينسموك.',
       hint: 'الطباخ الأنيق محب الطهي بالقدمين',
+      imageUrl: '/one_piece/onepiece_3.jpg',
+      hideImageUntilAnswer: false,
     },
     {
       question: 'ما اسم القرصان ذو الشعر الأحمر الذي أهدى لوفي قبعة القش وضحي بيده من أجله؟',
@@ -723,6 +736,8 @@ const CATEGORY_QUESTION_BANKS: Record<string, QuestionData[]> = {
       options: ['شانكس (Shanks)', 'باغي', 'كايدو', 'تيتش'],
       explanation: 'شانكس ذو الشعر الأحمر هو أحد اليونكو الأربعة وملهم لوفي.',
       hint: 'اليونكو ذو الشعر الأحمر',
+      imageUrl: '/one_piece/onepiece_4.jpg',
+      hideImageUntilAnswer: false,
     },
   ],
 
@@ -736,6 +751,8 @@ const CATEGORY_QUESTION_BANKS: Record<string, QuestionData[]> = {
       options: ['آش كيتشام (Ash Ketchum)', 'بروك', 'مستي', 'جاري أوك'],
       explanation: 'آش كيتشام هو مدرب البوكيمون الرئيسي من Pallet Town.',
       hint: 'الفتى صاحب القبعة الحمراء والبيضاء',
+      imageUrl: '/pokemon/pokemon_1.jpg',
+      hideImageUntilAnswer: false,
     },
     {
       question: 'ما هو البوكيمون الكهربائي الأصفر الأيقوني صاحب ضربة الصاعقة (100,000 Volts)؟',
@@ -743,6 +760,8 @@ const CATEGORY_QUESTION_BANKS: Record<string, QuestionData[]> = {
       options: ['بيكاتشو (Pikachu)', 'شاردماندر', 'سكويرتل', 'بولباسور'],
       explanation: 'بيكاتشو هو الرفيق الأسطوري لـ آش كيتشام وشعار البوكيمون.',
       hint: 'البوكيمون الأصفر الكهربائي',
+      imageUrl: '/pokemon/pokemon_2.jpg',
+      hideImageUntilAnswer: false,
     },
     {
       question: 'ما اسم عصابة الأشرار الثلاثية المكونة من جيسي وجيمس والمياوث المتكلم؟',
@@ -750,6 +769,8 @@ const CATEGORY_QUESTION_BANKS: Record<string, QuestionData[]> = {
       options: ['عصابة الرداء الأبيض (Team Rocket)', 'تيم أكوا', 'تيم ماغما', 'تيم البلازما'],
       explanation: 'Team Rocket يسعون لسرقة بيكاتشو في كل حلقة.',
       hint: 'Team Rocket',
+      imageUrl: '/pokemon/pokemon_3.jpg',
+      hideImageUntilAnswer: false,
     },
   ],
 
@@ -975,7 +996,67 @@ export function cleanQuestionText(text: string): string {
     .trim();
 }
 
+export function applyCategoryCustomizations(catId: string, baseQuestions: Question[]): Question[] {
+  if (typeof window === 'undefined' || !catId) return baseQuestions;
+  try {
+    const normCatId = catId.trim();
+    const deletedRaw = persistentStorage.getItem(`diwaniya_cat_deleted_${normCatId}`);
+    const deletedIds: string[] = deletedRaw ? JSON.parse(deletedRaw) : [];
+    const deletedSet = new Set(deletedIds);
+
+    const overridesRaw = persistentStorage.getItem(`diwaniya_cat_overrides_${normCatId}`);
+    const overrides: Record<string, any> = overridesRaw ? JSON.parse(overridesRaw) : {};
+
+    const customRaw = persistentStorage.getItem(`diwaniya_cat_custom_${normCatId}`);
+    const customList: any[] = customRaw ? JSON.parse(customRaw) : [];
+
+    const processedBase = baseQuestions
+      .filter((q) => q && !deletedSet.has(q.id))
+      .map((q) => {
+        const ov = overrides[q.id];
+        if (!ov) return q;
+        return {
+          ...q,
+          question: ov.question || q.question,
+          correctAnswer: ov.answer || ov.correctAnswer || q.correctAnswer,
+          points: ov.points || q.points,
+          imageUrl: ov.imageUrl !== undefined ? ov.imageUrl : q.imageUrl,
+          answerImageUrl: ov.answerImageUrl !== undefined ? ov.answerImageUrl : q.answerImageUrl,
+          hint: ov.hint !== undefined ? ov.hint : q.hint,
+          explanation: ov.explanation !== undefined ? ov.explanation : q.explanation,
+        };
+      });
+
+    const processedCustom: Question[] = customList
+      .filter((c) => c && !deletedSet.has(c.id))
+      .map((c) => {
+        const ov = overrides[c.id] || {};
+        return {
+          id: c.id,
+          points: ov.points || c.points || 200,
+          question: ov.question || c.question,
+          correctAnswer: ov.answer || c.answer || c.correctAnswer,
+          options: ov.options || c.options || [],
+          explanation: ov.explanation || c.explanation || `الإجابة الصحيحة هي: ${ov.answer || c.answer}`,
+          hint: ov.hint || c.hint || '',
+          imageUrl: ov.imageUrl !== undefined ? ov.imageUrl : c.imageUrl,
+          answerImageUrl: ov.answerImageUrl !== undefined ? ov.answerImageUrl : c.answerImageUrl,
+          hideImageUntilAnswer: false,
+        };
+      });
+
+    return [...processedCustom, ...processedBase];
+  } catch (e) {
+    return baseQuestions;
+  }
+}
+
 export function get100CategoryQuestions(catId?: string, catName?: string): Question[] {
+  const baseList = getBase100CategoryQuestions(catId, catName);
+  return applyCategoryCustomizations(String(catId || ''), baseList);
+}
+
+function getBase100CategoryQuestions(catId?: string, catName?: string): Question[] {
   try {
     if (!catId && !catName) return [];
 
@@ -983,7 +1064,8 @@ export function get100CategoryQuestions(catId?: string, catName?: string): Quest
     const name = String(catName || '').toLowerCase().trim();
 
     if (id === 'gen-cars' || id === 'cars' || name.includes('سيارات')) {
-      return Array.isArray(cars100Questions) ? cars100Questions : [];
+      const allCars = getAllCarQuestions();
+      return Array.isArray(allCars) && allCars.length > 0 ? allCars : (Array.isArray(cars100Questions) ? cars100Questions : []);
     }
 
     if (id === 'gen-history' || id === 'history' || name.includes('تاريخ')) {
@@ -1002,7 +1084,8 @@ export function get100CategoryQuestions(catId?: string, catName?: string): Quest
           explanation: `الإجابة الصحيحة هي: ${item.correctAnswer}`,
           hint: item.hint || '',
           imageUrl: item.answerImageUrl,
-          hideImageUntilAnswer: true,
+          answerImageUrl: item.answerImageUrl,
+          hideImageUntilAnswer: false,
         }));
       }
     }
@@ -1023,7 +1106,8 @@ export function get100CategoryQuestions(catId?: string, catName?: string): Quest
           explanation: `الإجابة الصحيحة هي: ${item.correctAnswer}`,
           hint: item.hint || '',
           imageUrl: item.answerImageUrl,
-          hideImageUntilAnswer: true,
+          answerImageUrl: item.answerImageUrl,
+          hideImageUntilAnswer: false,
         }));
       }
     }
@@ -1032,27 +1116,79 @@ export function get100CategoryQuestions(catId?: string, catName?: string): Quest
       const b1 = Array.isArray(breakingBad100Questions) ? breakingBad100Questions : [];
       const b2 = Array.isArray(breakingBadPart2) ? breakingBadPart2 : [];
       const combinedBB = [...b1, ...b2];
+      const bbImages = [
+        '/breaking_bad/bb_1.jpg',
+        '/breaking_bad/bb_2.jpg',
+        '/breaking_bad/bb_3.jpg',
+        '/breaking_bad/bb_4.jpg',
+      ];
       if (combinedBB.length > 0) {
-        return combinedBB.map((item) => ({
-          id: item.id,
-          points: item.points,
-          question: cleanQuestionText(item.questionText),
-          options: shuffle(item.options),
-          correctAnswer: item.correctAnswer,
-          explanation: `الإجابة الصحيحة هي: ${item.correctAnswer}`,
-          hint: item.hint || '',
-          imageUrl: item.answerImageUrl,
-          hideImageUntilAnswer: true,
-        }));
+        return combinedBB.map((item: any, idx) => {
+          const assignedImg = bbImages[idx % bbImages.length];
+          return {
+            id: item.id,
+            points: item.points,
+            question: cleanQuestionText(item.questionText || item.question),
+            options: shuffle(item.options),
+            correctAnswer: item.correctAnswer,
+            explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+            hint: item.hint || '',
+            imageUrl: item.imageUrl || item.answerImageUrl || assignedImg,
+            answerImageUrl: item.answerImageUrl || assignedImg,
+            hideImageUntilAnswer: false,
+          };
+        });
       }
     }
 
     if (id === 'spec-turkish-cukur' || id === 'cukur' || name.includes('الحفرة')) {
-      return Array.isArray(cukur100Questions) ? cukur100Questions : [];
+      const cukurImgs = [
+        '/cukur/cukur_1.jpg',
+        '/cukur/cukur_2.jpg',
+        '/cukur/cukur_3.jpg',
+        '/cukur/cukur_4.jpg',
+      ];
+      const list = Array.isArray(cukur100Questions) ? cukur100Questions : [];
+      return list.map((item, idx) => {
+        const assignedImg = cukurImgs[idx % cukurImgs.length];
+        return {
+          id: item.id,
+          points: item.points,
+          question: cleanQuestionText(item.question),
+          options: shuffle(item.options),
+          correctAnswer: item.correctAnswer,
+          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+          hint: item.hint || '',
+          imageUrl: assignedImg,
+          answerImageUrl: assignedImg,
+          hideImageUntilAnswer: false,
+        };
+      });
     }
 
     if (id === 'spec-turkish-osman' || id === 'osman' || name.includes('عثمان')) {
-      return Array.isArray(kurulusOsman100Questions) ? kurulusOsman100Questions : [];
+      const osmanImgs = [
+        '/kurulus_osman/osman_1.jpg',
+        '/kurulus_osman/osman_2.jpg',
+        '/kurulus_osman/osman_3.jpg',
+        '/kurulus_osman/osman_4.jpg',
+      ];
+      const list = Array.isArray(kurulusOsman100Questions) ? kurulusOsman100Questions : [];
+      return list.map((item, idx) => {
+        const assignedImg = osmanImgs[idx % osmanImgs.length];
+        return {
+          id: item.id,
+          points: item.points,
+          question: cleanQuestionText(item.question),
+          options: shuffle(item.options),
+          correctAnswer: item.correctAnswer,
+          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+          hint: item.hint || '',
+          imageUrl: assignedImg,
+          answerImageUrl: assignedImg,
+          hideImageUntilAnswer: false,
+        };
+      });
     }
 
     if (id === 'spec-turkish-esref-ruya' || id === 'esref-ruya' || name.includes('أشرف')) {
@@ -1060,7 +1196,26 @@ export function get100CategoryQuestions(catId?: string, catName?: string): Quest
     }
 
     if (id === 'spec-turkish-ertugrul' || id === 'ertugrul' || name.includes('أرطغرل')) {
-      return Array.isArray(ertugrul100Questions) ? ertugrul100Questions : [];
+      const ertugrulImgs = [
+        '/ertugrul/ertugrul_1.jpg',
+        '/ertugrul/ertugrul_2.jpg',
+      ];
+      const list = Array.isArray(ertugrul100Questions) ? ertugrul100Questions : [];
+      return list.map((item, idx) => {
+        const assignedImg = ertugrulImgs[idx % ertugrulImgs.length];
+        return {
+          id: item.id,
+          points: item.points,
+          question: cleanQuestionText(item.question),
+          options: shuffle(item.options),
+          correctAnswer: item.correctAnswer,
+          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+          hint: item.hint || '',
+          imageUrl: assignedImg,
+          answerImageUrl: assignedImg,
+          hideImageUntilAnswer: false,
+        };
+      });
     }
 
     if (
@@ -1070,7 +1225,26 @@ export function get100CategoryQuestions(catId?: string, catName?: string): Quest
       name.toLowerCase().includes('twd') ||
       name.includes('الموتى السائرون')
     ) {
-      return Array.isArray(theWalkingDead100Questions) ? theWalkingDead100Questions : [];
+      const twdImages = [
+        '/the_walking_dead/twd_1.jpg',
+        '/the_walking_dead/twd_2.jpg',
+      ];
+      const list = Array.isArray(theWalkingDead100Questions) ? theWalkingDead100Questions : [];
+      return list.map((item, idx) => {
+        const assignedImg = twdImages[idx % twdImages.length];
+        return {
+          id: item.id,
+          points: item.points,
+          question: cleanQuestionText(item.question),
+          options: shuffle(item.options),
+          correctAnswer: item.correctAnswer,
+          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+          hint: item.hint || '',
+          imageUrl: assignedImg,
+          answerImageUrl: assignedImg,
+          hideImageUntilAnswer: false,
+        };
+      });
     }
 
     if (
@@ -1081,7 +1255,164 @@ export function get100CategoryQuestions(catId?: string, catName?: string): Quest
       name.includes('صراع العروش') ||
       name.includes('صراع عروش')
     ) {
-      return Array.isArray(gameOfThrones100Questions) ? gameOfThrones100Questions : [];
+      const gotImages = [
+        '/game_of_thrones/got_1.jpg',
+        '/game_of_thrones/got_2.jpg',
+        '/game_of_thrones/got_3.jpg',
+        '/game_of_thrones/got_4.jpg',
+      ];
+      const list = Array.isArray(gameOfThrones100Questions) ? gameOfThrones100Questions : [];
+      return list.map((item, idx) => {
+        const assignedImg = gotImages[idx % gotImages.length];
+        return {
+          id: item.id,
+          points: item.points,
+          question: cleanQuestionText(item.question),
+          options: shuffle(item.options),
+          correctAnswer: item.correctAnswer,
+          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+          hint: item.hint || '',
+          imageUrl: assignedImg,
+          answerImageUrl: assignedImg,
+          hideImageUntilAnswer: false,
+        };
+      });
+    }
+
+    if (
+      id === 'spec-foreign-peaky' ||
+      id === 'peaky' ||
+      name.toLowerCase().includes('peaky blinders') ||
+      name.toLowerCase().includes('peaky') ||
+      name.includes('بيكي بلايندرز') ||
+      name.includes('بيكي بليندرز') ||
+      name.includes('بيكي') ||
+      name.includes('شيلبي')
+    ) {
+      const peakyImgs = [
+        '/peaky_blinders/peaky_1.jpg',
+        '/peaky_blinders/peaky_2.jpg',
+        '/peaky_blinders/peaky_3.jpg',
+        '/peaky_blinders/peaky_4.jpg',
+      ];
+      const list = Array.isArray(peakyBlinders100Questions) ? peakyBlinders100Questions : [];
+      return list.map((item, idx) => {
+        const assignedImg = peakyImgs[idx % peakyImgs.length];
+        return {
+          id: item.id,
+          points: item.points,
+          question: cleanQuestionText(item.question),
+          options: shuffle(item.options),
+          correctAnswer: item.correctAnswer,
+          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+          hint: item.hint || '',
+          imageUrl: assignedImg,
+          answerImageUrl: assignedImg,
+          hideImageUntilAnswer: false,
+        };
+      });
+    }
+
+    if (
+      id === 'spec-foreign-marvel' ||
+      id === 'marvel' ||
+      name.toLowerCase().includes('marvel') ||
+      name.toLowerCase().includes('avengers') ||
+      name.includes('مارفل') ||
+      name.includes('المنتقمون') ||
+      name.includes('افنجرز')
+    ) {
+      const marvelImgs = [
+        '/marvel/marvel_1.jpg',
+        '/marvel/marvel_2.jpg',
+        '/marvel/marvel_3.jpg',
+        '/marvel/marvel_4.jpg',
+      ];
+      const list = Array.isArray(marvel100Questions) ? marvel100Questions : [];
+      return list.map((item, idx) => {
+        const assignedImg = marvelImgs[idx % marvelImgs.length];
+        return {
+          id: item.id,
+          points: item.points,
+          question: cleanQuestionText(item.question),
+          options: shuffle(item.options),
+          correctAnswer: item.correctAnswer,
+          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+          hint: item.hint || '',
+          imageUrl: assignedImg,
+          answerImageUrl: assignedImg,
+          hideImageUntilAnswer: false,
+        };
+      });
+    }
+
+    if (
+      id === 'spec-anime-onepiece' ||
+      id === 'onepiece' ||
+      id === 'one-piece' ||
+      id === 'one_piece' ||
+      name.toLowerCase().includes('one piece') ||
+      name.toLowerCase().includes('onepiece') ||
+      name.includes('ون بيس') ||
+      name.includes('ونبيس') ||
+      name.includes('قبعة القش')
+    ) {
+      const opImgs = [
+        '/one_piece/onepiece_1.jpg',
+        '/one_piece/onepiece_2.jpg',
+        '/one_piece/onepiece_3.jpg',
+        '/one_piece/onepiece_4.jpg',
+      ];
+      const list = Array.isArray(onePiece100Questions) ? onePiece100Questions : [];
+      return list.map((item, idx) => {
+        const assignedImg = opImgs[idx % opImgs.length];
+        return {
+          id: item.id,
+          points: item.points,
+          question: cleanQuestionText(item.question),
+          options: shuffle(item.options),
+          correctAnswer: item.correctAnswer,
+          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+          hint: item.hint || '',
+          imageUrl: assignedImg,
+          answerImageUrl: assignedImg,
+          hideImageUntilAnswer: false,
+        };
+      });
+    }
+
+    if (
+      id === 'spec-anime-pokemon' ||
+      id === 'pokemon' ||
+      id === 'pokémon' ||
+      id === 'pokemons' ||
+      name.toLowerCase().includes('pokemon') ||
+      name.toLowerCase().includes('pokémon') ||
+      name.includes('بوكيمون') ||
+      name.includes('بيكاتشو')
+    ) {
+      const pokeImgs = [
+        '/pokemon/pokemon_1.jpg',
+        '/pokemon/pokemon_2.jpg',
+        '/pokemon/pokemon_3.jpg',
+        '/pokemon/pokemon_4.jpg',
+      ];
+      const list = Array.isArray(pokemon100Questions) ? pokemon100Questions : [];
+      return list.map((item, idx) => {
+        const assignedImg = pokeImgs[idx % pokeImgs.length];
+        return {
+          id: item.id,
+          points: item.points,
+          question: cleanQuestionText(item.question),
+          options: shuffle(item.options),
+          correctAnswer: item.correctAnswer,
+          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+          hint: item.hint || '',
+          imageUrl: assignedImg,
+          answerImageUrl: assignedImg,
+          hideImageUntilAnswer: false,
+        };
+      });
     }
 
     if (
@@ -1139,7 +1470,47 @@ export function get100CategoryQuestions(catId?: string, catName?: string): Quest
       return Array.isArray(walaKelmaMediaQuestions) ? walaKelmaMediaQuestions : [];
     }
 
-    if (id === 'wk-anime' || name.includes('ولا كلمة أنمي') || name.includes('أنمي')) {
+    if (
+      id === 'spec-anime-general' ||
+      name === 'أنمي' ||
+      name === 'انمي' ||
+      name === 'أنمي عام'
+    ) {
+      return Array.isArray(anime100Questions) ? anime100Questions : [];
+    }
+
+    if (
+      id === 'spec-anime-characters' ||
+      name.includes('شخصيات أنمي') ||
+      name.includes('شخصيات انمي')
+    ) {
+      const animeCharImgs = [
+        '/anime/anime_2.jpg',
+        '/anime/anime_1.jpg',
+        '/anime/anime_3.jpg',
+        '/anime/anime_4.jpg',
+        '/one_piece/onepiece_2.jpg',
+        '/pokemon/pokemon_2.jpg',
+      ];
+      const list = Array.isArray(anime100Questions) ? anime100Questions : [];
+      return list.map((item, idx) => {
+        const assignedImg = animeCharImgs[idx % animeCharImgs.length];
+        return {
+          id: `spec-anime-char_${String(idx + 1).padStart(3, '0')}`,
+          points: item.points,
+          question: cleanQuestionText(item.question),
+          options: shuffle(item.options),
+          correctAnswer: item.correctAnswer,
+          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+          hint: item.hint || '',
+          imageUrl: assignedImg,
+          answerImageUrl: assignedImg,
+          hideImageUntilAnswer: false,
+        };
+      });
+    }
+
+    if (id === 'wk-anime' || id.startsWith('wk-ani') || name.includes('ولا كلمة أنمي')) {
       return Array.isArray(walaKelmaAnimeQuestions) ? walaKelmaAnimeQuestions : [];
     }
 
@@ -1153,6 +1524,10 @@ export function get100CategoryQuestions(catId?: string, catName?: string): Quest
 
     if (id === 'gen-riddles' || id === 'riddles' || name.includes('ألغاز') || name.includes('الغاز')) {
       return Array.isArray(riddles100Questions) ? riddles100Questions : [];
+    }
+
+    if (id === 'gen-products' || id === 'products' || name.includes('منتجات')) {
+      return Array.isArray(products100Questions) ? products100Questions : [];
     }
 
     if (
@@ -1335,6 +1710,12 @@ function generateCategorySpecificFallback(catId: string, catName: string, index:
 
   // 3. Marvel (spec-foreign-marvel)
   if (catId === 'spec-foreign-marvel') {
+    const marvelImgs = [
+      '/marvel/marvel_1.jpg',
+      '/marvel/marvel_2.jpg',
+      '/marvel/marvel_3.jpg',
+      '/marvel/marvel_4.jpg',
+    ];
     const marvelItems = [
       { q: 'ما هو المطرقة السحرية الأسطورية المخصصة للأجداد والتي يحملها ثور (Thor)؟', a: 'ميولنير (Mjolnir)', opts: ['ميولنير (Mjolnir)', 'ستورمبريكر', 'غونغدير', 'إيجيس'] },
       { q: 'ما اسم السلاح الخارق الأحدث الذي صنعه ثور بالقزم إيتري للقضاء على ثانوس؟', a: 'قاطع العواصف (Stormbreaker)', opts: ['قاطع العواصف (Stormbreaker)', 'ميولنير', 'الرمح العظيم', 'سيف الأبدية'] },
@@ -1344,12 +1725,15 @@ function generateCategorySpecificFallback(catId: string, catName: string, index:
       { q: 'ما اسم الذكاء الاصطناعي الشرير الذي ابتكره توني وسعى لمحو البشرية بأسلوب سوكوفيا؟', a: 'أولترون (Ultron)', opts: ['أولترون (Ultron)', 'كانغ', 'ثانوس', 'رونان'] },
     ];
     const item = marvelItems[(index - 1) % marvelItems.length];
+    const assignedImg = marvelImgs[(index - 1) % marvelImgs.length];
     return {
       question: item.q,
       options: item.opts,
       correctAnswer: item.a,
       explanation: `معلومة دقيقة ومؤكدة في عالم مارفل السينمائي (Marvel): ${item.a}.`,
       hint: `خاص بعالم مارفل السينمائي`,
+      imageUrl: assignedImg,
+      hideImageUntilAnswer: false,
     };
   }
 
@@ -1388,20 +1772,18 @@ function generateCategorySpecificFallback(catId: string, catName: string, index:
   }
 
   // 6. Wala Kelma Anime Fallback
-  if (catId === 'wk-anime' || catName.includes('أنمي') || catName.includes('انمي')) {
-    let pool = animeQuestions[200] || animeList;
-    if (index > 34 && index <= 67) pool = animeQuestions[400] || pool;
-    else if (index > 67) pool = animeQuestions[600] || pool;
-
-    const selectedAnime = pool[(index - 1) % pool.length];
-    const otherOpts = pool.filter(w => w !== selectedAnime).slice(0, 3);
-    return {
-      question: 'امسح الباركود للحصول على السؤال',
-      options: [selectedAnime, ...otherOpts],
-      correctAnswer: selectedAnime,
-      explanation: `الأنمي أو الشخصية المطلوب تمثيلها: ${selectedAnime}`,
-      hint: `مسلسل أو شخصية أنمي (${selectedAnime})`,
-    };
+  if (catId === 'wk-anime' || catName.includes('ولا كلمة أنمي')) {
+    const list = Array.isArray(walaKelmaAnimeQuestions) ? walaKelmaAnimeQuestions : [];
+    if (list.length > 0) {
+      const q = list[(index - 1) % list.length];
+      return {
+        question: q.question,
+        options: q.options,
+        correctAnswer: q.correctAnswer,
+        explanation: q.explanation,
+        hint: q.hint,
+      };
+    }
   }
 
   // 7. Wala Kelma Media Fallback

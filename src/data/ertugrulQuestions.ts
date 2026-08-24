@@ -823,13 +823,23 @@ export const ertugrul100QuestionsRaw: ErtugrulQuestionData[] = [
   }
 ];
 
-export const ertugrul100Questions: Question[] = ertugrul100QuestionsRaw.map((q, idx) => ({
-  id: `spec-turkish-ertugrul_${String(idx + 1).padStart(3, '0')}`,
-  points: q.points,
-  question: q.question,
-  options: q.options,
-  correctAnswer: q.correctAnswer,
-  explanation: q.explanation,
-  hint: q.hint,
-  hideImageUntilAnswer: true,
-}));
+const ertugrulImages = [
+  '/ertugrul/ertugrul_1.jpg',
+  '/ertugrul/ertugrul_2.jpg',
+];
+
+export const ertugrul100Questions: Question[] = ertugrul100QuestionsRaw.map((q, idx) => {
+  const assignedImg = ertugrulImages[idx % ertugrulImages.length];
+  return {
+    id: `spec-turkish-ertugrul_${String(idx + 1).padStart(3, '0')}`,
+    points: q.points,
+    question: q.question,
+    options: q.options,
+    correctAnswer: q.correctAnswer,
+    explanation: q.explanation,
+    hint: q.hint,
+    imageUrl: assignedImg,
+    answerImageUrl: assignedImg,
+    hideImageUntilAnswer: false,
+  };
+});

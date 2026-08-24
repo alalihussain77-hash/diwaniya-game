@@ -239,7 +239,7 @@ export const BuyCreditsModal: React.FC<BuyCreditsModalProps> = ({
               <div className="relative">
                 <input
                   type="text"
-                  value={inputCode}
+                  value={inputCode || ''}
                   onChange={(e) => {
                     setInputCode(e.target.value);
                     if (error) setError(null);

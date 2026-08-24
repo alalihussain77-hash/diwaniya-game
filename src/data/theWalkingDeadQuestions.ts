@@ -1,6 +1,11 @@
 import { Question } from '../types';
 
-export const theWalkingDead100Questions: Question[] = [
+const twdImages = [
+  '/the_walking_dead/twd_1.jpg',
+  '/the_walking_dead/twd_2.jpg',
+];
+
+const rawWalkingDead100Questions: Question[] = [
   // =========================================================================
   // 🟡 مجموعة الـ 200 نقطة (أسئلة سهلة وأساسية - 33 سؤالاً)
   // =========================================================================
@@ -1013,3 +1018,13 @@ export const theWalkingDead100Questions: Question[] = [
     hint: 'I found them ("وجدتهم")'
   }
 ];
+
+export const theWalkingDead100Questions: Question[] = rawWalkingDead100Questions.map((q, idx) => {
+  const assignedImg = twdImages[idx % twdImages.length];
+  return {
+    ...q,
+    imageUrl: assignedImg,
+    answerImageUrl: assignedImg,
+    hideImageUntilAnswer: false,
+  };
+});

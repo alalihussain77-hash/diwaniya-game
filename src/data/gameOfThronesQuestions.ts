@@ -12,7 +12,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الشتاء قادم (Winter is Coming)', 'اسمع زئيري', 'النار والدم', 'نحن لا نزرع'],
     correctAnswer: 'الشتاء قادم (Winter is Coming)',
     explanation: 'شعار آل ستارك هو "الشتاء قادم" (Winter is Coming) كتذكير دائم باليقظة والمصاعب القادمة.',
-    hint: 'Winter is Coming'
+    hint: 'Winter is Coming',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_002',
@@ -22,7 +25,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['لونغ كلو (Longclaw)', 'سيف الجليد (Ice)', 'الإبرة (Needle)', 'صانع العهود'],
     correctAnswer: 'لونغ كلو (Longclaw)',
     explanation: 'لونغ كلو هو السيف الفاليري المتوارث في عائلة مورمونت وأهداه القائد جيور مورمونت لـ جون سنو.',
-    hint: 'Longclaw'
+    hint: 'Longclaw',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_003',
@@ -32,7 +38,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['دروجون (Drogon)', 'ريغال (Rhaegal)', 'فيسيريون (Viserion)', 'باليريون'],
     correctAnswer: 'دروجون (Drogon)',
     explanation: 'دروجون هو التنين الأسود الأضخم الذي تمتطيه دينيريس وسُمي تيمناً بزوجها الراحل كال دروجو.',
-    hint: 'Drogon'
+    hint: 'Drogon',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_004',
@@ -42,7 +51,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['وينترفيل (Winterfell)', 'كينجز لاندنج', 'كاسترلي روك', 'دراغونستون'],
     correctAnswer: 'وينترفيل (Winterfell)',
     explanation: 'وينترفيل هي القلعة القديمة ومقر حكم عائلة ستارك في شمال ويستروس.',
-    hint: 'Winterfell'
+    hint: 'Winterfell',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_005',
@@ -52,7 +64,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['كينجز لاندنج (King\'s Landing)', 'أولدتاون', 'برافوس', 'وينترفيل'],
     correctAnswer: 'كينجز لاندنج (King\'s Landing)',
     explanation: 'كينجز لاندنج هي العاصمة الملكية التي أنشأها إيجون الفاتح ومقر القلعة الحمراء والعرش الحديدي.',
-    hint: 'King\'s Landing'
+    hint: 'King\'s Landing',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_006',
@@ -62,7 +77,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['قاتل الملك (Kingslayer)', 'فارس الزهور', 'الكلب الحارس', 'سيف الصباح'],
     correctAnswer: 'قاتل الملك (Kingslayer)',
     explanation: 'لُقب جيمي بـ "قاتل الملك" (Kingslayer) لأنه طعن الملك المجنون إيريس الثاني من الخلف.',
-    hint: 'Kingslayer'
+    hint: 'Kingslayer',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_007',
@@ -72,7 +90,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الذئب الرهيب (Direwolf)', 'النمر السابرتوث', 'الوشق الجليدي', 'الذئب الفاليري'],
     correctAnswer: 'الذئب الرهيب (Direwolf)',
     explanation: 'الذئب الرهيب (Direwolf) هو شعار آل ستارك وحيوانهم المرافق الأسطوري.',
-    hint: 'Direwolf'
+    hint: 'Direwolf',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_008',
@@ -82,7 +103,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الجدار (The Wall)', 'السد العظيم', 'جدار التنانين', 'سور وينترفيل'],
     correctAnswer: 'الجدار (The Wall)',
     explanation: 'الجدار الجليدي الهائل شيده بران البنّاء بارتفاع 700 قدم لحماية الممالك.',
-    hint: 'The Wall'
+    hint: 'The Wall',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_009',
@@ -92,7 +116,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['ملك الليل (Night King)', 'الغراب ذو الأعين الثلاث', 'كال دروجو', 'يورون غريجوي'],
     correctAnswer: 'ملك الليل (Night King)',
     explanation: 'ملك الليل هو الكائن الأول الذي صنعته أطفال الغابة وقائد جيش الموتى السائرين.',
-    hint: 'Night King'
+    hint: 'Night King',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_010',
@@ -102,7 +129,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['حرس الليل (Night\'s Watch)', 'الحرس الملكي', 'الأخوية بلا رايات', 'المطهرون'],
     correctAnswer: 'حرس الليل (Night\'s Watch)',
     explanation: 'حرس الليل (Night\'s Watch) هي المنظمة العسكرية التي تقسم على حماية الجدار مدى الحياة.',
-    hint: 'Night\'s Watch'
+    hint: 'Night\'s Watch',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_011',
@@ -112,7 +142,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['كاسترلي روك (Casterly Rock)', 'هاي جاردن', 'ريفررن', 'ستون ميل'],
     correctAnswer: 'كاسترلي روك (Casterly Rock)',
     explanation: 'كاسترلي روك هي القلعة الغنية المشيدة على جرف صخري ضخم غرب ويستروس.',
-    hint: 'Casterly Rock'
+    hint: 'Casterly Rock',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_012',
@@ -122,7 +155,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['دراجونستون (Dragonstone)', 'هارنهال', 'بايك', 'صن سبير'],
     correctAnswer: 'دراجونستون (Dragonstone)',
     explanation: 'دراجونستون هي الجزيرة والقلعة الحجرية المنحوتة بأشكال التنانين ومقر إقامة ورثة العرش التارغاريان.',
-    hint: 'Dragonstone'
+    hint: 'Dragonstone',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_013',
@@ -132,7 +168,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['"اللانيستر يدفعون ديونهم دائماً"', '"النار والنور طريقنا"', '"نحن ملوك الذهب"', '"لا نخلف وعداً أبداً"'],
     correctAnswer: '"اللانيستر يدفعون ديونهم دائماً"',
     explanation: 'العبارة الشهيرة لآل لانيستر هي "A Lannister always pays his debts".',
-    hint: 'A Lannister always pays his debts'
+    hint: 'A Lannister always pays his debts',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_014',
@@ -142,7 +181,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['آريا ستارك (Arya Stark)', 'سانسا ستارك', 'ليانا ستارك', 'تاليا'],
     correctAnswer: 'آريا ستارك (Arya Stark)',
     explanation: 'آريا ستارك تدربت في برافوس على أيدي الرجال بلا وجوه لتصبح مقاتلة بارعة.',
-    hint: 'Arya Stark'
+    hint: 'Arya Stark',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_015',
@@ -152,7 +194,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['سانسا ستارك (Sansa Stark)', 'آريa ستارك', 'مارجري تيريل', 'سيرسي لانيستر'],
     correctAnswer: 'سانسا ستارك (Sansa Stark)',
     explanation: 'سانسا ستارك تولت حكم الشمال وتوجت ملكة على الشمال المستقل في وينترفيل.',
-    hint: 'Sansa Stark'
+    hint: 'Sansa Stark',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_016',
@@ -162,7 +207,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['بران ستارك (Bran Stark)', 'ريكون ستارك', 'روب ستارك', 'جون سنو'],
     correctAnswer: 'بران ستارك (Bran Stark)',
     explanation: 'بران ستارك دفعه جيمي لانيستر من برج وينترفيل بعدما رآه مع سيرسي، ثم أصبح الغراب ذو الأعين الثلاث.',
-    hint: 'Bran Stark'
+    hint: 'Bran Stark',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_017',
@@ -172,7 +220,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['تيريون لانيستر (Tyrion Lannister)', 'جيمي لانيستر', 'تايوين لانيستر', 'لانسيل لانيستر'],
     correctAnswer: 'تيريون لانيستر (Tyrion Lannister)',
     explanation: 'تيريون لانيستر شخصية حكيمة وفذة تميزت بالذكاء والدهاء السياسي.',
-    hint: 'Tyrion Lannister'
+    hint: 'Tyrion Lannister',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_018',
@@ -182,7 +233,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['دراكاريس (Dracarys)', 'فالار مورغوليس', 'فالار دوهايريس', 'أومينيوس'],
     correctAnswer: 'دراكاريس (Dracarys)',
     explanation: 'كلمة Dracarys بالفاليرية العليا تعني "نار التنين" وتأمر التنين بحرق الهدف.',
-    hint: 'Dracarys'
+    hint: 'Dracarys',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_019',
@@ -192,7 +246,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الجبل (The Mountain)', 'الكلب', 'الثور الهائج', 'العملاق'],
     correctAnswer: 'الجبل (The Mountain)',
     explanation: 'غريغور كليغين يُلقب بـ "الجبل الذي يمتطي" (The Mountain That Rides) لضخامته وقوته المفرطة.',
-    hint: 'The Mountain'
+    hint: 'The Mountain',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_020',
@@ -202,7 +259,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الكلب (The Hound)', 'الذئب الأسود', 'الفهد', 'الوحش الكاسر'],
     correctAnswer: 'الكلب (The Hound)',
     explanation: 'ساندر كليغين كان يُلقب بـ "الكلب" (The Hound) وكان يرتدي خوذة على شكل رأس كلب.',
-    hint: 'The Hound'
+    hint: 'The Hound',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_021',
@@ -212,7 +272,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['ريغار تارغاريان (Rhaegar Targaryen)', 'إيريس الثاني', 'فيسيريس تارغاريان', 'إيجون الفاتح'],
     correctAnswer: 'ريغار تارغاريان (Rhaegar Targaryen)',
     explanation: 'الأمير ريغار تارغاريان تزوج سراً من ليانا ستارك وأنجبا جون سنو (إيجون تارغاريان).',
-    hint: 'Rhaegar Targaryen'
+    hint: 'Rhaegar Targaryen',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_022',
@@ -222,7 +285,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['ريكارد ستارك (Rickard Stark)', 'تورين ستارك', 'براندون ستارك', 'كريجان ستارك'],
     correctAnswer: 'ريكارد ستارك (Rickard Stark)',
     explanation: 'اللورد ريكارد ستارك كان لورد وينترفيل ووالد نيد وبراندون وليانا وبنجين.',
-    hint: 'Rickard Stark'
+    hint: 'Rickard Stark',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_023',
@@ -232,7 +298,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['دروجون، ريجال، وفيسيريون (Drogon, Rhaegal, Viserion)', 'باليريون، فيغار، وميراكسيس', 'كاركسيس، سيراكس، وفيرميثور', 'دروجون، سموغ، وآلدوين'],
     correctAnswer: 'دروجون، ريجال، وفيسيريون (Drogon, Rhaegal, Viserion)',
     explanation: 'سمت دينيريس تنانينها الثلاثة تيمناً بزوجها كال دروجو وشقيقيها ريغار وفيسيريس.',
-    hint: 'Drogon, Rhaegal, Viserion'
+    hint: 'Drogon, Rhaegal, Viserion',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_024',
@@ -242,7 +311,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['كال دروجو (Khal Drogo)', 'كال مورو', 'داريو ناهاريس', 'جورا مورمونت'],
     correctAnswer: 'كال دروجو (Khal Drogo)',
     explanation: 'كال دروجو كان أمير حرب الدوثراكي الذي لم يُهزم في أي معركة وتزوج دينيريس في بداية المسلسل.',
-    hint: 'Khal Drogo'
+    hint: 'Khal Drogo',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_025',
@@ -252,7 +324,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الدوثراكي (Dothraki)', 'المطهرون', 'الفايكنج', 'الجبليون'],
     correctAnswer: 'الدوثراكي (Dothraki)',
     explanation: 'الدوثراكي محاربون أشداء يعبدون إله الخيل ويشتهرون بضفائر شعرهم الطويلة وركوب الخيل.',
-    hint: 'Dothraki'
+    hint: 'Dothraki',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_026',
@@ -262,7 +337,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الصلب الفاليري (Valyrian Steel)', 'الحديد الأسود', 'البرونز القديم', 'الميثريل'],
     correctAnswer: 'الصلب الفاليري (Valyrian Steel)',
     explanation: 'الفولاذ الفاليري تم تشكيله بسحر ونار التنانين وله حدة لا تفنى ويدمر السائرين البيض بلمسة واحدة.',
-    hint: 'Valyrian Steel'
+    hint: 'Valyrian Steel',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_027',
@@ -272,7 +350,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['زجاج التنين (Dragon-glass)', 'حجر الشمس', 'ألماس النار', 'العقيق البركاني'],
     correctAnswer: 'زجاج التنين (Dragon-glass)',
     explanation: 'زجاج التنين (Dragonglass) هو الأوبسيديان الطبيعي الموجود بكثرة في جزيرة دراجونستون.',
-    hint: 'Dragon-glass'
+    hint: 'Dragon-glass',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_028',
@@ -282,7 +363,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الزفاف الأحمر (The Red Wedding)', 'الزفاف البنفسجي', 'مذبحة كينجز لاندنج', 'ليلة الذئاب'],
     correctAnswer: 'الزفاف الأحمر (The Red Wedding)',
     explanation: 'الزفاف الأحمر مؤامرة حاكها تايوين لانيستر ونفذها والدر فراي وروز بولتون لإبادة جيش الشمال.',
-    hint: 'The Red Wedding'
+    hint: 'The Red Wedding',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_029',
@@ -292,7 +376,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['سيريو فوريل (Syrio Forel)', 'جاكن هغار', 'داريو ناهاريس', 'برون'],
     correctAnswer: 'سيريو فوريل (Syrio Forel)',
     explanation: 'سيريو فوريل كان السيف الأول لبرافوس وعلم آريا فنون المبارزة ورقصة الماء بأسلوب سيف الإبرة.',
-    hint: 'Syrio Forel'
+    hint: 'Syrio Forel',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_030',
@@ -302,7 +389,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['لورد فاريس (Varys)', 'بيتر بيليش', 'المايستر بايسل', 'كويبورن'],
     correctAnswer: 'لورد فاريس (Varys)',
     explanation: 'فاريس هو المخصي المعروف بشبكة "طيوره الصغيرة" التي تجمع له الأسرار عبر القارتين.',
-    hint: 'Lord Varys'
+    hint: 'Lord Varys',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_031',
@@ -312,7 +402,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['ليتل فينجر (Littlefinger)', 'العنكبوت', 'الغراب الأسود', 'الذئب الماكر'],
     correctAnswer: 'ليتل فينجر (Littlefinger)',
     explanation: 'بيتر بيليش كان يلقب بـ "Littlefinger" (الإصبع الصغير) نسبة لموطن عائلته الصغير "الأصابع".',
-    hint: 'Littlefinger'
+    hint: 'Littlefinger',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_032',
@@ -322,7 +415,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['ميليساندر (Melisandre)', 'كينفارا', 'شيرين', 'روزايتا'],
     correctAnswer: 'ميليساندر (Melisandre)',
     explanation: 'ميليساندر هي الكاهنة الحمراء من أشاي التي تخدم إله الضوء وقامت لاحقاً بإعادة إحياء جون سنو.',
-    hint: 'Melisandre'
+    hint: 'Melisandre',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_200_033',
@@ -332,7 +428,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['جندري (Gendry)', 'إدريك ستورم', 'لانسيل', 'تومين'],
     correctAnswer: 'جندري (Gendry)',
     explanation: 'جندري هو ابن روبرت باراثيون الذي ورث مهارة الحدادة والقوة الجسدية وصار لورد ستورمز إند.',
-    hint: 'Gendry'
+    hint: 'Gendry',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
 
   // =========================================================================
@@ -346,7 +445,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['إيريس تارغاريان الثاني (الملك المجنون)', 'إيجون الرابع', 'مايكار تارغاريان', 'فيسيريس الأول'],
     correctAnswer: 'إيريس تارغاريان الثاني (الملك المجنون)',
     explanation: 'الملك إيريس الثاني الملقب بالملك المجنون هو آخر ملوك سلالة تارغاريان قبل ثورة روبرت.',
-    hint: 'Mad King Aerys II'
+    hint: 'Mad King Aerys II',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_035',
@@ -356,7 +458,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['"احرقوهم جميعاً" (Burn them all)', '"النار ستطهر المملكة"', '"الموت للخونة"', '"سأعود كالتنين"'],
     correctAnswer: '"احرقوهم جميعاً" (Burn them all)',
     explanation: 'أمر إيريس بإشعال أقبية النيران البرية لتفجير العاصمة وسكانها صارخاً: "Burn them all".',
-    hint: 'Burn them all'
+    hint: 'Burn them all',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_036',
@@ -366,7 +471,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['بيت الأبيض والأسود (House of Black and White)', 'معبد إله الموت', 'قلعة الأوجه المظلمة', 'برج التطهير'],
     correctAnswer: 'بيت الأبيض والأسود (House of Black and White)',
     explanation: 'بيت الأبيض والأسود هو معبد الإله متعدد الوجوه في برافوس ومقر تدريب الرجال بلا وجوه.',
-    hint: 'House of Black and White'
+    hint: 'House of Black and White',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_037',
@@ -376,7 +484,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الرجال بلا وجوه (Faceless Men)', 'الأخوية السوداء', 'قتلة المجد', 'فرسان الظل'],
     correctAnswer: 'الرجال بلا وجوه (Faceless Men)',
     explanation: 'الرجال بلا وجوه (Faceless Men) طائفة قتلة أسطورية يخدمون إله الموت بالوجوه المسلوخة.',
-    hint: 'Faceless Men'
+    hint: 'Faceless Men',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_038',
@@ -386,7 +497,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['آل فراي (House Frey) بقيادة والدر فراي', 'آل بولتون', 'آل تارلي', 'آل غريجوي'],
     correctAnswer: 'آل فراي (House Frey) بقيادة والدر فراي',
     explanation: 'خان اللورد والدر فراي عهد الضيافة المقدس وذبح جيش ستارك انتقاماً لنكث روب بوعد الزواج.',
-    hint: 'House Frey'
+    hint: 'House Frey',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_039',
@@ -396,7 +510,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['آل بولتون (House Bolton)', 'آل كارستارك', 'آل أمبر', 'آل غلوفر'],
     correctAnswer: 'آل بولتون (House Bolton)',
     explanation: 'آل بولتون ومقرهم دريدفورت اشتهروا بسلخ جلود أعدائهم وخانوا آل ستارك في الزفاف الأحمر.',
-    hint: 'House Bolton'
+    hint: 'House Bolton',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_040',
@@ -406,7 +523,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['رمزي بولتون (Ramsay Bolton)', 'دوميريك بولتون', 'لوكي', 'سمولجون أمبر'],
     correctAnswer: 'رمزي بولتون (Ramsay Bolton)',
     explanation: 'رمزي سنو (بولتون لاحقاً) شخصية سادية استمتعت بتعذيب الأسرى وإطعامهم لكلابه المفترسة.',
-    hint: 'Ramsay Bolton'
+    hint: 'Ramsay Bolton',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_041',
@@ -416,7 +536,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['ريك (Reek)', 'العبد', 'الكلب الصغير', 'الخائن'],
     correctAnswer: 'ريك (Reek)',
     explanation: 'عذب رمزي ثيون جسدياً ونفسياً حتى سلبه هويته وأجبره على الاستجابة لاسم "ريك" (Reek).',
-    hint: 'Reek'
+    hint: 'Reek',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_042',
@@ -426,7 +549,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['معركة اللقطاء (Battle of the Bastards)', 'معركة الوادي', 'معركة الشتاء', 'معركة الأجراس'],
     correctAnswer: 'معركة اللقطاء (Battle of the Bastards)',
     explanation: 'معركة اللقطاء جرت في الموسم السادس وانتصر فيها جون سنو بعد تدخل فرسان الإيري بقيادة سانسا.',
-    hint: 'Battle of the Bastards'
+    hint: 'Battle of the Bastards',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_043',
@@ -436,7 +562,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['معركة بلاك ووتر (Battle of the Blackwater)', 'معركة الممر المائي', 'معركة خليج النخاسين', 'معركة الساحل الغربي'],
     correctAnswer: 'معركة بلاك ووتر (Battle of the Blackwater)',
     explanation: 'معركة خليج بلاك ووتر شهدت تفجير سفن ستانيس باراثيون بواسطة شحنة النيران البرية الخضراء.',
-    hint: 'Battle of the Blackwater'
+    hint: 'Battle of the Blackwater',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_044',
@@ -446,7 +575,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['النار البرية (Wildfire)', 'سم الخانق', 'دم التنين', 'مسحوق البارود'],
     correctAnswer: 'النار البرية (Wildfire)',
     explanation: 'النار البرية (Wildfire) سائل سحري أخضر لا ينطفئ بالماء ويحترق بحرارة هائلة دمرت سيبت بيلور.',
-    hint: 'Wildfire'
+    hint: 'Wildfire',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_045',
@@ -456,7 +588,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['القلعة (The Citadel)', 'المكتبة الكبرى', 'برج الحكمة', 'أكاديمية ويستروس'],
     correctAnswer: 'القلعة (The Citadel)',
     explanation: 'السيتاديل (The Citadel) في مدينة أولدتاون هي مقر تدريب حكماء المايستر وحفظ تاريخ القارة.',
-    hint: 'The Citadel'
+    hint: 'The Citadel',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_046',
@@ -466,7 +601,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['معركة الشتاء الطويل / معركة وينترفيل', 'معركة الفجر الثاني', 'معركة الجدار العظيم', 'معركة الشمال الدامي'],
     correctAnswer: 'معركة الشتاء الطويل / معركة وينترفيل',
     explanation: 'معركة وينترفيل (The Long Night) هي المعركة الحاسمة التي هاجم فيها ملك الليل قوى الأحياء.',
-    hint: 'The Long Night / Battle of Winterfell'
+    hint: 'The Long Night / Battle of Winterfell',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_047',
@@ -476,7 +614,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['آريا ستارك', 'جون سنو', 'دينيريس تارغاريان', 'بران ستارك'],
     correctAnswer: 'آريا ستارك',
     explanation: 'قامت آريا بمباغتة ملك الليل بحركة خفة يد وطعنته بخنجر الفولاذ الفاليري في حديقة الآلهة بوينترفيل.',
-    hint: 'Arya Stark'
+    hint: 'Arya Stark',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_048',
@@ -486,7 +627,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['خنجر القاطع (Catspaw Dagger)', 'خنجر الظل', 'ناب التنين', 'خنجر الفجر'],
     correctAnswer: 'خنجر القاطع (Catspaw Dagger)',
     explanation: 'خنجر Catspaw Dagger هو نفس الخنجر الذي حاول به القاتل اغتيال بران في الموسم الأول.',
-    hint: 'Catspaw Dagger'
+    hint: 'Catspaw Dagger',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_049',
@@ -496,7 +640,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['المايستر لوين (Maester Luwin)', 'المايستر أيمون', 'المايستر بايسل', 'المايستر كويبورن'],
     correctAnswer: 'المايستر لوين (Maester Luwin)',
     explanation: 'المايستر لوين خدم آل ستارك بكل أمانة وساعد بران وريكون قبل أن يُطعن في اجتياح وينترفيل.',
-    hint: 'Maester Luwin'
+    hint: 'Maester Luwin',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_050',
@@ -506,7 +653,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['المايستر أيمون تارغاريان (Maester Aemon)', 'المايستر لوين', 'المايستر والكان', 'المايستر كولين'],
     correctAnswer: 'المايستر أيمون تارغاريان (Maester Aemon)',
     explanation: 'المايستر أيمون تارغاريان هو عم الملك المجنون وتنازل عن العرش وانضم لحرس الليل منذ عقود.',
-    hint: 'Maester Aemon'
+    hint: 'Maester Aemon',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_051',
@@ -516,7 +666,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['سامويل تارلي (Samwell Tarly)', 'غرين', 'بيب', 'إيد الحزين'],
     correctAnswer: 'سامويل تارلي (Samwell Tarly)',
     explanation: 'سامويل تارلي هو أول من قتل سائراً أبيض بزجاج التنين وصديق جون سنو الأعز.',
-    hint: 'Samwell Tarly'
+    hint: 'Samwell Tarly',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_052',
@@ -526,7 +679,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['إيغريت (Ygritte)', 'غيلي', 'أوشا', 'كارسيا'],
     correctAnswer: 'إيغريت (Ygritte)',
     explanation: 'إيغريت كانت رامية سهام ماهرة من الأحرار وعاشت قصة حب مؤثرة مع جون سنو.',
-    hint: 'Ygritte'
+    hint: 'Ygritte',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_053',
@@ -536,7 +692,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['"أنت لا تعرف شيئاً يا جون سنو" (You know nothing, Jon Snow)', '"الشمال لا ينسى"', '"الموت قادم للجميع"', '"الذئاب لا تنحني"'],
     correctAnswer: '"أنت لا تعرف شيئاً يا جون سنو" (You know nothing, Jon Snow)',
     explanation: 'اشتهرت إيغريت بعبارة "You know nothing, Jon Snow" طوال رحلتهما معاً.',
-    hint: 'You know nothing, Jon Snow'
+    hint: 'You know nothing, Jon Snow',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_054',
@@ -546,7 +705,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['مانس رايدر (Mance Rayder)', 'تورموند جاينتسبين', 'ستير', 'كرستر'],
     correctAnswer: 'مانس رايدر (Mance Rayder)',
     explanation: 'مانس رايدر كان عضواً سابقاً في حرس الليل وحّد 90 قبيلة همجية للهروب جنوباً من السائرين البيض.',
-    hint: 'Mance Rayder'
+    hint: 'Mance Rayder',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_055',
@@ -556,7 +718,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['بيريك دونداريون (Beric Dondarrion)', 'ثوروس أوف مير', 'أنغوي', 'جاكن هغار'],
     correctAnswer: 'بيريك دونداريون (Beric Dondarrion)',
     explanation: 'بيريك دونداريون قاد الأخوية بسيفه المشتعل وكان يعيده الكاهن ثوروس أوف مير للحياة بنور رلور.',
-    hint: 'Beric Dondarrion'
+    hint: 'Beric Dondarrion',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_056',
@@ -566,7 +731,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['سير آرثر داين (Arthur Dayne)', 'سير بارستان سيلمي', 'سير جيرولد هايتاور', 'سير أوزويل وينت'],
     correctAnswer: 'سير آرثر داين (Arthur Dayne)',
     explanation: 'سير آرثر داين كان أعظم فرسان الحرس الملكي وحامل سيف الفجر وسقط في مبارزة برج الفرح.',
-    hint: 'Sword of the Morning (Arthur Dayne)'
+    hint: 'Sword of the Morning (Arthur Dayne)',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_057',
@@ -576,7 +744,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['سيف الفجر (Dawn)', 'سيف الجليد', 'سيف النور', 'المخلب الأسود'],
     correctAnswer: 'سيف الفجر (Dawn)',
     explanation: 'سيف Dawn هو السيف المتوارث لعائلة داين المصنوع من معدن شهاب فضي لامع.',
-    hint: 'Dawn'
+    hint: 'Dawn',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_058',
@@ -586,7 +757,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['برون (Bronn)', 'داريو ناهاريس', 'جاكن هغار', 'جورا مورمونت'],
     correctAnswer: 'برون (Bronn)',
     explanation: 'برون بدأ كمرتزق رافق كاتلين وتيريون وصعد بمهارته ليصبح لورد هاي جاردن وخازن المملكة.',
-    hint: 'Bronn of the Blackwater'
+    hint: 'Bronn of the Blackwater',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_059',
@@ -596,7 +770,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['بريين أوف تارث (Brienne of Tarth)', 'آشا غريجوي', 'يارا غريجوي', 'ميا ستون'],
     correctAnswer: 'بريين أوف تارث (Brienne of Tarth)',
     explanation: 'بريين أوف تارث فارسة مخلصة منحها جيمي لانيستر لقب الفارس وقادت حرس ملك بران ستارك.',
-    hint: 'Brienne of Tarth'
+    hint: 'Brienne of Tarth',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_060',
@@ -606,7 +783,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['جوفري باراثيون (Joffrey Baratheon)', 'تومين باراثيون', 'روبن آرين', 'ريكون ستارك'],
     correctAnswer: 'جوفري باراثيون (Joffrey Baratheon)',
     explanation: 'الملك جوفري الأول كان طاغية صغيراً أعدم نيد ستارك ومات مسموماً في حفل زفافه من مارجري.',
-    hint: 'Joffrey Baratheon'
+    hint: 'Joffrey Baratheon',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_061',
@@ -616,7 +796,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الزفاف البنفسجي (The Purple Wedding)', 'الزفاف الأحمر', 'زفاف التنانين', 'زفاف الزهور'],
     correctAnswer: 'الزفاف البنفسجي (The Purple Wedding)',
     explanation: 'أطلق الجمهور على زفاف جوفري ومارجري اسم "الزفاف البنفسجي" لتحول وجه جوفري للون البنفسجي عند تسممه.',
-    hint: 'The Purple Wedding'
+    hint: 'The Purple Wedding',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_062',
@@ -626,7 +809,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['مارجري تيريل (Margaery Tyrell)', 'أولينا تيريل', 'دوريا', 'ميرسيلا'],
     correctAnswer: 'مارجري تيريل (Margaery Tyrell)',
     explanation: 'مارجري تيريل كانت سياسية بارعة حظيت بحب الشعب وتزوجت ثلاثة ملوك متعاقبين.',
-    hint: 'Margaery Tyrell'
+    hint: 'Margaery Tyrell',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_063',
@@ -636,7 +822,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['أولينا تيريل (Olenna Tyrell)', 'مارجري تيريل', 'إيلاريا ساند', 'سيرسي لانيستر'],
     correctAnswer: 'أولينا تيريل (Olenna Tyrell)',
     explanation: 'الليدي أولينا تيريل اشتهرت بلسانها السليط ودهائها العظيم في إدارة تحالفات عائلة تيريل.',
-    hint: 'Olenna Tyrell'
+    hint: 'Olenna Tyrell',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_064',
@@ -646,7 +835,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['أولينا تيريل', 'مارجري تيريل', 'تيريون لانيستر', 'سانسا ستارك'],
     correctAnswer: 'أولينا تيريل',
     explanation: 'قالت أولينا لجيمي قبل موتها: "أخبر سيرسي، أريدها أن تعلم أنني أنا من فعلتها" (Tell Cersei, I want her to know it was me).',
-    hint: 'Tell Cersei, I want her to know it was me'
+    hint: 'Tell Cersei, I want her to know it was me',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_065',
@@ -656,7 +848,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['أوبيرين مارتيل (Oberyn Martell)', 'دوران مارتيل', 'تريستان مارتيل', 'كوينتن مارتيل'],
     correctAnswer: 'أوبيرين مارتيل (Oberyn Martell)',
     explanation: 'الأمير أوبيرين مارتيل المقاتل الماهر بالرمح المسموم سعى للثأر لأخته إيليا مارتيل وأولادها.',
-    hint: 'The Red Viper (Oberyn Martell)'
+    hint: 'The Red Viper (Oberyn Martell)',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_066',
@@ -666,7 +861,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['المحاكمة القتالية (Trial by Combat)', 'مبارزة الشرف', 'نزال التوأمتين', 'بطولة هارنهال'],
     correctAnswer: 'المحاكمة القتالية (Trial by Combat)',
     explanation: 'تطوع أوبيرين للدفاع عن تيريون في محاكمة قتالية، لكن غروره أمام الجبل كلفه حياته في مشهد مروع.',
-    hint: 'Trial by Combat'
+    hint: 'Trial by Combat',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_400_067',
@@ -676,7 +874,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['البنك الحديدي (The Iron Bank of Braavos)', 'بنك الذهب الفاليري', 'خزينة التنين', 'صندوق ويستروس المركزي'],
     correctAnswer: 'البنك الحديدي (The Iron Bank of Braavos)',
     explanation: 'البنك الحديدي في برافوس هو أقوى قوة مالية معروفة بجملتها: "The Iron Bank will have its due".',
-    hint: 'The Iron Bank of Braavos'
+    hint: 'The Iron Bank of Braavos',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
 
   // =========================================================================
@@ -690,7 +891,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['ليانا ستارك (Lyanna Stark)', 'أشرا داين', 'كايتلين ستارك', 'وايلا'],
     correctAnswer: 'ليانا ستارك (Lyanna Stark)',
     explanation: 'ليانا ستارك ماتت في برج الفرح بعد ولادتها لجون سنو وائتمنت شقيقها نيد على حمايته وسره.',
-    hint: 'Lyanna Stark'
+    hint: 'Lyanna Stark',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_069',
@@ -700,7 +904,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['إيجون تارغاريان (Aegon Targaryen)', 'ريغار تارغاريان', 'ديمون تارغاريان', 'جيهيريس تارغاريان'],
     correctAnswer: 'إيجون تارغاريان (Aegon Targaryen)',
     explanation: 'أطلقت ليانا ستارك على ابنها اسم إيجون تارغاريان السابع، الوريث الشرعي للعرش الحديدي.',
-    hint: 'Aegon Targaryen'
+    hint: 'Aegon Targaryen',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_070',
@@ -710,7 +917,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['سيف الجليد (Ice)', 'سيف الفجر', 'المخلب', 'صانع الأرامل'],
     correctAnswer: 'سيف الجليد (Ice)',
     explanation: 'سيف "Ice" العظيم كان سيف نيد ستارك الذي قطع به رأس الهارب في الحلقة الأولى ثم صهره تايوين.',
-    hint: 'Ice'
+    hint: 'Ice',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_071',
@@ -720,7 +930,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['أوثكيبر (Oathkeeper) و ويدوز ويل (Widow\'s Wail)', 'لونغ كلو والإبرة', 'الفجر والظلام', 'الذابح والمنتقم'],
     correctAnswer: 'أوثكيبر (Oathkeeper) و ويدوز ويل (Widow\'s Wail)',
     explanation: 'صنع تايوين سيفين: Widow\'s Wail للملك جوفري، و Oathkeeper الذي أعطاه جيمي لـ بريين أوف تارث.',
-    hint: 'Oathkeeper and Widow\'s Wail'
+    hint: 'Oathkeeper and Widow\'s Wail',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_072',
@@ -730,7 +943,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الأطياف (Wights)', 'الزومبي', 'الظلال', 'الأرواح الهائمة'],
     correctAnswer: 'الأطياف (Wights)',
     explanation: 'يُطلق مصطلح "Wights" على الجثث المعاد إحياؤها بعيون زرقاء متوهجة وتنقاد لإرادة السائرين البيض.',
-    hint: 'Wights'
+    hint: 'Wights',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_073',
@@ -740,7 +956,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الغراب ذو الأعين الثلاث (Three-Eyed Raven)', 'ملك الغابة', 'كبير أطفال الغابة', 'ساحر الثلوج'],
     correctAnswer: 'الغراب ذو الأعين الثلاث (Three-Eyed Raven)',
     explanation: 'الغراب ذو الأعين الثلاث درب بران ستارك على رؤية الماضي والحاضر والمستقبل ليخلفه في الدور.',
-    hint: 'Three-Eyed Raven'
+    hint: 'Three-Eyed Raven',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_074',
@@ -750,7 +969,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['هودور (Hodor)', 'ويليس', 'غريغور', 'سمولجون'],
     correctAnswer: 'هودور (Hodor)',
     explanation: 'هودور (واسمه الأصلي ويليس) ضحى بحياته دفاعاً عن بران وريد أمام جيش الأطياف في الكهف.',
-    hint: 'Hodor'
+    hint: 'Hodor',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_075',
@@ -760,7 +982,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['"امسك الباب" (Hold the Door)', '"احمِ بران"', '"اهربوا بسرعة"', '"أغلق البوابات"'],
     correctAnswer: '"امسك الباب" (Hold the Door)',
     explanation: 'أثناء ارتباط بران الزمني، دخل عقل ويليس في الماضي وصرخ ميرا ريد "Hold the door!" فتحورت إلى Hodor.',
-    hint: 'Hold the Door'
+    hint: 'Hold the Door',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_076',
@@ -770,7 +995,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['فاليريا القديمة (Old Valyria)', 'ميرين', 'فولانتيس', 'أستابور'],
     correctAnswer: 'فاليريا القديمة (Old Valyria)',
     explanation: 'فاليريا القديمة كانت أعظم حضارة سحرية وتنانين قبل أن تُدمر في "Doom of Valyria" بالبراكين والزلازل.',
-    hint: 'Old Valyria'
+    hint: 'Old Valyria',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_077',
@@ -780,7 +1008,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الحرشف الرمادي (Greyscale)', 'الطاعون الحجري', 'جذام التنين', 'حمى الشمال'],
     correctAnswer: 'الحرشف الرمادي (Greyscale)',
     explanation: 'مرض Greyscale يحول جلد المصاب إلى حجر صلب تدريجياً ويفقده عقله في مراحله المتقدمة.',
-    hint: 'Greyscale'
+    hint: 'Greyscale',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_078',
@@ -790,7 +1021,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['سير جورا مورمونت (Jorah Mormont)', 'سير بارستان سيلمي', 'سير باريسون', 'داريو ناهاريس'],
     correctAnswer: 'سير جورا مورمونت (Jorah Mormont)',
     explanation: 'سير جورا مورمونت خضع لعملية كشط مؤلمة قام بها سام في السيتاديل ونجا ليموت مدافعاً عن دينيريس.',
-    hint: 'Jorah Mormont'
+    hint: 'Jorah Mormont',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_079',
@@ -800,7 +1034,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الدودة الرمادية (Grey Worm)', 'الدرع الأبيض', 'كال هسيلا', 'جاكن هغار'],
     correctAnswer: 'الدودة الرمادية (Grey Worm)',
     explanation: 'الدودة الرمادية (Grey Worm) قاد جيش المطهرين ووقع في حب المترجمة ميساندي.',
-    hint: 'Grey Worm'
+    hint: 'Grey Worm',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_080',
@@ -810,7 +1047,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['العصفور الأعلى (High Sparrow)', 'سبتون ماينارد', 'سبتون ميريبالد', 'كاهن الضوء'],
     correctAnswer: 'العصفور الأعلى (High Sparrow)',
     explanation: 'العصفور الأعلى قاد حركة "Faith Militant" الدينية المتشددة قبل أن تنسف سيرسي السيبت بالكامل.',
-    hint: 'High Sparrow'
+    hint: 'High Sparrow',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_081',
@@ -820,7 +1060,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['مسيرة العار / التكفير (Walk of Atonement / Shame)', 'مسيرة الخطيئة', 'طريق المذنبين', 'جولة التطهير'],
     correctAnswer: 'مسيرة العار / التكفير (Walk of Atonement / Shame)',
     explanation: 'أجبرها العصفور الأعلى على السير عارية حافية بينما تردد الكاهنة الشمطاء "Shame! Shame!" أمام الجماهير.',
-    hint: 'Walk of Atonement / Shame'
+    hint: 'Walk of Atonement / Shame',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_082',
@@ -830,7 +1073,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الإيري (The Eyrie)', 'هارنهال', 'بايك', 'ريفررن'],
     correctAnswer: 'الإيري (The Eyrie)',
     explanation: 'الإيري (The Eyrie) قلعة منيعة على قمة جبل شاهق تحمي وادي آرين وتعتبر مستحيلة الاقتحام براً.',
-    hint: 'The Eyrie'
+    hint: 'The Eyrie',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_083',
@@ -840,7 +1086,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['باب القمر (The Moon Door)', 'بوابة السماء', 'فجوة الموت', 'نافذة الرياح'],
     correctAnswer: 'باب القمر (The Moon Door)',
     explanation: 'باب القمر (The Moon Door) فتحة أرضية في قاعة الإيري يُرمى منها السجناء ليسقطوا آلاف الأقدام.',
-    hint: 'The Moon Door'
+    hint: 'The Moon Door',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_084',
@@ -850,7 +1099,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['يورون غريجوي (Euron Greyjoy)', 'فيكتاريون غريجوي', 'إيرون غريجوي', 'بالون غريجوي'],
     correctAnswer: 'يورون غريجوي (Euron Greyjoy)',
     explanation: 'يورون غريجوي قتل شقيقه بالون وبنى أسطولاً جباراً وقتل التنين ريجال بسلاح السكوربيون.',
-    hint: 'Euron Greyjoy'
+    hint: 'Euron Greyjoy',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_085',
@@ -860,7 +1112,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['معركة نهب الغنائم (Loot Train Attack)', 'معركة النيران الذهبية', 'معركة الحقل الأحمر', 'معركة دراغون بيك'],
     correctAnswer: 'معركة نهب الغنائم (Loot Train Attack)',
     explanation: 'هجوم Loot Train Attack شهد أول استخدام لتنين دينيريس وقوة الدوثراكي ضد جيش لانيستر النظامي في ويستروس.',
-    hint: 'Loot Train Attack'
+    hint: 'Loot Train Attack',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_086',
@@ -870,7 +1125,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['كيت هارينغتون (Kit Harington)', 'ريتشارد مادن', 'نيكولاج كوستير والداو', 'إيوان ريون'],
     correctAnswer: 'كيت هارينغتون (Kit Harington)',
     explanation: 'جسد الممثل البريطاني كيت هارينغتون شخصية جون سنو وحقق شهرة عالمية وترشيحات متعددة للإيمي.',
-    hint: 'Kit Harington'
+    hint: 'Kit Harington',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_087',
@@ -880,7 +1138,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['إميليا كلارك (Emilia Clarke)', 'لينا هيدي', 'صوفي تيرنر', 'مايسي ويليامز'],
     correctAnswer: 'إميليا كلارك (Emilia Clarke)',
     explanation: 'إميليا كلارك جسدت دور أم التنانين دينيريس تارغاريان بروعة واستحقاق كبيرين.',
-    hint: 'Emilia Clarke'
+    hint: 'Emilia Clarke',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_088',
@@ -890,7 +1151,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['بيتر دينكلاج (Peter Dinklage)', 'تشارلز دانس', 'جاك جليسون', 'ليام كونينغهام'],
     correctAnswer: 'بيتر دينكلاج (Peter Dinklage)',
     explanation: 'فاز بيتر دينكلاج بأربع جوائز إيمي كأفضل ممثل مساعد عن تجسيده الأيقوني لتيريون لانيستر.',
-    hint: 'Peter Dinklage'
+    hint: 'Peter Dinklage',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_089',
@@ -900,7 +1164,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['جورج آر. آر. مارتن (George R.R. Martin)', 'تولكين', 'روبرت جوردان', 'ستيفن كينغ'],
     correctAnswer: 'جورج آر. آر. مارتن (George R.R. Martin)',
     explanation: 'جورج آر. آر. مارتن هو مبتكر عالم ويستروس وروايات A Song of Ice and Fire.',
-    hint: 'George R.R. Martin'
+    hint: 'George R.R. Martin',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_090',
@@ -910,7 +1177,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['الإبرة (Needle)', 'المخلب', 'الناب', 'الشوكة'],
     correctAnswer: 'الإبرة (Needle)',
     explanation: 'أهدى جون سنو سيف "Needle" لأخته آريا وقال لها قاعدتها الأولى: "Stick them with the pointy end".',
-    hint: 'Needle'
+    hint: 'Needle',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_091',
@@ -920,7 +1190,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['غوست (Ghost)', 'نايميريا', 'غراي ويند', 'شاغي دوغ'],
     correctAnswer: 'غوست (Ghost)',
     explanation: 'غوست (Ghost) كان الذئب الرهيب الأصغر والأبيض كلياً ورافق جون سنو في حراسة الجدار وما وراءه.',
-    hint: 'Ghost'
+    hint: 'Ghost',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_092',
@@ -930,7 +1203,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['نايميريا (Nymeria)', 'ليدي', 'غوست', 'سمر'],
     correctAnswer: 'نايميريا (Nymeria)',
     explanation: 'نايميريا سُميت تيمناً بالأميرة المحاربة وقادت قطيع ذئاب هائل في الغابات بعد فراقها لآريا.',
-    hint: 'Nymeria'
+    hint: 'Nymeria',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_093',
@@ -940,7 +1216,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['بران المكسور (Bran the Broken)', 'بران الحكيم', 'بران حامي الشمال', 'بران ذو الأعين'],
     correctAnswer: 'بران المكسور (Bran the Broken)',
     explanation: 'اقترح تيريون لانيستر اختيار "بران المكسور" كملك لأن قصته هي الأعظم والأكثر إلهاماً للشعب.',
-    hint: 'Bran the Broken'
+    hint: 'Bran the Broken',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_094',
@@ -950,7 +1229,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['بران ستارك', 'جون سنو', 'تيريون لانيستر', 'جندري باراثيون'],
     correctAnswer: 'بران ستارك',
     explanation: 'تم اختيار بران ستارك كملك للممالك الست بعد موافقة اللوردات واستقلال مملكة الشمال بقيادة سانسا.',
-    hint: 'بران ستارك (الغراب ذو الأعين الثلاث)'
+    hint: 'بران ستارك (الغراب ذو الأعين الثلاث)',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_095',
@@ -960,7 +1242,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['جون سنو', 'تيريون لانيستر', 'آريا ستارك', 'جيمي لانيستر'],
     correctAnswer: 'جون سنو',
     explanation: 'قام جون سنو بطعن دينيريس في عناقهما الأخير لحماية العالم والممالك من استبدادها المتزايد.',
-    hint: 'جون سنو (إيجون تارغاريان)'
+    hint: 'جون سنو (إيجون تارغاريان)',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_096',
@@ -970,7 +1255,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['أذابه التنين دروجون بنيرانه الحارقة', 'حطمه جون سنو بسيفه', 'دُفن تحت ركام القلعة', 'أخذه فرسان الشمال لوينترفيل'],
     correctAnswer: 'أذابه التنين دروجون بنيرانه الحارقة',
     explanation: 'قام التنين دروجون بصب غضبه ونيرانه الحارقة على العرش الحديدي وصهره تماماً إلى بركة معدنية ذائبة.',
-    hint: 'صهر وأذاب بنيران دروجون'
+    hint: 'صهر وأذاب بنيران دروجون',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_097',
@@ -980,7 +1268,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['إلى ما وراء الجدار مع الهمج وحرس الليل', 'إلى قلعة دراجونستون', 'إلى إيسوس مع الدوثراكي', 'إلى جزر برافوس'],
     correctAnswer: 'إلى ما وراء الجدار مع الهمج وحرس الليل',
     explanation: 'عاد جون سنو إلى كاسل بلاك ورافق تورموند وشعب الهمج بحرية في أعماق الشمال الحقيقي وراء الجدار.',
-    hint: 'العودة لما وراء الجدار مع شعب الأحرار وتورموند'
+    hint: 'العودة لما وراء الجدار مع شعب الأحرار وتورموند',
+    imageUrl: '/game_of_thrones/got_1.jpg',
+    answerImageUrl: '/game_of_thrones/got_1.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_098',
@@ -990,7 +1281,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['آل التنين (House of the Dragon)', 'فارس الممالك السبع', 'ثورة روبرت', 'غزو إيجون'],
     correctAnswer: 'آل التنين (House of the Dragon)',
     explanation: 'مسلسل House of the Dragon يستعرض تاريخ وسقوط سلالة تارغاريان وتنانينهم.',
-    hint: 'House of the Dragon'
+    hint: 'House of the Dragon',
+    imageUrl: '/game_of_thrones/got_2.jpg',
+    answerImageUrl: '/game_of_thrones/got_2.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_099',
@@ -1000,7 +1294,10 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['رقصة التنانين (Dance of the Dragons)', 'حرب الملوك الخمسة', 'تمرد بلاكفاير', 'غزو ويستروس'],
     correctAnswer: 'رقصة التنانين (Dance of the Dragons)',
     explanation: 'رقصة التنانين (Dance of the Dragons) هي الحرب الأهلية الدامية بين رينيرا وإيجون الثاني وتسببت في انقراض التنانين.',
-    hint: 'Dance of the Dragons'
+    hint: 'Dance of the Dragons',
+    imageUrl: '/game_of_thrones/got_3.jpg',
+    answerImageUrl: '/game_of_thrones/got_3.jpg',
+    hideImageUntilAnswer: false
   },
   {
     id: 'got_600_100',
@@ -1010,6 +1307,9 @@ export const gameOfThrones100Questions: Question[] = [
     options: ['السحر ونار التنانين', 'زجاج التنين وحمم البراكين', 'الذهب والتعاويذ القديمة', 'دم الملوك ونيازك الشهب'],
     correctAnswer: 'السحر ونار التنانين',
     explanation: 'يتطلب صنع الفولاذ الفاليري مزيجاً سرياً من التعاويذ السحرية ونيران التنانين الشديدة الحرارة.',
-    hint: 'السحر الفاليري ونار التنانين'
+    hint: 'السحر الفاليري ونار التنانين',
+    imageUrl: '/game_of_thrones/got_4.jpg',
+    answerImageUrl: '/game_of_thrones/got_4.jpg',
+    hideImageUntilAnswer: false
   }
 ];

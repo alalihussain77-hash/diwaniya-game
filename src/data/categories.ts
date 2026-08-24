@@ -12,6 +12,12 @@ import { esrefRuya100Questions } from "./esrefRuyaQuestions";
 import { seerah100Questions } from "./seerahQuestions";
 import { theWalkingDead100Questions } from "./theWalkingDeadQuestions";
 import { gameOfThrones100Questions } from "./gameOfThronesQuestions";
+import { marvel100Questions } from "./marvel100Questions";
+import { peakyBlinders100Questions } from "./peakyBlinders100Questions";
+import { onePiece100Questions } from "./onePiece100Questions";
+import { pokemon100Questions } from "./pokemon100Questions";
+import { anime100Questions } from "./anime100Questions";
+import { breakingBad100Questions } from "./breakingBad100Questions";
 import {
   walaKelmaFootballQuestions,
   walaKelmaSportsQuestions,
@@ -630,84 +636,84 @@ export const INITIAL_CATEGORIES: Category[] = [
     ],
     "questions": [
       {
-        "id": "gen-products-1",
+        "id": "prod-001",
         "points": 200,
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/IPod_Classic_6G_80GB.png/600px-IPod_Classic_6G_80GB.png",
-        "hideImageUntilAnswer": true,
-        "question": "ما اسم المنتج الموسيقي التقني الشهير الذي أطلقته أبل عام 2001م بعجلة النقر الدائرية؟",
+        "imageUrl": "/products_thumb.jpg",
+        "hideImageUntilAnswer": false,
+        "question": "ما هو هذا المنتج؟",
         "options": [
-          "آيبود (iPod)",
-          "آيباد (iPad)",
-          "آيفون (iPhone)",
-          "واكمان (Walkman)"
+          "نسكويك (Nesquik)",
+          "أوفالتين (Ovaltine)",
+          "ميلو (Milo)",
+          "كادبوري شوكولاتة"
         ],
-        "correctAnswer": "آيبود (iPod)",
-        "explanation": "أتاح الآيبود حمل \"1000 أغنية في جيبك\" وكان ثورة تقنية.",
-        "hint": "جهاز الموسيقى الأسطوري بعجلة النقر الدائرية"
+        "correctAnswer": "نسكويك (Nesquik)",
+        "explanation": "الإجابة الصحيحة: نسكويك (Nesquik)",
+        "hint": ""
       },
       {
-        "id": "gen-products-2",
-        "points": 300,
-        "imageUrl": "https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "question": "ما هي ألعاب التركيب والمكعبات البلاستيكية الملونة الدنماركية الشهيرة؟",
+        "id": "prod-002",
+        "points": 200,
+        "imageUrl": "/products_thumb.jpg",
+        "hideImageUntilAnswer": false,
+        "question": "ما هو هذا المنتج؟",
         "options": [
-          "ليجو (LEGO)",
-          "مكعب روبيك (Rubik)",
-          "باربي (Barbie)",
-          "مونوبولي (Monopoly)"
+          "دوريتوس حار نار (Doritos)",
+          "شيتوس فلامينج هوت",
+          "تاكيس فويغو",
+          "ليز حار"
         ],
-        "correctAnswer": "ليجو (LEGO)",
-        "explanation": "تأسست شركة ليجو في الدنمارك وتطورت لتصبح أكبر شركة ألعاب تركيبية.",
-        "hint": "قطع البناء والتركيب الملونة"
+        "correctAnswer": "دوريتوس حار نار (Doritos)",
+        "explanation": "الإجابة الصحيحة: دوريتوس حار نار (Doritos)",
+        "hint": ""
       },
       {
-        "id": "gen-products-3",
+        "id": "prod-034",
         "points": 400,
-        "imageUrl": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "question": "ما اسم المنتج الغذائي الشهير المكون من كريم شوكولاتة البندق القابل للدهن؟",
+        "imageUrl": "/products_thumb.jpg",
+        "hideImageUntilAnswer": false,
+        "question": "ما هو هذا المنتج؟",
         "options": [
-          "نوتيلا (Nutella)",
-          "لوتس (Lotus)",
-          "كندر (Kinder)",
-          "جالاكسي (Galaxy)"
+          "جلي فوستر كلاركس (Foster Clark's)",
+          "جلي العالي بالفراولة",
+          "جلي جرينز الكلاسيكي",
+          "جلي رويال الإنجليزي"
         ],
-        "correctAnswer": "نوتيلا (Nutella)",
-        "explanation": "ظهرت نوتيلا بصورتها الحالية عام 1964 وتعتبر من أشهر المنتجات القابلة للدهن.",
-        "hint": "علبة الشوكولاتة والبندق الإيطالية الشهيرة"
+        "correctAnswer": "جلي فوستر كلاركس (Foster Clark's)",
+        "explanation": "الإجابة الصحيحة: جلي فوستر كلاركس (Foster Clark's)",
+        "hint": ""
       },
       {
-        "id": "gen-products-4",
-        "points": 500,
-        "imageUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "question": "أي معجون أسنان شهير للعناية بالفم ابتكر أنبوب المعجون العصري الشهير بنهاية القرن التاسع عشر؟",
+        "id": "prod-035",
+        "points": 400,
+        "imageUrl": "/products_thumb.jpg",
+        "hideImageUntilAnswer": false,
+        "question": "ما هو هذا المنتج؟",
         "options": [
-          "كولجيت (Colgate)",
-          "سينسوداين (Sensodyne)",
-          "كريست (Crest)",
-          "كلوز أب (Close-Up)"
+          "إندومي (Indomie)",
+          "نودلز ماجي بنكهة الكاري",
+          "ساميانغ الكورية الحارة",
+          "شين رامن نودلز"
         ],
-        "correctAnswer": "كولجيت (Colgate)",
-        "explanation": "أطلقت كولجيت معجون الأسنان في أنبوب العصر الشهير بنهاية القرن التاسع عشر.",
-        "hint": "ماركة معجون الأسنان العالمية بالأنبوب الأحمر"
+        "correctAnswer": "إندومي (Indomie)",
+        "explanation": "الإجابة الصحيحة: إندومي (Indomie)",
+        "hint": ""
       },
       {
-        "id": "gen-products-5",
+        "id": "prod-067",
         "points": 600,
-        "question": "ما اسم المشروب الغازي الأشهر عالمياً ذو العلبة الحمراء والشعار الأبيض العريق؟",
+        "imageUrl": "/products_thumb.jpg",
+        "hideImageUntilAnswer": false,
+        "question": "ما هو هذا المنتج؟",
         "options": [
-          "كوكاكولا (Coca-Cola)",
-          "بيبسي (Pepsi)",
-          "سفن أب",
-          "ميرندا"
+          "زيت جوز هند أرض الطبيعة (Natureland)",
+          "زيت جوز هند سي بي سي",
+          "زيت باراشوت النقي",
+          "زيت أورجانيك هندي"
         ],
-        "correctAnswer": "كوكاكولا (Coca-Cola)",
-        "explanation": "كوكاكولا هي واحدة من أشهر المشروبات والعلامات التجارية في التاريخ.",
-        "hint": "العلبة الحمراء الشهيرة عالمياً",
-        "imageUrl": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true
+        "correctAnswer": "زيت جوز هند أرض الطبيعة (Natureland)",
+        "explanation": "الإجابة الصحيحة: زيت جوز هند أرض الطبيعة (Natureland)",
+        "hint": ""
       }
     ]
   },
@@ -902,6 +908,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "general",
     "section": "ولا كلمة",
     "iconName": "Brain",
+    "imageUrl": "/wk_general_thumb.jpg",
     "description": "تحدي مسح الباركود بالهاتف والتمثيل الصامت لأشهر المنتجات والماركات والأجهزة",
     "color": "from-amber-500 to-orange-600",
     "bgGradient": "bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-amber-500/30",
@@ -1961,88 +1968,7 @@ export const INITIAL_CATEGORIES: Category[] = [
       "Avengers",
       "MCU"
     ],
-    "questions": [
-      {
-        "id": "spec-foreign-marvel-1",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Thanos_MCU.jpg/600px-Thanos_MCU.jpg",
-        "hideImageUntilAnswer": true,
-        "points": 200,
-        "question": "ما هو اسم الشرير العملاق القادم من تيتان والباحث عن الأحجار الستة؟",
-        "options": [
-          "ثانوس (Thanos)",
-          "أولترون",
-          "لوكي",
-          "كانغ"
-        ],
-        "correctAnswer": "ثانوس (Thanos)",
-        "explanation": "ثانوس سعى لجمع أحجار اللانهائية لمحاي نصف كائنات الكون.",
-        "hint": "ثانوس Thanos"
-      },
-      {
-        "id": "spec-foreign-marvel-2",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Captain_America%27s_shield.svg/600px-Captain_America%27s_shield.svg.png",
-        "hideImageUntilAnswer": true,
-        "points": 300,
-        "question": "ما اسم المملكة الأفريقية المخفية الغنية بمعدن الفايبرانيوم والتي يحكمها بلاك بانثر؟",
-        "options": [
-          "واكاندا (Wakanda)",
-          "سوكوفيا",
-          "أتلانتس",
-          "لاتفيريا"
-        ],
-        "correctAnswer": "واكاندا (Wakanda)",
-        "explanation": "واكاندا هي الموطن المتطور تقنياً ومصدر الفايبرانيوم.",
-        "hint": "Wakanda Forever"
-      },
-      {
-        "id": "spec-foreign-marvel-3",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Mjolnir.JPG/600px-Mjolnir.JPG",
-        "hideImageUntilAnswer": true,
-        "points": 400,
-        "question": "ما اسم مطرقة ثور الخارقة المصنوعة من معدن أورو والتي لا يحملها إلا الجدير؟",
-        "options": [
-          "ميولنير (Mjolnir)",
-          "ستورمبريكر",
-          "غونغنير",
-          "إكسكالبر"
-        ],
-        "correctAnswer": "ميولنير (Mjolnir)",
-        "explanation": "مطرقة ميولنير هي أداة التحكم بالبرق الخاصة بالبطل ثور.",
-        "hint": "Mjolnir"
-      },
-      {
-        "id": "spec-foreign-marvel-4",
-        "imageUrl": "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 500,
-        "question": "ما هي الجملة الأخيرة الأيقونية التي قالها توني ستارك قبل أن يقرع أصابعه في Endgame؟",
-        "options": [
-          "\"And I... am... Iron Man!\"",
-          "\"I am inevitable!\"",
-          "\"Avengers assemble!\"",
-          "\"We are Groot!\""
-        ],
-        "correctAnswer": "\"And I... am... Iron Man!\"",
-        "explanation": "رد بها توني ستارك على ثانوس محققاً النصر النهائي للمنتقمين.",
-        "hint": "And I... am... Iron Man!"
-      },
-      {
-        "id": "spec-foreign-marvel-5",
-        "points": 600,
-        "question": "ما اسم البطل الخارق الشاب بيتر باركر المكتسب لقدرات فائقة بعد لدغة عنكبوت جيني؟",
-        "options": [
-          "سبايدرمان (Spider-Man)",
-          "آيرون مان",
-          "كابتن أمريكا",
-          "ثور"
-        ],
-        "correctAnswer": "سبايدرمان (Spider-Man)",
-        "explanation": "بيتر باركر يتحول إلى سبايدرمان البطل الخارق المحبوب في نيويورك.",
-        "hint": "Spider-Man يتسلق الجدران ويبخ الشباك",
-        "imageUrl": "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true
-      }
-    ]
+    "questions": marvel100Questions
   },
   {
     "id": "spec-foreign-got",
@@ -2067,6 +1993,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "specific",
     "section": "🎬 قسم فن أجنبي",
     "iconName": "Skull",
+    "imageUrl": "/the_walking_dead/twd_1.jpg",
     "description": "أسئلة تتعلق بمسلسل TWD والصراع ضد الزومبي والناجين",
     "color": "from-amber-800 to-stone-900",
     "bgGradient": "bg-gradient-to-br from-amber-800/10 to-stone-900/10 border-amber-800/30",
@@ -2083,6 +2010,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "specific",
     "section": "🎬 قسم فن أجنبي",
     "iconName": "Flame",
+    "imageUrl": "/peaky_blinders/peaky_1.jpg",
     "description": "أسئلة تتعلق بمسلسل بيكي بليندرز وعصابة شيلبي",
     "color": "from-amber-600 to-slate-800",
     "bgGradient": "bg-gradient-to-br from-amber-600/10 to-slate-800/10 border-amber-600/30",
@@ -2091,88 +2019,7 @@ export const INITIAL_CATEGORIES: Category[] = [
       "Peaky",
       "Birmingham"
     ],
-    "questions": [
-      {
-        "id": "spec-foreign-peaky-1",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Birmingham_Canal_Navigations.jpg/600px-Birmingham_Canal_Navigations.jpg",
-        "hideImageUntilAnswer": true,
-        "points": 200,
-        "question": "في أي مدينة صناعية بريطانية تدور معظم أحداث مسلسل Peaky Blinders؟",
-        "options": [
-          "بيرمنغهام (Birmingham)",
-          "لندن",
-          "مانشستر",
-          "ليفربول"
-        ],
-        "correctAnswer": "بيرمنغهام (Birmingham)",
-        "explanation": "تأسست العصابة وانطلقت أحداثها في شوارع ومصانع بيرمنغهام.",
-        "hint": "مدينة Birmingham"
-      },
-      {
-        "id": "spec-foreign-peaky-2",
-        "imageUrl": "https://images.unsplash.com/photo-1521369984125-650a04b45f08?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 300,
-        "question": "أين تخفي عصابة البيكي بليندرز شفرات الحلاقة القاتلة السريعة في ملابسهم؟",
-        "options": [
-          "في حافة قبعاتهم (Flat caps)",
-          "في أكمامهم",
-          "في أحذيتهم",
-          "في ستراتهم"
-        ],
-        "correctAnswer": "في حافة قبعاتهم (Flat caps)",
-        "explanation": "الاسم مشتق من إخفاء شفرات الحلاقة (Razors) في حواف القبعات المسطحة.",
-        "hint": "حافة القبعات المسطحة"
-      },
-      {
-        "id": "spec-foreign-peaky-3",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Cillian_Murphy_2014.jpg/600px-Cillian_Murphy_2014.jpg",
-        "hideImageUntilAnswer": true,
-        "points": 400,
-        "question": "ما اسم الممثل الأيرلندي الأسطوري الفائز بنوبل والأوسكار والذي قدم أداء توماس شيلبي؟",
-        "options": [
-          "كيليان ميرفي (Cillian Murphy)",
-          "توم هاردي",
-          "بول أندرسون",
-          "سام نيل"
-        ],
-        "correctAnswer": "كيليان ميرفي (Cillian Murphy)",
-        "explanation": "جسد كيليان ميرفي شخصية تومي شيلبي لأكثر من 6 مواسم بنجاح أسطوري.",
-        "hint": "Cillian Murphy"
-      },
-      {
-        "id": "spec-foreign-peaky-4",
-        "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 500,
-        "question": "ما اسم الحانة والبار التاريخي المملوك لعائلة شيلبي وملتقى اجتماعاتهم الرسمية؟",
-        "options": [
-          "حانة الجاريسون (The Garrison)",
-          "البلاتينيوم",
-          "بار كينج",
-          "الرويال"
-        ],
-        "correctAnswer": "حانة الجاريسون (The Garrison)",
-        "explanation": "The Garrison Pub هو المقر الرئيسي والملتقى التاريخي للبيكي بليندرز.",
-        "hint": "The Garrison"
-      },
-      {
-        "id": "spec-foreign-peaky-5",
-        "points": 600,
-        "question": "ما اسم الشقيق الأكبر المتهور والعنيف لـ تومي شيلبي في عصابة البيكي بليندرز؟",
-        "options": [
-          "آرثر شيلبي (Arthur Shelby)",
-          "جون شيلبي",
-          "فين شيلبي",
-          "مايكل أوليفر"
-        ],
-        "correctAnswer": "آرثر شيلبي (Arthur Shelby)",
-        "explanation": "آرثر شيلبي الأخ الأكبر لـ تومي ويمتلك نوبات الغضب والشراسة بالمواجهات.",
-        "hint": "الأخ الأكبر الشرس ذو الشارب العريض",
-        "imageUrl": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true
-      }
-    ]
+    "questions": peakyBlinders100Questions
   },
   {
     "id": "spec-foreign-bb",
@@ -2180,7 +2027,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "specific",
     "section": "🎬 قسم فن أجنبي",
     "iconName": "FlaskConical",
-    "imageUrl": "https://i.postimg.cc/hP9z4NhJ/lucid-origin-A-stylized-vector-style-cartoon-icon-representing-Walter-White-and-Jesse-Pinkman-0.jpg",
+    "imageUrl": "/breaking_bad/bb_1.jpg",
     "description": "أسئلة تتعلق بمسلسل بريكنج باد، هايزنبرغ، وغاس فرينغ",
     "color": "from-emerald-500 to-green-700",
     "bgGradient": "bg-gradient-to-br from-emerald-500/10 to-green-700/10 border-emerald-500/30",
@@ -2189,88 +2036,7 @@ export const INITIAL_CATEGORIES: Category[] = [
       "BreakingBad",
       "Jesse"
     ],
-    "questions": [
-      {
-        "id": "spec-foreign-bb-1",
-        "imageUrl": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 200,
-        "question": "ما هو اسم سلسلة مطاعم الدجاج السريع المملوكة لـ غاس فرينغ كواجهة لعمله؟",
-        "options": [
-          "Los Pollos Hermanos",
-          "El Camino Chicken",
-          "Pollos Locos",
-          "Taco Cabeza"
-        ],
-        "correctAnswer": "Los Pollos Hermanos",
-        "explanation": "Los Pollos Hermanos تعني إخوة الدجاج بالإسبانية.",
-        "hint": "Los Pollos Hermanos"
-      },
-      {
-        "id": "spec-foreign-bb-2",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Bob_Odenkirk_by_Gage_Skidmore_2.jpg/600px-Bob_Odenkirk_by_Gage_Skidmore_2.jpg",
-        "hideImageUntilAnswer": true,
-        "points": 300,
-        "question": "ما اسم المحامي الكوميدي الشهير المدافع عن والتر وجيسي وصاحب جملة \"Better Call Saul\"?",
-        "options": [
-          "سول غودمان (Saul Goodman)",
-          "تشارلز ماكجيل",
-          "هوارد هاملين",
-          "مايك إيرمانتراوت"
-        ],
-        "correctAnswer": "سول غودمان (Saul Goodman)",
-        "explanation": "اسم سول غودمان مشتق من \"It's all good, man!\".",
-        "hint": "Better Call Saul!"
-      },
-      {
-        "id": "spec-foreign-bb-3",
-        "imageUrl": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 400,
-        "question": "ما هي مهنة والتر وايت الأصلية قبل إصابته بالسرطان ودخوله عالم التجارة؟",
-        "options": [
-          "معلم كيمياء بمدرسة ثانوية",
-          "طبيب تحاليل",
-          "مهندس برمجيات",
-          "محاضر جامعي"
-        ],
-        "correctAnswer": "معلم كيمياء بمدرسة ثانوية",
-        "explanation": "كان يعلم الكيمياء بالمدرسة الثانوية ويعمل بمغسلة سيارات.",
-        "hint": "أستاذ كيمياء بالثانوية"
-      },
-      {
-        "id": "spec-foreign-bb-4",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Chevrolet_El_Camino_SS.jpg/600px-Chevrolet_El_Camino_SS.jpg",
-        "hideImageUntilAnswer": true,
-        "points": 500,
-        "question": "ما اسم الفيلم المكمل لمسلسل Breaking Bad الذي يسرد قصة هروب جيسي بينكمان؟",
-        "options": [
-          "El Camino",
-          "Felina",
-          "Ozymandias",
-          "Say My Name"
-        ],
-        "correctAnswer": "El Camino",
-        "explanation": "فيلم El Camino تتبع رحلة هروب جيسي بينكمان النهائية.",
-        "hint": "El Camino"
-      },
-      {
-        "id": "spec-foreign-bb-5",
-        "points": 600,
-        "question": "ما اسم المحقق والعميل الفيدرالي بمكافحة المخدرات عديل والتر وايت وشقيقه بالقانون؟",
-        "options": [
-          "هانك شريذر (Hank Schrader)",
-          "ستيف غوميز",
-          "غاس فرينغ",
-          "مايك"
-        ],
-        "correctAnswer": "هانك شريذر (Hank Schrader)",
-        "explanation": "هانك شريذر عميل الـ DEA المحقق في قضية هايزنبرغ دون معرفة أنه عديله والتر وايت.",
-        "hint": "عميل الـ DEA وزوج أخت سكايلر",
-        "imageUrl": "https://images.unsplash.com/photo-1508873696983-2df515122519?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true
-      }
-    ]
+    "questions": breakingBad100Questions
   },
   {
     "id": "spec-turkish-general",
@@ -4295,6 +4061,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "specific",
     "section": "🇹🇷 قسم فن تركي",
     "iconName": "Swords",
+    "imageUrl": "/ertugrul/ertugrul_1.jpg",
     "description": "أسئلة تتعلق بمسلسل قيامة أرطغرل وقبيلة الكايي",
     "color": "from-amber-600 to-red-700",
     "bgGradient": "bg-gradient-to-br from-amber-600/10 to-red-700/10 border-amber-600/30",
@@ -4311,7 +4078,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "specific",
     "section": "🇹🇷 قسم فن تركي",
     "iconName": "Crown",
-    "imageUrl": "https://i.postimg.cc/6ppcVbLD/lucid-origin-Flat-2D-vector-cartoon-avatar-of-Osman-Bey-from-the-Turkish-series-Kurulus-Osma-0.jpg",
+    "imageUrl": "/kurulus_osman/osman_1.jpg",
     "description": "أسئلة تتعلق بمسلسل المؤسس عثمان وفتوحاته",
     "color": "from-red-700 to-amber-700",
     "bgGradient": "bg-gradient-to-br from-red-700/10 to-amber-700/10 border-red-700/30",
@@ -4328,7 +4095,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "specific",
     "section": "🇹🇷 قسم فن تركي",
     "iconName": "Target",
-    "imageUrl": "https://i.postimg.cc/MZYGk9Vt/gpt-image-2-Flat-2D-vector-cartoon-avatar-of-Yamac-Koc-ovali-from-the-Turkish-series-C-uku-0.jpg",
+    "imageUrl": "/cukur/cukur_1.jpg",
     "description": "أسئلة تتعلق بمسلسل الحفرة وعائلة كوتشوفالي",
     "color": "from-slate-900 to-red-950",
     "bgGradient": "bg-gradient-to-br from-slate-900/10 to-red-950/10 border-slate-900/30",
@@ -4345,6 +4112,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "specific",
     "section": "🇹🇷 قسم فن تركي",
     "iconName": "Tv",
+    "imageUrl": "/esref_ruya/esref_1.jpg",
     "description": "قسم خاص بمسلسل الدراما والجريمة حلم أشرف (Eşref Rüya) بطولة شتاي أولسوي وديميت أوزديمير",
     "color": "from-red-600 to-amber-700",
     "bgGradient": "bg-gradient-to-br from-red-600/10 to-amber-700/10 border-red-600/30",
@@ -4363,6 +4131,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "specific",
     "section": "🎌 قسم أنمي",
     "iconName": "Sparkles",
+    "imageUrl": "/anime/anime_1.jpg",
     "description": "أسئلة عامة وشاملة تتعلق لعالم الأنمي والمانغا",
     "color": "from-amber-500 to-rose-600",
     "bgGradient": "bg-gradient-to-br from-amber-500/10 to-rose-600/10 border-amber-500/30",
@@ -4371,88 +4140,7 @@ export const INITIAL_CATEGORIES: Category[] = [
       "مانغا",
       "أوتاكو"
     ],
-    "questions": [
-      {
-        "id": "spec-anime-general-1",
-        "imageUrl": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 200,
-        "question": "ما اسم البطل السايان الشهير ذو الشعر الشوكي من أنمي دراغون بول (Dragon Ball)؟",
-        "options": [
-          "غوكو (Goku)",
-          "فيجيتا",
-          "غوهان",
-          "ترانكس"
-        ],
-        "correctAnswer": "غوكو (Goku)",
-        "explanation": "سون غوكو هو بطل سلسلة Dragon Ball ومحارب السوبر سايان.",
-        "hint": "Goku"
-      },
-      {
-        "id": "spec-anime-general-2",
-        "imageUrl": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 300,
-        "question": "ما اسم قائد الاستطلاع العباقرة صاحب جملة \"قدموا قلوبكم\" في أنمي هجوم العمالقة؟",
-        "options": [
-          "إيروين سميث (Erwin Smith)",
-          "ليفاي أكرمان",
-          "هانجي",
-          "بيكسيس"
-        ],
-        "correctAnswer": "إيروين سميث (Erwin Smith)",
-        "explanation": "القائد إيروين سميث قاد فيلق الاستكشاف بشجاعة أسطورية.",
-        "hint": "Erwin Smith"
-      },
-      {
-        "id": "spec-anime-general-3",
-        "imageUrl": "https://images.unsplash.com/photo-1613371138196-c2a7c87a8f58?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 400,
-        "question": "ما اسم صياد الشياطين ذو القناع الخنزي الأيقوني والصديق الشرس لتانجيرو في Demon Slayer؟",
-        "options": [
-          "إينوسكي هاشيبیرا (Inosuke)",
-          "زينيتسو",
-          "جيو توميوكا",
-          "رينغوكو"
-        ],
-        "correctAnswer": "إينوسكي هاشيبیرا (Inosuke)",
-        "explanation": "إينوسكي يرتدي رأس خنزير بري ويستخدم تنفس الوحش.",
-        "hint": "Inosuke"
-      },
-      {
-        "id": "spec-anime-general-4",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/600px-Studio_Ghibli_logo.svg.png",
-        "hideImageUntilAnswer": true,
-        "points": 500,
-        "question": "ما هو الاستوديو الياباني الأسطوري مبتكر أروع الأفلام مثل \"Spirited Away\" و \"My Neighbor Totoro\"؟",
-        "options": [
-          "استوديو غيبلي (Studio Ghibli)",
-          "استوديو مابا",
-          "توي أنيميشن",
-          "يوفوتبل"
-        ],
-        "correctAnswer": "استوديو غيبلي (Studio Ghibli)",
-        "explanation": "أسسه الأسطورة هاياو ميازاكي وإيساو تاكاهاتا.",
-        "hint": "Studio Ghibli"
-      },
-      {
-        "id": "spec-anime-general-5",
-        "points": 600,
-        "question": "ما اسم الأنمي الرياضي الأسطوري عن كرة القدم المشهور بالوطن العربي بـ \"كابتن ماجد\"؟",
-        "options": [
-          "كابتن تسوباسا (Captain Tsubasa)",
-          "سلام دانك",
-          "أنا وأخي",
-          "أبطال الكرة"
-        ],
-        "correctAnswer": "كابتن تسوباسا (Captain Tsubasa)",
-        "explanation": "كابتن تسوباسا (كابتن ماجد) هو الأنمي الرياضي الأكثر إلهاماً للأجيال العربية.",
-        "hint": "الكابتن ماجد وتسديدة الموزة",
-        "imageUrl": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true
-      }
-    ]
+    "questions": anime100Questions
   },
   {
     "id": "spec-anime-onepiece",
@@ -4460,6 +4148,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "specific",
     "section": "🎌 قسم أنمي",
     "iconName": "CassetteTape",
+    "imageUrl": "/one_piece/onepiece_1.jpg",
     "description": "أسئلة تتعلق بمسلسل ون بيس وقبعة القش",
     "color": "from-amber-500 to-red-600",
     "bgGradient": "bg-gradient-to-br from-amber-500/10 to-red-600/10 border-amber-500/30",
@@ -4468,88 +4157,7 @@ export const INITIAL_CATEGORIES: Category[] = [
       "لوفي",
       "زورو"
     ],
-    "questions": [
-      {
-        "id": "spec-anime-onepiece-1",
-        "imageUrl": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 200,
-        "question": "ما اسم الطبيب اللطيف لطاقم قبعة القش والمكون من رنة أكلت فاكهة الإنسان؟",
-        "options": [
-          "توني توني تشوبر (Chopper)",
-          "فرانكي",
-          "بروك",
-          "جينبي"
-        ],
-        "correctAnswer": "توني توني تشوبر (Chopper)",
-        "explanation": "تشوبر هو الطبيب الماهر اللطيف بطاقم قبعة القش.",
-        "hint": "Chopper"
-      },
-      {
-        "id": "spec-anime-onepiece-2",
-        "imageUrl": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 300,
-        "question": "ما اسم السفينة الأولى العزيزة على قلوب طاقم قبعة القش والتي ودعوها في ووتر 7؟",
-        "options": [
-          "غوينغ ميري (Going Merry)",
-          "ثاوزند صاني",
-          "الريد فورس",
-          "الأوروجاكسون"
-        ],
-        "correctAnswer": "غوينغ ميري (Going Merry)",
-        "explanation": "غوينغ ميري حملت لوفي وطاقمه طوال الجزء الأول من رحلتهم.",
-        "hint": "Going Merry"
-      },
-      {
-        "id": "spec-anime-onepiece-3",
-        "imageUrl": "https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 400,
-        "question": "ما هو أسلوب القتال الخاص بالسيّاف رورونوا زورو؟",
-        "options": [
-          "أسلوب السيوف الثلاثة (السانتوريو)",
-          "أسلوب السيفين",
-          "أسلوب السيف الواحد",
-          "أسلوب أربع سيوف"
-        ],
-        "correctAnswer": "أسلوب السيوف الثلاثة (السانتوريو)",
-        "explanation": "يقاتل زورو بـ 3 سيوف أحدهم في فمه.",
-        "hint": "السيوف الثلاثة"
-      },
-      {
-        "id": "spec-anime-onepiece-4",
-        "imageUrl": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 500,
-        "question": "ما اسم التحول الأسطوري الخامس والأخير لـ لوفي المعتمد على إيقاظ فاكهة نيكا إله الشمس؟",
-        "options": [
-          "الغير الخامس (Gear 5)",
-          "الغير الرابع",
-          "المحرك الأقصى",
-          "طور الهوكي الكامل"
-        ],
-        "correctAnswer": "الغير الخامس (Gear 5)",
-        "explanation": "Gear 5 يمثل ذروة لوفي وقدرته المطاطية الخيالية الأسطورية.",
-        "hint": "Gear 5"
-      },
-      {
-        "id": "spec-anime-onepiece-5",
-        "points": 600,
-        "question": "ما اسم القناص الكوميدي ذو الأنف الطويل وسلاح المنجنيق في طاقم قبعة القش؟",
-        "options": [
-          "يوسوب (Usopp)",
-          "سانجي",
-          "زورو",
-          "فرنكي"
-        ],
-        "correctAnswer": "يوسوب (Usopp)",
-        "explanation": "يوسوب قناص طاقم قبعة القش والملقب بـ \"سوجيكينج\" ملك القناصين.",
-        "hint": "صاحب الأنف الطويل والمنجنيق",
-        "imageUrl": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true
-      }
-    ]
+    "questions": onePiece100Questions
   },
   {
     "id": "spec-anime-pokemon",
@@ -4557,6 +4165,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "specific",
     "section": "🎌 قسم أنمي",
     "iconName": "Sparkles",
+    "imageUrl": "/pokemon/pokemon_1.jpg",
     "description": "أسئلة تتعلق بسلسلة البوكيمون والمدربين",
     "color": "from-yellow-500 to-amber-600",
     "bgGradient": "bg-gradient-to-br from-yellow-500/10 to-amber-600/10 border-yellow-500/30",
@@ -4565,88 +4174,7 @@ export const INITIAL_CATEGORIES: Category[] = [
       "بيكاتشو",
       "آش"
     ],
-    "questions": [
-      {
-        "id": "spec-anime-pokemon-1",
-        "imageUrl": "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 200,
-        "question": "ما اسم بطل أنمي البوكيمون الشاب الذي انطلق من قرية باليت ليصبح مدرب البوكيمون الأول؟",
-        "options": [
-          "آش كيتشام (Ash Ketchum)",
-          "غاري",
-          "بروك",
-          "كيسوم"
-        ],
-        "correctAnswer": "آش كيتشام (Ash Ketchum)",
-        "explanation": "سعى آش كيتشام لجمع الأوسمة والفوز ببطولة البوكيمون.",
-        "hint": "Ash Ketchum"
-      },
-      {
-        "id": "spec-anime-pokemon-2",
-        "imageUrl": "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 300,
-        "question": "ما اسم العصابة الشريرة الكوميدية المكونة من جاسي وكوجيرو والقط ناطق الكلام مياوث؟",
-        "options": [
-          "فريق روكيت (Team Rocket)",
-          "عصابة البلازما",
-          "الفريق المائي",
-          "فريق نيو"
-        ],
-        "correctAnswer": "فريق روكيت (Team Rocket)",
-        "explanation": "فريق روكيت يلاحق بيكاتشو باستمرار بصيحتهم \"استعدوا للمتاعب\".",
-        "hint": "Team Rocket"
-      },
-      {
-        "id": "spec-anime-pokemon-3",
-        "imageUrl": "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 400,
-        "question": "ما هي الكرة المغناطيسية الحمراء والبيضاء المستخدمة للإمساك بالبوكيمونات؟",
-        "options": [
-          "بوكي بول (Poké Ball)",
-          "ميغا بول",
-          "ماستر بول",
-          "ألترا بول"
-        ],
-        "correctAnswer": "بوكي بول (Poké Ball)",
-        "explanation": "الـ Poké Ball هي الكرة الأساسية لحفظ واصطياد البوكيمون.",
-        "hint": "Poké Ball"
-      },
-      {
-        "id": "spec-anime-pokemon-4",
-        "imageUrl": "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
-        "points": 500,
-        "question": "ما اسم التنين الناري الشرس والتحول النهائي لـ تشارماندر والذي يزفر النيران؟",
-        "options": [
-          "تشارايزارد (Charizard)",
-          "تشارميليون",
-          "دراغونايت",
-          "غيرادوس"
-        ],
-        "correctAnswer": "تشارايزارد (Charizard)",
-        "explanation": "تشارايزارد من أقوى وأشهر بوكيمونات آش كيتشام النار النفاثة.",
-        "hint": "Charizard"
-      },
-      {
-        "id": "spec-anime-pokemon-5",
-        "points": 600,
-        "question": "ما اسم هجمة بيكاتشو الكهربائية الصاعقة الشهيرة التي يهزم بها منافسيه؟",
-        "options": [
-          "الصدمة الرعدية (Thunderbolt)",
-          "نفث النار",
-          "مدفع المياه",
-          "الضربة الأرضية"
-        ],
-        "correctAnswer": "الصدمة الرعدية (Thunderbolt)",
-        "explanation": "تعتبر ضربة Thunderbolt الهجمة الأيقونية الصاعقة لـ بيكاتشو.",
-        "hint": "صعقة كهربائية صفراء رعدية",
-        "imageUrl": "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true
-      }
-    ]
+    "questions": pokemon100Questions
   },
   {
     "id": "spec-anime-characters",
@@ -4654,6 +4182,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "specific",
     "section": "🎌 قسم أنمي",
     "iconName": "Users",
+    "imageUrl": "/anime/anime_2.jpg",
     "description": "أسئلة التخمين والتعرف على أسماء شخصيات الأنمي الشهيرة",
     "color": "from-pink-600 to-purple-600",
     "bgGradient": "bg-gradient-to-br from-pink-600/10 to-purple-600/10 border-pink-600/30",
@@ -4665,8 +4194,8 @@ export const INITIAL_CATEGORIES: Category[] = [
     "questions": [
       {
         "id": "spec-anime-characters-1",
-        "imageUrl": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
+        "imageUrl": "/anime/anime_2.jpg",
+        "hideImageUntilAnswer": false,
         "points": 200,
         "question": "من هو المعلم الأسطوري معصوب العينين وذو الشعر الأبيض وصاحب تقنية اللانهائية في Jujutsu Kaisen؟",
         "options": [
@@ -4681,8 +4210,8 @@ export const INITIAL_CATEGORIES: Category[] = [
       },
       {
         "id": "spec-anime-characters-2",
-        "imageUrl": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
+        "imageUrl": "/anime/anime_1.jpg",
+        "hideImageUntilAnswer": false,
         "points": 300,
         "question": "من هو البطل الملقب بـ \"رجل اللكمة الواحدة\" الصلع الذي يقضي على أي خصم بلكمة واحدة؟",
         "options": [
@@ -4697,8 +4226,8 @@ export const INITIAL_CATEGORIES: Category[] = [
       },
       {
         "id": "spec-anime-characters-3",
-        "imageUrl": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
+        "imageUrl": "/anime/anime_3.jpg",
+        "hideImageUntilAnswer": false,
         "points": 400,
         "question": "من هو المحقق العبقري الغامض الملقب بـ L في أنمي مذكرة الموت والذي يعشق أكل الحلويات؟",
         "options": [
@@ -4713,8 +4242,8 @@ export const INITIAL_CATEGORIES: Category[] = [
       },
       {
         "id": "spec-anime-characters-4",
-        "imageUrl": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true,
+        "imageUrl": "/anime/anime_4.jpg",
+        "hideImageUntilAnswer": false,
         "points": 500,
         "question": "من هو البطل الشاب صاحب قدرة \"ون فور أول\" (One For All) والشعر الأخضر في My Hero Academia؟",
         "options": [
@@ -4740,8 +4269,8 @@ export const INITIAL_CATEGORIES: Category[] = [
         "correctAnswer": "رورونوا زورو (Roronoa Zoro)",
         "explanation": "زورو هو السياف الأول في طاقم قبعة القش وصاحب أسوب \"سانتوريو\" السيوف الثلاثة.",
         "hint": "صاحب الشعر الأخضر والسيوف الثلاثة",
-        "imageUrl": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
-        "hideImageUntilAnswer": true
+        "imageUrl": "/one_piece/onepiece_2.jpg",
+        "hideImageUntilAnswer": false
       }
     ]
   }

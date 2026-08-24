@@ -351,10 +351,11 @@ export function AuthScreen({ onSuccess }: AuthScreenProps) {
               <div className="relative">
                 <UserIcon className="w-4 h-4 absolute right-3 top-3.5 text-slate-500" />
                 <input
+                  key="auth-name-input"
                   type="text"
                   required
                   placeholder="مثال: أحمد الكويت"
-                  value={name}
+                  value={name || ''}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full pl-3 pr-10 py-3 bg-slate-950 border border-slate-800 rounded-xl text-sm text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-amber-500 transition"
                 />
@@ -367,10 +368,11 @@ export function AuthScreen({ onSuccess }: AuthScreenProps) {
             <div className="relative">
               <Mail className="w-4 h-4 absolute right-3 top-3.5 text-slate-500" />
               <input
+                key="auth-email-input"
                 type="email"
                 required
                 placeholder="name@example.com"
-                value={email}
+                value={email || ''}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full pl-3 pr-10 py-3 bg-slate-950 border border-slate-800 rounded-xl text-sm text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-amber-500 transition dir-ltr text-right"
               />
@@ -394,10 +396,11 @@ export function AuthScreen({ onSuccess }: AuthScreenProps) {
               <div className="relative">
                 <Lock className="w-4 h-4 absolute right-3 top-3.5 text-slate-500" />
                 <input
+                  key="auth-password-input"
                   type="password"
                   required
                   placeholder="••••••••"
-                  value={password}
+                  value={password || ''}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full pl-3 pr-10 py-3 bg-slate-950 border border-slate-800 rounded-xl text-sm text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-amber-500 transition dir-ltr text-right"
                 />

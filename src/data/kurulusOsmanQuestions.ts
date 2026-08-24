@@ -823,13 +823,25 @@ export const osman100QuestionsRaw: OsmanQuestionData[] = [
   }
 ];
 
-export const kurulusOsman100Questions: Question[] = osman100QuestionsRaw.map((q, idx) => ({
-  id: `spec-turkish-osman_${String(idx + 1).padStart(3, '0')}`,
-  points: q.points,
-  question: q.question,
-  options: q.options,
-  correctAnswer: q.correctAnswer,
-  explanation: q.explanation,
-  hint: q.hint,
-  hideImageUntilAnswer: true,
-}));
+const osmanImages = [
+  '/kurulus_osman/osman_1.jpg',
+  '/kurulus_osman/osman_2.jpg',
+  '/kurulus_osman/osman_3.jpg',
+  '/kurulus_osman/osman_4.jpg',
+];
+
+export const kurulusOsman100Questions: Question[] = osman100QuestionsRaw.map((q, idx) => {
+  const assignedImg = osmanImages[idx % osmanImages.length];
+  return {
+    id: `spec-turkish-osman_${String(idx + 1).padStart(3, '0')}`,
+    points: q.points,
+    question: q.question,
+    options: q.options,
+    correctAnswer: q.correctAnswer,
+    explanation: q.explanation,
+    hint: q.hint,
+    imageUrl: assignedImg,
+    answerImageUrl: assignedImg,
+    hideImageUntilAnswer: false,
+  };
+});

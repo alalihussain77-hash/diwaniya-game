@@ -182,13 +182,20 @@ export async function clearCategoryUsedQuestions(catId: string, userId?: string 
   return clearCategorySeenQuestions(catId, userId);
 }
 
-// Get remaining unseen question count out of 100 strictly for a specific category
+// Get remaining unseen question count out of total strictly for a specific category
 export function getCategoryRemainingCount(catId: string, catName: string = ''): number {
   const rawPool = get100CategoryQuestions(catId, catName);
   const pool = Array.isArray(rawPool) ? rawPool : [];
   const seenSet = new Set(activeSeenIds);
   const unused = pool.filter((q) => q && !seenSet.has(q.id));
   return unused.length;
+}
+
+// Get total question count for a category
+export function getCategoryTotalCount(catId: string, catName: string = ''): number {
+  const rawPool = get100CategoryQuestions(catId, catName);
+  const pool = Array.isArray(rawPool) ? rawPool : [];
+  return pool.length > 0 ? pool.length : 100;
 }
 
 // 4. Reset all seen questions history globally for current user in Firestore
