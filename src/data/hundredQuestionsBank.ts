@@ -1105,9 +1105,9 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           correctAnswer: item.correctAnswer,
           explanation: `الإجابة الصحيحة هي: ${item.correctAnswer}`,
           hint: item.hint || '',
-          imageUrl: item.answerImageUrl,
-          answerImageUrl: item.answerImageUrl,
-          hideImageUntilAnswer: false,
+          imageUrl: (item as any).imageUrl || '',
+          answerImageUrl: item.answerImageUrl || '',
+          hideImageUntilAnswer: Boolean(item.answerImageUrl && !(item as any).imageUrl),
         }));
       }
     }
