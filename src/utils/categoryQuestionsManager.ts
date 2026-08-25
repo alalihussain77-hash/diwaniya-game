@@ -129,16 +129,16 @@ export function getCategoryRawQuestions(catId: string, catName: string = ''): Ca
     .filter(q => q && !deletedIds.has(q.id))
     .map(q => {
       const override = overrides[q.id] || {};
-      const baseImg = q.imageUrl || (q as any).image || '';
-      const baseAnswerImg = q.answerImageUrl || baseImg || '';
+      const baseImg = normalizeImageSrc(q.imageUrl || (q as any).image || '');
+      const baseAnswerImg = normalizeImageSrc(q.answerImageUrl || '');
       return {
         id: q.id,
         question: override.question || q.question,
         answer: override.answer || q.correctAnswer,
         points: override.points || q.points || 200,
         options: override.options || q.options || [],
-        imageUrl: override.imageUrl !== undefined ? override.imageUrl : baseImg,
-        answerImageUrl: override.answerImageUrl !== undefined ? override.answerImageUrl : baseAnswerImg,
+        imageUrl: override.imageUrl !== undefined ? normalizeImageSrc(override.imageUrl) : baseImg,
+        answerImageUrl: override.answerImageUrl !== undefined ? normalizeImageSrc(override.answerImageUrl) : baseAnswerImg,
         hint: override.hint !== undefined ? override.hint : q.hint,
         explanation: override.explanation !== undefined ? override.explanation : q.explanation,
       };

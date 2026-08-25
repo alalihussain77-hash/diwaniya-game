@@ -126,8 +126,8 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
     setEditQuestionText(q.question || '');
     setEditAnswerText(q.answer || '');
     setEditPoints(q.points || 200);
-    const qImg = q.imageUrl || '';
-    const aImg = q.answerImageUrl || q.imageUrl || '';
+    const qImg = normalizeImageSrc(q.imageUrl || '');
+    const aImg = normalizeImageSrc(q.answerImageUrl || '');
     setEditQuestionImage(qImg);
     setEditAnswerImage(aImg);
     setQuestionImgType(qImg.startsWith('data:') ? 'file' : 'url');
