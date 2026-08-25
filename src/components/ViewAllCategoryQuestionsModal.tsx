@@ -527,11 +527,17 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
                           {q.points} نقطة
                         </span>
 
-                        <div className="flex items-center gap-1.5">
+                        <div className="flex items-center gap-1.5 flex-wrap">
                           {q.imageUrl && (
                             <span className="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30 text-[10px] font-medium flex items-center gap-1">
                               <ImageIcon className="w-2.5 h-2.5" />
-                              <span>صورة</span>
+                              <span>صورة سؤال</span>
+                            </span>
+                          )}
+                          {q.answerImageUrl && (
+                            <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-medium flex items-center gap-1">
+                              <Sparkles className="w-2.5 h-2.5 text-emerald-400" />
+                              <span>صورة إجابة</span>
                             </span>
                           )}
                           <span className="text-[10px] text-slate-500 font-mono">
@@ -540,12 +546,12 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
                         </div>
                       </div>
 
-                      {/* Image Thumbnail if available */}
-                      {q.imageUrl && (
-                        <div className="w-full h-24 rounded-xl bg-slate-900 border border-slate-800 overflow-hidden flex items-center justify-center p-1">
+                      {/* Image Thumbnail if available (Question or Answer image) */}
+                      {(q.imageUrl || q.answerImageUrl) && (
+                        <div className="w-full h-24 rounded-xl bg-slate-900 border border-slate-800 overflow-hidden flex flex-col items-center justify-center p-1 relative">
                           <img
-                            src={q.imageUrl}
-                            alt="Question preview"
+                            src={normalizeImageSrc(q.imageUrl || q.answerImageUrl)}
+                            alt="Preview"
                             className="max-h-full max-w-full object-contain drop-shadow"
                             loading="lazy"
                             onError={(e) => {
@@ -553,6 +559,11 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
                               if (parent) parent.style.display = 'none';
                             }}
                           />
+                          {!q.imageUrl && q.answerImageUrl && (
+                            <span className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-slate-950/80 text-emerald-300 text-[9px] font-bold border border-emerald-500/30">
+                              تظهر عند الحل
+                            </span>
+                          )}
                         </div>
                       )}
 

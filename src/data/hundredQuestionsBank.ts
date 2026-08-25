@@ -1092,23 +1092,36 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
 
     if (id === 'gen-knowledge' || id === 'knowledge' || name.includes('معلومات عامة') || name.includes('معرفة')) {
       const b1 = Array.isArray(generalKnowledgeBatch1) ? generalKnowledgeBatch1 : [];
-      const b2 = Array.isArray(generalKnowledgeBatch2) ? generalKnowledgeBatch2 : [];
-      const b3 = Array.isArray(generalKnowledgeBatch3) ? generalKnowledgeBatch3 : [];
-      const b4 = Array.isArray(generalKnowledgeBatch4) ? generalKnowledgeBatch4 : [];
-      const combinedKnowledge = [...b1, ...b2, ...b3, ...b4];
+      const seenIds = new Set<string>();
+      const combinedKnowledge: GeneralKnowledgeQuestion[] = [];
+      for (const item of b1) {
+        if (item && item.id && !seenIds.has(item.id)) {
+          const qImg = (item as any).imageUrl || (item as any).image || '';
+          const aImg = item.answerImageUrl || '';
+          if (qImg || aImg) {
+            seenIds.add(item.id);
+            combinedKnowledge.push(item);
+          }
+        }
+      }
+
       if (combinedKnowledge.length > 0) {
-        return combinedKnowledge.map((item) => ({
-          id: item.id,
-          points: item.points,
-          question: cleanQuestionText(item.questionText),
-          options: shuffle(item.options),
-          correctAnswer: item.correctAnswer,
-          explanation: `الإجابة الصحيحة هي: ${item.correctAnswer}`,
-          hint: item.hint || '',
-          imageUrl: (item as any).imageUrl || '',
-          answerImageUrl: item.answerImageUrl || '',
-          hideImageUntilAnswer: Boolean(item.answerImageUrl && !(item as any).imageUrl),
-        }));
+        return combinedKnowledge.map((item) => {
+          const qImg = (item as any).imageUrl || (item as any).image || '';
+          const aImg = item.answerImageUrl || '';
+          return {
+            id: item.id,
+            points: item.points,
+            question: cleanQuestionText(item.questionText),
+            options: shuffle(item.options),
+            correctAnswer: item.correctAnswer,
+            explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+            hint: item.hint || '',
+            imageUrl: qImg,
+            answerImageUrl: aImg,
+            hideImageUntilAnswer: Boolean(aImg && !qImg),
+          };
+        });
       }
     }
 
