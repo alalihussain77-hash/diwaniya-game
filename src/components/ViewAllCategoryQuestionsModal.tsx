@@ -30,7 +30,8 @@ import {
   updateCategoryQuestion,
   deleteCategoryQuestion,
   resetCategoryQuestions,
-  generateCategoryTypeScriptCode
+  generateCategoryTypeScriptCode,
+  normalizeImageSrc
 } from '../utils/categoryQuestionsManager';
 import { sound } from '../utils/sound';
 import { compressImageFile } from '../utils/imageCompressor';
@@ -817,7 +818,7 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
                           {editQuestionImage ? (
                             <>
                               <img
-                                src={editQuestionImage}
+                                src={normalizeImageSrc(editQuestionImage)}
                                 alt="Question Preview"
                                 className="max-h-full max-w-full object-contain rounded-lg drop-shadow"
                                 onError={(e) => {
@@ -913,7 +914,7 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
                           {editAnswerImage ? (
                             <>
                               <img
-                                src={editAnswerImage}
+                                src={normalizeImageSrc(editAnswerImage)}
                                 alt="Answer Preview"
                                 className="max-h-full max-w-full object-contain rounded-lg drop-shadow"
                                 onError={(e) => {

@@ -22,6 +22,23 @@ export interface CategoryQuestionItem {
   explanation?: string;
 }
 
+// Normalizes image URLs to prevent typos like missing leading slash or trailing slashes (e.g. .jpg/)
+export function normalizeImageSrc(url?: string | null): string {
+  if (!url) return '';
+  let clean = url.trim();
+  if (!clean) return '';
+  if (clean.startsWith('data:image/') || clean.startsWith('blob:')) {
+    return clean;
+  }
+  // Strip trailing slashes, especially after extensions like .jpg/, .png/, etc.
+  clean = clean.replace(/\/+$/, '');
+  // If it is a local path without leading slash and without http/https, add leading slash
+  if (!clean.startsWith('http://') && !clean.startsWith('https://') && !clean.startsWith('/')) {
+    clean = '/' + clean;
+  }
+  return clean;
+}
+
 // Helpers for storage keys
 export function getCustomQuestionsStorageKey(catId: string): string {
   return `diwaniya_cat_custom_${catId}`;
@@ -132,12 +149,12 @@ export function getCategoryRawQuestions(catId: string, catName: string = ''): Ca
     .filter(q => q && !deletedIds.has(q.id))
     .map(q => {
       const override = overrides[q.id] || {};
-      const baseImg = q.imageUrl || (q as any).image || '';
-      const baseAnswerImg = q.answerImageUrl || baseImg || '';
+      const baseImg = normalizeImageSrc(q.imageUrl || (q as any).image || '');
+      const baseAnswerImg = normalizeImageSrc(q.answerImageUrl || '');
       return {
         ...q,
-        imageUrl: override.imageUrl !== undefined ? override.imageUrl : baseImg,
-        answerImageUrl: override.answerImageUrl !== undefined ? override.answerImageUrl : baseAnswerImg,
+        imageUrl: override.imageUrl !== undefined ? normalizeImageSrc(override.imageUrl) : baseImg,
+        answerImageUrl: override.answerImageUrl !== undefined ? normalizeImageSrc(override.answerImageUrl) : baseAnswerImg,
         ...override,
       };
     });
@@ -149,14 +166,20 @@ export function getCategoryRawQuestions(catId: string, catName: string = ''): Ca
 export function addCustomCategoryQuestion(catId: string, item: CategoryQuestionItem): void {
   if (typeof window === 'undefined') return;
 
+  const normalizedItem: CategoryQuestionItem = {
+    ...item,
+    imageUrl: item.imageUrl ? normalizeImageSrc(item.imageUrl) : '',
+    answerImageUrl: item.answerImageUrl ? normalizeImageSrc(item.answerImageUrl) : '',
+  };
+
   if (catId === 'gen-cars' || catId === 'cars') {
     const carInput: UserCarQuestionInput = {
-      id: item.id,
-      question: item.question,
-      answer: item.answer,
-      points: item.points,
-      imageUrl: item.imageUrl || '/cars_category_thumb.jpg',
-      answerImageUrl: item.answerImageUrl,
+      id: normalizedItem.id,
+      question: normalizedItem.question,
+      answer: normalizedItem.answer,
+      points: normalizedItem.points,
+      imageUrl: normalizedItem.imageUrl || '/cars_category_thumb.jpg',
+      answerImageUrl: normalizedItem.answerImageUrl,
     };
     addCustomCarQuestion(carInput);
     window.dispatchEvent(new CustomEvent('diwaniya_category_questions_updated', { detail: { catId } }));
@@ -165,7 +188,7 @@ export function addCustomCategoryQuestion(catId: string, item: CategoryQuestionI
 
   const customList = getSavedCustomCategoryQuestions(catId);
   // Add to top of list
-  customList.unshift(item);
+  customList.unshift(normalizedItem);
 
   try {
     persistentStorage.setItem(getCustomQuestionsStorageKey(catId), JSON.stringify(customList));
@@ -184,13 +207,21 @@ export function updateCategoryQuestion(
 ): void {
   if (typeof window === 'undefined') return;
 
+  const sanitizedData = { ...updatedData };
+  if (sanitizedData.imageUrl !== undefined) {
+    sanitizedData.imageUrl = normalizeImageSrc(sanitizedData.imageUrl);
+  }
+  if (sanitizedData.answerImageUrl !== undefined) {
+    sanitizedData.answerImageUrl = normalizeImageSrc(sanitizedData.answerImageUrl);
+  }
+
   if (catId === 'gen-cars' || catId === 'cars') {
     updateCarQuestion(questionId, {
-      question: updatedData.question,
-      answer: updatedData.answer,
-      points: updatedData.points,
-      imageUrl: updatedData.imageUrl,
-      answerImageUrl: updatedData.answerImageUrl,
+      question: sanitizedData.question,
+      answer: sanitizedData.answer,
+      points: sanitizedData.points,
+      imageUrl: sanitizedData.imageUrl,
+      answerImageUrl: sanitizedData.answerImageUrl,
     });
     window.dispatchEvent(new CustomEvent('diwaniya_category_questions_updated', { detail: { catId } }));
     return;
@@ -202,7 +233,7 @@ export function updateCategoryQuestion(
   if (customIdx >= 0) {
     customList[customIdx] = {
       ...customList[customIdx],
-      ...updatedData,
+      ...sanitizedData,
       id: questionId,
     };
     try {
@@ -215,7 +246,7 @@ export function updateCategoryQuestion(
     const overrides = getCategoryQuestionOverrides(catId);
     overrides[questionId] = {
       ...(overrides[questionId] || {}),
-      ...updatedData,
+      ...sanitizedData,
     };
     try {
       persistentStorage.setItem(getOverridesStorageKey(catId), JSON.stringify(overrides));

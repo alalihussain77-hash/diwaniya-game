@@ -10,6 +10,7 @@ import { auth } from '../lib/firebase';
 import { CarPartSvg } from './CarPartSvg';
 import { OldFlagSvg } from './OldFlagSvg';
 import { QrCodeDisplay } from './QrCodeDisplay';
+import { normalizeImageSrc } from '../utils/categoryQuestionsManager';
 
 interface QuestionModalProps {
   category: Category;
@@ -174,16 +175,16 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
   // Question Image: explicit imageUrl or fallback
   const questionImageUrl = 
     question.imageUrl && question.imageUrl.trim() !== '' && !question.hideImageUntilAnswer
-      ? question.imageUrl.trim()
-      : effectiveImageUrl;
+      ? normalizeImageSrc(question.imageUrl)
+      : normalizeImageSrc(effectiveImageUrl);
 
   // Answer image resolution: explicit answerImageUrl or question image fallback
   const answerImageUrl = 
     question.answerImageUrl && question.answerImageUrl.trim() !== ''
-      ? question.answerImageUrl.trim()
+      ? normalizeImageSrc(question.answerImageUrl)
       : question.imageUrl && question.imageUrl.trim() !== ''
-      ? question.imageUrl.trim()
-      : effectiveImageUrl;
+      ? normalizeImageSrc(question.imageUrl)
+      : normalizeImageSrc(effectiveImageUrl);
 
   // Visual check: true if image exists or category is visual
   const isVisual = Boolean(
