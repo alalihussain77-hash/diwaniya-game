@@ -2044,6 +2044,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     "type": "specific",
     "section": "🇹🇷 قسم فن تركي",
     "iconName": "Tv",
+    "imageUrl": "/turkish_drama/turkish_1.jpg",
     "description": "أسئلة عامة عن الدراما والمسلسلات والنجوم التركية",
     "color": "from-red-600 to-rose-700",
     "bgGradient": "bg-gradient-to-br from-red-600/10 to-rose-700/10 border-red-600/30",

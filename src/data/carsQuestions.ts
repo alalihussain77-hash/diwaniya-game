@@ -12,6 +12,111 @@ export interface UserCarQuestionInput {
 
 export const rawUserCarQuestions: UserCarQuestionInput[] = [
   {
+    "id": "car_1",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "سفايف / فحمات الفرامل / Brake Pads",
+    "points": 200,
+    "imageUrl": "/car_parts/car_1.jpg"
+  },
+  {
+    "id": "car_2",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "بواجي / بلاكات / Spark Plugs",
+    "points": 200,
+    "imageUrl": "/car_parts/car_2.jpg"
+  },
+  {
+    "id": "car_3",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "بطارية السيارة / Car Battery",
+    "points": 200,
+    "imageUrl": "/car_parts/car_3.jpg"
+  },
+  {
+    "id": "car_4",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "راديتر / مشعاع ماء / Radiator",
+    "points": 200,
+    "imageUrl": "/car_parts/car_4.jpg"
+  },
+  {
+    "id": "car_5",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "دينمو / مولد الكهرباء / Alternator",
+    "points": 200,
+    "imageUrl": "/car_parts/car_5.jpg"
+  },
+  {
+    "id": "car_6",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "فلتر هواء الماكينة / Engine Air Filter",
+    "points": 200,
+    "imageUrl": "/car_parts/car_6.jpg"
+  },
+  {
+    "id": "car_7",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "طرمبة ماء / مضخة التبريد / Water Pump",
+    "points": 200,
+    "imageUrl": "/car_parts/car_7.jpg"
+  },
+  {
+    "id": "car_8",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "سلف / بادئ الحركة / Starter Motor",
+    "points": 200,
+    "imageUrl": "/car_parts/car_8.jpg"
+  },
+  {
+    "id": "car_9",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "مساعدات / ممتص الصدمات / Shock Absorbers",
+    "points": 400,
+    "imageUrl": "/car_parts/car_9.jpg"
+  },
+  {
+    "id": "car_10",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "هوبات / أقراص الفرامل / Brake Rotors",
+    "points": 400,
+    "imageUrl": "/car_parts/car_10.jpg"
+  },
+  {
+    "id": "car_11",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "تيربو / شاحن توربيني / Turbocharger",
+    "points": 400,
+    "imageUrl": "/car_parts/car_11.jpg"
+  },
+  {
+    "id": "car_12",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "كارتير الزيت / وعاء الزيت / Oil Pan",
+    "points": 400,
+    "imageUrl": "/car_parts/car_12.jpg"
+  },
+  {
+    "id": "car_13",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "ديلكو / موزع الشرر / Distributor",
+    "points": 400,
+    "imageUrl": "/car_parts/car_13.jpg"
+  },
+  {
+    "id": "car_14",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "كمبيوتر السيارة / وحدة التحكم الإلكترونية / ECU",
+    "points": 600,
+    "imageUrl": "/car_parts/car_14.jpg"
+  },
+  {
+    "id": "car_15",
+    "question": "شنو اسم هذي القطعة؟",
+    "answer": "أذرعة التوجيه / ركب / Tie Rod Ends",
+    "points": 600,
+    "imageUrl": "/car_parts/car_15.jpg"
+  },
+  {
     "id": "car_16",
     "question": "شنو اسم هذي القطعة؟",
     "answer": "سير التيمينج / سير الماكينة / Timing Belt",

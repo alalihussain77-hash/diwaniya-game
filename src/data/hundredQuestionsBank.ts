@@ -5,7 +5,7 @@ import { historyBatch1 } from './historyBatch1';
 import { historyBatch2 } from './historyBatch2';
 import { historyBatch3 } from './historyBatch3';
 import { historyBatch4 } from './historyBatch4';
-import { generalKnowledgeBatch1 } from './generalKnowledgeBatch1';
+import { generalKnowledgeBatch1, GeneralKnowledgeQuestion } from './generalKnowledgeBatch1';
 import { generalKnowledgeBatch2 } from './generalKnowledgeBatch2';
 import { generalKnowledgeBatch3 } from './generalKnowledgeBatch3';
 import { generalKnowledgeBatch4 } from './generalKnowledgeBatch4';
@@ -1205,7 +1205,28 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
     }
 
     if (id === 'spec-turkish-esref-ruya' || id === 'esref-ruya' || name.includes('أشرف')) {
-      return Array.isArray(esrefRuya100Questions) ? esrefRuya100Questions : [];
+      const esrefImgs = [
+        '/esref_ruya/esref_1.jpg',
+        '/esref_ruya/esref_2.jpg',
+        '/esref_ruya/esref_3.jpg',
+        '/esref_ruya/esref_4.jpg',
+      ];
+      const list = Array.isArray(esrefRuya100Questions) ? esrefRuya100Questions : [];
+      return list.map((item, idx) => {
+        const assignedImg = esrefImgs[idx % esrefImgs.length];
+        return {
+          id: item.id,
+          points: item.points,
+          question: cleanQuestionText(item.question),
+          options: shuffle(item.options),
+          correctAnswer: item.correctAnswer,
+          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+          hint: item.hint || '',
+          imageUrl: item.imageUrl || assignedImg,
+          answerImageUrl: item.answerImageUrl || assignedImg,
+          hideImageUntilAnswer: false,
+        };
+      });
     }
 
     if (id === 'spec-turkish-ertugrul' || id === 'ertugrul' || name.includes('أرطغرل')) {
@@ -1489,7 +1510,28 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
       name === 'انمي' ||
       name === 'أنمي عام'
     ) {
-      return Array.isArray(anime100Questions) ? anime100Questions : [];
+      const animeImgs = [
+        '/anime/anime_1.jpg',
+        '/anime/anime_2.jpg',
+        '/anime/anime_3.jpg',
+        '/anime/anime_4.jpg',
+      ];
+      const list = Array.isArray(anime100Questions) ? anime100Questions : [];
+      return list.map((item, idx) => {
+        const assignedImg = animeImgs[idx % animeImgs.length];
+        return {
+          id: item.id,
+          points: item.points,
+          question: cleanQuestionText(item.question),
+          options: shuffle(item.options),
+          correctAnswer: item.correctAnswer,
+          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+          hint: item.hint || '',
+          imageUrl: item.imageUrl || assignedImg,
+          answerImageUrl: item.answerImageUrl || assignedImg,
+          hideImageUntilAnswer: false,
+        };
+      });
     }
 
     if (
@@ -1573,21 +1615,31 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
     }
 
     if (id === 'spec-turkish-general' || id === 'turkish' || name.includes('فن تركي')) {
+      const turkishImgs = [
+        '/turkish_drama/turkish_1.jpg',
+        '/turkish_drama/turkish_2.jpg',
+        '/turkish_drama/turkish_3.jpg',
+        '/turkish_drama/turkish_4.jpg',
+      ];
       const b1 = Array.isArray(turkishDramaQuestions) ? turkishDramaQuestions : [];
       const b2 = Array.isArray(turkishDramaQuestionsBatch2) ? turkishDramaQuestionsBatch2 : [];
       const combinedTurkish = [...b1, ...b2];
       if (combinedTurkish.length > 0) {
-        return combinedTurkish.map((item) => ({
-          id: item.id,
-          points: item.points,
-          question: cleanQuestionText(item.questionText),
-          options: shuffle(item.options),
-          correctAnswer: item.correctAnswer,
-          explanation: `الإجابة الصحيحة هي: ${item.correctAnswer}`,
-          hint: item.hint || '',
-          imageUrl: item.answerImageUrl,
-          hideImageUntilAnswer: true,
-        }));
+        return combinedTurkish.map((item, idx) => {
+          const assignedImg = turkishImgs[idx % turkishImgs.length];
+          return {
+            id: item.id,
+            points: item.points,
+            question: cleanQuestionText(item.questionText),
+            options: shuffle(item.options),
+            correctAnswer: item.correctAnswer,
+            explanation: `الإجابة الصحيحة هي: ${item.correctAnswer}`,
+            hint: item.hint || '',
+            imageUrl: assignedImg,
+            answerImageUrl: item.answerImageUrl || assignedImg,
+            hideImageUntilAnswer: false,
+          };
+        });
       }
     }
 
