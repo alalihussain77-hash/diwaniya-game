@@ -1,6 +1,6 @@
 import { Question } from '../types';
 
-export const gen_productsQuestions: Question[] = [
+export const products100Questions: Question[] = 
   {
     "id": "prod-001",
     "points": 200,
