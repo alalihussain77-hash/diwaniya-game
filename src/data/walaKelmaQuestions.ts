@@ -1,4 +1,5 @@
 import { Question } from '../types';
+import { products100Questions } from './productsQuestions';
 import { walaKelmaGeneralQuestions, rawQrCodeQuestions, generalQuestions, wordList } from './walaKelmaGeneralData';
 import { walaKelmaWrestlingQuestions, wrestlersList, wrestlingQuestions } from './walaKelmaWrestlingData';
 import { walaKelmaAnimeQuestions, animeList, animeQuestions } from './walaKelmaAnimeData';
@@ -6,7 +7,9 @@ import { walaKelmaMediaQuestions, mediaList, mediaQuestions } from './walaKelmaM
 import { walaKelmaForeignArtQuestions, foreignArtList, foreignArtQuestions } from './walaKelmaForeignArtData';
 import { walaKelmaProverbsQuestions, proverbsList, proverbsQuestions } from './walaKelmaProverbsData';
 import { walaKelmaFootballQuestions, footballList, footballQuestions } from './walaKelmaFootballData';
+
 export {
+  products100Questions,
   walaKelmaGeneralQuestions,
   rawQrCodeQuestions,
   generalQuestions,
