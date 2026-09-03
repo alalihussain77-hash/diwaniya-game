@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword, 
@@ -10,10 +10,27 @@ import {
 } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../lib/firebase';
+import { createLocalGuestUser, localGuestFallbackEnabled } from '../lib/localTesting';
 import { Sparkles, Mail, Lock, User as UserIcon, LogIn, UserPlus, KeyRound, AlertCircle, CheckCircle, ShieldCheck } from 'lucide-react';
 
 interface AuthScreenProps {
   onSuccess: (user?: any) => void;
+}
+
+function isFirebaseUnavailableError(error: any): boolean {
+  const code = error?.code || '';
+  const message = String(error?.message || '').toLowerCase();
+
+  return (
+    code === 'auth/api-key-not-valid' ||
+    code === 'auth/network-request-failed' ||
+    code === 'auth/internal-error' ||
+    message.includes('api key not valid') ||
+    message.includes('api-key-not-valid') ||
+    message.includes('failed to fetch') ||
+    message.includes('network') ||
+    message.includes('offline')
+  );
 }
 
 export function AuthScreen({ onSuccess }: AuthScreenProps) {
@@ -26,6 +43,13 @@ export function AuthScreen({ onSuccess }: AuthScreenProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!localGuestFallbackEnabled) return;
+
+    console.info('Local guest fallback enabled; skipping Firebase authentication in development.');
+    onSuccess(createLocalGuestUser());
+  }, []);
 
   const saveUserToFirestore = async (user: any, displayNameOverride?: string) => {
     if (!user || !user.uid) return;
@@ -88,34 +112,18 @@ export function AuthScreen({ onSuccess }: AuthScreenProps) {
       await saveUserToFirestore(userCredential.user, 'زائر ديوانية');
       onSuccess(userCredential.user);
     } catch (err: any) {
-      console.warn('Anonymous sign-in failed, trying fallback:', err);
-      try {
-        const guestEmail = 'guest@diwaniya.app';
-        const guestPassword = 'GuestPassword123!';
-        let userCredential;
-        try {
-          userCredential = await signInWithEmailAndPassword(auth, guestEmail, guestPassword);
-        } catch {
-          userCredential = await createUserWithEmailAndPassword(auth, guestEmail, guestPassword);
-          await updateProfile(userCredential.user, { displayName: 'زائر ديوانية' });
-        }
-        await saveUserToFirestore(userCredential.user, 'زائر ديوانية');
-        onSuccess(userCredential.user);
-      } catch (fallbackErr: any) {
-        const errDetail = fallbackErr?.message || err?.message || 'تعذر الاتصال بـ Firebase';
-        console.warn('Firebase network error in guest login, opening fallback session:', errDetail);
-        
-        const fallbackGuest = {
-          uid: 'guest_' + Math.random().toString(36).substring(2, 9),
-          displayName: 'زائر ديوانية',
-          name: 'زائر ديوانية',
-          isAnonymous: true,
-          email: '',
-          photoURL: '',
-        };
-        localStorage.setItem('diwaniya_local_guest_user', JSON.stringify(fallbackGuest));
-        onSuccess(fallbackGuest);
+      const code = err?.code || '';
+      const rawMessage = err?.message || 'تعذر الاتصال بـ Firebase';
+      console.warn('Anonymous sign-in failed:', code, rawMessage);
+      if (localGuestFallbackEnabled && isFirebaseUnavailableError(err)) {
+        onSuccess(createLocalGuestUser());
+        return;
       }
+      setError(
+        code === 'auth/operation-not-allowed'
+          ? 'الدخول كزائر غير مفعّل حالياً. يرجى تفعيل Anonymous من إعدادات Firebase.'
+          : `تعذر الدخول كزائر: ${rawMessage}`
+      );
     } finally {
       setLoading(false);
     }
@@ -205,40 +213,17 @@ export function AuthScreen({ onSuccess }: AuthScreenProps) {
       const rawMessage = err?.message || String(err);
       console.warn('Email Auth Error handled:', code, rawMessage);
 
-      // Check if it is a network / connection failure:
-      const isNetworkOrConfigError = 
-        code === 'auth/network-request-failed' ||
-        code === 'auth/api-key-not-valid' ||
-        code === 'auth/internal-error' ||
-        rawMessage.includes('network') ||
-        rawMessage.includes('fetch') ||
-        rawMessage.includes('api-key-not-valid');
-
-      if (isNetworkOrConfigError) {
-        // Direct detailed warning & open session without blocking
-        const fallbackName = name.trim() || cleanEmail.split('@')[0] || 'لاعب ديوانية';
-        const fallbackUser = {
-          uid: 'user_' + btoa(cleanEmail).replace(/[^a-zA-Z0-9]/g, '').slice(0, 16) || ('u_' + Date.now()),
-          displayName: fallbackName,
-          name: fallbackName,
-          email: cleanEmail,
-          photoURL: '',
-          isAnonymous: false,
-        };
-
-        localStorage.setItem('diwaniya_current_user', JSON.stringify(fallbackUser));
-        onSuccess(fallbackUser);
-      } else {
-        let errMsg = rawMessage;
-        if (code === 'auth/wrong-password') {
-          errMsg = 'كلمة المرور غير صحيحة لهذا البريد المسجل مسبقاً';
-        } else if (code === 'auth/invalid-email') {
-          errMsg = 'صيغة البريد الإلكتروني غير صحيحة';
-        } else if (code === 'auth/weak-password') {
-          errMsg = 'كلمة المرور ضعيفة (يجب ألا تقل عن 6 خانات)';
-        }
-        setError(errMsg);
+      let errMsg = rawMessage;
+      if (code === 'auth/network-request-failed' || code === 'auth/api-key-not-valid' || code === 'auth/internal-error') {
+        errMsg = 'تعذر الاتصال بخدمة Firebase. تأكد من إعدادات Firebase واتصال الإنترنت ثم حاول مرة أخرى.';
+      } else if (code === 'auth/wrong-password') {
+        errMsg = 'كلمة المرور غير صحيحة لهذا البريد المسجل مسبقاً';
+      } else if (code === 'auth/invalid-email') {
+        errMsg = 'صيغة البريد الإلكتروني غير صحيحة';
+      } else if (code === 'auth/weak-password') {
+        errMsg = 'كلمة المرور ضعيفة (يجب ألا تقل عن 6 خانات)';
       }
+      setError(errMsg);
     } finally {
       setLoading(false);
     }
@@ -261,21 +246,7 @@ export function AuthScreen({ onSuccess }: AuthScreenProps) {
         return;
       }
       
-      const isNetworkIssue = code === 'auth/network-request-failed' || code === 'auth/api-key-not-valid' || rawMsg.includes('network');
-      if (isNetworkIssue) {
-        const fallbackGoogle = {
-          uid: 'google_user_' + Math.random().toString(36).substring(2, 8),
-          displayName: 'مستخدم Google',
-          name: 'مستخدم Google',
-          email: 'user@google.com',
-          photoURL: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80',
-          isAnonymous: false,
-        };
-        localStorage.setItem('diwaniya_current_user', JSON.stringify(fallbackGoogle));
-        onSuccess(fallbackGoogle);
-      } else {
-        setError(`تعذر تسجيل الدخول بواسطة Google: ${rawMsg}`);
-      }
+      setError(`تعذر تسجيل الدخول بواسطة Google: ${rawMsg}`);
     } finally {
       setLoading(false);
     }

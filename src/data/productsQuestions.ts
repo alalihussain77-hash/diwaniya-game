@@ -332,6 +332,34 @@ export const products100Questions: Question[] = [
     "explanation": "الإجابة الصحيحة: تويكس (Twix)"
   },
   {
+    "id": "prod-023",
+    "points": 400,
+    "question": "ما هو هذا المنتج؟",
+    "correctAnswer": "كندر بوينو (Kinder Bueno)",
+    "imageUrl": "https://www.kinder.com/me/sites/kinder_me/files/styles/hub_product/public/2020-08/products-kinder-bueno-white.png?t=1781103005",
+    "options": [
+      "كندر بوينو (Kinder Bueno)",
+      "كيت كات (KitKat)",
+      "سنكرز (Snickers)",
+      "تويكس (Twix)"
+    ],
+    "explanation": "الإجابة الصحيحة: كندر بوينو (Kinder Bueno)"
+  },
+  {
+    "id": "prod-024",
+    "points": 400,
+    "question": "ما هو هذا المنتج؟",
+    "correctAnswer": "أوريو (Oreo)",
+    "imageUrl": "https://m.media-amazon.com/images/I/51YYkOXLI+L.jpg",
+    "options": [
+      "أوريو (Oreo)",
+      "ديمو (Ritz)",
+      "توتس (Lotus)",
+      "ماري (Marie)"
+    ],
+    "explanation": "الإجابة الصحيحة: أوريو (Oreo)"
+  },
+  {
     "id": "prod-025",
     "points": 200,
     "question": "ما هو هذا المنتج؟",
@@ -540,6 +568,34 @@ export const products100Questions: Question[] = [
       "شوكولاتة ليندت الحريرية"
     ],
     "explanation": "الإجابة الصحيحة: شوكولاتة جالاكسي (Galaxy)"
+  },
+  {
+    "id": "prod-039",
+    "points": 600,
+    "question": "ما هو هذا المنتج؟",
+    "correctAnswer": "بينغلز (Pringles)",
+    "imageUrl": "https://s7d1.scene7.com/is/image/Kellanovaprod/00038000138409_C3CM",
+    "options": [
+      "بينغلز (Pringles)",
+      "ليز (Lays)",
+      "مرامي (Marami)",
+      "تسالي (Tasali)"
+    ],
+    "explanation": "الإجابة الصحيحة: بينغلز (Pringles)"
+  },
+  {
+    "id": "prod-040",
+    "points": 600,
+    "question": "ما هو هذا المنتج؟",
+    "correctAnswer": "بيبسي (Pepsi)",
+    "imageUrl": "https://www.pepsi.com/prod/s3fs-public/2026-01/product_image_pepsi_0.png",
+    "options": [
+      "كوكاكولا (Coca-Cola)",
+      "بيبسي (Pepsi)",
+      "سفن أب (7Up)",
+      "سبرايت (Sprite)"
+    ],
+    "explanation": "الإجابة الصحيحة: بيبسي (Pepsi)"
   },
   {
     "id": "prod-041",

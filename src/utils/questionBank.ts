@@ -1,6 +1,7 @@
 import { Category, Question } from '../types';
 import { doc, getDoc, setDoc, arrayUnion } from 'firebase/firestore';
 import { db, auth } from '../lib/firebase';
+import { isLocalGuestUserId } from '../lib/localTesting';
 import { get100CategoryQuestions, cleanQuestionText } from '../data/hundredQuestionsBank';
 
 // In-memory runtime state for current user session (No localStorage dependency)
@@ -34,6 +35,9 @@ export async function syncUsedQuestionsFromFirestore(userId: string | null): Pro
     activeSeenIds = [];
     return [];
   }
+  if (isLocalGuestUserId(targetUid)) {
+    return activeSeenIds;
+  }
   try {
     const userRef = doc(db, 'users', targetUid);
     const snap = await getDoc(userRef);
@@ -64,7 +68,7 @@ export async function syncUsedQuestionsFromFirestore(userId: string | null): Pro
 export async function markQuestionAsSeen(questionId: string, userId?: string | null): Promise<void> {
   if (!questionId) return;
   const targetUid = userId || activeUserId || auth.currentUser?.uid || null;
-  if (targetUid) {
+  if (targetUid && !isLocalGuestUserId(targetUid)) {
     activeUserId = targetUid;
   }
 
@@ -72,7 +76,7 @@ export async function markQuestionAsSeen(questionId: string, userId?: string | n
     activeSeenIds.push(questionId);
   }
 
-  if (targetUid) {
+  if (targetUid && !isLocalGuestUserId(targetUid)) {
     try {
       const userRef = doc(db, 'users', targetUid);
       await setDoc(
@@ -112,7 +116,7 @@ export async function markQuestionsAsSeen(questionIds: string[], userId?: string
   if (changed) {
     activeSeenIds = Array.from(currentSet);
 
-    if (targetUid) {
+    if (targetUid && !isLocalGuestUserId(targetUid)) {
       try {
         const userRef = doc(db, 'users', targetUid);
         await setDoc(
@@ -154,7 +158,7 @@ export async function clearCategorySeenQuestions(catId: string, userId?: string 
     (id) => !catQuestionIds.has(id) && !id.startsWith(`${catId}_`) && !id.startsWith(`${catId}-`) && id !== catId
   );
 
-  if (targetUid) {
+  if (targetUid && !isLocalGuestUserId(targetUid)) {
     try {
       const userRef = doc(db, 'users', targetUid);
       await setDoc(
@@ -204,7 +208,7 @@ export async function clearUsedQuestions(userId?: string | null): Promise<void> 
   if (targetUid) activeUserId = targetUid;
   activeSeenIds = [];
 
-  if (targetUid) {
+  if (targetUid && !isLocalGuestUserId(targetUid)) {
     try {
       const userRef = doc(db, 'users', targetUid);
       await setDoc(userRef, { seenQuestionIds: [], playedQuestions: [], usedQuestions: [] }, { merge: true });

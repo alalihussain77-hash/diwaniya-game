@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Gamepad2, Sparkles, CheckCircle2, X, Key, Gift, ShieldCheck, Check, AlertCircle } from 'lucide-react';
 import { sound } from '../utils/sound';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../lib/firebase';
+import { localGuestFallbackEnabled } from '../lib/localTesting';
 
 export const TEN_GAME_CODES = [
   { code: 'DIWAN-10-Q801', label: 'كود ديوانية 1', games: 10 },
@@ -101,6 +100,12 @@ export const BuyCreditsModal: React.FC<BuyCreditsModalProps> = ({
       return;
     }
 
+    if (!localGuestFallbackEnabled) {
+      setError('تفعيل الأكواد متوقف مؤقتاً حتى يتم ربطه بخدمة آمنة. لن يتم تعديل رصيدك.');
+      sound.playWrong();
+      return;
+    }
+
     if (usedCodes.includes(formatted) || (cleanCode && usedCodes.includes(cleanCode))) {
       setError('لقد قمت باستخدام هذا الكود من قبل!');
       sound.playWrong();
@@ -116,26 +121,6 @@ export const BuyCreditsModal: React.FC<BuyCreditsModalProps> = ({
         const strippedCode = uppercaseCode.replace(/[^A-Z0-9]/g, '');
         return uppercaseCode === formatted || (cleanCode.length > 0 && strippedCode === cleanCode);
       });
-
-      // 2. If not found in predefined list, check Firestore activationCodes collection with 2.5s timeout
-      if (!isValid && db) {
-        try {
-          const timeoutPromise = new Promise<null>((res) => setTimeout(() => res(null), 2500));
-          const docRef = doc(db, 'activationCodes', formatted);
-          const snap = await Promise.race([getDoc(docRef), timeoutPromise]);
-          if (snap && snap.exists()) {
-            isValid = true;
-          } else if (cleanCode) {
-            const cleanDocRef = doc(db, 'activationCodes', cleanCode);
-            const cleanSnap = await Promise.race([getDoc(cleanDocRef), timeoutPromise]);
-            if (cleanSnap && cleanSnap.exists()) {
-              isValid = true;
-            }
-          }
-        } catch (dbErr) {
-          console.warn('Firestore code check skipped or timed out:', dbErr);
-        }
-      }
 
       if (!isValid) {
         setIsSubmitting(false);

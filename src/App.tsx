@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { onAuthStateChanged, signOut, User } from 'firebase/auth';
-import { collection, addDoc, doc, updateDoc, setDoc, getDoc, increment, onSnapshot, arrayUnion } from 'firebase/firestore';
+import { collection, addDoc, doc, updateDoc, increment, onSnapshot } from 'firebase/firestore';
 import { auth, db } from './lib/firebase';
 import { GameStage, Category, Team, GameSettings, Question } from './types';
 import { INITIAL_CATEGORIES } from './data/categories';
@@ -17,6 +17,7 @@ import { RulesModal } from './components/RulesModal';
 import { AuthScreen } from './components/AuthScreen';
 import { BuyCreditsModal } from './components/BuyCreditsModal';
 import { SecretActorCard } from './components/SecretActorCard';
+import { createLocalGuestUser, LOCAL_GUEST_UID, isLocalGuestUser, localGuestFallbackEnabled } from './lib/localTesting';
 import { sound } from './utils/sound';
 import { Sparkles, Layers, Zap, CheckCircle2, Trophy, HelpCircle } from 'lucide-react';
 
@@ -98,22 +99,32 @@ export default function App() {
 
   // Auth Listener & Used Questions Sync
   useEffect(() => {
-    // 1. Initial check for local user session if any
-    const savedLocal = localStorage.getItem('diwaniya_current_user') || localStorage.getItem('diwaniya_local_guest_user');
-    if (savedLocal) {
-      try {
-        const parsed = JSON.parse(savedLocal);
-        if (parsed && parsed.uid) {
-          setUser(parsed);
-          const savedBal = localStorage.getItem(`diwaniya_games_balance_${parsed.uid}`);
-          if (savedBal !== null) {
-            setGamesBalance(parseInt(savedBal, 10));
+    if (localGuestFallbackEnabled) {
+      let localUser = createLocalGuestUser();
+      const savedLocal = localStorage.getItem('diwaniya_local_guest_user');
+      if (savedLocal) {
+        try {
+          const parsed = JSON.parse(savedLocal);
+          if (parsed?.uid === LOCAL_GUEST_UID && parsed?.isLocalOnly === true) {
+            localUser = parsed;
           }
+        } catch (e) {
+          console.warn('Invalid local guest record replaced:', e);
         }
-      } catch (e) {
-        console.warn('Error reading local user fallback:', e);
       }
+      setUser(localUser as unknown as User);
+      const savedBalance = Number.parseInt(
+        localStorage.getItem(`diwaniya_games_balance_${LOCAL_GUEST_UID}`) || '5',
+        10
+      );
+      setGamesBalance(Number.isFinite(savedBalance) ? Math.max(0, savedBalance) : 5);
+      setCategories(getRandomizedCategories(INITIAL_CATEGORIES || [], LOCAL_GUEST_UID));
+      setAuthLoading(false);
+      return;
     }
+
+    localStorage.removeItem('diwaniya_current_user');
+    localStorage.removeItem('diwaniya_local_guest_user');
 
     const unsubscribe = onAuthStateChanged(
       auth,
@@ -126,13 +137,9 @@ export default function App() {
           }
           await syncUsedQuestionsFromFirestore(currentUser.uid);
         } else {
-          // If no firebase user, check if we had a local fallback session
-          const localUserStr = localStorage.getItem('diwaniya_current_user') || localStorage.getItem('diwaniya_local_guest_user');
-          if (!localUserStr) {
-            setUser(null);
-            setGamesBalance(0);
-            await syncUsedQuestionsFromFirestore(null);
-          }
+          setUser(null);
+          setGamesBalance(0);
+          await syncUsedQuestionsFromFirestore(null);
         }
 
         // Restore active game session if page was refreshed during playing
@@ -180,6 +187,10 @@ export default function App() {
       setGamesBalance(parseInt(savedBal, 10));
     }
 
+    if (isLocalGuestUser(user as any)) {
+      return;
+    }
+
     try {
       const userRef = doc(db, 'users', user.uid);
       const unsubscribe = onSnapshot(
@@ -224,12 +235,15 @@ export default function App() {
 
   const handleSignOut = async () => {
     try {
+      const wasLocalGuest = isLocalGuestUser(user as any);
       localStorage.removeItem('diwaniya_active_game_session');
       localStorage.removeItem('diwaniya_local_guest_user');
       localStorage.removeItem('diwaniya_current_user');
       setUser(null);
       setGamesBalance(0);
-      await signOut(auth);
+      if (!wasLocalGuest) {
+        await signOut(auth);
+      }
       await syncUsedQuestionsFromFirestore(null);
       setCategories(getRandomizedCategories(INITIAL_CATEGORIES || [], null));
     } catch (e) {
@@ -241,7 +255,7 @@ export default function App() {
 
   // Save score and match history directly to Firestore
   const saveGameToFirestore = async () => {
-    if (!user) return;
+    if (!user || isLocalGuestUser(user as any)) return;
     try {
       const winnerName = team1.score > team2.score 
         ? (team1.name || 'الفريق الأول') 
@@ -262,13 +276,6 @@ export default function App() {
         gamePhase: gamePhase,
       });
 
-      // Update user aggregate stats in Firestore
-      const userRef = doc(db, 'users', user.uid);
-      await setDoc(userRef, {
-        gamesPlayed: increment(1),
-        totalScore: increment(team1.score + team2.score),
-        lastMatchAt: new Date().toISOString(),
-      }, { merge: true });
     } catch (e) {
       console.warn('Error saving match history to Firestore:', e);
     }
@@ -518,26 +525,13 @@ export default function App() {
 
   // Games Balance Purchase Handler
   const handlePurchaseSuccess = async (addedGamesCount: number, redeemedCode?: string) => {
-    if (!user) return;
+    if (!user || !isLocalGuestUser(user as any)) return;
 
     setGamesBalance((prev) => {
       const nextBal = prev + addedGamesCount;
       localStorage.setItem(`diwaniya_games_balance_${user.uid}`, nextBal.toString());
       return nextBal;
     });
-
-    try {
-      const userRef = doc(db, 'users', user.uid);
-      const updatePayload: any = {
-        gamesBalance: increment(addedGamesCount),
-      };
-      if (redeemedCode) {
-        updatePayload.usedCodes = arrayUnion(redeemedCode);
-      }
-      await setDoc(userRef, updatePayload, { merge: true });
-    } catch (e) {
-      // Local storage already updated
-    }
   };
 
   // Deduct 1 game from gamesBalance helper
@@ -552,6 +546,8 @@ export default function App() {
       localStorage.setItem(`diwaniya_games_balance_${user.uid}`, nextBal.toString());
       return nextBal;
     });
+
+    if (isLocalGuestUser(user as any)) return;
 
     try {
       const userRef = doc(db, 'users', user.uid);

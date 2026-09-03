@@ -5,6 +5,7 @@ import { db, auth } from '../lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { sound } from '../utils/sound';
 import { cleanQuestionText } from '../data/hundredQuestionsBank';
+import { localGuestFallbackEnabled } from '../lib/localTesting';
 
 interface ReportQuestionModalProps {
   question: Question;
@@ -29,18 +30,20 @@ export const ReportQuestionModal: React.FC<ReportQuestionModalProps> = ({
   const [details, setDetails] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleSubmitReport = async (e: React.FormEvent) => {
     e.preventDefault();
     sound.playClick();
     setIsSubmitting(true);
+    setSubmitError(null);
 
     const issueLabel = ISSUE_OPTIONS.find((opt) => opt.id === selectedIssue)?.label || selectedIssue;
     const cleanedText = cleanQuestionText(question.question);
 
     try {
       // 1. Save to Firestore question_reports collection
-      if (db) {
+      if (db && !localGuestFallbackEnabled) {
         await addDoc(collection(db, 'question_reports'), {
           questionId: question.id,
           categoryName,
@@ -54,7 +57,11 @@ export const ReportQuestionModal: React.FC<ReportQuestionModalProps> = ({
         });
       }
     } catch (err) {
-      console.warn('Firestore report save fallback:', err);
+      console.warn('Firestore report save failed:', err);
+      setIsSubmitting(false);
+      setSubmitError('تعذر إرسال البلاغ حالياً. لم يتم حفظه، يرجى المحاولة مرة أخرى.');
+      sound.playWrong();
+      return;
     }
 
     // 2. Open mailto as direct email notification option if requested or fallback
@@ -117,6 +124,13 @@ export const ReportQuestionModal: React.FC<ReportQuestionModalProps> = ({
           </div>
         ) : (
           <form onSubmit={handleSubmitReport} className="space-y-4">
+            {submitError && (
+              <div className="p-3 rounded-xl bg-rose-950/90 border border-rose-500/60 text-rose-300 text-xs font-bold text-center flex items-center justify-center gap-2">
+                <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                <span>{submitError}</span>
+              </div>
+            )}
+
             {/* Question Brief */}
             <div className="p-3 rounded-2xl bg-slate-950/70 border border-slate-800 text-xs text-slate-300 line-clamp-2 italic">
               "{cleanQuestionText(question.question)}"

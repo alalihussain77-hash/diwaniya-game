@@ -7,6 +7,7 @@ import { ReportQuestionModal } from './ReportQuestionModal';
 import { markQuestionAsUsed } from '../utils/questionBank';
 import { cleanQuestionText } from '../data/hundredQuestionsBank';
 import { auth } from '../lib/firebase';
+import { LOCAL_GUEST_UID, localGuestFallbackEnabled } from '../lib/localTesting';
 import { CarPartSvg } from './CarPartSvg';
 import { OldFlagSvg } from './OldFlagSvg';
 import { QrCodeDisplay } from './QrCodeDisplay';
@@ -65,7 +66,8 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
   // Mark question as used immediately upon being displayed
   useEffect(() => {
     if (question?.id) {
-      markQuestionAsUsed(question.id, auth.currentUser?.uid);
+      const activeUserId = localGuestFallbackEnabled ? LOCAL_GUEST_UID : auth.currentUser?.uid;
+      markQuestionAsUsed(question.id, activeUserId);
     }
   }, [question?.id]);
 

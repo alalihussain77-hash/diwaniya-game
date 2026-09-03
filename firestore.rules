@@ -2,8 +2,98 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isUserOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function hasValidInitialUserData(userId) {
+      return request.resource.data.uid == userId
+        && request.resource.data.gamesBalance == 5
+        && request.resource.data.gamesPlayed == 0
+        && request.resource.data.totalScore == 0;
+    }
+
+    function hasSafeUserUpdates() {
+      let changedFields = request.resource.data.diff(resource.data).affectedKeys();
+      return changedFields.hasOnly([
+          'name',
+          'displayName',
+          'email',
+          'photoURL',
+          'lastLogin',
+          'seenQuestionIds',
+          'playedQuestions',
+          'usedQuestions',
+          'gamesBalance'
+        ])
+        && (
+          !changedFields.hasAny(['gamesBalance'])
+          || (
+            resource.data.gamesBalance is int
+            && request.resource.data.gamesBalance is int
+            && request.resource.data.gamesBalance == resource.data.gamesBalance - 1
+            && request.resource.data.gamesBalance >= 0
+          )
+        );
+    }
+
+    match /users/{userId} {
+      allow read: if isUserOwner(userId);
+      allow create: if isUserOwner(userId)
+        && hasValidInitialUserData(userId);
+      allow update: if isUserOwner(userId)
+        && request.resource.data.uid == userId
+        && hasSafeUserUpdates();
+    }
+
+    match /gameSessions/{sessionId} {
+      allow create: if isSignedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.keys().hasOnly([
+          'userId',
+          'userEmail',
+          'team1Name',
+          'team2Name',
+          'team1Score',
+          'team2Score',
+          'winner',
+          'completedAt',
+          'gamePhase'
+        ])
+        && request.resource.data.team1Score is int
+        && request.resource.data.team2Score is int;
+      allow read: if isSignedIn()
+        && resource.data.userId == request.auth.uid;
+    }
+
+    match /question_reports/{reportId} {
+      allow create: if isSignedIn()
+        && request.resource.data.reporterUid == request.auth.uid
+        && request.resource.data.keys().hasOnly([
+          'questionId',
+          'categoryName',
+          'questionText',
+          'correctAnswer',
+          'issueType',
+          'details',
+          'reportedAt',
+          'reporterEmail',
+          'reporterUid'
+        ])
+        && request.resource.data.questionId is string
+        && request.resource.data.categoryName is string
+        && request.resource.data.questionText is string
+        && request.resource.data.issueType is string
+        && request.resource.data.details is string
+        && request.resource.data.reportedAt is timestamp;
+    }
+
     match /{document=**} {
-      allow read, write: if true;
+      allow read, write: if false;
     }
   }
 }
