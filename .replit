@@ -47,6 +47,10 @@ args = "npm run test:quiz-smoke"
 isValidation = true
 
 [[ports]]
+localPort = 4173
+externalPort = 3000
+
+[[ports]]
 localPort = 5000
 externalPort = 80
 
