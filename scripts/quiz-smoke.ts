@@ -1,106 +1,160 @@
-import { readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
-import { INITIAL_CATEGORIES } from '../src/data/categories';
+import { execFileSync, spawn, type ChildProcess } from 'node:child_process';
+import { chromium, type Browser, type Page } from '@playwright/test';
+import { validateCategories, validateQuestionBank } from '../src/utils/validateQuestionBank';
 
-type SmokeError = {
-  location: string;
-  message: string;
-};
+const port = Number(process.env.QUIZ_SMOKE_PORT || 4173);
+const appUrl = `http://127.0.0.1:${port}`;
+let server: ChildProcess | undefined;
+let browser: Browser | undefined;
 
-const errors: SmokeError[] = [];
-const categoryIds = new Set<string>();
-const questionIds = new Set<string>();
-
-const addError = (location: string, message: string) => {
-  errors.push({ location, message });
-};
-
-if (!Array.isArray(INITIAL_CATEGORIES) || INITIAL_CATEGORIES.length === 0) {
-  addError('INITIAL_CATEGORIES', 'expected a non-empty category list');
+function fail(message: string): never {
+  throw new Error(`[quiz-smoke] ${message}`);
 }
 
-let generalCategoryCount = 0;
-let specificCategoryCount = 0;
-let questionCount = 0;
+async function loadQuestionData(): Promise<void> {
+  let categoriesModule: typeof import('../src/data/categories');
+  let productsModule: typeof import('../src/data/productsQuestions');
 
-for (const [categoryIndex, category] of INITIAL_CATEGORIES.entries()) {
-  const location = `category[${categoryIndex}]`;
-
-  if (!category || typeof category !== 'object') {
-    addError(location, 'expected a category object');
-    continue;
+  try {
+    [categoriesModule, productsModule] = await Promise.all([
+      import('../src/data/categories'),
+      import('../src/data/productsQuestions'),
+    ]);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    fail(`question-bank syntax/import error: ${message}`);
   }
 
-  if (!category.id?.trim()) addError(location, 'missing id');
-  if (category.id && categoryIds.has(category.id)) {
-    addError(location, `duplicate category id "${category.id}"`);
-  }
-  if (category.id) categoryIds.add(category.id);
+  const errors = [
+    ...validateCategories(categoriesModule.INITIAL_CATEGORIES),
+    ...validateQuestionBank(productsModule.products100Questions, 'products100Questions'),
+  ];
 
-  if (!category.name?.trim()) addError(location, 'missing name');
-  if (category.type === 'general') generalCategoryCount += 1;
-  if (category.type === 'specific') specificCategoryCount += 1;
-  if (!Array.isArray(category.questions) || category.questions.length === 0) {
-    addError(location, 'expected a non-empty question list');
-    continue;
+  if (errors.length > 0) {
+    fail(`question-bank validation failed:\n${errors.map((error) => `  - ${error}`).join('\n')}`);
   }
 
-  for (const [questionIndex, question] of category.questions.entries()) {
-    const questionLocation = `${location}.questions[${questionIndex}]`;
-    questionCount += 1;
+  console.log(
+    `[quiz-smoke] validated ${categoriesModule.INITIAL_CATEGORIES.length} categories and ${productsModule.products100Questions.length} product questions`,
+  );
+}
 
-    if (!question || typeof question !== 'object') {
-      addError(questionLocation, 'expected a question object');
-      continue;
+function resolveChromium(): string {
+  if (process.env.CHROMIUM_PATH) return process.env.CHROMIUM_PATH;
+
+  try {
+    return execFileSync('which', ['chromium'], { encoding: 'utf8' }).trim();
+  } catch {
+    fail('Chromium was not found; install Chromium or set CHROMIUM_PATH');
+  }
+}
+
+async function waitForApp(): Promise<void> {
+  const deadline = Date.now() + 30_000;
+  let lastError = 'no response';
+
+  while (Date.now() < deadline) {
+    try {
+      const response = await fetch(appUrl);
+      if (response.ok) return;
+      lastError = `HTTP ${response.status}`;
+    } catch (error) {
+      lastError = error instanceof Error ? error.message : String(error);
     }
+    await new Promise((resolve) => setTimeout(resolve, 250));
+  }
 
-    if (!question.id?.trim()) addError(questionLocation, 'missing id');
-    if (question.id && questionIds.has(question.id)) {
-      addError(questionLocation, `duplicate question id "${question.id}"`);
-    }
-    if (question.id) questionIds.add(question.id);
+  fail(`app did not become ready at ${appUrl}: ${lastError}`);
+}
 
-    if (!question.question?.trim()) addError(questionLocation, 'missing question text');
-    if (!question.correctAnswer?.trim()) addError(questionLocation, 'missing correct answer');
-    if (!Number.isFinite(question.points) || question.points <= 0) {
-      addError(questionLocation, 'points must be a positive number');
-    }
+async function startApp(): Promise<void> {
+  server = spawn('npm', ['run', 'dev', '--', '--port', String(port)], {
+    env: { ...process.env, VITE_ALLOW_LOCAL_GUEST_FALLBACK: 'true' },
+    stdio: ['ignore', 'pipe', 'pipe'],
+    detached: true,
+  });
 
-    if (question.options !== undefined) {
-      if (!Array.isArray(question.options)) {
-        addError(questionLocation, 'options must be an array when present');
-      } else if (question.options.some((option) => typeof option !== 'string' || !option.trim())) {
-        addError(questionLocation, 'options must contain non-empty strings');
+  let output = '';
+  server.stdout?.on('data', (chunk) => {
+    output += chunk.toString();
+  });
+  server.stderr?.on('data', (chunk) => {
+    output += chunk.toString();
+  });
+
+  try {
+    await waitForApp();
+  } catch (error) {
+    fail(`${error instanceof Error ? error.message : String(error)}\n${output}`);
+  }
+}
+
+async function assertPlayerPath(page: Page): Promise<void> {
+  await page.goto(appUrl, { waitUntil: 'networkidle' });
+
+  await page.getByText('زائر محلي').waitFor({ state: 'visible', timeout: 10_000 });
+  await page.getByRole('button', { name: /امش لاختيار الفئات العامة/ }).click();
+
+  await page.getByRole('button', { name: /اختيار عشوائي/ }).first().click();
+  await page.getByRole('button', { name: /يلا للفئات الخاصة/ }).click();
+
+  await page.getByRole('button', { name: /اختيار عشوائي/ }).first().click();
+  await page.getByRole('button', { name: /شغّل التحدي والأسئلة/ }).click();
+
+  await page.getByText(/أسئلة الشوط الأول: الفئات العامة المشتركة/).waitFor({
+    state: 'visible',
+    timeout: 10_000,
+  });
+
+  const pointCards = page.getByRole('button').filter({ hasText: /^\d+$/ });
+  if ((await pointCards.count()) === 0) {
+    fail('first question board loaded without any question point cards');
+  }
+
+  console.log('[quiz-smoke] guest entry reached the first question board');
+}
+
+async function main(): Promise<void> {
+  await loadQuestionData();
+  await startApp();
+
+  browser = await chromium.launch({
+    executablePath: resolveChromium(),
+    headless: true,
+  });
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  try {
+    await assertPlayerPath(await context.newPage());
+  } finally {
+    await context.close();
+  }
+}
+
+try {
+  await main();
+} catch (error) {
+  console.error(error instanceof Error ? error.message : error);
+  process.exitCode = 1;
+} finally {
+  await browser?.close();
+  if (server && !server.killed) {
+    const exit = new Promise<void>((resolve) => {
+      if (server?.exitCode !== null || server?.signalCode !== null) {
+        resolve();
+      } else {
+        server?.once('exit', () => resolve());
       }
+    });
+
+    try {
+      process.kill(-server.pid!, 'SIGTERM');
+    } catch {
+      server.kill('SIGTERM');
     }
+
+    await Promise.race([
+      exit,
+      new Promise((resolve) => setTimeout(resolve, 5_000)),
+    ]);
   }
 }
-
-if (generalCategoryCount < 4) {
-  addError('game setup', `expected at least 4 general categories, found ${generalCategoryCount}`);
-}
-if (specificCategoryCount < 4) {
-  addError('game setup', `expected at least 4 specific categories, found ${specificCategoryCount}`);
-}
-
-const authSource = readFileSync(resolve(process.cwd(), 'src/components/AuthScreen.tsx'), 'utf8');
-if (!authSource.includes('handleGuestSignIn') || !authSource.includes('signInAnonymously')) {
-  addError('guest entry', 'guest sign-in handler is not connected to Firebase anonymous auth');
-}
-
-const appSource = readFileSync(resolve(process.cwd(), 'src/App.tsx'), 'utf8');
-if (!appSource.includes("stage === 'playing'") || !appSource.includes('<GameBoard')) {
-  addError('game entry', 'the playing stage is not connected to the game board');
-}
-
-if (errors.length > 0) {
-  console.error(`Quiz smoke check failed with ${errors.length} issue(s):`);
-  for (const error of errors) {
-    console.error(`- ${error.location}: ${error.message}`);
-  }
-  process.exit(1);
-}
-
-console.log(
-  `Quiz smoke check passed: ${INITIAL_CATEGORIES.length} categories and ${questionCount} questions validated; guest entry and game board hooks found.`,
-);
