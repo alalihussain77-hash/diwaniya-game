@@ -1,3 +1,5 @@
+import { resolveBreakingBadImage } from './breakingBadImages';
+
 export interface BreakingBadQuestion {
   id: string;
   category: string;
@@ -11,7 +13,7 @@ export interface BreakingBadQuestion {
   hint?: string;
 }
 
-export const breakingBadPart2: BreakingBadQuestion[] = [
+const rawBreakingBadPart2: BreakingBadQuestion[] = [
   // ==========================================
   // --- أسئلة 200 نقطة (سهل - 33 سؤالاً) ---
   // ==========================================
@@ -1224,3 +1226,12 @@ export const breakingBadPart2: BreakingBadQuestion[] = [
     hideImageUntilAnswer: false
   }
 ];
+
+export const breakingBadPart2: BreakingBadQuestion[] = rawBreakingBadPart2.map((question) => {
+  const imageUrl = resolveBreakingBadImage(question);
+  return {
+    ...question,
+    imageUrl,
+    answerImageUrl: imageUrl,
+  };
+});

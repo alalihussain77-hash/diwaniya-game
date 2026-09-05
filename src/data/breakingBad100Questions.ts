@@ -1,4 +1,5 @@
 import { Question } from '../types';
+import { resolveBreakingBadImage } from './breakingBadImages';
 
 export interface BreakingBadQuestion {
   id: string;
@@ -1249,7 +1250,7 @@ export const breakingBad100Questions: Question[] = rawBreakingBad100Questions.ma
   correctAnswer: q.correctAnswer,
   explanation: `الإجابة الصحيحة هي: ${q.correctAnswer}`,
   hint: q.hint,
-  imageUrl: q.imageUrl,
-  answerImageUrl: q.answerImageUrl,
+  imageUrl: resolveBreakingBadImage(q),
+  answerImageUrl: resolveBreakingBadImage(q),
   hideImageUntilAnswer: false,
 }));
