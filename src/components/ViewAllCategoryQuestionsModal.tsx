@@ -35,6 +35,7 @@ import {
 } from '../utils/categoryQuestionsManager';
 import { sound } from '../utils/sound';
 import { compressImageFile } from '../utils/imageCompressor';
+import { persistentStorage } from '../utils/persistentStorage';
 
 interface ViewAllCategoryQuestionsModalProps {
   isOpen: boolean;
@@ -89,14 +90,22 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
   };
 
   useEffect(() => {
-    if (isOpen && category) {
-      loadQuestions();
-      setSelectedQuestion(null);
-      setSaveSuccessMsg('');
-      setErrorMsg('');
-      setShowConfirmDelete(false);
-      setShowConfirmReset(false);
-    }
+    if (!isOpen || !category) return;
+    let cancelled = false;
+    loadQuestions();
+    // IndexedDB loads asynchronously. Refresh after it is ready so the editor
+    // shows previously saved edits instead of only the built-in question data.
+    persistentStorage.whenReady(() => {
+      if (!cancelled) {
+        setQuestions(getCategoryRawQuestions(category.id, category.name));
+      }
+    });
+    setSelectedQuestion(null);
+    setSaveSuccessMsg('');
+    setErrorMsg('');
+    setShowConfirmDelete(false);
+    setShowConfirmReset(false);
+    return () => { cancelled = true; };
   }, [isOpen, category]);
 
   useEffect(() => {
