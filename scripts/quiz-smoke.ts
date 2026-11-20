@@ -105,6 +105,8 @@ async function assertPlayerPath(page: Page): Promise<void> {
     state: 'visible',
     timeout: 10_000,
   });
+  // Dismiss the first-round introduction before interacting with question cards.
+  await page.getByRole('button', { name: /فهمت، يلا نبدأ الشوط الأول/ }).click();
 
   const pointCards = page.getByRole('button').filter({ hasText: /^\d+$/ });
   if ((await pointCards.count()) === 0) {
