@@ -32,6 +32,7 @@ async function loadQuestionData(): Promise<void> {
     ...validateQuestionBank(productsModule.products100Questions, 'products100Questions'),
   ];
   let totalBankQuestions = 0;
+  const reviewedIds = new Set(['gen-geography', 'spec-islamic-prophets', 'spec-kuwait-general', 'spec-kuwait-cafes', 'spec-kuwait-restaurants', 'spec-kuwait-location']);
   for (const category of visibleCategories) {
     const pool = get100CategoryQuestions(category.id, category.name);
     totalBankQuestions += pool.length;
@@ -39,6 +40,41 @@ async function loadQuestionData(): Promise<void> {
       errors.push(`Category "${category.name}" (${category.id}) has only ${pool.length} available questions; needs at least 6 for a board`);
     }
     errors.push(...validateQuestionBank(pool, `bank[${category.id}]`));
+    if (reviewedIds.has(category.id)) {
+      if (pool.length !== 100) {
+        errors.push(`Reviewed category ${category.id} has ${pool.length} questions instead of 100`);
+      }
+      const seenTexts = new Set<string>();
+      const points = { 200: 0, 400: 0, 600: 0 };
+      for (const q of pool) {
+        const question = String(q.question || '').trim();
+        const answer = String(q.correctAnswer || '').trim();
+        const fingerprint = question.toLowerCase().replace(/[\u064b-\u065f\u0670]/g, '').replace(/[\s؟?!،.,؛:()]/g, '');
+        if (question.length < 18 || answer.length < 2 || /المعلومة الصحيحة المعتمدة|المعلومة المعتمدة/.test(question + answer)) {
+          errors.push(`Unclear reviewed question: ${category.id}: ${q.id}`);
+        }
+        if (seenTexts.has(fingerprint)) {
+          errors.push(`Repeated reviewed question text: ${category.id}: ${q.id}`);
+        }
+        seenTexts.add(fingerprint);
+        if (!(q.points in points)) errors.push(`Unexpected reviewed points: ${category.id} ${q.id}: ${q.points}`);
+        else points[q.points as 200 | 400 | 600]++;
+      }
+      if (Object.values(points).some((count) => count < 20)) {
+        errors.push(`Reviewed category ${category.id} has unbalanced difficulty tiers: ${JSON.stringify(points)}`);
+      }
+      const originals = (category.questions || []).slice(0, 5);
+      for (let index = 0; index < originals.length; index++) {
+        const stableId = `${category.id}_${String(index + 1).padStart(3, '0')}`;
+        const actual = pool.find((q) => q.id === stableId);
+        if (!actual || actual.imageUrl !== originals[index].imageUrl ||
+            actual.answerImageUrl !== originals[index].answerImageUrl ||
+            actual.hideImageUntilAnswer !== originals[index].hideImageUntilAnswer) {
+          errors.push(`An original image reference or display rule changed: ${stableId}`);
+        }
+      }
+      console.log(`[quiz-smoke] reviewed ${category.id}: 100 unique, specific questions and points ${JSON.stringify(points)}; original image references unchanged`);
+    }
   }
 
   if (errors.length > 0) {

@@ -1,3 +1,9 @@
+import { reviewedLocationsQuestions } from './reviewedLocationsQuestions';
+import { reviewedRestaurantsQuestions } from './reviewedRestaurantsQuestions';
+import { reviewedCafesQuestions } from './reviewedCafesQuestions';
+import { reviewedKuwaitQuestions } from './reviewedKuwaitQuestions';
+import { reviewedProphetsQuestions } from './reviewedProphetsQuestions';
+import { reviewedGeographyQuestions } from './reviewedGeographyQuestions';
 import { Question } from '../types';
 import { persistentStorage } from '../utils/persistentStorage';
 import { INITIAL_CATEGORIES } from './categories';
@@ -1062,6 +1068,82 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
 
     const id = String(catId || '').toLowerCase().trim();
     const name = String(catName || '').toLowerCase().trim();
+
+    if (id === 'gen-geography') {
+      // Keep the original picture-backed questions and their image URLs as-is.
+      // Replace only the 95 generic placeholder records with reviewed questions.
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `gen-geography_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 200, 400, 400, 200][index],
+        question: index === 4
+          ? 'في أي قارة تقع قمة إفرست وجبال الهيمالايا؟'
+          : cleanQuestionText(item.question),
+      }));
+      return [...existing, ...reviewedGeographyQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-kuwait-location') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-kuwait-location_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 400, 400, 600, 200][index],
+        question: index === 0
+          ? 'إلى أي منطقة شمال الكويت يصل جسر الشيخ جابر الأحمد القادم من العاصمة؟'
+          : item.question,
+      }));
+      return [...existing, ...reviewedLocationsQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-kuwait-restaurants') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-kuwait-restaurants_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 400, 400, 600, 200][index],
+        question: index === 4
+          ? 'ما اسم الوجبة التي تُحضّر من شرائح دجاج أو لحم على سيخ عمودي وتُقدّم عادة في خبز عربي؟'
+          : item.question,
+      }));
+      return [...existing, ...reviewedRestaurantsQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-kuwait-cafes') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-kuwait-cafes_${String(index + 1).padStart(3, '0')}`,
+        points: [400, 200, 200, 400, 600][index],
+        question: index === 1
+          ? 'ما اسم طريقة تحضير القهوة بنقع البن في ماء بارد لساعات طويلة؟'
+          : index === 3
+            ? 'ما اسم علامة القهوة العالمية التي يتميز شعارها بعلامة النسبة المئوية (%)؟'
+            : item.question,
+      }));
+      return [...existing, ...reviewedCafesQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-kuwait-general') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-kuwait-general_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 400, 600, 200, 400][index],
+      }));
+      return [...existing, ...reviewedKuwaitQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-islamic-prophets') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-islamic-prophets_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 200, 400, 400, 200][index],
+      }));
+      return [...existing, ...reviewedProphetsQuestions].sort((left, right) => left.points - right.points);
+    }
 
     if (id === 'gen-cars' || id === 'cars' || name.includes('سيارات')) {
       const allCars = getAllCarQuestions();
