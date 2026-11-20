@@ -228,6 +228,38 @@ async function assertBrowserStorageMigration(page: Page): Promise<void> {
   console.log('[quiz-smoke] verified IndexedDB migration and save/reload');
 }
 
+async function assertExtractedImagesLoad(page: Page): Promise<void> {
+  await page.goto(appUrl, { waitUntil: 'domcontentloaded' });
+  const result = await page.evaluate(async () => {
+    const [products, general] = await Promise.all([
+      import('/src/data/productsQuestions.ts'),
+      import('/src/data/generalKnowledgeBatch1.ts'),
+    ]);
+    const collect = (items: unknown): string[] =>
+      [...JSON.stringify(items).matchAll(/\\/quiz-images\\/[a-f0-9]{24}\\.(?:jpg|png|webp|gif|avif)/g)]
+        .map((match) => match[0]);
+
+    const urls = [
+      collect(products.products100Questions),
+      collect(general.generalKnowledgeBatch1),
+    ];
+    for (const group of urls) {
+      if (!group.length) throw new Error('A question image module did not contain extracted image URLs');
+      const response = await fetch(group[0]);
+      if (!response.ok) throw new Error(`Extracted question image returned HTTP ${response.status}`);
+      if (!(response.headers.get('content-type') || '').startsWith('image/')) {
+        throw new Error('Extracted question image has an invalid MIME type');
+      }
+      const bytes = await response.arrayBuffer();
+      if (bytes.byteLength < 100) throw new Error('Extracted question image was empty');
+    }
+    return { products: urls[0].length, general: urls[1].length };
+  });
+  console.log(
+    `[quiz-smoke] verified browser image URLs (${result.products} product, ${result.general} general) and image HTTP responses`,
+  );
+}
+
 async function main(): Promise<void> {
   await loadQuestionData();
   await startApp();
@@ -240,6 +272,7 @@ async function main(): Promise<void> {
   try {
     await assertPlayerPath(await context.newPage());
     await assertBrowserStorageMigration(await context.newPage());
+    await assertExtractedImagesLoad(await context.newPage());
   } finally {
     await context.close();
   }
