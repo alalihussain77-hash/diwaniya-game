@@ -30,6 +30,8 @@ jobs:
         run: pnpm run lint
       - name: Build
         run: pnpm run build
+      - name: Verify every extracted question image
+        run: node scripts/verify-question-image-assets.mjs
       - name: Install Playwright Chromium
         run: pnpm exec playwright install --with-deps chromium
       - name: Smoke test game in browser
