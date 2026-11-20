@@ -1,3 +1,4 @@
+import { reviewedProphetsQuestions } from './reviewedProphetsQuestions';
 import { reviewedGeographyQuestions } from './reviewedGeographyQuestions';
 import { Question } from '../types';
 import { persistentStorage } from '../utils/persistentStorage';
@@ -1077,6 +1078,16 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           : cleanQuestionText(item.question),
       }));
       return [...existing, ...reviewedGeographyQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-islamic-prophets') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-islamic-prophets_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 200, 400, 400, 200][index],
+      }));
+      return [...existing, ...reviewedProphetsQuestions].sort((left, right) => left.points - right.points);
     }
 
     if (id === 'gen-cars' || id === 'cars' || name.includes('سيارات')) {
