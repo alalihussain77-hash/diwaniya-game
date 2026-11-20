@@ -237,14 +237,11 @@ async function assertExtractedImagesLoad(page: Page): Promise<void> {
       import(/* @vite-ignore */ productModulePath),
       import(/* @vite-ignore */ generalModulePath),
     ]);
-    const collect = (items: unknown): string[] =>
-      [...JSON.stringify(items).matchAll(/\/quiz-images\/[a-f0-9]{24}\.(?:jpg|png|webp|gif|avif)/g)]
-        .map((match) => match[0]);
-
-    const urls = [
-      collect(products.products100Questions),
-      collect(general.generalKnowledgeBatch1),
-    ];
+    const imageUrlPattern = /\/quiz-images\/[a-f0-9]{24}\.(?:jpg|png|webp|gif|avif)/g;
+    const urls: string[][] = [];
+    for (const items of [products.products100Questions, general.generalKnowledgeBatch1]) {
+      urls.push(JSON.stringify(items).match(imageUrlPattern) || []);
+    }
     for (const group of urls) {
       if (!group.length) throw new Error('A question image module did not contain extracted image URLs');
       const response = await fetch(group[0]);
