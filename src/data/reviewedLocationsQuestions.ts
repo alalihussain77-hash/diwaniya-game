@@ -257,7 +257,7 @@ const facts: Array<Pick<Question, 'question' | 'correctAnswer' | 'points'>> = [
   {
     "points": 400,
     "question": "في أي محافظة تقع منطقة النهضة؟",
-    "correctAnswer": "الفروانية"
+    "correctAnswer": "الجهراء"
   },
   {
     "points": 400,
