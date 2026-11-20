@@ -1,3 +1,4 @@
+import { reviewedLocationsQuestions } from './reviewedLocationsQuestions';
 import { reviewedRestaurantsQuestions } from './reviewedRestaurantsQuestions';
 import { reviewedCafesQuestions } from './reviewedCafesQuestions';
 import { reviewedKuwaitQuestions } from './reviewedKuwaitQuestions';
@@ -1081,6 +1082,19 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           : cleanQuestionText(item.question),
       }));
       return [...existing, ...reviewedGeographyQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-kuwait-location') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-kuwait-location_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 400, 400, 600, 200][index],
+        question: index === 0
+          ? 'إلى أي منطقة شمال الكويت يصل جسر الشيخ جابر الأحمد القادم من العاصمة؟'
+          : item.question,
+      }));
+      return [...existing, ...reviewedLocationsQuestions].sort((left, right) => left.points - right.points);
     }
 
     if (id === 'spec-kuwait-restaurants') {
