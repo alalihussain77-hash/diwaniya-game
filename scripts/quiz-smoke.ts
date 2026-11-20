@@ -167,6 +167,12 @@ async function assertBrowserStorageMigration(page: Page): Promise<void> {
     localStorage.setItem(testKey, 'older-local-storage-value');
     await new Promise<void>((resolve, reject) => {
       const request = indexedDB.open('diwaniya_app_storage_db', 1);
+      request.onupgradeneeded = () => {
+        const db = request.result;
+        if (!db.objectStoreNames.contains('app_keyval_store')) {
+          db.createObjectStore('app_keyval_store', { keyPath: 'key' });
+        }
+      };
       request.onerror = () => reject(request.error);
       request.onsuccess = () => {
         const db = request.result;
