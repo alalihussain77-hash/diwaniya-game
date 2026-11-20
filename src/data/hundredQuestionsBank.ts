@@ -1,6 +1,7 @@
 import { Question } from '../types';
 import { persistentStorage } from '../utils/persistentStorage';
 import { reviewedGeography100Questions } from './reviewedGeographyQuestions';
+import { reviewedProphets100Questions } from './reviewedProphetsQuestions';
 import { INITIAL_CATEGORIES } from './categories';
 import { historyBatch1 } from './historyBatch1';
 import { historyBatch2 } from './historyBatch2';
@@ -1067,6 +1068,9 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
     // generated placeholder questions. Other categories are unchanged.
     if (id === 'gen-geography') {
       return reviewedGeography100Questions;
+    }
+    if (id === 'spec-islamic-prophets') {
+      return reviewedProphets100Questions;
     }
 
 
