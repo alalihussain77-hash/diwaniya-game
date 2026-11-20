@@ -231,9 +231,11 @@ async function assertBrowserStorageMigration(page: Page): Promise<void> {
 async function assertExtractedImagesLoad(page: Page): Promise<void> {
   await page.goto(appUrl, { waitUntil: 'domcontentloaded' });
   const result = await page.evaluate(async () => {
+    const productModulePath = '/src/data/productsQuestions.ts';
+    const generalModulePath = '/src/data/generalKnowledgeBatch1.ts';
     const [products, general] = await Promise.all([
-      import('/src/data/productsQuestions.ts'),
-      import('/src/data/generalKnowledgeBatch1.ts'),
+      import(/* @vite-ignore */ productModulePath),
+      import(/* @vite-ignore */ generalModulePath),
     ]);
     const collect = (items: unknown): string[] =>
       [...JSON.stringify(items).matchAll(/\/quiz-images\/[a-f0-9]{24}\.(?:jpg|png|webp|gif|avif)/g)]
