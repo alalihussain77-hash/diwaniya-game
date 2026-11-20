@@ -1,3 +1,4 @@
+import { reviewedGeographyQuestions } from './reviewedGeographyQuestions';
 import { Question } from '../types';
 import { persistentStorage } from '../utils/persistentStorage';
 import { INITIAL_CATEGORIES } from './categories';
@@ -1062,6 +1063,21 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
 
     const id = String(catId || '').toLowerCase().trim();
     const name = String(catName || '').toLowerCase().trim();
+
+    if (id === 'gen-geography') {
+      // Keep the original picture-backed questions and their image URLs as-is.
+      // Replace only the 95 generic placeholder records with reviewed questions.
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `gen-geography_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 200, 400, 400, 600][index],
+        question: index === 4
+          ? 'في أي قارة تقع قمة إفرست وجبال الهيمالايا؟'
+          : cleanQuestionText(item.question),
+      }));
+      return [...existing, ...reviewedGeographyQuestions];
+    }
 
     if (id === 'gen-cars' || id === 'cars' || name.includes('سيارات')) {
       const allCars = getAllCarQuestions();
