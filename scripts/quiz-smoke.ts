@@ -157,6 +157,71 @@ async function assertPlayerPath(page: Page): Promise<void> {
   console.log('[quiz-smoke] verified cancel-versus-score power-up usage');
 }
 
+async function assertBrowserStorageMigration(page: Page): Promise<void> {
+  const key = '__diwaniya_ci_storage_test__';
+  const modulePath = '/src/utils/persistentStorage.ts';
+  await page.goto(appUrl, { waitUntil: 'domcontentloaded' });
+
+  // Simulate a stale legacy value alongside a newer IndexedDB value.
+  await page.evaluate(async (testKey) => {
+    localStorage.setItem(testKey, 'older-local-storage-value');
+    await new Promise<void>((resolve, reject) => {
+      const request = indexedDB.open('diwaniya_app_storage_db', 1);
+      request.onerror = () => reject(request.error);
+      request.onsuccess = () => {
+        const db = request.result;
+        const tx = db.transaction('app_keyval_store', 'readwrite');
+        tx.objectStore('app_keyval_store').put({ key: testKey, value: 'newer-indexeddb-value' });
+        tx.oncomplete = () => { db.close(); resolve(); };
+        tx.onerror = () => reject(tx.error);
+      };
+    });
+  }, key);
+
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  const loaded = await page.evaluate(async ({ testKey, path }) => {
+    const { persistentStorage } = await import(/* @vite-ignore */ path);
+    await new Promise<void>((resolve) => persistentStorage.whenReady(resolve));
+    return persistentStorage.getItem(testKey);
+  }, { testKey: key, path: modulePath });
+  if (loaded !== 'newer-indexeddb-value') {
+    fail('legacy localStorage overwrote a newer IndexedDB record');
+  }
+
+  // A new edit must persist through a page refresh, not just the memory cache.
+  await page.evaluate(async ({ testKey, path }) => {
+    const { persistentStorage } = await import(/* @vite-ignore */ path);
+    persistentStorage.setItem(testKey, 'confirmed-saved-edit');
+    await new Promise<void>((resolve, reject) => {
+      const req = indexedDB.open('diwaniya_app_storage_db', 1);
+      req.onerror = () => reject(req.error);
+      req.onsuccess = () => {
+        const db = req.result;
+        const tx = db.transaction('app_keyval_store', 'readonly');
+        const get = tx.objectStore('app_keyval_store').get(testKey);
+        get.onsuccess = () => {
+          const value = get.result?.value;
+          db.close();
+          if (value === 'confirmed-saved-edit') resolve();
+          else reject(new Error('edit was not written to IndexedDB'));
+        };
+        get.onerror = () => { db.close(); reject(get.error); };
+      };
+    });
+  }, { testKey: key, path: modulePath });
+
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  const reloaded = await page.evaluate(async ({ testKey, path }) => {
+    const { persistentStorage } = await import(/* @vite-ignore */ path);
+    await new Promise<void>((resolve) => persistentStorage.whenReady(resolve));
+    return persistentStorage.getItem(testKey);
+  }, { testKey: key, path: modulePath });
+  if (reloaded !== 'confirmed-saved-edit') {
+    fail('newly edited IndexedDB value did not survive page refresh');
+  }
+  console.log('[quiz-smoke] verified IndexedDB migration and save/reload');
+}
+
 async function main(): Promise<void> {
   await loadQuestionData();
   await startApp();
@@ -168,6 +233,7 @@ async function main(): Promise<void> {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   try {
     await assertPlayerPath(await context.newPage());
+    await assertBrowserStorageMigration(await context.newPage());
   } finally {
     await context.close();
   }
