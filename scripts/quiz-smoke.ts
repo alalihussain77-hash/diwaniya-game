@@ -298,6 +298,39 @@ async function assertSeenQuestionHistoryIsolation(page: Page): Promise<void> {
   console.log('[quiz-smoke] verified question history isolation across logout and account switches');
 }
 
+async function requireCarImageVisible(page: Page, alt: string, mode: string): Promise<void> {
+  try {
+    await page.waitForFunction(({ expectedAlt, expectedPath }) => {
+      const img = document.querySelector<HTMLImageElement>(`img[alt="${expectedAlt}"]`);
+      return Boolean(
+        img && img.complete && img.naturalWidth > 0 &&
+        new URL(img.currentSrc).pathname === expectedPath
+      );
+    }, { expectedAlt: alt, expectedPath: '/car_parts/car_7.jpg' }, { timeout: 15_000 });
+  } catch {
+    const debug = await page.evaluate(async () => {
+      const images: unknown[] = [];
+      for (const image of document.querySelectorAll('img')) {
+        images.push({
+          alt: image.alt,
+          src: image.getAttribute('src'),
+          currentSrc: image.currentSrc,
+          naturalWidth: image.naturalWidth,
+          complete: image.complete,
+        });
+      }
+      const response = await fetch('/car_parts/car_7.jpg');
+      return {
+        photos: images.slice(-20),
+        carPhotoHttpStatus: response.status,
+        statusMessage: document.querySelector('[role="status"]')?.textContent,
+        questionTextPresent: document.body.textContent?.includes('شنو اسم هذي القطعة؟'),
+      };
+    });
+    fail(`car image not visible for ${alt} in mode ${mode}: ${JSON.stringify(debug)}`);
+  }
+}
+
 async function assertCarQuestionImages(page: Page): Promise<void> {
   for (const mode of ['normal', 'empty', 'broken'] as const) {
     await page.goto(appUrl, { waitUntil: 'domcontentloaded' });
@@ -307,23 +340,11 @@ async function assertCarQuestionImages(page: Page): Promise<void> {
       fixture.mountCarImageFixture(fixtureMode);
     }, mode);
 
-    await page.waitForFunction((expectedPath) => {
-      const img = document.querySelector<HTMLImageElement>('img[alt="صورة السؤال"]');
-      return Boolean(
-        img && img.complete && img.naturalWidth > 0 &&
-        new URL(img.currentSrc).pathname === expectedPath
-      );
-    }, '/car_parts/car_7.jpg', { timeout: 15_000 });
+    await requireCarImageVisible(page, 'صورة السؤال', mode);
 
     await page.getByRole('button', { name: 'كشف الإجابة الصحيحة' }).click();
 
-    await page.waitForFunction((expectedPath) => {
-      const img = document.querySelector<HTMLImageElement>('img[alt="صورة الإجابة"]');
-      return Boolean(
-        img && img.complete && img.naturalWidth > 0 &&
-        new URL(img.currentSrc).pathname === expectedPath
-      );
-    }, '/car_parts/car_7.jpg', { timeout: 15_000 });
+    await requireCarImageVisible(page, 'صورة الإجابة', mode);
     console.log(`[quiz-smoke] verified car_7 question and answer photos (mode: ${mode})`);
   }
 }
