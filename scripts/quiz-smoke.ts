@@ -298,6 +298,36 @@ async function assertSeenQuestionHistoryIsolation(page: Page): Promise<void> {
   console.log('[quiz-smoke] verified question history isolation across logout and account switches');
 }
 
+async function assertCarQuestionImages(page: Page): Promise<void> {
+  for (const mode of ['normal', 'empty', 'broken'] as const) {
+    await page.goto(appUrl, { waitUntil: 'domcontentloaded' });
+    await page.evaluate(async (fixtureMode) => {
+      const fixturePath = '/scripts/car-image-fixture.tsx';
+      const fixture = await import(/* @vite-ignore */ fixturePath);
+      fixture.mountCarImageFixture(fixtureMode);
+    }, mode);
+
+    await page.waitForFunction((expectedPath) => {
+      const img = document.querySelector<HTMLImageElement>('img[alt="صورة السؤال"]');
+      return Boolean(
+        img && img.complete && img.naturalWidth > 0 &&
+        new URL(img.currentSrc).pathname === expectedPath
+      );
+    }, '/car_parts/car_7.jpg', { timeout: 15_000 });
+
+    await page.getByRole('button', { name: 'كشف الإجابة الصحيحة' }).click();
+
+    await page.waitForFunction((expectedPath) => {
+      const img = document.querySelector<HTMLImageElement>('img[alt="صورة الإجابة"]');
+      return Boolean(
+        img && img.complete && img.naturalWidth > 0 &&
+        new URL(img.currentSrc).pathname === expectedPath
+      );
+    }, '/car_parts/car_7.jpg', { timeout: 15_000 });
+    console.log(`[quiz-smoke] verified car_7 question and answer photos (mode: ${mode})`);
+  }
+}
+
 async function main(): Promise<void> {
   await loadQuestionData();
   await startApp();
@@ -312,6 +342,7 @@ async function main(): Promise<void> {
     await assertBrowserStorageMigration(await context.newPage());
     await assertExtractedImagesLoad(await context.newPage());
     await assertSeenQuestionHistoryIsolation(await context.newPage());
+    await assertCarQuestionImages(await context.newPage());
   } finally {
     await context.close();
   }
