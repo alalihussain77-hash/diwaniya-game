@@ -367,6 +367,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
             </button>
 
             <button
+              aria-label="إغلاق السؤال"
               onClick={() => {
                 sound.playClick();
                 onClose();
@@ -563,7 +564,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
                 {/* Phone Call */}
                 <button
                   type="button"
-                  disabled={usedPowerups.includes('call')}
+                  disabled={usedPowerups.includes('call') || isCallActive}
                   onClick={() => handleTogglePowerup('call')}
                   className={`py-2 px-2 rounded-lg border text-xs sm:text-sm font-black transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm active:scale-95 ${
                     usedPowerups.includes('call')
@@ -572,7 +573,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
                   }`}
                 >
                   <PhoneCall className="w-3.5 h-3.5 shrink-0 text-emerald-400" />
-                  <span>{usedPowerups.includes('call') ? 'مستخْدَم' : 'اتصال (دقيقة)'}</span>
+                  <span>{usedPowerups.includes('call') ? 'مستخْدَم' : isCallActive ? 'اتصال مفعل' : 'اتصال (دقيقة)'}</span>
                 </button>
               </div>
             </div>
