@@ -1,3 +1,4 @@
+import { reviewedCafesQuestions } from './reviewedCafesQuestions';
 import { reviewedKuwaitQuestions } from './reviewedKuwaitQuestions';
 import { reviewedProphetsQuestions } from './reviewedProphetsQuestions';
 import { reviewedGeographyQuestions } from './reviewedGeographyQuestions';
@@ -1079,6 +1080,21 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           : cleanQuestionText(item.question),
       }));
       return [...existing, ...reviewedGeographyQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-kuwait-cafes') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-kuwait-cafes_${String(index + 1).padStart(3, '0')}`,
+        points: [400, 200, 200, 400, 600][index],
+        question: index === 1
+          ? 'ما اسم طريقة تحضير القهوة بنقع البن في ماء بارد لساعات طويلة؟'
+          : index === 3
+            ? 'ما اسم علامة القهوة العالمية التي يتميز شعارها بعلامة النسبة المئوية (%)؟'
+            : item.question,
+      }));
+      return [...existing, ...reviewedCafesQuestions].sort((left, right) => left.points - right.points);
     }
 
     if (id === 'spec-kuwait-general') {
