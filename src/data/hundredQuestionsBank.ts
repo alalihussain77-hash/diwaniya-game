@@ -1071,12 +1071,12 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
       const existing = originals.slice(0, 5).map((item, index) => ({
         ...item,
         id: `gen-geography_${String(index + 1).padStart(3, '0')}`,
-        points: [200, 200, 400, 400, 600][index],
+        points: [200, 200, 400, 400, 200][index],
         question: index === 4
           ? 'في أي قارة تقع قمة إفرست وجبال الهيمالايا؟'
           : cleanQuestionText(item.question),
       }));
-      return [...existing, ...reviewedGeographyQuestions];
+      return [...existing, ...reviewedGeographyQuestions].sort((left, right) => left.points - right.points);
     }
 
     if (id === 'gen-cars' || id === 'cars' || name.includes('سيارات')) {
