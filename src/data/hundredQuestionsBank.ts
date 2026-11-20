@@ -1,3 +1,4 @@
+import { reviewedKuwaitQuestions } from './reviewedKuwaitQuestions';
 import { reviewedProphetsQuestions } from './reviewedProphetsQuestions';
 import { reviewedGeographyQuestions } from './reviewedGeographyQuestions';
 import { Question } from '../types';
@@ -1078,6 +1079,16 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           : cleanQuestionText(item.question),
       }));
       return [...existing, ...reviewedGeographyQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-kuwait-general') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-kuwait-general_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 400, 600, 200, 400][index],
+      }));
+      return [...existing, ...reviewedKuwaitQuestions].sort((left, right) => left.points - right.points);
     }
 
     if (id === 'spec-islamic-prophets') {
