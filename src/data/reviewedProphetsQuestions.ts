@@ -12,12 +12,12 @@ const items: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 200,
-    "question": "أي نبي صنع الفلك بأمر الله قبل الطوفان؟",
+    "question": "أي نبي دعا ابنه إلى ركوب السفينة معه عند بدء الطوفان؟",
     "correctAnswer": "نوح عليه السلام"
   },
   {
     "points": 200,
-    "question": "أي نبي ابتلعه الحوت ثم نجّاه الله؟",
+    "question": "أي نبي بعثه الله إلى قومه فآمنوا بعد أن ظنوا نزول العذاب؟",
     "correctAnswer": "يونس عليه السلام"
   },
   {
@@ -87,8 +87,8 @@ const items: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 200,
-    "question": "أي نبي ذُكر صبره على المرض وشفاؤه بعد الدعاء؟",
-    "correctAnswer": "أيوب عليه السلام"
+    "question": "أي نبي ورد في القرآن ضمن الصابرين مع إسماعيل وإدريس؟",
+    "correctAnswer": "ذو الكفل عليه السلام"
   },
   {
     "points": 200,
@@ -192,7 +192,7 @@ const items: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 400,
-    "question": "أي نبي تحولت عصاه إلى حيّة آيةً لفرعون؟",
+    "question": "أي نبي طلب من ربه أن يشد أزره بأخيه هارون؟",
     "correctAnswer": "موسى عليه السلام"
   },
   {
@@ -277,7 +277,7 @@ const items: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 400,
-    "question": "أي نبي سخّر الله له الريح تجري بأمره؟",
+    "question": "أي نبي افتقد الهدهد من الطير فسأل عن غيابه؟",
     "correctAnswer": "سليمان عليه السلام"
   },
   {
@@ -442,8 +442,8 @@ const items: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 600,
-    "question": "أي نبي لقبه القرآن ذا النون؟",
-    "correctAnswer": "يونس عليه السلام"
+    "question": "في أي سورة جاءت عبارة فاستجبنا له ونجيناه من الغم بشأن ذي النون؟",
+    "correctAnswer": "سورة الأنبياء"
   },
   {
     "points": 600,
