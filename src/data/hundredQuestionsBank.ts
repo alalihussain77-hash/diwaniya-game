@@ -3,6 +3,7 @@ import { persistentStorage } from '../utils/persistentStorage';
 import { reviewedGeography100Questions } from './reviewedGeographyQuestions';
 import { reviewedProphets100Questions } from './reviewedProphetsQuestions';
 import { reviewedSahaba100Questions } from './reviewedSahabaQuestions';
+import { reviewedKuwaitGeneral100Questions } from './reviewedKuwaitGeneralQuestions';
 import { INITIAL_CATEGORIES } from './categories';
 import { historyBatch1 } from './historyBatch1';
 import { historyBatch2 } from './historyBatch2';
@@ -1075,6 +1076,9 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
     }
     if (id === 'spec-islamic-sahaba') {
       return reviewedSahaba100Questions;
+    }
+    if (id === 'spec-kuwait-general') {
+      return reviewedKuwaitGeneral100Questions;
     }
 
 
