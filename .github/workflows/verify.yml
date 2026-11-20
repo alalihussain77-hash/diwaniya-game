@@ -12,6 +12,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Check out game
         uses: actions/checkout@v4
@@ -19,27 +20,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
-      - name: Install locked dependencies
-        shell: bash
-        run: |
-          set -o pipefail
-          node --version
-          npm --version
-          for attempt in 1 2 3; do
-            echo "Dependency installation attempt $attempt of 3"
-            if npm ci --no-audit --no-fund --fetch-retries=5; then
-              break
-            fi
-            if [ "$attempt" = "3" ]; then
-              echo "npm ci failed after three attempts. npm logs:"
-              find "$HOME/.npm/_logs" -maxdepth 1 -type f -name '*debug-0.log' -print -exec tail -n 100 {} \; || true
-              exit 1
-            fi
-            rm -rf node_modules
-            sleep 5
-          done
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '10'
+      - name: Install project dependencies
+        run: pnpm install --no-frozen-lockfile
       - name: Typecheck
-        run: npm run lint
+        run: pnpm run lint
       - name: Build
-        run: npm run build
+        run: pnpm run build
