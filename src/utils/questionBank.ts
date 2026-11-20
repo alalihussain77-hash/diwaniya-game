@@ -7,6 +7,8 @@ import { get100CategoryQuestions, cleanQuestionText } from '../data/hundredQuest
 // In-memory runtime state for current user session (No localStorage dependency)
 let activeUserId: string | null = null;
 let activeSeenIds: string[] = [];
+// An earlier user's Firestore read must never overwrite the new user's history.
+let activeUserVersion = 0;
 
 // Get current array of seen question IDs
 export function getSeenQuestionIds(): string[] {
@@ -20,27 +22,31 @@ export function getUsedQuestionIds(): string[] {
 
 // Explicitly set or clear the active user ID
 export function setActiveUserId(userId: string | null): void {
-  activeUserId = userId;
-  if (!userId) {
+  if (activeUserId !== userId) {
+    activeUserVersion += 1;
     activeSeenIds = [];
   }
+  activeUserId = userId;
+  if (!userId) activeSeenIds = [];
 }
 
 // 1. Sync seen questions strictly from Firestore under users/{userId} on login/auth-change
 export async function syncUsedQuestionsFromFirestore(userId: string | null): Promise<string[]> {
-  const targetUid = userId || activeUserId || auth.currentUser?.uid || null;
-  activeUserId = targetUid;
-  
-  if (!targetUid) {
-    activeSeenIds = [];
-    return [];
-  }
-  if (isLocalGuestUserId(targetUid)) {
-    return activeSeenIds;
-  }
+  // Passing null means sign-out. Never fall back to the previous uid.
+  const targetUid = userId;
+  setActiveUserId(targetUid);
+  const requestVersion = activeUserVersion;
+
+  if (!targetUid) return [];
+  if (isLocalGuestUserId(targetUid)) return activeSeenIds;
+
   try {
     const userRef = doc(db, 'users', targetUid);
     const snap = await getDoc(userRef);
+    if (activeUserVersion !== requestVersion || activeUserId !== targetUid) {
+      // The active account changed while this request was in flight.
+      return activeSeenIds;
+    }
     if (snap.exists()) {
       const data = snap.data();
       const rawSeen = Array.isArray(data?.seenQuestionIds) ? data.seenQuestionIds : [];

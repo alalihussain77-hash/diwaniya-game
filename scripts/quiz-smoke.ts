@@ -25,17 +25,28 @@ async function loadQuestionData(): Promise<void> {
     fail(`question-bank syntax/import error: ${message}`);
   }
 
+  const { get100CategoryQuestions } = await import('../src/data/hundredQuestionsBank');
+  const visibleCategories = categoriesModule.INITIAL_CATEGORIES.filter((c) => !c.hidden);
   const errors = [
     ...validateCategories(categoriesModule.INITIAL_CATEGORIES),
     ...validateQuestionBank(productsModule.products100Questions, 'products100Questions'),
   ];
+  let totalBankQuestions = 0;
+  for (const category of visibleCategories) {
+    const pool = get100CategoryQuestions(category.id, category.name);
+    totalBankQuestions += pool.length;
+    if (pool.length < 6) {
+      errors.push(`Category "${category.name}" (${category.id}) has only ${pool.length} available questions; needs at least 6 for a board`);
+    }
+    errors.push(...validateQuestionBank(pool, `bank[${category.id}]`));
+  }
 
   if (errors.length > 0) {
     fail(`question-bank validation failed:\n${errors.map((error) => `  - ${error}`).join('\n')}`);
   }
 
   console.log(
-    `[quiz-smoke] validated ${categoriesModule.INITIAL_CATEGORIES.length} categories and ${productsModule.products100Questions.length} product questions`,
+    `[quiz-smoke] validated ${categoriesModule.INITIAL_CATEGORIES.length} categories, ${visibleCategories.length} playable banks with ${totalBankQuestions} questions, and ${productsModule.products100Questions.length} product questions`,
   );
 }
 
@@ -259,6 +270,34 @@ async function assertExtractedImagesLoad(page: Page): Promise<void> {
   );
 }
 
+async function assertSeenQuestionHistoryIsolation(page: Page): Promise<void> {
+  await page.goto(appUrl, { waitUntil: 'domcontentloaded' });
+  const result = await page.evaluate(async () => {
+    const modulePath = '/src/utils/questionBank.ts';
+    const storage = await import(/* @vite-ignore */ modulePath);
+    const questionId = '__ci_seen_history_isolation__';
+    storage.setActiveUserId('local_guest');
+    await storage.markQuestionAsSeen(questionId, 'local_guest');
+    const guestHasHistory = storage.getSeenQuestionIds().includes(questionId);
+
+    // Explicit logout must clear history even if a local guest was last active.
+    await storage.syncUsedQuestionsFromFirestore(null);
+    const afterLogout = storage.getSeenQuestionIds().length;
+
+    storage.setActiveUserId('local_guest');
+    await storage.markQuestionAsSeen(questionId, 'local_guest');
+    // Switching accounts must not expose the previous account's seen questions.
+    storage.setActiveUserId('__ci_different_account__');
+    const afterSwitch = storage.getSeenQuestionIds().length;
+    storage.setActiveUserId(null);
+    return { guestHasHistory, afterLogout, afterSwitch };
+  });
+  if (!result.guestHasHistory || result.afterLogout !== 0 || result.afterSwitch !== 0) {
+    fail(`seen question history was not cleared on logout/account switch: ${JSON.stringify(result)}`);
+  }
+  console.log('[quiz-smoke] verified question history isolation across logout and account switches');
+}
+
 async function main(): Promise<void> {
   await loadQuestionData();
   await startApp();
@@ -272,6 +311,7 @@ async function main(): Promise<void> {
     await assertPlayerPath(await context.newPage());
     await assertBrowserStorageMigration(await context.newPage());
     await assertExtractedImagesLoad(await context.newPage());
+    await assertSeenQuestionHistoryIsolation(await context.newPage());
   } finally {
     await context.close();
   }
