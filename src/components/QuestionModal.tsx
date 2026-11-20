@@ -9,6 +9,7 @@ import { cleanQuestionText } from '../data/hundredQuestionsBank';
 import { auth } from '../lib/firebase';
 import { LOCAL_GUEST_UID, localGuestFallbackEnabled } from '../lib/localTesting';
 import { CarPartSvg } from './CarPartSvg';
+import { CarQuestionImage } from './CarQuestionImage';
 import { OldFlagSvg } from './OldFlagSvg';
 import { QrCodeDisplay } from './QrCodeDisplay';
 import { normalizeImageSrc } from '../utils/categoryQuestionsManager';
@@ -103,6 +104,14 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
 
   const activeTeamPoints = activeTurnTeamId === 'team1' ? team1Points : team2Points;
 
+  // Built-in car photos are identified by the question ID. Do not replace an
+  // edited image that loads successfully; only use the original if it is missing.
+  const carMatch = /^car_(\d+)$/i.exec(question.id || '');
+  const carNumber = carMatch ? Number(carMatch[1]) : 0;
+  const originalCarPartSrc = carNumber >= 1 && carNumber <= 31
+    ? `/car_parts/car_${carNumber}.jpg`
+    : null;
+
   // Robust image resolver ensuring an image is always displayed with accurate matching
   const resolveFallbackImage = (): string | null => {
     const catId = (category?.id || '').toLowerCase();
@@ -163,7 +172,9 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
     if (question.imageUrl && !question.imageUrl.includes('unsplash.com')) return question.imageUrl;
     if ((question as any).image && !(question as any).image.includes('unsplash.com')) return (question as any).image;
 
-    // 5. General Visual Categories
+    // 5. Use the exact matching car-part photo, not the category thumbnail.
+    if (originalCarPartSrc) return originalCarPartSrc;
+    // General Visual Categories
     if (catId.includes('cars') || catName.includes('سيارات') || qId.includes('car')) return '/cars_category_thumb.jpg';
     if (catId.includes('sports') || catName.includes('رياضة') || catName.includes('كروية')) return '/sports_thumb.jpg';
     if (catId.includes('geography') || catName.includes('جغرافيا')) return '/geography_thumb.jpg';
@@ -481,16 +492,25 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
                 {isVisual && (
                   <div className="w-full flex justify-center items-center my-2 max-h-40 sm:max-h-48 overflow-hidden rounded-xl bg-slate-950/90 p-2 border border-slate-700/60 shadow-xl">
                     {questionImageUrl ? (
-                      <img
-                        src={questionImageUrl}
-                        alt="صورة السؤال"
-                        className="max-h-36 sm:max-h-44 w-auto max-w-full block mx-auto object-contain my-1 rounded shadow-lg"
-                        loading="eager"
-                        onError={(e) => {
-                          const target = e.currentTarget;
-                          if (target.parentElement) target.parentElement.style.display = 'none';
-                        }}
-                      />
+                      originalCarPartSrc ? (
+                        <CarQuestionImage
+                          primarySrc={questionImageUrl}
+                          originalPartSrc={originalCarPartSrc}
+                          alt="صورة السؤال"
+                          className="max-h-36 sm:max-h-44 w-auto max-w-full block mx-auto object-contain my-1 rounded shadow-lg"
+                        />
+                      ) : (
+                        <img
+                          src={questionImageUrl}
+                          alt="صورة السؤال"
+                          className="max-h-36 sm:max-h-44 w-auto max-w-full block mx-auto object-contain my-1 rounded shadow-lg"
+                          loading="eager"
+                          onError={(e) => {
+                            const target = e.currentTarget;
+                            if (target.parentElement) target.parentElement.style.display = 'none';
+                          }}
+                        />
+                      )
                     ) : question.id?.startsWith('car_') && question.imageUrl !== '' ? (
                       <CarPartSvg id={question.id || 'car_16'} className="max-h-36 sm:max-h-44 w-auto max-w-full object-contain mx-auto rounded drop-shadow-md transition-transform duration-300 hover:scale-105" />
                     ) : question.id?.startsWith('old_flags_') && question.imageUrl !== '' ? (
@@ -604,18 +624,28 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
               {/* Show Answer Image only if provided */}
               {answerImageUrl && (
                 <div className="flex justify-center items-center my-2 max-h-36 sm:max-h-48 overflow-hidden rounded-xl bg-slate-950/90 p-2 border border-emerald-500/50 shadow-xl">
-                  <img
-                    src={answerImageUrl}
-                    alt="صورة الإجابة"
-                    referrerPolicy="no-referrer"
-                    className="max-h-32 sm:max-h-44 max-w-full object-contain rounded-lg drop-shadow-lg"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      if (target.parentElement) {
-                        target.parentElement.style.display = 'none';
-                      }
-                    }}
-                  />
+                  {originalCarPartSrc ? (
+                    <CarQuestionImage
+                      primarySrc={answerImageUrl}
+                      originalPartSrc={originalCarPartSrc}
+                      alt="صورة الإجابة"
+                      referrerPolicy="no-referrer"
+                      className="max-h-32 sm:max-h-44 max-w-full object-contain rounded-lg drop-shadow-lg"
+                    />
+                  ) : (
+                    <img
+                      src={answerImageUrl}
+                      alt="صورة الإجابة"
+                      referrerPolicy="no-referrer"
+                      className="max-h-32 sm:max-h-44 max-w-full object-contain rounded-lg drop-shadow-lg"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (target.parentElement) {
+                          target.parentElement.style.display = 'none';
+                        }
+                      }}
+                    />
+                  )}
                 </div>
               )}
 
