@@ -6,6 +6,7 @@ import { reviewedSahaba100Questions } from './reviewedSahabaQuestions';
 import { reviewedKuwaitGeneral100Questions } from './reviewedKuwaitGeneralQuestions';
 import { reviewedRestaurants100Questions } from './reviewedRestaurantsQuestions';
 import { reviewedKuwaitLocation100Questions } from './reviewedKuwaitLocationQuestions';
+import { reviewedKuwaitMalls100Questions } from './reviewedKuwaitMallsQuestions';
 import { INITIAL_CATEGORIES } from './categories';
 import { historyBatch1 } from './historyBatch1';
 import { historyBatch2 } from './historyBatch2';
@@ -1087,6 +1088,9 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
     }
     if (id === 'spec-kuwait-location') {
       return reviewedKuwaitLocation100Questions;
+    }
+    if (id === 'spec-kuwait-malls') {
+      return reviewedKuwaitMalls100Questions;
     }
 
 
