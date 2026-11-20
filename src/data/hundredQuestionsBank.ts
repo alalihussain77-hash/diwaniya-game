@@ -1,5 +1,12 @@
 import { Question } from '../types';
 import { persistentStorage } from '../utils/persistentStorage';
+import { reviewedGeography100Questions } from './reviewedGeographyQuestions';
+import { reviewedProphets100Questions } from './reviewedProphetsQuestions';
+import { reviewedSahaba100Questions } from './reviewedSahabaQuestions';
+import { reviewedKuwaitGeneral100Questions } from './reviewedKuwaitGeneralQuestions';
+import { reviewedRestaurants100Questions } from './reviewedRestaurantsQuestions';
+import { reviewedKuwaitLocation100Questions } from './reviewedKuwaitLocationQuestions';
+import { reviewedKuwaitMalls100Questions } from './reviewedKuwaitMallsQuestions';
 import { INITIAL_CATEGORIES } from './categories';
 import { historyBatch1 } from './historyBatch1';
 import { historyBatch2 } from './historyBatch2';
@@ -1062,6 +1069,30 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
 
     const id = String(catId || '').toLowerCase().trim();
     const name = String(catName || '').toLowerCase().trim();
+    // Clear, research-backed questions replace only the geography bank's
+    // generated placeholder questions. Other categories are unchanged.
+    if (id === 'gen-geography') {
+      return reviewedGeography100Questions;
+    }
+    if (id === 'spec-islamic-prophets') {
+      return reviewedProphets100Questions;
+    }
+    if (id === 'spec-islamic-sahaba') {
+      return reviewedSahaba100Questions;
+    }
+    if (id === 'spec-kuwait-general') {
+      return reviewedKuwaitGeneral100Questions;
+    }
+    if (id === 'spec-kuwait-restaurants') {
+      return reviewedRestaurants100Questions;
+    }
+    if (id === 'spec-kuwait-location') {
+      return reviewedKuwaitLocation100Questions;
+    }
+    if (id === 'spec-kuwait-malls') {
+      return reviewedKuwaitMalls100Questions;
+    }
+
 
     if (id === 'gen-cars' || id === 'cars' || name.includes('سيارات')) {
       const allCars = getAllCarQuestions();
