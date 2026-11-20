@@ -251,7 +251,7 @@ export const ViewAllCategoryQuestionsModal: React.FC<ViewAllCategoryQuestionsMod
       });
 
       sound.playCorrect();
-      setSaveSuccessMsg('تم حفظ وتثبيت الصور والتعديلات بنجاح في النظام والكود البرمجي! ✓');
+      setSaveSuccessMsg('تم حفظ التعديلات محلياً في هذا المتصفح. لن تظهر تلقائياً عند بقية اللاعبين إلا بعد نشرها ضمن بيانات اللعبة.');
       setErrorMsg('');
 
       // Refresh list
