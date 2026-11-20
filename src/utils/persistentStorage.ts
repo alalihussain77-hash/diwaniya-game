@@ -1,7 +1,7 @@
 /**
  * Persistent Storage System using IndexedDB with in-memory sync cache.
- * Exclusively uses IndexedDB for all questions, customizations, and images,
- * completely bypassing localStorage size quotas and eliminating QuotaExceededError.
+ * Stores questions and images in IndexedDB with a synchronous memory cache.
+ * Legacy localStorage entries are migrated without overwriting newer IndexedDB values.
  */
 
 const DB_NAME = 'diwaniya_app_storage_db';
@@ -13,6 +13,15 @@ const memoryCache = new Map<string, string>();
 let isIndexedDBReady = false;
 let dbInstance: IDBDatabase | null = null;
 const initCallbacks: Array<() => void> = [];
+// Writes made while IndexedDB is opening must win over stale records loaded later.
+const pendingChanges = new Map<string, { value: string | null }>();
+let clearRequested = false;
+let clearVersion = 0;
+
+function notifyReady() {
+  isIndexedDBReady = true;
+  initCallbacks.splice(0).forEach((cb) => cb());
+}
 
 // Initialize memory cache: copy and preserve ALL data from localStorage and IndexedDB seamlessly
 if (typeof window !== 'undefined') {
@@ -53,78 +62,117 @@ function initIndexedDB() {
 
     request.onsuccess = (event: Event) => {
       dbInstance = (event.target as IDBOpenDBRequest).result;
-      isIndexedDBReady = true;
+      const db = dbInstance;
+      const tx = db.transaction(STORE_NAME, 'readonly');
+      const getAllReq = tx.objectStore(STORE_NAME).getAll();
 
-      // 1. Sync memoryCache to IndexedDB for any migrated items
-      if (memoryCache.size > 0) {
-        try {
-          const writeTx = dbInstance.transaction(STORE_NAME, 'readwrite');
-          const writeStore = writeTx.objectStore(STORE_NAME);
-          memoryCache.forEach((value, key) => {
-            writeStore.put({ key, value });
-          });
-        } catch (e) {
-          console.warn('Initial sync to IndexedDB:', e);
-        }
-      }
-
-      // 2. Load all existing records from IndexedDB into memoryCache
-      try {
-        const tx = dbInstance.transaction(STORE_NAME, 'readonly');
-        const store = tx.objectStore(STORE_NAME);
-        const getAllReq = store.getAll();
-
-        getAllReq.onsuccess = () => {
-          const records = getAllReq.result as Array<{ key: string; value: string }>;
-          if (records && Array.isArray(records)) {
-            records.forEach((item) => {
-              if (item.key && item.value !== undefined) {
-                memoryCache.set(item.key, item.value);
-              }
-            });
+      getAllReq.onsuccess = () => {
+        const records = (getAllReq.result || []) as Array<{ key: string; value: string }>;
+        const storedKeys = new Set<string>();
+        for (const record of records) {
+          if (!record || typeof record.key !== 'string') continue;
+          storedKeys.add(record.key);
+          // Existing IndexedDB data wins over an older localStorage copy.
+          if (!clearRequested && !pendingChanges.has(record.key)) {
+            memoryCache.set(record.key, record.value);
           }
-          initCallbacks.forEach((cb) => cb());
-          initCallbacks.length = 0;
-        };
+        }
 
-        getAllReq.onerror = () => {
-          initCallbacks.forEach((cb) => cb());
-          initCallbacks.length = 0;
+        // Migrate legacy data once. Replay writes made during initialization
+        // until the queue is empty, including writes made during a transaction.
+        const legacyMissing = new Map<string, string>();
+        if (!clearRequested) {
+          for (const [key, value] of memoryCache) {
+            if (!storedKeys.has(key) && !pendingChanges.has(key)) {
+              legacyMissing.set(key, value);
+            }
+          }
+        }
+        let firstFlush = true;
+        const flush = () => {
+          const changes = new Map(pendingChanges);
+          const clearForThisFlush = clearRequested;
+          const clearAtVersion = clearVersion;
+          try {
+            const writeTx = db.transaction(STORE_NAME, 'readwrite');
+            const store = writeTx.objectStore(STORE_NAME);
+            if (clearForThisFlush) {
+              store.clear();
+            } else if (firstFlush) {
+              for (const [key, value] of legacyMissing) {
+                if (!changes.has(key)) store.put({ key, value });
+              }
+            }
+            firstFlush = false;
+            for (const [key, change] of changes) {
+              if (change.value === null) store.delete(key);
+              else store.put({ key, value: change.value });
+            }
+            writeTx.oncomplete = () => {
+              // Only discard a queued write if it was actually included.
+              for (const [key, change] of changes) {
+                if (pendingChanges.get(key) === change) pendingChanges.delete(key);
+              }
+              if (clearVersion === clearAtVersion) clearRequested = false;
+              if (pendingChanges.size > 0 || clearRequested) flush();
+              else notifyReady();
+            };
+            writeTx.onerror = () => {
+              console.error('Could not finish IndexedDB initialization:', writeTx.error);
+              notifyReady();
+            };
+            writeTx.onabort = () => {
+              console.error('IndexedDB initialization transaction aborted:', writeTx.error);
+              notifyReady();
+            };
+          } catch (err) {
+            console.error('Could not migrate question storage:', err);
+            notifyReady();
+          }
         };
-      } catch (e) {
-        console.warn('Error loading from IndexedDB:', e);
-      }
+        flush();
+      };
+      getAllReq.onerror = () => {
+        console.error('Could not read saved question data:', getAllReq.error);
+        notifyReady();
+      };
     };
 
     request.onerror = (err) => {
       console.warn('IndexedDB initialization notice:', err);
-      isIndexedDBReady = true;
-      initCallbacks.forEach((cb) => cb());
-      initCallbacks.length = 0;
+      notifyReady();
     };
   } catch (err) {
     console.warn('Failed to initialize IndexedDB:', err);
-    isIndexedDBReady = true;
+    notifyReady();
   }
 }
 
 function saveToIndexedDB(key: string, value: string) {
-  if (!dbInstance) return;
+  if (!dbInstance || !isIndexedDBReady) {
+    pendingChanges.set(key, { value });
+    return;
+  }
   try {
     const tx = dbInstance.transaction(STORE_NAME, 'readwrite');
     const store = tx.objectStore(STORE_NAME);
     store.put({ key, value });
+    tx.onerror = () => console.error('IndexedDB save failed:', key, tx.error);
   } catch (err) {
     console.warn(`Error writing ${key} to IndexedDB:`, err);
   }
 }
 
 function removeFromIndexedDB(key: string) {
-  if (!dbInstance) return;
+  if (!dbInstance || !isIndexedDBReady) {
+    pendingChanges.set(key, { value: null });
+    return;
+  }
   try {
     const tx = dbInstance.transaction(STORE_NAME, 'readwrite');
     const store = tx.objectStore(STORE_NAME);
     store.delete(key);
+    tx.onerror = () => console.error('IndexedDB removal failed:', key, tx.error);
   } catch (err) {
     console.warn(`Error removing ${key} from IndexedDB:`, err);
   }
@@ -168,6 +216,12 @@ export const persistentStorage = {
   clearAllCustomQuestions(): void {
     if (typeof window === 'undefined') return;
     memoryCache.clear();
+    if (!isIndexedDBReady) {
+      clearRequested = true;
+      clearVersion += 1;
+      pendingChanges.clear();
+      return;
+    }
     if (dbInstance) {
       try {
         const tx = dbInstance.transaction(STORE_NAME, 'readwrite');

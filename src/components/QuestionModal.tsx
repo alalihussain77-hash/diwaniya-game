@@ -45,6 +45,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
   const [isDoubleActive, setIsDoubleActive] = useState<boolean>(false);
   const [isSilenceActive, setIsSilenceActive] = useState<boolean>(false);
   const [isStealActive, setIsStealActive] = useState<boolean>(false);
+  const [isCallActive, setIsCallActive] = useState<boolean>(false);
   const [showPhoneCallModal, setShowPhoneCallModal] = useState<boolean>(false);
   const [showReportModal, setShowReportModal] = useState<boolean>(false);
 
@@ -61,6 +62,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
     setIsDoubleActive(false);
     setIsSilenceActive(false);
     setIsStealActive(false);
+    setIsCallActive(false);
   }, [question?.id]);
 
   // Mark question as used immediately upon being displayed
@@ -248,6 +250,13 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
     question.category?.includes('كروية');
 
   const handleAward = (teamId: 'team1' | 'team2' | null) => {
+    // Commit selected power-ups only when the question is scored.
+    // Closing the question with X must not consume any of them.
+    if (isDoubleActive) onUsePowerup(activeTurnTeamId, 'double');
+    if (isSilenceActive) onUsePowerup(activeTurnTeamId, 'silence');
+    if (isStealActive) onUsePowerup(activeTurnTeamId, 'steal');
+    if (isCallActive) onUsePowerup(activeTurnTeamId, 'call');
+
     if (teamId === 'team1') {
       sound.playCorrect();
       onAwardPoints('team1', team1Points, team1IsSteal);
@@ -267,16 +276,13 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
 
     if (powerupId === 'double') {
       setIsDoubleActive(true);
-      onUsePowerup(activeTurnTeamId, 'double');
     } else if (powerupId === 'silence') {
       setIsSilenceActive(true);
-      onUsePowerup(activeTurnTeamId, 'silence');
     } else if (powerupId === 'steal') {
       setIsStealActive(true);
-      onUsePowerup(activeTurnTeamId, 'steal');
     } else if (powerupId === 'call') {
+      setIsCallActive(true);
       setShowPhoneCallModal(true);
-      onUsePowerup(activeTurnTeamId, 'call');
     }
   };
 
@@ -361,6 +367,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
             </button>
 
             <button
+              aria-label="إغلاق السؤال"
               onClick={() => {
                 sound.playClick();
                 onClose();
@@ -557,7 +564,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
                 {/* Phone Call */}
                 <button
                   type="button"
-                  disabled={usedPowerups.includes('call')}
+                  disabled={usedPowerups.includes('call') || isCallActive}
                   onClick={() => handleTogglePowerup('call')}
                   className={`py-2 px-2 rounded-lg border text-xs sm:text-sm font-black transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm active:scale-95 ${
                     usedPowerups.includes('call')
@@ -566,7 +573,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
                   }`}
                 >
                   <PhoneCall className="w-3.5 h-3.5 shrink-0 text-emerald-400" />
-                  <span>{usedPowerups.includes('call') ? 'مستخْدَم' : 'اتصال (دقيقة)'}</span>
+                  <span>{usedPowerups.includes('call') ? 'مستخْدَم' : isCallActive ? 'اتصال مفعل' : 'اتصال (دقيقة)'}</span>
                 </button>
               </div>
             </div>

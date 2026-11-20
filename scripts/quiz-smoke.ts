@@ -105,6 +105,8 @@ async function assertPlayerPath(page: Page): Promise<void> {
     state: 'visible',
     timeout: 10_000,
   });
+  // Dismiss the first-round introduction before interacting with question cards.
+  await page.getByRole('button', { name: /فهمت، يلا نبدأ الشوط الأول/ }).click();
 
   const pointCards = page.getByRole('button').filter({ hasText: /^\d+$/ });
   if ((await pointCards.count()) === 0) {
@@ -112,6 +114,118 @@ async function assertPlayerPath(page: Page): Promise<void> {
   }
 
   console.log('[quiz-smoke] guest entry reached the first question board');
+
+  if ((await pointCards.count()) < 3) {
+    fail('not enough question cards for the power-up regression test');
+  }
+
+  // A selected power-up must remain available if the question is cancelled.
+  await pointCards.first().click();
+  await page.getByRole('button', { name: 'الحرامي', exact: true }).click();
+  await page.getByRole('button', { name: 'إغلاق السؤال' }).click();
+  await pointCards.first().click();
+
+  const stealButton = page.getByRole('button', { name: 'الحرامي', exact: true });
+  await stealButton.waitFor({ state: 'visible' });
+  if (await stealButton.isDisabled()) {
+    fail('steal power-up was consumed when a question was closed with X');
+  }
+
+  // Scoring the question should consume the selected power-up for this team.
+  await stealButton.click();
+  await page.getByRole('button', { name: 'كشف الإجابة الصحيحة' }).click();
+  await page.getByRole('button', { name: 'التالي', exact: true }).click();
+  await page.getByRole('button', { name: /إلغاء.*بدون نقاط/ }).click();
+
+  // The other team has its own unused power-ups.
+  await pointCards.nth(1).click();
+  const otherTeamSteal = page.getByRole('button', { name: 'الحرامي', exact: true });
+  if (await otherTeamSteal.isDisabled()) {
+    fail('steal power-up was incorrectly consumed for the other team');
+  }
+  await page.getByRole('button', { name: 'كشف الإجابة الصحيحة' }).click();
+  await page.getByRole('button', { name: 'التالي', exact: true }).click();
+  await page.getByRole('button', { name: /إلغاء.*بدون نقاط/ }).click();
+
+  // Turn is back to the original team; their steal must now be unavailable.
+  await pointCards.nth(2).click();
+  const consumedSteal = page.getByRole('button', { name: 'مستخْدَم', exact: true });
+  await consumedSteal.waitFor({ state: 'visible' });
+  if (!(await consumedSteal.isDisabled())) {
+    fail('steal power-up was not consumed after the question was scored');
+  }
+  console.log('[quiz-smoke] verified cancel-versus-score power-up usage');
+}
+
+async function assertBrowserStorageMigration(page: Page): Promise<void> {
+  const key = '__diwaniya_ci_storage_test__';
+  const modulePath = '/src/utils/persistentStorage.ts';
+  await page.goto(appUrl, { waitUntil: 'domcontentloaded' });
+
+  // Simulate a stale legacy value alongside a newer IndexedDB value.
+  await page.evaluate(async (testKey) => {
+    localStorage.setItem(testKey, 'older-local-storage-value');
+    await new Promise<void>((resolve, reject) => {
+      const request = indexedDB.open('diwaniya_app_storage_db', 1);
+      request.onupgradeneeded = () => {
+        const db = request.result;
+        if (!db.objectStoreNames.contains('app_keyval_store')) {
+          db.createObjectStore('app_keyval_store', { keyPath: 'key' });
+        }
+      };
+      request.onerror = () => reject(request.error);
+      request.onsuccess = () => {
+        const db = request.result;
+        const tx = db.transaction('app_keyval_store', 'readwrite');
+        tx.objectStore('app_keyval_store').put({ key: testKey, value: 'newer-indexeddb-value' });
+        tx.oncomplete = () => { db.close(); resolve(); };
+        tx.onerror = () => reject(tx.error);
+      };
+    });
+  }, key);
+
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  const loaded = await page.evaluate(async ({ testKey, path }) => {
+    const { persistentStorage } = await import(/* @vite-ignore */ path);
+    await new Promise<void>((resolve) => persistentStorage.whenReady(resolve));
+    return persistentStorage.getItem(testKey);
+  }, { testKey: key, path: modulePath });
+  if (loaded !== 'newer-indexeddb-value') {
+    fail('legacy localStorage overwrote a newer IndexedDB record');
+  }
+
+  // A new edit must persist through a page refresh, not just the memory cache.
+  await page.evaluate(async ({ testKey, path }) => {
+    const { persistentStorage } = await import(/* @vite-ignore */ path);
+    persistentStorage.setItem(testKey, 'confirmed-saved-edit');
+    await new Promise<void>((resolve, reject) => {
+      const req = indexedDB.open('diwaniya_app_storage_db', 1);
+      req.onerror = () => reject(req.error);
+      req.onsuccess = () => {
+        const db = req.result;
+        const tx = db.transaction('app_keyval_store', 'readonly');
+        const get = tx.objectStore('app_keyval_store').get(testKey);
+        get.onsuccess = () => {
+          const value = get.result?.value;
+          db.close();
+          if (value === 'confirmed-saved-edit') resolve();
+          else reject(new Error('edit was not written to IndexedDB'));
+        };
+        get.onerror = () => { db.close(); reject(get.error); };
+      };
+    });
+  }, { testKey: key, path: modulePath });
+
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  const reloaded = await page.evaluate(async ({ testKey, path }) => {
+    const { persistentStorage } = await import(/* @vite-ignore */ path);
+    await new Promise<void>((resolve) => persistentStorage.whenReady(resolve));
+    return persistentStorage.getItem(testKey);
+  }, { testKey: key, path: modulePath });
+  if (reloaded !== 'confirmed-saved-edit') {
+    fail('newly edited IndexedDB value did not survive page refresh');
+  }
+  console.log('[quiz-smoke] verified IndexedDB migration and save/reload');
 }
 
 async function main(): Promise<void> {
@@ -125,6 +239,7 @@ async function main(): Promise<void> {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   try {
     await assertPlayerPath(await context.newPage());
+    await assertBrowserStorageMigration(await context.newPage());
   } finally {
     await context.close();
   }
