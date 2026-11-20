@@ -1,3 +1,4 @@
+import { reviewedRestaurantsQuestions } from './reviewedRestaurantsQuestions';
 import { reviewedCafesQuestions } from './reviewedCafesQuestions';
 import { reviewedKuwaitQuestions } from './reviewedKuwaitQuestions';
 import { reviewedProphetsQuestions } from './reviewedProphetsQuestions';
@@ -1080,6 +1081,19 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           : cleanQuestionText(item.question),
       }));
       return [...existing, ...reviewedGeographyQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-kuwait-restaurants') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-kuwait-restaurants_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 400, 400, 600, 200][index],
+        question: index === 4
+          ? 'ما اسم الوجبة التي تُحضّر من شرائح دجاج أو لحم على سيخ عمودي وتُقدّم عادة في خبز عربي؟'
+          : item.question,
+      }));
+      return [...existing, ...reviewedRestaurantsQuestions].sort((left, right) => left.points - right.points);
     }
 
     if (id === 'spec-kuwait-cafes') {
