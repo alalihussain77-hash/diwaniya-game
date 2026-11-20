@@ -432,7 +432,7 @@ const facts: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 600,
-    "question": "ما اسم جزيرة كويتية صغيرة تقع شرق جزيرة فيلكا تقريباً؟",
+    "question": "ما اسم جزيرة كويتية صغيرة تقع شمال غرب جزيرة فيلكا؟",
     "correctAnswer": "مسكان"
   },
   {
