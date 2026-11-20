@@ -30,3 +30,9 @@ jobs:
         run: pnpm run lint
       - name: Build
         run: pnpm run build
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Smoke test game in browser
+        run: |
+          export CHROMIUM_PATH="$(node -e "console.log(require('@playwright/test').chromium.executablePath())")"
+          pnpm run test:smoke
