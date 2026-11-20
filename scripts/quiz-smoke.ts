@@ -32,7 +32,7 @@ async function loadQuestionData(): Promise<void> {
     ...validateQuestionBank(productsModule.products100Questions, 'products100Questions'),
   ];
   let totalBankQuestions = 0;
-  const reviewedIds = new Set(['gen-geography', 'spec-islamic-prophets', 'spec-kuwait-general', 'spec-kuwait-cafes']);
+  const reviewedIds = new Set(['gen-geography', 'spec-islamic-prophets', 'spec-kuwait-general', 'spec-kuwait-cafes', 'spec-kuwait-restaurants']);
   for (const category of visibleCategories) {
     const pool = get100CategoryQuestions(category.id, category.name);
     totalBankQuestions += pool.length;
