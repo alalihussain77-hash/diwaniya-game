@@ -236,7 +236,7 @@ async function assertExtractedImagesLoad(page: Page): Promise<void> {
       import('/src/data/generalKnowledgeBatch1.ts'),
     ]);
     const collect = (items: unknown): string[] =>
-      [...JSON.stringify(items).matchAll(/\\/quiz-images\\/[a-f0-9]{24}\\.(?:jpg|png|webp|gif|avif)/g)]
+      [...JSON.stringify(items).matchAll(/\/quiz-images\/[a-f0-9]{24}\.(?:jpg|png|webp|gif|avif)/g)]
         .map((match) => match[0]);
 
     const urls = [
