@@ -112,6 +112,47 @@ async function assertPlayerPath(page: Page): Promise<void> {
   }
 
   console.log('[quiz-smoke] guest entry reached the first question board');
+
+  if ((await pointCards.count()) < 3) {
+    fail('not enough question cards for the power-up regression test');
+  }
+
+  // A selected power-up must remain available if the question is cancelled.
+  await pointCards.first().click();
+  await page.getByRole('button', { name: 'الحرامي', exact: true }).click();
+  await page.getByRole('button', { name: 'إغلاق السؤال' }).click();
+  await pointCards.first().click();
+
+  const stealButton = page.getByRole('button', { name: 'الحرامي', exact: true });
+  await stealButton.waitFor({ state: 'visible' });
+  if (await stealButton.isDisabled()) {
+    fail('steal power-up was consumed when a question was closed with X');
+  }
+
+  // Scoring the question should consume the selected power-up for this team.
+  await stealButton.click();
+  await page.getByRole('button', { name: 'كشف الإجابة الصحيحة' }).click();
+  await page.getByRole('button', { name: 'التالي', exact: true }).click();
+  await page.getByRole('button', { name: /إلغاء.*بدون نقاط/ }).click();
+
+  // The other team has its own unused power-ups.
+  await pointCards.nth(1).click();
+  const otherTeamSteal = page.getByRole('button', { name: 'الحرامي', exact: true });
+  if (await otherTeamSteal.isDisabled()) {
+    fail('steal power-up was incorrectly consumed for the other team');
+  }
+  await page.getByRole('button', { name: 'كشف الإجابة الصحيحة' }).click();
+  await page.getByRole('button', { name: 'التالي', exact: true }).click();
+  await page.getByRole('button', { name: /إلغاء.*بدون نقاط/ }).click();
+
+  // Turn is back to the original team; their steal must now be unavailable.
+  await pointCards.nth(2).click();
+  const consumedSteal = page.getByRole('button', { name: 'مستخْدَم', exact: true });
+  await consumedSteal.waitFor({ state: 'visible' });
+  if (!(await consumedSteal.isDisabled())) {
+    fail('steal power-up was not consumed after the question was scored');
+  }
+  console.log('[quiz-smoke] verified cancel-versus-score power-up usage');
 }
 
 async function main(): Promise<void> {
