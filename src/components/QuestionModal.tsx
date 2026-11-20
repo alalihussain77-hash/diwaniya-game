@@ -45,6 +45,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
   const [isDoubleActive, setIsDoubleActive] = useState<boolean>(false);
   const [isSilenceActive, setIsSilenceActive] = useState<boolean>(false);
   const [isStealActive, setIsStealActive] = useState<boolean>(false);
+  const [isCallActive, setIsCallActive] = useState<boolean>(false);
   const [showPhoneCallModal, setShowPhoneCallModal] = useState<boolean>(false);
   const [showReportModal, setShowReportModal] = useState<boolean>(false);
 
@@ -61,6 +62,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
     setIsDoubleActive(false);
     setIsSilenceActive(false);
     setIsStealActive(false);
+    setIsCallActive(false);
   }, [question?.id]);
 
   // Mark question as used immediately upon being displayed
@@ -248,6 +250,13 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
     question.category?.includes('كروية');
 
   const handleAward = (teamId: 'team1' | 'team2' | null) => {
+    // Commit selected power-ups only when the question is scored.
+    // Closing the question with X must not consume any of them.
+    if (isDoubleActive) onUsePowerup(activeTurnTeamId, 'double');
+    if (isSilenceActive) onUsePowerup(activeTurnTeamId, 'silence');
+    if (isStealActive) onUsePowerup(activeTurnTeamId, 'steal');
+    if (isCallActive) onUsePowerup(activeTurnTeamId, 'call');
+
     if (teamId === 'team1') {
       sound.playCorrect();
       onAwardPoints('team1', team1Points, team1IsSteal);
@@ -267,16 +276,13 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
 
     if (powerupId === 'double') {
       setIsDoubleActive(true);
-      onUsePowerup(activeTurnTeamId, 'double');
     } else if (powerupId === 'silence') {
       setIsSilenceActive(true);
-      onUsePowerup(activeTurnTeamId, 'silence');
     } else if (powerupId === 'steal') {
       setIsStealActive(true);
-      onUsePowerup(activeTurnTeamId, 'steal');
     } else if (powerupId === 'call') {
+      setIsCallActive(true);
       setShowPhoneCallModal(true);
-      onUsePowerup(activeTurnTeamId, 'call');
     }
   };
 
