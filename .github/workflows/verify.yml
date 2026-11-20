@@ -32,6 +32,10 @@ jobs:
         run: pnpm run build
       - name: Verify every extracted question image
         run: node scripts/verify-question-image-assets.mjs
+      - name: Check original car photographs can be decoded
+        run: |
+          python3 -m pip install --quiet --break-system-packages Pillow
+          python3 scripts/check-car-photos.py
       - name: Install Playwright Chromium
         run: pnpm exec playwright install --with-deps chromium
       - name: Smoke test game in browser
