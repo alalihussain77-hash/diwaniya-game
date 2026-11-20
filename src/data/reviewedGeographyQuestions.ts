@@ -77,7 +77,7 @@ export const reviewedGeography100Questions: Question[] = [
   { id: "gen-geography-reviewed-068", question: "ما اسم المجرى المائي الذي ينشأ من التقاء دجلة والفرات قرب القرنة بالعراق؟", correctAnswer: "شط العرب", points: 600, options: [], explanation: "الإجابة: شط العرب." },
   { id: "gen-geography-reviewed-069", question: "ما أطول نهر يقع مجراه بكامله داخل أوروبا؟", correctAnswer: "نهر الفولغا", points: 600, options: [], explanation: "الإجابة: نهر الفولغا." },
   { id: "gen-geography-reviewed-070", question: "في أي قارة تقع بحيرة تنجانيقا؟", correctAnswer: "أفريقيا", points: 600, options: [], explanation: "الإجابة: أفريقيا." },
-  { id: "gen-geography-reviewed-071", question: "على أي نهر تقع شلالات فيكتوريا في جنوب أفريقيا؟", correctAnswer: "نهر الزامبيزي", points: 600, options: [], explanation: "الإجابة: نهر الزامبيزي." },
+  { id: "gen-geography-reviewed-071", question: "على أي نهر تقع شلالات فيكتوريا في جنوب القارة الأفريقية؟", correctAnswer: "نهر الزامبيزي", points: 600, options: [], explanation: "الإجابة: نهر الزامبيزي." },
   { id: "gen-geography-reviewed-072", question: "في أي دولة تقع مدينة ماتشو بيتشو الأثرية في جبال الأنديز؟", correctAnswer: "بيرو", points: 600, options: [], explanation: "الإجابة: بيرو." },
   { id: "gen-geography-reviewed-073", question: "بين أي جزيرة وشبه جزيرة يقع مضيق ملقا؟", correctAnswer: "جزيرة سومطرة وشبه جزيرة الملايو", points: 600, options: [], explanation: "الإجابة: جزيرة سومطرة وشبه جزيرة الملايو." },
   { id: "gen-geography-reviewed-074", question: "ما المضيق الذي يفصل آسيا عن أمريكا الشمالية؟", correctAnswer: "مضيق بيرنغ", points: 600, options: [], explanation: "الإجابة: مضيق بيرنغ." },
