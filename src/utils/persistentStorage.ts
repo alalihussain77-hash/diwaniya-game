@@ -14,8 +14,9 @@ let isIndexedDBReady = false;
 let dbInstance: IDBDatabase | null = null;
 const initCallbacks: Array<() => void> = [];
 // Writes made while IndexedDB is opening must win over stale records loaded later.
-const pendingChanges = new Map<string, string | null>();
+const pendingChanges = new Map<string, { value: string | null }>();
 let clearRequested = false;
+let clearVersion = 0;
 
 function notifyReady() {
   isIndexedDBReady = true;
@@ -77,41 +78,59 @@ function initIndexedDB() {
           }
         }
 
-        try {
-          const writeTx = db.transaction(STORE_NAME, 'readwrite');
-          const store = writeTx.objectStore(STORE_NAME);
-          if (clearRequested) {
-            store.clear();
-          } else {
-            // Migrate legacy entries only if IndexedDB does not already have them.
-            for (const [key, value] of memoryCache) {
-              if (!storedKeys.has(key) && !pendingChanges.has(key)) {
-                store.put({ key, value });
-              }
+        // Migrate legacy data once. Replay writes made during initialization
+        // until the queue is empty, including writes made during a transaction.
+        const legacyMissing = new Map<string, string>();
+        if (!clearRequested) {
+          for (const [key, value] of memoryCache) {
+            if (!storedKeys.has(key) && !pendingChanges.has(key)) {
+              legacyMissing.set(key, value);
             }
           }
-          for (const [key, value] of pendingChanges) {
-            if (value === null) store.delete(key);
-            else store.put({ key, value });
-          }
-          // New writes go directly to IndexedDB once the migration completes.
-          writeTx.oncomplete = () => {
-            pendingChanges.clear();
-            clearRequested = false;
-            notifyReady();
-          };
-          writeTx.onerror = () => {
-            console.error('Could not finish IndexedDB initialization:', writeTx.error);
-            notifyReady();
-          };
-          writeTx.onabort = () => {
-            console.error('IndexedDB initialization transaction aborted:', writeTx.error);
-            notifyReady();
-          };
-        } catch (err) {
-          console.error('Could not migrate question storage:', err);
-          notifyReady();
         }
+        let firstFlush = true;
+        const flush = () => {
+          const changes = new Map(pendingChanges);
+          const clearForThisFlush = clearRequested;
+          const clearAtVersion = clearVersion;
+          try {
+            const writeTx = db.transaction(STORE_NAME, 'readwrite');
+            const store = writeTx.objectStore(STORE_NAME);
+            if (clearForThisFlush) {
+              store.clear();
+            } else if (firstFlush) {
+              for (const [key, value] of legacyMissing) {
+                if (!changes.has(key)) store.put({ key, value });
+              }
+            }
+            firstFlush = false;
+            for (const [key, change] of changes) {
+              if (change.value === null) store.delete(key);
+              else store.put({ key, value: change.value });
+            }
+            writeTx.oncomplete = () => {
+              // Only discard a queued write if it was actually included.
+              for (const [key, change] of changes) {
+                if (pendingChanges.get(key) === change) pendingChanges.delete(key);
+              }
+              if (clearVersion === clearAtVersion) clearRequested = false;
+              if (pendingChanges.size > 0 || clearRequested) flush();
+              else notifyReady();
+            };
+            writeTx.onerror = () => {
+              console.error('Could not finish IndexedDB initialization:', writeTx.error);
+              notifyReady();
+            };
+            writeTx.onabort = () => {
+              console.error('IndexedDB initialization transaction aborted:', writeTx.error);
+              notifyReady();
+            };
+          } catch (err) {
+            console.error('Could not migrate question storage:', err);
+            notifyReady();
+          }
+        };
+        flush();
       };
       getAllReq.onerror = () => {
         console.error('Could not read saved question data:', getAllReq.error);
@@ -131,7 +150,7 @@ function initIndexedDB() {
 
 function saveToIndexedDB(key: string, value: string) {
   if (!dbInstance || !isIndexedDBReady) {
-    pendingChanges.set(key, value);
+    pendingChanges.set(key, { value });
     return;
   }
   try {
@@ -146,7 +165,7 @@ function saveToIndexedDB(key: string, value: string) {
 
 function removeFromIndexedDB(key: string) {
   if (!dbInstance || !isIndexedDBReady) {
-    pendingChanges.set(key, null);
+    pendingChanges.set(key, { value: null });
     return;
   }
   try {
@@ -199,6 +218,7 @@ export const persistentStorage = {
     memoryCache.clear();
     if (!isIndexedDBReady) {
       clearRequested = true;
+      clearVersion += 1;
       pendingChanges.clear();
       return;
     }
