@@ -1,5 +1,6 @@
 import { Question } from '../types';
 import { persistentStorage } from '../utils/persistentStorage';
+import { reviewedGeography100Questions } from './reviewedGeographyQuestions';
 import { INITIAL_CATEGORIES } from './categories';
 import { historyBatch1 } from './historyBatch1';
 import { historyBatch2 } from './historyBatch2';
@@ -1062,6 +1063,12 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
 
     const id = String(catId || '').toLowerCase().trim();
     const name = String(catName || '').toLowerCase().trim();
+    // Clear, research-backed questions replace only the geography bank's
+    // generated placeholder questions. Other categories are unchanged.
+    if (id === 'gen-geography') {
+      return reviewedGeography100Questions;
+    }
+
 
     if (id === 'gen-cars' || id === 'cars' || name.includes('سيارات')) {
       const allCars = getAllCarQuestions();
