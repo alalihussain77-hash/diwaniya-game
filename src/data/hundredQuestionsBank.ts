@@ -1,3 +1,5 @@
+import { extraMarvelQuestions } from './extraMarvelQuestions';
+import { extraPeakyQuestions } from './extraPeakyQuestions';
 import { reviewedSahabaQuestions } from './reviewedSahabaQuestions';
 import { reviewedMallsQuestions } from './reviewedMallsQuestions';
 import { reviewedLocationsQuestions } from './reviewedLocationsQuestions';
@@ -1437,11 +1439,11 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
         '/peaky_blinders/peaky_4.jpg',
       ];
       const list = Array.isArray(peakyBlinders100Questions) ? peakyBlinders100Questions : [];
-      return list.map((item, idx) => {
+      const originals = list.map((item, idx) => {
         const assignedImg = peakyImgs[idx % peakyImgs.length];
         return {
           id: item.id,
-          points: item.points,
+          points: item.points === 300 ? 400 : item.points === 500 ? 600 : item.points,
           question: cleanQuestionText(item.question),
           options: shuffle(item.options),
           correctAnswer: item.correctAnswer,
@@ -1452,6 +1454,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           hideImageUntilAnswer: false,
         };
       });
+      return [...originals, ...extraPeakyQuestions];
     }
 
     if (
@@ -1470,11 +1473,11 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
         '/marvel/marvel_4.jpg',
       ];
       const list = Array.isArray(marvel100Questions) ? marvel100Questions : [];
-      return list.map((item, idx) => {
+      const originals = list.map((item, idx) => {
         const assignedImg = marvelImgs[idx % marvelImgs.length];
         return {
           id: item.id,
-          points: item.points,
+          points: item.points === 300 ? 400 : item.points === 500 ? 600 : item.points,
           question: cleanQuestionText(item.question),
           options: shuffle(item.options),
           correctAnswer: item.correctAnswer,
@@ -1485,6 +1488,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           hideImageUntilAnswer: false,
         };
       });
+      return [...originals, ...extraMarvelQuestions];
     }
 
     if (
