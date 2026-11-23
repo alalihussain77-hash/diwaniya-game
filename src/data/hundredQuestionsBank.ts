@@ -1068,6 +1068,47 @@ export function get100CategoryQuestions(catId?: string, catName?: string): Quest
   return applyCategoryCustomizations(String(catId || ''), baseList);
 }
 
+// Select precisely one hundred existing question objects without rewriting their media fields.
+// Keep varied point tiers and source batches; only text-identical repeats are removed.
+function selectReviewedHundred(all: Question[]): Question[] {
+  const normalize = (value: string): string => String(value || '')
+    .normalize('NFKC').toLowerCase()
+    .replace(/[\u064b-\u065f\u0670\u0640]/g, '')
+    .replace(/[أإآ]/g, 'ا').replace(/ى/g, 'ي')
+    .replace(/[\s؟?!،.,؛:"'()«»]/g, '');
+  const candidates = all.filter((q) => {
+    if (!q || !q.question?.trim() || !q.correctAnswer?.trim()) return false;
+    if (!q.options?.length) return true;
+    return q.options.some((answer) => normalize(answer) === normalize(q.correctAnswer));
+  });
+  const unique: Question[] = [];
+  const seen = new Set<string>();
+  for (const q of candidates) {
+    const text = normalize(q.question);
+    if (seen.has(text)) continue;
+    seen.add(text);
+    unique.push(q);
+  }
+  const quotas = { 200: 34, 400: 33, 600: 33 };
+  const selected: Question[] = [];
+  const chosenIds = new Set<string>();
+  for (const tier of [200, 400, 600] as const) {
+    const pool = unique.filter(q => q.points === tier);
+    // Sample evenly over source files rather than taking one source batch only.
+    const n = Math.min(quotas[tier], pool.length);
+    const offsets = Array.from({ length: n }, (_, i) => Math.floor((i + 0.5) * pool.length / n));
+    for (const index of offsets) {
+      const q = pool[index];
+      if (!chosenIds.has(q.id)) { chosenIds.add(q.id); selected.push(q); }
+    }
+  }
+  for (const q of unique) {
+    if (selected.length >= 100) break;
+    if (!chosenIds.has(q.id)) { chosenIds.add(q.id); selected.push(q); }
+  }
+  return selected.slice(0, 100);
+}
+
 function getBase100CategoryQuestions(catId?: string, catName?: string): Question[] {
   try {
     if (!catId && !catName) return [];
@@ -1186,7 +1227,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
       const b4 = Array.isArray(historyBatch4) ? historyBatch4 : [];
       const combinedHistory = [...b1, ...b2, ...b3, ...b4];
       if (combinedHistory.length > 0) {
-        return combinedHistory.map((item) => ({
+        return selectReviewedHundred(combinedHistory.map((item) => ({
           id: item.id,
           points: item.points,
           question: cleanQuestionText(item.questionText),
@@ -1197,7 +1238,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           imageUrl: item.answerImageUrl,
           answerImageUrl: item.answerImageUrl,
           hideImageUntilAnswer: false,
-        }));
+        })));
       }
     }
 
@@ -1217,7 +1258,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
       }
 
       if (combinedKnowledge.length > 0) {
-        return combinedKnowledge.map((item) => {
+        return selectReviewedHundred(combinedKnowledge.map((item) => {
           const qImg = (item as any).imageUrl || (item as any).image || '';
           const aImg = item.answerImageUrl || '';
           return {
@@ -1232,7 +1273,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
             answerImageUrl: aImg,
             hideImageUntilAnswer: Boolean(aImg && !qImg),
           };
-        });
+        }));
       }
     }
 
@@ -1247,7 +1288,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
         '/breaking_bad/bb_4.jpg',
       ];
       if (combinedBB.length > 0) {
-        return combinedBB.map((item: any, idx) => {
+        return selectReviewedHundred(combinedBB.map((item: any, idx) => {
           const assignedImg = bbImages[idx % bbImages.length];
           return {
             id: item.id,
@@ -1261,7 +1302,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
             answerImageUrl: item.answerImageUrl || assignedImg,
             hideImageUntilAnswer: false,
           };
-        });
+        }));
       }
     }
 
@@ -1581,7 +1622,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
       name.includes('اعلام قديمة') ||
       name.includes('رايات قديمة')
     ) {
-      return Array.isArray(oldFlags100Questions) ? oldFlags100Questions : [];
+      return Array.isArray(oldFlags100Questions) ? oldFlags100Questions.slice(0, 100) : [];
     }
 
     if (id === 'gen-flags' || id === 'flags' || name.includes('أعلام') || name.includes('اعلام')) {
@@ -1740,7 +1781,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
       const b2 = Array.isArray(turkishDramaQuestionsBatch2) ? turkishDramaQuestionsBatch2 : [];
       const combinedTurkish = [...b1, ...b2];
       if (combinedTurkish.length > 0) {
-        return combinedTurkish.map((item, idx) => {
+        return selectReviewedHundred(combinedTurkish.map((item, idx) => {
           const assignedImg = turkishImgs[idx % turkishImgs.length];
           return {
             id: item.id,
@@ -1754,7 +1795,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
             answerImageUrl: item.answerImageUrl || assignedImg,
             hideImageUntilAnswer: false,
           };
-        });
+        }));
       }
     }
 
