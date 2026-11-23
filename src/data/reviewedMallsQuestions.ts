@@ -62,7 +62,7 @@ const items: Array<Pick<Question, 'question' | 'correctAnswer' | 'points'>> = [
   },
   {
     "points": 200,
-    "question": "في أي منطقة كويتية يوجد «مجمع الخيران»؟",
+    "question": "في أي منطقة توجد وجهة التسوق القريبة من مدينة صباح الأحمد البحرية؟",
     "correctAnswer": "الخيران"
   },
   {
@@ -102,7 +102,7 @@ const items: Array<Pick<Question, 'question' | 'correctAnswer' | 'points'>> = [
   },
   {
     "points": 200,
-    "question": "في أي منطقة كويتية يوجد «مجمع العقيلة (Al Aquila Mall)»؟",
+    "question": "في أي منطقة يقع مجمع سما مول؟",
     "correctAnswer": "العقيلة"
   },
   {
@@ -417,7 +417,7 @@ const items: Array<Pick<Question, 'question' | 'correctAnswer' | 'points'>> = [
   },
   {
     "points": 600,
-    "question": "ما اسم سوق الكوت التراثي المتصل بالمول بواسطة جسر مشاة؟",
+    "question": "ما اسم السوق التراثي في الفحيحيل المتصل بمجمع تجاري عبر جسر مشاة؟",
     "correctAnswer": "سوق الكوت"
   },
   {
@@ -427,7 +427,7 @@ const items: Array<Pick<Question, 'question' | 'correctAnswer' | 'points'>> = [
   },
   {
     "points": 600,
-    "question": "أي واجهة تسوق كويتية اشتهرت بنافورتها الراقصة قرب سوق ومارينا الكوت؟",
+    "question": "أي مجمع تجاري ساحلي في الفحيحيل اشتهر بنافورته الراقصة؟",
     "correctAnswer": "الكوت"
   },
   {
