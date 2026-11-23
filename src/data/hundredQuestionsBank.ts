@@ -1655,10 +1655,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
 
     if (
       id === 'wk-classic' ||
-      name.includes('أفلام') ||
-      name.includes('مسلسلات') ||
-      name.includes('أغاني') ||
-      name.includes('مسرحيات') ||
+      (!id.startsWith('wk-') && name === 'أفلام، مسلسلات، أغاني، ومسرحيات') ||
       name === 'ولا كلمة'
     ) {
       return Array.isArray(walaKelmaMediaQuestions) ? walaKelmaMediaQuestions : [];
