@@ -5,7 +5,7 @@ import { get100CategoryQuestions } from '../src/data/hundredQuestionsBank';
 // QR acting games have intentionally shared prompt text; flag-identification games
 // intentionally repeat "Which flag is this?" over different image-backed questions.
 const approvedRepeatedPrompts = new Set([
-  'gen-flags', 'gen-old-flags',
+  'gen-flags', 'gen-old-flags', 'gen-products', 'gen-cars',
   'wk-sports', 'wk-proverbs', 'wk-general', 'wk-classic', 'wk-anime',
   'wk-wrestling', 'wk-foreign-art',
 ]);
