@@ -370,7 +370,7 @@ const items: Array<Pick<Question, 'question' | 'correctAnswer' | 'points'>> = [
   },
   {
     "points": 600,
-    "question": "من الصحابي الذي كان أخا أنس بن مالك لأمه بحسب كتب التراجم؟",
+    "question": "من الصحابي الذي كان شقيق أنس بن مالك واشتهر بشجاعته؟",
     "correctAnswer": "البراء بن مالك"
   },
   {
