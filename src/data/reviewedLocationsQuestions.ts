@@ -471,7 +471,7 @@ const facts: Array<Pick<Question, 'question' | 'correctAnswer' | 'points'>> = [
   },
   {
     "points": 600,
-    "question": "في أي محافظة تقع منطقة صباح السالم؟",
+    "question": "في أي محافظة تقع منطقة أبو الحصانية؟",
     "correctAnswer": "مبارك الكبير"
   },
   {
