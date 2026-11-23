@@ -36,7 +36,7 @@ const facts: Array<Pick<Question, 'question' | 'correctAnswer' | 'points'>> = [
   },
   {
     "points": 200,
-    "question": "في أي محافظة تقع منطقة الجهراء؟",
+    "question": "في أي محافظة تقع منطقة النسيم السكنية؟",
     "correctAnswer": "الجهراء"
   },
   {
@@ -101,12 +101,12 @@ const facts: Array<Pick<Question, 'question' | 'correctAnswer' | 'points'>> = [
   },
   {
     "points": 200,
-    "question": "في أي محافظة يقع ميناء الأحمدي؟",
+    "question": "في أي محافظة يقع ميناء الشعيبة؟",
     "correctAnswer": "الأحمدي"
   },
   {
     "points": 200,
-    "question": "في أي منطقة توجد جزيرة الخيران السياحية ومراسيها؟",
+    "question": "ما المنطقة الساحلية التي تقع قربها مدينة صباح الأحمد البحرية؟",
     "correctAnswer": "الخيران"
   },
   {
@@ -471,7 +471,7 @@ const facts: Array<Pick<Question, 'question' | 'correctAnswer' | 'points'>> = [
   },
   {
     "points": 600,
-    "question": "في أي محافظة تقع منطقة مبارك الكبير السكنية؟",
+    "question": "في أي محافظة تقع منطقة صباح السالم؟",
     "correctAnswer": "مبارك الكبير"
   },
   {
