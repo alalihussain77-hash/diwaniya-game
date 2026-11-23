@@ -17,10 +17,10 @@ const reviewed = new Set([
 const key = (value: string): string => value
   .normalize('NFKC')
   .toLowerCase()
-  .replace(/[\\u064b-\\u065f\\u0670\\u0640]/g, '')
+  .replace(/[\u064b-\u065f\u0670\u0640]/g, '')
   .replace(/[أإآ]/g, 'ا')
   .replace(/ى/g, 'ي')
-  .replace(/[\\s؟?!،.,؛:"'()«»]/g, '');
+  .replace(/[\s؟?!،.,؛:"'()«»]/g, '');
 type Result = { category: string; id: string; count: number; tiers: Record<string, number>; repeated: number; answerNotAnOption: number; short: number; };
 const records: Result[] = [];
 const failures: string[] = [];
