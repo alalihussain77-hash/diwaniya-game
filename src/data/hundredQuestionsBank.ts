@@ -1,3 +1,4 @@
+import { extraPokemonQuestions } from './extraPokemonQuestions';
 import { extraOnePieceQuestions } from './extraOnePieceQuestions';
 import { extraMarvelQuestions } from './extraMarvelQuestions';
 import { extraPeakyQuestions } from './extraPeakyQuestions';
@@ -1514,7 +1515,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
         const assignedImg = opImgs[idx % opImgs.length];
         return {
           id: item.id,
-          points: item.points,
+          points: item.points === 300 ? 400 : item.points === 500 ? 600 : item.points,
           question: cleanQuestionText(item.question),
           options: shuffle(item.options),
           correctAnswer: item.correctAnswer,
@@ -1545,11 +1546,11 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
         '/pokemon/pokemon_4.jpg',
       ];
       const list = Array.isArray(pokemon100Questions) ? pokemon100Questions : [];
-      return list.map((item, idx) => {
+      const originalQuestions = list.map((item, idx) => {
         const assignedImg = pokeImgs[idx % pokeImgs.length];
         return {
           id: item.id,
-          points: item.points,
+          points: item.points === 300 ? 400 : item.points === 500 ? 600 : item.points,
           question: cleanQuestionText(item.question),
           options: shuffle(item.options),
           correctAnswer: item.correctAnswer,
@@ -1560,6 +1561,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           hideImageUntilAnswer: false,
         };
       });
+      return [...originalQuestions, ...extraPokemonQuestions];
     }
 
     if (
