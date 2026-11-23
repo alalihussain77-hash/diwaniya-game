@@ -42,9 +42,11 @@ for (const category of INITIAL_CATEGORIES.filter((c) => !c.hidden)) {
     if (!text || !answer) failures.push(`${category.id}: missing question or answer, id=${q.id}`);
     if (questionIds.has(q.id)) failures.push(`${category.id}: duplicate question id ${q.id}`);
     questionIds.add(q.id);
-    const fingerprint = approvedRepeatedPrompts.has(category.id)
-      ? [key(text), key(answer), q.imageUrl || q.answerImageUrl || ''].join('|')
-      : key(text);
+    const fingerprint = category.id === 'wk-anime'
+      ? key(q.questionText || text) // QR hides the actual distinct anime question
+      : approvedRepeatedPrompts.has(category.id)
+        ? [key(text), key(answer), q.imageUrl || q.answerImageUrl || ''].join('|')
+        : key(text);
     if (questionTexts.has(fingerprint)) {
       repeated++;
       if (!skipContentReview) failures.push(`${category.id}: repeated question: ${text.slice(0, 80)}`);
