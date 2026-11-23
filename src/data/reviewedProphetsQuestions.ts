@@ -167,7 +167,7 @@ const items: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 400,
-    "question": "في أي سورة قرآنية وردت قصة يوسف متسلسلة في سورة واحدة؟",
+    "question": "في أي سورة قرآنية رُويت بالتفصيل قصة أحد أبناء يعقوب من رؤياه إلى اجتماعه بأهله في مصر؟",
     "correctAnswer": "سورة يوسف"
   },
   {
@@ -202,8 +202,8 @@ const items: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 400,
-    "question": "ما الوسيلة التي نجا فيها نوح والمؤمنون من الطوفان؟",
-    "correctAnswer": "السفينة (الفلك)"
+    "question": "ما اسم الجبل الذي استقر عليه فلك نوح بعد الطوفان؟",
+    "correctAnswer": "الجودي"
   },
   {
     "points": 400,
@@ -232,7 +232,7 @@ const items: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 400,
-    "question": "أي نبي جاء في قصته الأمر الإلهي للنار أن تكون برداً وسلاماً؟",
+    "question": "أي نبي قال في سورة الصافات: إني ذاهب إلى ربي سيهدين؟",
     "correctAnswer": "إبراهيم عليه السلام"
   },
   {
@@ -252,8 +252,8 @@ const items: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 400,
-    "question": "أي نبي دعا الله فرُزق بابنه يحيى؟",
-    "correctAnswer": "زكريا عليه السلام"
+    "question": "ما اسم الكتاب السماوي الذي أُنزِل على عيسى عليه السلام؟",
+    "correctAnswer": "الإنجيل"
   },
   {
     "points": 400,
@@ -302,8 +302,8 @@ const items: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 400,
-    "question": "أي نبي قال لابنه يا بني اركب معنا حين بدأ الطوفان؟",
-    "correctAnswer": "نوح عليه السلام"
+    "question": "بماذا وصف القرآن ارتفاع أمواج الطوفان في قصة نوح؟",
+    "correctAnswer": "كالجبال"
   },
   {
     "points": 400,
@@ -322,7 +322,7 @@ const items: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 600,
-    "question": "في أي سورة قال يوسف رب السجن أحب إلي مما يدعونني إليه؟",
+    "question": "في أي سورة قرآنية وردت عبارة رب السجن أحب إلي مما يدعونني إليه؟",
     "correctAnswer": "سورة يوسف"
   },
   {
@@ -412,7 +412,7 @@ const items: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 600,
-    "question": "أي نبي وصفه القرآن بعبارة وآتيناه الحكم صبياً؟",
+    "question": "أي نبي وصفه القرآن بأنه سيّد وحصور في سورة آل عمران؟",
     "correctAnswer": "يحيى عليه السلام"
   },
   {
@@ -452,22 +452,22 @@ const items: Array<Pick<Question, 'question'|'correctAnswer'|'points'>> = [
   },
   {
     "points": 600,
-    "question": "من هو النبي المذكور مع إسماعيل وإدريس في الآية وإسماعيل وإدريس وذا الكفل؟",
-    "correctAnswer": "ذو الكفل عليه السلام"
+    "question": "في أي سورة ورد قوله تعالى وإسماعيل وإدريس وذا الكفل كل من الصابرين؟",
+    "correctAnswer": "سورة الأنبياء"
   },
   {
     "points": 600,
-    "question": "أي نبي ورد في القرآن بعبارة وإلى عاد أخاهم هوداً؟",
-    "correctAnswer": "هود عليه السلام"
+    "question": "ما اسم السورة التي تحمل اسم النبي المبعوث إلى قوم عاد؟",
+    "correctAnswer": "سورة هود"
   },
   {
     "points": 600,
-    "question": "أي نبي ورد في القرآن بعبارة وإلى ثمود أخاهم صالحاً؟",
-    "correctAnswer": "صالح عليه السلام"
+    "question": "في أي سورة وردت قصة قوم ثمود مع نبيّهم وناقة الله بين قصص المرسلين؟",
+    "correctAnswer": "سورة الشعراء"
   },
   {
     "points": 600,
-    "question": "أي نبي قال له قومه لنخرجنك يا شعيب والذين آمنوا معك؟",
+    "question": "أي نبي هدّده قومه بإخراجه من قريتهم مع الذين آمنوا معه؟",
     "correctAnswer": "شعيب عليه السلام"
   },
   {
