@@ -72,7 +72,7 @@ const items: Array<Pick<Question, 'question' | 'correctAnswer' | 'points'>> = [
   },
   {
     "points": 200,
-    "question": "في أي منطقة كويتية يوجد «سما مول»؟",
+    "question": "في أي منطقة يقع مركز «سما» التجاري الواقع على طريق الجهراء؟",
     "correctAnswer": "الصليبخات"
   },
   {
@@ -102,7 +102,7 @@ const items: Array<Pick<Question, 'question' | 'correctAnswer' | 'points'>> = [
   },
   {
     "points": 200,
-    "question": "في أي منطقة يقع مجمع سما مول؟",
+    "question": "في أي منطقة يقع «سما مول» المجاور لمنطقة الفنطاس جنوب الكويت؟",
     "correctAnswer": "العقيلة"
   },
   {
