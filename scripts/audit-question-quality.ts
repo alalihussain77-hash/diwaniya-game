@@ -13,6 +13,7 @@ const reviewed = new Set([
   'gen-geography', 'spec-islamic-prophets', 'spec-islamic-sahaba',
   'spec-kuwait-general', 'spec-kuwait-restaurants', 'spec-kuwait-location',
   'spec-kuwait-cafes', 'spec-kuwait-malls',
+  'spec-foreign-marvel', 'spec-foreign-peaky', 'spec-anime-onepiece', 'spec-anime-pokemon',
 ]);
 const key = (value: string): string => value
   .normalize('NFKC')
