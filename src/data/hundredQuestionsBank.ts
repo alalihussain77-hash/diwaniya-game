@@ -1723,7 +1723,11 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
     }
 
     if (id === 'gen-products' || id === 'products' || name.includes('منتجات')) {
-      return Array.isArray(products100Questions) ? products100Questions : [];
+      return Array.isArray(products100Questions) ? products100Questions.map((item) => {
+        if (!item.options?.length || item.options.includes(item.correctAnswer)) return item;
+        // Fix a few invalid multiple-choice records; do not modify any image or source data.
+        return { ...item, options: [...item.options.slice(0, -1), item.correctAnswer] };
+      }) : [];
     }
 
     if (
