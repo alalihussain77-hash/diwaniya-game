@@ -9,11 +9,10 @@ const approvedRepeatedPrompts = new Set([
   'wk-sports', 'wk-proverbs', 'wk-general', 'wk-classic', 'wk-anime',
   'wk-wrestling', 'wk-foreign-art',
 ]);
-const reviewed = new Set([
+const preservedOriginalImageCategories = new Set([
   'gen-geography', 'spec-islamic-prophets', 'spec-islamic-sahaba',
   'spec-kuwait-general', 'spec-kuwait-restaurants', 'spec-kuwait-location',
-  'spec-kuwait-cafes', 'spec-kuwait-malls',
-  'spec-foreign-marvel', 'spec-foreign-peaky', 'spec-anime-onepiece', 'spec-anime-pokemon',
+  'spec-kuwait-cafes', 'spec-kuwait-malls', 'spec-anime-characters',
 ]);
 const key = (value: string): string => value
   .normalize('NFKC')
@@ -31,6 +30,8 @@ const byId = new Map<string, Set<string>>();
 for (const category of INITIAL_CATEGORIES.filter((c) => !c.hidden)) {
   const pool = get100CategoryQuestions(category.id, category.name);
   const questionTexts = new Set<string>();
+  const questionIds = new Set<string>();
+  const skipContentReview = category.id === 'gen-cars';
   let repeated = 0;
   let answerNotAnOption = 0;
   let short = 0;
@@ -39,12 +40,14 @@ for (const category of INITIAL_CATEGORIES.filter((c) => !c.hidden)) {
     const text = String(q.question || '').trim();
     const answer = String(q.correctAnswer || '').trim();
     if (!text || !answer) failures.push(`${category.id}: missing question or answer, id=${q.id}`);
-    const fingerprint = key(text);
+    if (questionIds.has(q.id)) failures.push(`${category.id}: duplicate question id ${q.id}`);
+    questionIds.add(q.id);
+    const fingerprint = approvedRepeatedPrompts.has(category.id)
+      ? [key(text), key(answer), q.imageUrl || q.answerImageUrl || ''].join('|')
+      : key(text);
     if (questionTexts.has(fingerprint)) {
       repeated++;
-      if (!approvedRepeatedPrompts.has(category.id)) {
-        warnings.push(`${category.id}: repeated question text: ${text.slice(0, 80)}`);
-      }
+      if (!skipContentReview) failures.push(`${category.id}: repeated question: ${text.slice(0, 80)}`);
     }
     questionTexts.add(fingerprint);
     if (text.length < 18 && !approvedRepeatedPrompts.has(category.id)) short++;
@@ -54,14 +57,21 @@ for (const category of INITIAL_CATEGORIES.filter((c) => !c.hidden)) {
     tiers[String(q.points)] = (tiers[String(q.points)] || 0) + 1;
   }
 
-  if (reviewed.has(category.id) && pool.length !== 100) failures.push(`${category.id}: reviewed bank has ${pool.length} instead of 100`);
-  if (pool.length < 100 && !approvedRepeatedPrompts.has(category.id)) {
-    warnings.push(`${category.id}: only ${pool.length} questions, fewer than target of 100`);
-  }
+  // User explicitly excludes cars from the 100-question requirement.
+  if (!skipContentReview && pool.length !== 100) failures.push(`${category.id}: ${pool.length} questions; expected exactly 100`);
   if (short) warnings.push(`${category.id}: ${short} very short question texts`);
-  if (answerNotAnOption) warnings.push(`${category.id}: ${answerNotAnOption} answers missing from option lists (inspect manually)`);
+  if (answerNotAnOption && !skipContentReview) failures.push(`${category.id}: ${answerNotAnOption} answers missing from option lists`);
   const outOfTier = Object.keys(tiers).filter((p) => !['200', '400', '600'].includes(p));
-  if (outOfTier.length) warnings.push(`${category.id}: other point tiers: ${outOfTier.join(', ')}`);
+  if (outOfTier.length && !skipContentReview) failures.push(`${category.id}: unsupported point tiers: ${outOfTier.join(', ')}`);
+  if (preservedOriginalImageCategories.has(category.id)) {
+    for (const original of category.questions.slice(0, 5)) {
+      if (!original.imageUrl && !original.answerImageUrl) continue;
+      const matched = pool.find(q => q.imageUrl === original.imageUrl &&
+        q.answerImageUrl === original.answerImageUrl &&
+        q.hideImageUntilAnswer === original.hideImageUntilAnswer);
+      if (!matched) failures.push(`${category.id}: an original image reference or display setting changed`);
+    }
+  }
   records.push({ category: category.name, id: category.id, count: pool.length, tiers, repeated, answerNotAnOption, short });
   if (!approvedRepeatedPrompts.has(category.id)) byId.set(category.id, questionTexts);
 }
