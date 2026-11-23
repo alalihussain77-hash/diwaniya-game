@@ -6,7 +6,8 @@ export const foreignArtQuestions: Record<number, string[]> = {
     "فيلم تيتانيك", "شخصية الجوكر", "فيلم هاري بوتر", "شخصية باتمان", "فيلم أفاتار",
     "شخصية سبايدرمان", "مسلسل Squid Game (لعبة الحبار)", "شخصية سوبرمان", "فيلم Home Alone", "مسلسل Wednesday",
     "شخصية جاك سبارو", "فيلم Fast & Furious", "شخصية ثور (Thor)", "مسلسل Stranger Things", "فيلم Jurassic Park",
-    "شخصية الأقنع الأخضر (The Mask)", "فيلم The Lion King", "شخصية الشريك (Shrek)", "فيلم Barbie", "شخصية ايرون مان"
+    "شخصية الأقنع الأخضر (The Mask)", "فيلم The Lion King", "شخصية الشريك (Shrek)", "فيلم Barbie", "شخصية ايرون مان",
+    "فيلم Frozen", "فيلم Toy Story", "شخصية إلسا", "شخصية وودي", "شخصية باز لايتيير", "فيلم Finding Nemo", "شخصية نيمو", "فيلم Up", "شخصية ميكي ماوس", "فيلم Cars", "شخصية لايتنينغ ماكوين", "فيلم Coco", "فيلم Inside Out", "شخصية موانا"
   ],
 
   // 400 نقطة: أعمال وشخصيات معروفة بمستوى متوسط
@@ -14,7 +15,8 @@ export const foreignArtQuestions: Record<number, string[]> = {
     "مسلسل Game of Thrones", "فيلم The Matrix", "مسلسل Peaky Blinders", "فيلم Inception", "شخصية توماس شيلبي",
     "مسلسل Breaking Bad", "فيلم Pirates of the Caribbean", "شخصية هالك (Hulk)", "مسلسل La Casa De Papel", "فيلم Oppenheimer",
     "شخصية والتر وايت", "فيلم Interstellar", "شخصية مينيون (Minions)", "فيلم Gladiator", "مسلسل Friends", "فيلم The Dark Knight",
-    "شخصية كابتن أمريكا", "فيلم Mission Impossible", "شخصية جون ويك (John Wick)", "فيلم Men in Black"
+    "شخصية كابتن أمريكا", "فيلم Mission Impossible", "شخصية جون ويك (John Wick)", "فيلم Men in Black",
+    "فيلم The Avengers", "مسلسل The Office", "مسلسل The Big Bang Theory", "مسلسل How I Met Your Mother", "فيلم Back to the Future", "شخصية مارتي مكفلاي", "فيلم Spider-Man: No Way Home", "فيلم Black Panther", "شخصية دكتور سترينج", "مسلسل The Mandalorian", "شخصية الماندالوريان", "فيلم The Hunger Games", "شخصية كاتنيس إيفردين"
   ],
 
   // 600 نقطة: أفلام ومسلسلات وشخصيات يصعب تمثيلها أو كلاسيكية (الأصعب)
@@ -22,7 +24,8 @@ export const foreignArtQuestions: Record<number, string[]> = {
     "فيلم The Godfather (العراب)", "مسلسل Prison Break", "فيلم Fight Club", "شخصية هانيبال ليكتر", "فيلم Pulp Fiction",
     "مسلسل Sherlock", "فيلم The Shining", "شخصية فورست غامب (Forrest Gump)", "فيلم Indiana Jones", "مسلسل The Last of Us",
     "فيلم The Silence of the Lambs", "شخصية فرودو (Lord of the Rings)", "فيلم The Truman Show", "مسلسل Lost", "فيلم Psycho",
-    "فيلم A Quiet Place", "شخصية غولوم (Gollum)", "فيلم Cast Away", "مسلسل Dexter", "فيلم Kill Bill"
+    "فيلم A Quiet Place", "شخصية غولوم (Gollum)", "فيلم Cast Away", "مسلسل Dexter", "فيلم Kill Bill",
+    "فيلم Eternal Sunshine of the Spotless Mind", "فيلم The Grand Budapest Hotel", "فيلم Whiplash", "فيلم Arrival", "فيلم Blade Runner 2049", "فيلم The Prestige", "فيلم No Country for Old Men", "مسلسل Severance", "مسلسل Succession", "فيلم Parasite", "فيلم 12 Angry Men", "مسلسل The Crown", "فيلم The Social Network"
   ]
 };
 
