@@ -1,3 +1,4 @@
+import { reviewedAnimeCharacterQuestions } from './reviewedAnimeCharacterQuestions';
 import { extraPokemonQuestions } from './extraPokemonQuestions';
 import { extraOnePieceQuestions } from './extraOnePieceQuestions';
 import { extraMarvelQuestions } from './extraMarvelQuestions';
@@ -1695,30 +1696,14 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
       name.includes('شخصيات أنمي') ||
       name.includes('شخصيات انمي')
     ) {
-      const animeCharImgs = [
-        '/anime/anime_2.jpg',
-        '/anime/anime_1.jpg',
-        '/anime/anime_3.jpg',
-        '/anime/anime_4.jpg',
-        '/one_piece/onepiece_2.jpg',
-        '/pokemon/pokemon_2.jpg',
-      ];
-      const list = Array.isArray(anime100Questions) ? anime100Questions : [];
-      return list.map((item, idx) => {
-        const assignedImg = animeCharImgs[idx % animeCharImgs.length];
-        return {
-          id: `spec-anime-char_${String(idx + 1).padStart(3, '0')}`,
-          points: item.points,
-          question: cleanQuestionText(item.question),
-          options: shuffle(item.options),
-          correctAnswer: item.correctAnswer,
-          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
-          hint: item.hint || '',
-          imageUrl: assignedImg,
-          answerImageUrl: assignedImg,
-          hideImageUntilAnswer: false,
-        };
-      });
+      // Keep the original five question pictures and their display settings exactly.
+      const originals = INITIAL_CATEGORIES.find(category => category.id === 'spec-anime-characters')?.questions || [];
+      const five = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-anime-characters_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 200, 400, 400, 600][index],
+      }));
+      return [...five, ...reviewedAnimeCharacterQuestions].sort((a, b) => a.points - b.points);
     }
 
     if (id === 'wk-anime' || id.startsWith('wk-ani') || name.includes('ولا كلمة أنمي')) {
