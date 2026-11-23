@@ -108,7 +108,7 @@ const reviewed: Array<Pick<Question, 'question' | 'correctAnswer' | 'points'>> =
   },
   {
     "points": 200,
-    "question": "في أي قارة تقع دولة جنوب أفريقيا؟",
+    "question": "في أي قارة تقع مدينة كيب تاون؟",
     "correctAnswer": "أفريقيا"
   },
   {
