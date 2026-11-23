@@ -32,10 +32,14 @@ async function loadQuestionData(): Promise<void> {
     ...validateQuestionBank(productsModule.products100Questions, 'products100Questions'),
   ];
   let totalBankQuestions = 0;
-  const reviewedIds = new Set(['gen-geography', 'spec-islamic-prophets', 'spec-islamic-sahaba', 'spec-kuwait-general', 'spec-kuwait-cafes', 'spec-kuwait-restaurants', 'spec-kuwait-location', 'spec-kuwait-malls']);
+  const reviewedIds = new Set(['gen-geography', 'spec-islamic-prophets', 'spec-islamic-sahaba', 'spec-kuwait-general', 'spec-kuwait-cafes', 'spec-kuwait-restaurants', 'spec-kuwait-location', 'spec-kuwait-malls', 'spec-anime-characters']);
   for (const category of visibleCategories) {
     const pool = get100CategoryQuestions(category.id, category.name);
     totalBankQuestions += pool.length;
+    // The cars category was explicitly excluded from editorial changes.
+    if (category.id !== 'gen-cars' && pool.length !== 100) {
+      errors.push(`Category ${category.id} has ${pool.length} questions; exactly 100 required`);
+    }
     if (pool.length < 6) {
       errors.push(`Category "${category.name}" (${category.id}) has only ${pool.length} available questions; needs at least 6 for a board`);
     }
