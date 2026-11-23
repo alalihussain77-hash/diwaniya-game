@@ -1,3 +1,5 @@
+import { reviewedSahabaQuestions } from './reviewedSahabaQuestions';
+import { reviewedMallsQuestions } from './reviewedMallsQuestions';
 import { reviewedLocationsQuestions } from './reviewedLocationsQuestions';
 import { reviewedRestaurantsQuestions } from './reviewedRestaurantsQuestions';
 import { reviewedCafesQuestions } from './reviewedCafesQuestions';
@@ -1143,6 +1145,29 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
         points: [200, 200, 400, 400, 200][index],
       }));
       return [...existing, ...reviewedProphetsQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-islamic-sahaba' || id === 'spec-kuwait-malls') {
+      // Preserve every original image URL / answer image / display setting.
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const points = id === 'spec-islamic-sahaba'
+        ? [200, 200, 400, 600, 200]
+        : [200, 200, 400, 400, 600];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `${id}_${String(index + 1).padStart(3, '0')}`,
+        points: points[index],
+        // Remove ambiguous absolute claims; pictures remain exactly as provided.
+        question: id === 'spec-islamic-sahaba' && index === 0
+          ? 'من الصحابي الذي لُقّب بسيف الله المسلول؟'
+          : id === 'spec-kuwait-malls' && index === 3
+            ? 'ما اسم البرج الشهير الذي يضم مجمع الحمراء التجاري في منطقة شرق؟'
+            : item.question,
+      }));
+      const reviewed = id === 'spec-islamic-sahaba'
+        ? reviewedSahabaQuestions
+        : reviewedMallsQuestions;
+      return [...existing, ...reviewed].sort((left, right) => left.points - right.points);
     }
 
     if (id === 'gen-cars' || id === 'cars' || name.includes('سيارات')) {
