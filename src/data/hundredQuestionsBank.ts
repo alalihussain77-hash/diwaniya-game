@@ -1,3 +1,4 @@
+import { extraOnePieceQuestions } from './extraOnePieceQuestions';
 import { extraMarvelQuestions } from './extraMarvelQuestions';
 import { extraPeakyQuestions } from './extraPeakyQuestions';
 import { reviewedSahabaQuestions } from './reviewedSahabaQuestions';
@@ -1509,7 +1510,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
         '/one_piece/onepiece_4.jpg',
       ];
       const list = Array.isArray(onePiece100Questions) ? onePiece100Questions : [];
-      return list.map((item, idx) => {
+      const originalQuestions = list.map((item, idx) => {
         const assignedImg = opImgs[idx % opImgs.length];
         return {
           id: item.id,
@@ -1524,6 +1525,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           hideImageUntilAnswer: false,
         };
       });
+      return [...originalQuestions, ...extraOnePieceQuestions];
     }
 
     if (
