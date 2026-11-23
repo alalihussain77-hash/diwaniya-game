@@ -1623,7 +1623,10 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
       name.includes('اعلام قديمة') ||
       name.includes('رايات قديمة')
     ) {
-      return Array.isArray(oldFlags100Questions) ? oldFlags100Questions.slice(0, 100) : [];
+      return Array.isArray(oldFlags100Questions)
+        ? oldFlags100Questions.filter((item, index, all) => all.findIndex((prior) =>
+            prior.correctAnswer === item.correctAnswer && prior.imageUrl === item.imageUrl) === index).slice(0, 100)
+        : [];
     }
 
     if (id === 'gen-flags' || id === 'flags' || name.includes('أعلام') || name.includes('اعلام')) {
