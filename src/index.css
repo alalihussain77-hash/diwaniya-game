@@ -86,7 +86,8 @@ html, body {
   }
 }
 
-@media (orientation: portrait) and (max-width: 767px) {
+@media (orientation: portrait) and (max-width: 767px),
+       (orientation: landscape) and (max-height: 540px) and (pointer: coarse) {
   main:has(.live-board) { padding-block: 4px; }
   main:has(.live-board) .space-y-4 > *,
   .live-board > *, .live-categories > div > *, .live-points > * { margin-block: 0; }
@@ -106,4 +107,17 @@ html, body {
   .live-points button { min-height: 32px; height: clamp(32px, 5dvh, 44px); padding: 0; font-size: 14px; }
   .live-board > .pt-6 { padding-top: 0; }
   .live-board > .pt-6 button { padding-block: 7px; font-size: 12px; }
+}
+
+@media (orientation: landscape) and (max-height: 540px) and (pointer: coarse) {
+  #root:has(.live-board) header { padding-block: 2px; }
+  #root:has(.live-board) header .w-7 { width: 24px; height: 24px; }
+  main:has(.live-board) .grid-cols-1 .flex-col { flex-direction: row; }
+  .live-board > .flex-col { flex-direction: row; align-items: center; }
+  .live-categories { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .live-category-title { flex-direction: row; gap: 4px; }
+  .live-category-title > div:first-child { width: auto; margin: 0; }
+  .live-points button { height: clamp(32px, 10dvh, 44px); }
+  /* The header already has the finish-game action. */
+  .live-board > .pt-6 { display: none; }
 }
