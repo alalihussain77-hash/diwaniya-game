@@ -149,3 +149,55 @@ html, body {
   main:has(.live-board) .grid-cols-1 .mt-1 { margin-top: 0; }
   .live-board > .flex-col > div { min-width: 0; font-size: 11px; line-height: 14px; }
 }
+
+@media (orientation: landscape) and (max-height: 540px) and (pointer: coarse) {
+  #root > .min-h-screen:has(> main) {
+    height: 100dvh;
+    min-height: 0;
+  }
+  #root > div > header { flex-shrink: 0; }
+  #root > div > main { min-height: 0; overflow-y: auto; padding-block: 4px; }
+  main > .max-w-5xl, main > .max-w-7xl.py-6 { padding-block: 6px; }
+  main > .max-w-5xl > .grid-cols-1 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  main > .min-h-screen { min-height: 100%; padding-block: 10px; }
+  .fixed.inset-0.flex.items-center { overscroll-behavior: contain; }
+
+  .question-panel {
+    width: 100%;
+    max-width: 70rem;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+  .question-panel > .border-b, .question-panel > .border-t { padding: 3px 8px; }
+  .question-panel > .border-t button { padding-block: 4px; min-height: 30px; }
+  .question-panel > .custom-scrollbar {
+    display: grid;
+    grid-template-columns: minmax(0, 2.3fr) minmax(130px, 1fr);
+    align-content: start;
+    align-items: start;
+    gap: 5px;
+    padding: 4px;
+  }
+  .question-panel > .custom-scrollbar > * { margin: 0; min-width: 0; padding: 4px; }
+  .question-panel > .custom-scrollbar > .flex { grid-column: 1 / -1; }
+  .question-panel .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+  .question-panel .grid-cols-2 button { min-height: 32px; padding: 4px; }
+  .question-panel .shadow-inner:has(> .w-full),
+  .question-panel .shadow-inner > .flex-col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 4px;
+  }
+  .question-panel .shadow-inner p { font-size: clamp(15px, 2.4vw, 21px); line-height: 1.35; }
+  .question-panel .shadow-inner > .w-full, .question-panel .bg-emerald-950\/90 > .overflow-hidden {
+    margin: 0; padding: 2px; max-height: none;
+  }
+  .question-panel img, .question-panel .shadow-inner .w-full > svg {
+    max-width: 100%; max-height: clamp(82px, 40dvh, 170px); object-fit: contain; margin: auto;
+  }
+  .question-panel .shadow-inner > .flex-col > .my-0\.5 { grid-column: 2; grid-row: 1 / 3; }
+  .question-panel .shadow-inner .inline-flex { white-space: normal; }
+  .question-panel .bg-emerald-950\/90 p { font-size: 16px; line-height: 1.25; margin: 2px 0; }
+}
