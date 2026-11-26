@@ -130,3 +130,12 @@ html, body {
   .live-category-title { padding-block: 2px; }
   .live-board > .flex-col { padding-block: 2px; }
 }
+
+@media (orientation: landscape) and (max-height: 320px) and (pointer: coarse) {
+  main:has(.live-board) .grid-cols-1 .min-w-0 > .flex-wrap { flex-wrap: nowrap; }
+  .live-board > .flex-col { min-height: 24px; }
+  .live-board > .flex-col button { padding-block: 1px; }
+  .live-category-title > div:first-child { max-width: 44%; }
+  .live-category-title { height: 24px; }
+  .live-category-title h3 { margin: 0; }
+}
