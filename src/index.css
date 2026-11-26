@@ -139,3 +139,13 @@ html, body {
   .live-category-title { height: 24px; }
   .live-category-title h3 { margin: 0; }
 }
+
+@media (orientation: landscape) and (max-height: 320px) and (pointer: coarse) {
+  main:has(.live-board) .grid-cols-1 .min-w-0 > .min-w-0 {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  main:has(.live-board) .grid-cols-1 .mt-1 { margin-top: 0; }
+  .live-board > .flex-col > div { min-width: 0; font-size: 11px; line-height: 14px; }
+}
