@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
+    "audit:questions": "tsx scripts/audit-question-quality.ts",
     "test:smoke": "tsx scripts/quiz-smoke.ts",
     "test:quiz-smoke": "tsx scripts/quiz-smoke.ts"
   },

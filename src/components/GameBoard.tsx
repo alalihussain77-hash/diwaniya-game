@@ -215,7 +215,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
   const isSpecificPhaseComplete = specificQuestions.length > 0 && specificAnsweredCount === specificQuestions.length;
 
   return (
-    <div className="w-full space-y-6 font-['Cairo',sans-serif]">
+    <div className="live-board w-full space-y-6 font-['Cairo',sans-serif]">
       {/* Phase 1 Completion Alert / Transition Action Banner */}
       {gamePhase === 'general' && isGeneralPhaseComplete && (
         <div className="p-5 rounded-3xl bg-gradient-to-r from-amber-950/90 via-yellow-950/80 to-amber-950/90 border-2 border-amber-500 text-amber-200 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl animate-pulse">
@@ -275,7 +275,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
       </div>
 
       {/* 4-Column Grid for Current Phase (2x2 on Mobile, 4x1 on Tablet & Desktop) */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+      <div className="live-categories grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
         {displayPhaseCategories.map((cat) => {
           const IconComponent = CATEGORY_ICONS[cat.iconName] || Brain;
           
@@ -310,7 +310,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
             <div key={cat.id} className="space-y-2 sm:space-y-3 flex flex-col">
               {/* Category Column Header Tile */}
               <div
-                className={`p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border flex flex-col justify-between items-center text-center min-h-[120px] sm:min-h-[148px] relative overflow-hidden shadow-xl transition-all ${
+                className={`live-category-title p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border flex flex-col justify-between items-center text-center min-h-[120px] sm:min-h-[148px] relative overflow-hidden shadow-xl transition-all ${
                   isTeam1
                     ? 'bg-gradient-to-b from-red-950/90 via-slate-900 to-slate-900 border-red-500/60 shadow-red-950/30'
                     : isTeam2
@@ -386,7 +386,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
               </div>
 
               {/* Question Point Cards */}
-              <div className="space-y-1.5 sm:space-y-2 flex-1">
+              <div className="live-points space-y-1.5 sm:space-y-2 flex-1">
                 {(cat.questions || []).map((q) => {
                   const isAnswered = q.isAnswered;
                   const isDisabled = isAnswered || isOpponentCategoryInSpecificPhase;

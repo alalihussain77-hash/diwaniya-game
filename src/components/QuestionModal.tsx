@@ -313,7 +313,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
       )}
 
       <div
-        className={`w-full max-w-2xl bg-slate-900 border-2 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[94vh] transition-all duration-300 ${
+        className={`question-panel w-full max-w-2xl bg-slate-900 border-2 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[94vh] transition-all duration-300 ${
           activeTurnTeamId === 'team1'
             ? 'border-red-500/90 ring-4 ring-red-500/30 shadow-red-900/30'
             : 'border-blue-500/90 ring-4 ring-blue-500/30 shadow-blue-900/30'

@@ -1,3 +1,16 @@
+import { reviewedAnimeCharacterQuestions } from './reviewedAnimeCharacterQuestions';
+import { extraPokemonQuestions } from './extraPokemonQuestions';
+import { extraOnePieceQuestions } from './extraOnePieceQuestions';
+import { extraMarvelQuestions } from './extraMarvelQuestions';
+import { extraPeakyQuestions } from './extraPeakyQuestions';
+import { reviewedSahabaQuestions } from './reviewedSahabaQuestions';
+import { reviewedMallsQuestions } from './reviewedMallsQuestions';
+import { reviewedLocationsQuestions } from './reviewedLocationsQuestions';
+import { reviewedRestaurantsQuestions } from './reviewedRestaurantsQuestions';
+import { reviewedCafesQuestions } from './reviewedCafesQuestions';
+import { reviewedKuwaitQuestions } from './reviewedKuwaitQuestions';
+import { reviewedProphetsQuestions } from './reviewedProphetsQuestions';
+import { reviewedGeographyQuestions } from './reviewedGeographyQuestions';
 import { Question } from '../types';
 import { persistentStorage } from '../utils/persistentStorage';
 import { INITIAL_CATEGORIES } from './categories';
@@ -1056,12 +1069,152 @@ export function get100CategoryQuestions(catId?: string, catName?: string): Quest
   return applyCategoryCustomizations(String(catId || ''), baseList);
 }
 
+// Select precisely one hundred existing question objects without rewriting their media fields.
+// Keep varied point tiers and source batches; only text-identical repeats are removed.
+function selectReviewedHundred(all: Question[]): Question[] {
+  const normalize = (value: string): string => String(value || '')
+    .normalize('NFKC').toLowerCase()
+    .replace(/[\u064b-\u065f\u0670\u0640]/g, '')
+    .replace(/[أإآ]/g, 'ا').replace(/ى/g, 'ي')
+    .replace(/[\s؟?!،.,؛:"'()«»]/g, '');
+  const candidates = all.filter((q) => {
+    if (!q || !q.question?.trim() || !q.correctAnswer?.trim()) return false;
+    if (!q.options?.length) return true;
+    return q.options.some((answer) => normalize(answer) === normalize(q.correctAnswer));
+  });
+  const unique: Question[] = [];
+  const seen = new Set<string>();
+  for (const q of candidates) {
+    const text = normalize(q.question);
+    if (seen.has(text)) continue;
+    seen.add(text);
+    unique.push(q);
+  }
+  const quotas = { 200: 34, 400: 33, 600: 33 };
+  const selected: Question[] = [];
+  const chosenIds = new Set<string>();
+  for (const tier of [200, 400, 600] as const) {
+    const pool = unique.filter(q => q.points === tier);
+    // Sample evenly over source files rather than taking one source batch only.
+    const n = Math.min(quotas[tier], pool.length);
+    const offsets = Array.from({ length: n }, (_, i) => Math.floor((i + 0.5) * pool.length / n));
+    for (const index of offsets) {
+      const q = pool[index];
+      if (!chosenIds.has(q.id)) { chosenIds.add(q.id); selected.push(q); }
+    }
+  }
+  for (const q of unique) {
+    if (selected.length >= 100) break;
+    if (!chosenIds.has(q.id)) { chosenIds.add(q.id); selected.push(q); }
+  }
+  return selected.slice(0, 100);
+}
+
 function getBase100CategoryQuestions(catId?: string, catName?: string): Question[] {
   try {
     if (!catId && !catName) return [];
 
     const id = String(catId || '').toLowerCase().trim();
     const name = String(catName || '').toLowerCase().trim();
+
+    if (id === 'gen-geography') {
+      // Keep the original picture-backed questions and their image URLs as-is.
+      // Replace only the 95 generic placeholder records with reviewed questions.
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `gen-geography_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 200, 400, 400, 200][index],
+        question: index === 4
+          ? 'في أي قارة تقع قمة إفرست وجبال الهيمالايا؟'
+          : cleanQuestionText(item.question),
+      }));
+      return [...existing, ...reviewedGeographyQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-kuwait-location') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-kuwait-location_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 400, 400, 600, 200][index],
+        question: index === 0
+          ? 'إلى أي منطقة شمال الكويت يصل جسر الشيخ جابر الأحمد القادم من العاصمة؟'
+          : item.question,
+      }));
+      return [...existing, ...reviewedLocationsQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-kuwait-restaurants') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-kuwait-restaurants_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 400, 400, 600, 200][index],
+        question: index === 4
+          ? 'ما اسم الوجبة التي تُحضّر من شرائح دجاج أو لحم على سيخ عمودي وتُقدّم عادة في خبز عربي؟'
+          : item.question,
+      }));
+      return [...existing, ...reviewedRestaurantsQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-kuwait-cafes') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-kuwait-cafes_${String(index + 1).padStart(3, '0')}`,
+        points: [400, 200, 200, 400, 600][index],
+        question: index === 1
+          ? 'ما اسم طريقة تحضير القهوة بنقع البن في ماء بارد لساعات طويلة؟'
+          : index === 3
+            ? 'ما اسم علامة القهوة العالمية التي يتميز شعارها بعلامة النسبة المئوية (%)؟'
+            : item.question,
+      }));
+      return [...existing, ...reviewedCafesQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-kuwait-general') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-kuwait-general_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 400, 600, 200, 400][index],
+      }));
+      return [...existing, ...reviewedKuwaitQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-islamic-prophets') {
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-islamic-prophets_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 200, 400, 400, 200][index],
+      }));
+      return [...existing, ...reviewedProphetsQuestions].sort((left, right) => left.points - right.points);
+    }
+
+    if (id === 'spec-islamic-sahaba' || id === 'spec-kuwait-malls') {
+      // Preserve every original image URL / answer image / display setting.
+      const originals = INITIAL_CATEGORIES.find((category) => category.id === id)?.questions || [];
+      const points = id === 'spec-islamic-sahaba'
+        ? [200, 200, 400, 600, 200]
+        : [200, 200, 400, 400, 600];
+      const existing = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `${id}_${String(index + 1).padStart(3, '0')}`,
+        points: points[index],
+        // Remove ambiguous absolute claims; pictures remain exactly as provided.
+        question: id === 'spec-islamic-sahaba' && index === 0
+          ? 'من الصحابي الذي لُقّب بسيف الله المسلول؟'
+          : id === 'spec-kuwait-malls' && index === 3
+            ? 'ما اسم البرج الشهير الذي يضم مجمع الحمراء التجاري في منطقة شرق؟'
+            : item.question,
+      }));
+      const reviewed = id === 'spec-islamic-sahaba'
+        ? reviewedSahabaQuestions
+        : reviewedMallsQuestions;
+      return [...existing, ...reviewed].sort((left, right) => left.points - right.points);
+    }
 
     if (id === 'gen-cars' || id === 'cars' || name.includes('سيارات')) {
       const allCars = getAllCarQuestions();
@@ -1075,7 +1228,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
       const b4 = Array.isArray(historyBatch4) ? historyBatch4 : [];
       const combinedHistory = [...b1, ...b2, ...b3, ...b4];
       if (combinedHistory.length > 0) {
-        return combinedHistory.map((item) => ({
+        return selectReviewedHundred(combinedHistory.map((item) => ({
           id: item.id,
           points: item.points,
           question: cleanQuestionText(item.questionText),
@@ -1086,7 +1239,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           imageUrl: item.answerImageUrl,
           answerImageUrl: item.answerImageUrl,
           hideImageUntilAnswer: false,
-        }));
+        })));
       }
     }
 
@@ -1106,7 +1259,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
       }
 
       if (combinedKnowledge.length > 0) {
-        return combinedKnowledge.map((item) => {
+        return selectReviewedHundred(combinedKnowledge.map((item) => {
           const qImg = (item as any).imageUrl || (item as any).image || '';
           const aImg = item.answerImageUrl || '';
           return {
@@ -1121,7 +1274,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
             answerImageUrl: aImg,
             hideImageUntilAnswer: Boolean(aImg && !qImg),
           };
-        });
+        }));
       }
     }
 
@@ -1136,7 +1289,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
         '/breaking_bad/bb_4.jpg',
       ];
       if (combinedBB.length > 0) {
-        return combinedBB.map((item: any, idx) => {
+        return selectReviewedHundred(combinedBB.map((item: any, idx) => {
           const assignedImg = bbImages[idx % bbImages.length];
           return {
             id: item.id,
@@ -1150,7 +1303,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
             answerImageUrl: item.answerImageUrl || assignedImg,
             hideImageUntilAnswer: false,
           };
-        });
+        }));
       }
     }
 
@@ -1330,11 +1483,11 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
         '/peaky_blinders/peaky_4.jpg',
       ];
       const list = Array.isArray(peakyBlinders100Questions) ? peakyBlinders100Questions : [];
-      return list.map((item, idx) => {
+      const originals = list.map((item, idx) => {
         const assignedImg = peakyImgs[idx % peakyImgs.length];
         return {
           id: item.id,
-          points: item.points,
+          points: item.points === 300 ? 400 : item.points === 500 ? 600 : item.points,
           question: cleanQuestionText(item.question),
           options: shuffle(item.options),
           correctAnswer: item.correctAnswer,
@@ -1345,6 +1498,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           hideImageUntilAnswer: false,
         };
       });
+      return [...originals, ...extraPeakyQuestions];
     }
 
     if (
@@ -1363,11 +1517,11 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
         '/marvel/marvel_4.jpg',
       ];
       const list = Array.isArray(marvel100Questions) ? marvel100Questions : [];
-      return list.map((item, idx) => {
+      const originals = list.map((item, idx) => {
         const assignedImg = marvelImgs[idx % marvelImgs.length];
         return {
           id: item.id,
-          points: item.points,
+          points: item.points === 300 ? 400 : item.points === 500 ? 600 : item.points,
           question: cleanQuestionText(item.question),
           options: shuffle(item.options),
           correctAnswer: item.correctAnswer,
@@ -1378,6 +1532,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           hideImageUntilAnswer: false,
         };
       });
+      return [...originals, ...extraMarvelQuestions];
     }
 
     if (
@@ -1398,11 +1553,11 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
         '/one_piece/onepiece_4.jpg',
       ];
       const list = Array.isArray(onePiece100Questions) ? onePiece100Questions : [];
-      return list.map((item, idx) => {
+      const originalQuestions = list.map((item, idx) => {
         const assignedImg = opImgs[idx % opImgs.length];
         return {
           id: item.id,
-          points: item.points,
+          points: item.points === 300 ? 400 : item.points === 500 ? 600 : item.points,
           question: cleanQuestionText(item.question),
           options: shuffle(item.options),
           correctAnswer: item.correctAnswer,
@@ -1413,6 +1568,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           hideImageUntilAnswer: false,
         };
       });
+      return [...originalQuestions, ...extraOnePieceQuestions];
     }
 
     if (
@@ -1432,11 +1588,11 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
         '/pokemon/pokemon_4.jpg',
       ];
       const list = Array.isArray(pokemon100Questions) ? pokemon100Questions : [];
-      return list.map((item, idx) => {
+      const originalQuestions = list.map((item, idx) => {
         const assignedImg = pokeImgs[idx % pokeImgs.length];
         return {
           id: item.id,
-          points: item.points,
+          points: item.points === 300 ? 400 : item.points === 500 ? 600 : item.points,
           question: cleanQuestionText(item.question),
           options: shuffle(item.options),
           correctAnswer: item.correctAnswer,
@@ -1447,6 +1603,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
           hideImageUntilAnswer: false,
         };
       });
+      return [...originalQuestions, ...extraPokemonQuestions];
     }
 
     if (
@@ -1466,7 +1623,10 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
       name.includes('اعلام قديمة') ||
       name.includes('رايات قديمة')
     ) {
-      return Array.isArray(oldFlags100Questions) ? oldFlags100Questions : [];
+      return Array.isArray(oldFlags100Questions)
+        ? oldFlags100Questions.filter((item, index, all) => all.findIndex((prior) =>
+            prior.correctAnswer === item.correctAnswer && prior.imageUrl === item.imageUrl) === index).slice(0, 100)
+        : [];
     }
 
     if (id === 'gen-flags' || id === 'flags' || name.includes('أعلام') || name.includes('اعلام')) {
@@ -1495,10 +1655,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
 
     if (
       id === 'wk-classic' ||
-      name.includes('أفلام') ||
-      name.includes('مسلسلات') ||
-      name.includes('أغاني') ||
-      name.includes('مسرحيات') ||
+      (!id.startsWith('wk-') && name === 'أفلام، مسلسلات، أغاني، ومسرحيات') ||
       name === 'ولا كلمة'
     ) {
       return Array.isArray(walaKelmaMediaQuestions) ? walaKelmaMediaQuestions : [];
@@ -1539,30 +1696,14 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
       name.includes('شخصيات أنمي') ||
       name.includes('شخصيات انمي')
     ) {
-      const animeCharImgs = [
-        '/anime/anime_2.jpg',
-        '/anime/anime_1.jpg',
-        '/anime/anime_3.jpg',
-        '/anime/anime_4.jpg',
-        '/one_piece/onepiece_2.jpg',
-        '/pokemon/pokemon_2.jpg',
-      ];
-      const list = Array.isArray(anime100Questions) ? anime100Questions : [];
-      return list.map((item, idx) => {
-        const assignedImg = animeCharImgs[idx % animeCharImgs.length];
-        return {
-          id: `spec-anime-char_${String(idx + 1).padStart(3, '0')}`,
-          points: item.points,
-          question: cleanQuestionText(item.question),
-          options: shuffle(item.options),
-          correctAnswer: item.correctAnswer,
-          explanation: item.explanation || `الإجابة الصحيحة هي: ${item.correctAnswer}`,
-          hint: item.hint || '',
-          imageUrl: assignedImg,
-          answerImageUrl: assignedImg,
-          hideImageUntilAnswer: false,
-        };
-      });
+      // Keep the original five question pictures and their display settings exactly.
+      const originals = INITIAL_CATEGORIES.find(category => category.id === 'spec-anime-characters')?.questions || [];
+      const five = originals.slice(0, 5).map((item, index) => ({
+        ...item,
+        id: `spec-anime-characters_${String(index + 1).padStart(3, '0')}`,
+        points: [200, 200, 400, 400, 600][index],
+      }));
+      return [...five, ...reviewedAnimeCharacterQuestions].sort((a, b) => a.points - b.points);
     }
 
     if (id === 'wk-anime' || id.startsWith('wk-ani') || name.includes('ولا كلمة أنمي')) {
@@ -1582,7 +1723,11 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
     }
 
     if (id === 'gen-products' || id === 'products' || name.includes('منتجات')) {
-      return Array.isArray(products100Questions) ? products100Questions : [];
+      return Array.isArray(products100Questions) ? products100Questions.map((item) => {
+        if (!item.options?.length || item.options.includes(item.correctAnswer)) return item;
+        // Fix a few invalid multiple-choice records; do not modify any image or source data.
+        return { ...item, options: [...item.options.slice(0, -1), item.correctAnswer] };
+      }) : [];
     }
 
     if (
@@ -1625,7 +1770,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
       const b2 = Array.isArray(turkishDramaQuestionsBatch2) ? turkishDramaQuestionsBatch2 : [];
       const combinedTurkish = [...b1, ...b2];
       if (combinedTurkish.length > 0) {
-        return combinedTurkish.map((item, idx) => {
+        return selectReviewedHundred(combinedTurkish.map((item, idx) => {
           const assignedImg = turkishImgs[idx % turkishImgs.length];
           return {
             id: item.id,
@@ -1639,7 +1784,7 @@ function getBase100CategoryQuestions(catId?: string, catName?: string): Question
             answerImageUrl: item.answerImageUrl || assignedImg,
             hideImageUntilAnswer: false,
           };
-        });
+        }));
       }
     }
 

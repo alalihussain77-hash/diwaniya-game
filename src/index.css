@@ -52,4 +52,152 @@ html, body {
   animation: logoShine 4s linear infinite, luxuryGlow 3s ease-in-out infinite;
 }
 
+@media (pointer: coarse) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 
+  #root > .min-h-screen {
+    min-height: 100dvh;
+  }
+
+  .fixed.inset-0.flex.items-center {
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+    padding-left: max(0.5rem, env(safe-area-inset-left));
+    padding-right: max(0.5rem, env(safe-area-inset-right));
+    overflow-y: auto;
+    align-items: flex-start;
+  }
+
+  .fixed.inset-0.flex.items-center > :only-child,
+  .question-panel {
+    margin-block: auto;
+  }
+
+  .question-panel {
+    max-height: 100%;
+  }
+
+  input:not([type="checkbox"]):not([type="range"]), textarea, select {
+    font-size: max(1rem, 16px);
+  }
+}
+
+@media (orientation: portrait) and (max-width: 767px),
+       (orientation: landscape) and (max-height: 540px) and (pointer: coarse) {
+  main:has(.live-board) { padding-block: 4px; }
+  main:has(.live-board) .space-y-4 > *,
+  .live-board > *, .live-categories > div > *, .live-points > * { margin-block: 0; }
+  .live-board { display: grid; gap: 5px; margin-top: 5px; }
+  main:has(.live-board) .grid-cols-1 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
+  main:has(.live-board) .grid-cols-1 > div { padding: 5px; gap: 2px; }
+  main:has(.live-board) .grid-cols-1 .w-9 { display: none; }
+  .live-board > .flex-col { padding: 4px 7px; gap: 2px; }
+  .live-board > .flex-col .text-slate-400 { display: none; }
+  .live-categories { gap: 6px; }
+  .live-categories > div { gap: 3px; min-width: 0; }
+  .live-category-title { min-height: 0; padding: 4px; }
+  .live-category-title > .w-7, .live-category-title p,
+  .live-category-title .mt-1, .live-category-title > div:first-child > span:first-child { display: none; }
+  .live-category-title > div:first-child { justify-content: center; }
+  .live-points { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; }
+  .live-points button { min-height: 32px; height: clamp(32px, 5dvh, 44px); padding: 0; font-size: 14px; }
+  .live-board > .pt-6 { padding-top: 0; }
+  .live-board > .pt-6 button { padding-block: 7px; font-size: 12px; }
+}
+
+@media (orientation: landscape) and (max-height: 540px) and (pointer: coarse) {
+  #root:has(.live-board) header { padding-block: 2px; }
+  #root:has(.live-board) header .w-7 { width: 24px; height: 24px; }
+  main:has(.live-board) .grid-cols-1 .flex-col { flex-direction: row; }
+  .live-board > .flex-col { flex-direction: row; align-items: center; }
+  .live-categories { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .live-category-title { flex-direction: row; gap: 4px; }
+  .live-category-title > div:first-child { width: auto; margin: 0; }
+  .live-points button { height: clamp(32px, 10dvh, 44px); }
+  /* The header already has the finish-game action. */
+  .live-board > .pt-6 { display: none; }
+}
+
+@media (orientation: landscape) and (max-height: 320px) and (pointer: coarse) {
+  main:has(.live-board) .grid-cols-1 > div { padding-block: 1px; }
+  .live-points { row-gap: 1px; }
+  .live-points button { min-height: 26px; height: 26px; }
+  .live-board { gap: 3px; margin-top: 2px; }
+  .live-category-title { padding-block: 2px; }
+  .live-board > .flex-col { padding-block: 2px; }
+}
+
+@media (orientation: landscape) and (max-height: 320px) and (pointer: coarse) {
+  main:has(.live-board) .grid-cols-1 .min-w-0 > .flex-wrap { flex-wrap: nowrap; }
+  .live-board > .flex-col { min-height: 24px; }
+  .live-board > .flex-col button { padding-block: 1px; }
+  .live-category-title > div:first-child { max-width: 44%; }
+  .live-category-title { height: 24px; }
+  .live-category-title h3 { margin: 0; }
+}
+
+@media (orientation: landscape) and (max-height: 320px) and (pointer: coarse) {
+  main:has(.live-board) .grid-cols-1 .min-w-0 > .min-w-0 {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  main:has(.live-board) .grid-cols-1 .mt-1 { margin-top: 0; }
+  .live-board > .flex-col > div { min-width: 0; font-size: 11px; line-height: 14px; }
+}
+
+@media (orientation: landscape) and (max-height: 540px) and (pointer: coarse) {
+  #root > .min-h-screen:has(> main) {
+    height: 100dvh;
+    min-height: 0;
+  }
+  #root > div > header { flex-shrink: 0; }
+  #root > div > main { min-height: 0; overflow-y: auto; padding-block: 4px; }
+  main > .max-w-5xl, main > .max-w-7xl.py-6 { padding-block: 6px; }
+  main > .max-w-5xl > .grid-cols-1 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  main > .min-h-screen { min-height: 100%; padding-block: 10px; }
+  .fixed.inset-0.flex.items-center { overscroll-behavior: contain; }
+
+  .question-panel {
+    width: 100%;
+    max-width: 70rem;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+  .question-panel > .border-b, .question-panel > .border-t { padding: 3px 8px; }
+  .question-panel > .border-t button { padding-block: 4px; min-height: 30px; }
+  .question-panel > .custom-scrollbar {
+    display: grid;
+    grid-template-columns: minmax(0, 2.3fr) minmax(130px, 1fr);
+    align-content: start;
+    align-items: start;
+    gap: 5px;
+    padding: 4px;
+  }
+  .question-panel > .custom-scrollbar > * { margin: 0; min-width: 0; padding: 4px; }
+  .question-panel > .custom-scrollbar > .flex { grid-column: 1 / -1; }
+  .question-panel .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+  .question-panel .grid-cols-2 button { min-height: 32px; padding: 4px; }
+  .question-panel .shadow-inner:has(> .w-full),
+  .question-panel .shadow-inner > .flex-col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 4px;
+  }
+  .question-panel .shadow-inner p { font-size: clamp(15px, 2.4vw, 21px); line-height: 1.35; }
+  .question-panel .shadow-inner > .w-full, .question-panel .bg-emerald-950\/90 > .overflow-hidden {
+    margin: 0; padding: 2px; max-height: none;
+  }
+  .question-panel img, .question-panel .shadow-inner .w-full > svg {
+    max-width: 100%; max-height: clamp(82px, 40dvh, 170px); object-fit: contain; margin: auto;
+  }
+  .question-panel .shadow-inner > .flex-col > .my-0\.5 { grid-column: 2; grid-row: 1 / 3; }
+  .question-panel .shadow-inner .inline-flex { white-space: normal; }
+  .question-panel .bg-emerald-950\/90 p { font-size: 16px; line-height: 1.25; margin: 2px 0; }
+}
