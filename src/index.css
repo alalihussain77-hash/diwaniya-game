@@ -52,4 +52,36 @@ html, body {
   animation: logoShine 4s linear infinite, luxuryGlow 3s ease-in-out infinite;
 }
 
+@media (pointer: coarse) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 
+  #root > .min-h-screen {
+    min-height: 100dvh;
+  }
+
+  .fixed.inset-0.flex.items-center {
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+    padding-left: max(0.5rem, env(safe-area-inset-left));
+    padding-right: max(0.5rem, env(safe-area-inset-right));
+    overflow-y: auto;
+    align-items: flex-start;
+  }
+
+  .fixed.inset-0.flex.items-center > :only-child,
+  .question-panel {
+    margin-block: auto;
+  }
+
+  .question-panel {
+    max-height: 100%;
+  }
+
+  input:not([type="checkbox"]):not([type="range"]), textarea, select {
+    font-size: max(1rem, 16px);
+  }
+}
