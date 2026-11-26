@@ -85,3 +85,25 @@ html, body {
     font-size: max(1rem, 16px);
   }
 }
+
+@media (orientation: portrait) and (max-width: 767px) {
+  main:has(.live-board) { padding-block: 4px; }
+  main:has(.live-board) .space-y-4 > *,
+  .live-board > *, .live-categories > div > *, .live-points > * { margin-block: 0; }
+  .live-board { display: grid; gap: 5px; margin-top: 5px; }
+  main:has(.live-board) .grid-cols-1 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
+  main:has(.live-board) .grid-cols-1 > div { padding: 5px; gap: 2px; }
+  main:has(.live-board) .grid-cols-1 .w-9 { display: none; }
+  .live-board > .flex-col { padding: 4px 7px; gap: 2px; }
+  .live-board > .flex-col .text-slate-400 { display: none; }
+  .live-categories { gap: 6px; }
+  .live-categories > div { gap: 3px; min-width: 0; }
+  .live-category-title { min-height: 0; padding: 4px; }
+  .live-category-title > .w-7, .live-category-title p,
+  .live-category-title .mt-1, .live-category-title > div:first-child > span:first-child { display: none; }
+  .live-category-title > div:first-child { justify-content: center; }
+  .live-points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
+  .live-points button { min-height: 32px; height: clamp(32px, 5dvh, 44px); padding: 0; font-size: 14px; }
+  .live-board > .pt-6 { padding-top: 0; }
+  .live-board > .pt-6 button { padding-block: 7px; font-size: 12px; }
+}
